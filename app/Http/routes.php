@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('test');
+Route::get('/',
+    ['as' => 'home', 'uses' => 'HomeController@getHome']);
+
+Route::get('/add-game',
+    ['as' => 'add-game', 'uses' => 'GameController@getAddGame']);
+
+Route::post('/add-game',
+    ['as' => 'add-game', 'uses' => 'GameController@postAddGame']);
+
+Route::get('/game/{game_slug}',
+    ['as' => 'post', 'uses' => 'GameController@getGame']);
+
+Route::bind('game_slug', function($value, $route) {
+    $game = App\Game::whereSlug($value)->first();
+    if($game) return $game; //if game is found
+    App::abort(404); //game not found
 });
+
