@@ -1,0 +1,16 @@
+
+.icon-windows:before { content: '\e800'; } /* '' */
+.icon-apple:before { content: '\e801'; } /* '' */
+.icon-html5:before { content: '\e802'; } /* '' */
+.icon-android:before { content: '\e803'; } /* '' */
+.icon-iphone-home:before { content: '\e804'; } /* '' */
+.icon-network:before { content: '\e805'; } /* '' */
+.icon-twitter:before { content: '\e806'; } /* '' */
+.icon-youtube:before { content: '\e807'; } /* '' */
+.icon-gplus:before { content: '\e808'; } /* '' */
+.icon-twitch:before { content: '\e809'; } /* '' */
+.icon-facebook:before { content: '\e80a'; } /* '' */
+.icon-play:before { content: '\e80b'; } /* '' */
+.icon-appstore:before { content: '\e80c'; } /* '' */
+.icon-steam:before { content: '\e80d'; } /* '' */
+.icon-unity:before { content: '\e80e'; } /* '' */
