@@ -16,23 +16,29 @@ class GameTableSeeder extends Seeder
 
         $games = array(
             ['id' => 1,
+                'user_id' => 2,
                 'title' => 'Test Cool Game',
-                'developer_name' => 'Test Developer',
                 'slug' => 'test-game',
-                'thumbnail' => 'test-image',
-                'game_file' => 'test-game-file',
-                'version' => '1.2.4',
-                'beta' => false,
+                'developer' => 'Test Developer',
+                'thumbnail' => 'thumb-main.png',
                 'genre' => 'action',
                 'description' => 'This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',
-                'controls' => 'This is controls. This is controls. This is controls. This is controls. This is controls. This is controls. This is controls. This is controls. This is controls.',
                 'likes' => 239,
-                'dislikes' => 491,
                 'views' => 1020,
-                'email' => 'testemail@gmailc.com',
-                'private-key' => '482dfjJj39dJb02101bnA',
-                'created_at' => '2015-08-19 03:25:43',
-                'updated_at' => '2015-08-20 03:25:43'
+                'platforms' => "platform-pc,platform-android,platform-html5",
+
+                'link-website' => 'http://website.com',
+                'link-twitter' => 'http://twitter.com',
+                'link-youtube' => 'http://twitter.com',
+                'link-google-plus' => 'http://plus.google.com',
+                'link-twitch' => 'http://twitch.com',
+                'link-facebook' => 'http://facebook.com',
+                'link-google-play' => 'http://play.google.com',
+                'link-app-store' => 'http://itunes.apple.com',
+                'link-windows-store' => 'http://microsoft.com',
+                'link-steam' => 'http://store.steampowered.com',
+
+
             ]
         );
 

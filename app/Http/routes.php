@@ -14,18 +14,23 @@
 Route::get('/',
     ['as' => 'home', 'uses' => 'HomeController@getHome']);
 
+Route::post('/',
+    ['as' => '/', 'uses' => 'HomeController@postHome']);
+
 Route::get('/add-game',
     ['as' => 'add-game', 'uses' => 'GameController@getAddGame']);
 
 Route::post('/add-game',
     ['as' => 'add-game', 'uses' => 'GameController@postAddGame']);
 
-Route::get('/game/{game_slug}',
+Route::get('/game/{game_slug}/{version?}',
     ['as' => 'post', 'uses' => 'GameController@getGame']);
+
+Route::post('/favorite/{game_slug}',
+    ['as' => 'favorite', 'uses' => 'GameController@addFavorite']);
 
 Route::bind('game_slug', function($value, $route) {
     $game = App\Game::whereSlug($value)->first();
     if($game) return $game; //if game is found
     App::abort(404); //game not found
 });
-

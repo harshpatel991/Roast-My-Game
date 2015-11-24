@@ -4,113 +4,198 @@
     {{Config::get('app.name')}}
 @endsection
 
+@section('navbar')
+    @include('partials/normalNav')
+@endsection
+
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid background">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 form-background">
-                <h1>Add Your Game</h1>
-                {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true, 'id' => 'add-game')) !!}
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Title</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="title" name="title" placeholder="Title">
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">The title of your game.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="developer-name" class="col-sm-2 control-label">Developer Name</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="developer-name" name="developer-name" placeholder="Developer Name"></input>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="thumbnail" class="col-sm-2 control-label">Thumbnail</label>
-                        <div class="col-sm-6">
-                            <input type="file" id="thumbnail" name="thumbnail">
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">This image will be displayed when showing your game on another part of the site.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="game-file" class="col-sm-2 control-label">Game file</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="game-file" name="game-file" placeholder=".unityfile Link">
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">Public link to your .unityfile. You can upload your game to DropBox. Instructions here.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="version" class="col-sm-2 control-label">Version</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="version" name="version" placeholder="Version">
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">Current version of your game. Example: 1.1.3</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="beta" class="col-sm-2 control-label">In Beta?</label>
-                        <div class="col-sm-6">
-                            <input type="checkbox" id="beta" name="beta" placeholder="Beta">
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">Is your game currently in beta?</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="genre" class="col-sm-2 control-label">Genre</label>
-                        <div class="col-sm-6">
-                            <select class="form-control" id="genre" name="genre">
-                                <option value="">Select Genre</option>
-                                <option value="action">Action</option>
-                                <option value="platformer">Platformer</option>
-                                <option value="rouge-like">Rouge-Like</option>
-                                <option value="fps">FPS</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="description" class="col-sm-2 control-label">Description</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" rows="4" id="description" name="description"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="controls" class="col-sm-2 control-label">Controls</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" rows="4" id="controls" name="controls"></textarea>
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">Let your players know how to play your game.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="email" name="email" placeholder="Email"></input>
-                        </div>
-                        <div class="col-sm-4">
-                            <p class="small add-game-explanation">This will not be shared with anyone.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Add Game!</button>
-                        </div>
-                    </div>
-                    {!! Form::close() !!}
+            <div class="col-md-9 col-md-offset-2">
 
+                <div class="content-background" style="margin: 10px 0px;">
+                    <h1 class="form-title">Add Your Game</h1>
 
+                    {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
+
+                        {!! Form::myInput('title', 'Title') !!}
+                        {!! Form::myInput('developer', 'Developer') !!}
+
+                        <div class="form-group">
+                            {!! Form::label('thumbnail', 'Thumbnail', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <img class="embed-responsive-item" id="thumbnail_thumbnail"/>
+                                </div>
+                                {!! Form::file('thumbnail', ['class' => 'form-control', 'accept' => 'image/*']) !!}
+                            </div>
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <p class="small add-game-explanation">
+                                    This image will be displayed on the sidebar and when your game linked on other pages.<br>
+                                    <b>Recommended:</b> 480px by 270px<br>
+                                    <b>Accepted Types:</b> PNG, JPEG, GIF<br>
+                                    <b>Max File Size:</b> 2 MB
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('genre', 'Genre', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-6">
+                                {!! Form::select('genre', App\Game::$genres, old('genre'), ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('description', 'Description', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-6">
+                                {!! Form::textarea('description', old('description'), ['class' => 'form-control', 'rows' => 4]) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('platforms', 'Platforms', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-2">
+                                {!! Form::myCheckbox('platform-pc', 'PC') !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::myCheckbox('platform-ios', 'iOS') !!}
+                            </div>
+                            <div class="col-sm-6">
+                                {!! Form::myCheckbox('platform-unity', 'Unity') !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::myCheckbox('platform-mac', 'Mac') !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::myCheckbox('platform-android', 'Android') !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::myCheckbox('platform-html5', 'HTML5') !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseLinks">Add Links <span class="fui-triangle-down"></span></a>
+                            <div class="collapse" id="collapseLinks" style="padding-top: 10px;">
+                                {!! Form::myInput('link-website', 'Website', 'http://your-game.com') !!}
+                                {!! Form::myInput('link-twitter', 'Twitter', 'http://twitter.com/your-handle') !!}
+                                {!! Form::myInput('link-youtube', 'YouTube', 'http://youtube.com/user/your-channel') !!}
+                                {!! Form::myInput('link-google-plus', 'Google+', 'http://plus.google.com/your-page') !!}
+                                {!! Form::myInput('link-facebook', 'Facebook', 'http://facebook.com/your-page') !!}
+                                {!! Form::myInput('link-google-play', 'Google Play', 'http://play.google.com/your-game') !!}
+                                {!! Form::myInput('link-app-store', 'Apple App Store', 'http://itunes.apple.com/your-game') !!}
+                                {!! Form::myInput('link-windows-store', 'Windows Store', 'http://microsoft.com/your-game') !!}
+                                {!! Form::myInput('link-steam', 'Steam', 'http://store.steampowered.com/your-game') !!}
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h4 class="small">CURRENT VERSION</h4>
+
+                        <div class="form-group">
+                            {!! Form::label('version', 'Version', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::text('version', old('version'), ['class' => 'form-control', 'placeholder' => '1.1.3']) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('beta', 'In Beta', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::checkbox('beta', 'true', old("beta")) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('image1', 'Images', ['class' => 'col-sm-2 control-label form-label']) !!}
+
+                            {!! Form::myImageWithThumbnail('image1') !!}
+                            {!! Form::myImageWithThumbnail('image2') !!}
+                            <div class="col-sm-4">
+                                <p class="small add-game-explanation">
+                                    <b>Recommended:</b> 720px by 405px<br>
+                                    <b>Accepted Types:</b> PNG, JPEG, GIF<br>
+                                    <b>Max File Size:</b> 2 MB
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            {!! Form::myImageWithThumbnail('image3') !!}
+                            {!! Form::myImageWithThumbnail('image4') !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('upcoming_features', 'Upcoming Features', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-6">
+                                {!! Form::textarea('upcoming_features', old('upcoming_features'), ['class' => 'form-control', 'rows' => 4]) !!}
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h5 class="small" style="margin-bottom: 0px; color: #cdcdcd;">One last thing...</h5>
+                        <h4 class="small" style="margin-top: 0px;">CREATE AN ACCOUNT</h4>
+
+                        {!! Form::myInput('email', 'Email') !!}
+
+                        <div class="form-group">
+                            {!! Form::label('password', 'Password', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            <div class="col-sm-6">
+                                {!! Form::password('password', ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button id="add-game" class="btn btn-default">Add Game!</button>
+                            </div>
+                        </div>
+                        {!! Form::close() !!}
+                </div>
             </div>
-
-            </div>
-
         </div>
     </div>
+
+
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
+
+    <script>
+        function readURL(input, previewElem) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewElem.attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#thumbnail").change(function(){
+            readURL(this, $('#thumbnail_thumbnail'));
+        });
+
+        $("#image1").change(function(){
+            readURL(this, $('#image1-preview'));
+        });
+
+        $("#image2").change(function(){
+            readURL(this, $('#image2-preview'));
+        });
+
+        $("#image3").change(function(){
+            readURL(this, $('#image3-preview'));
+        });
+
+        $("#image4").change(function(){
+            readURL(this, $('#image4-preview'));
+        });
+    </script>
 
 @endsection

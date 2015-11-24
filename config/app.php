@@ -2,6 +2,8 @@
 
 return [
 
+    'name' => 'Progress Pop',
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -144,8 +146,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class
-
+        Illuminate\Html\HtmlServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Proengsoft\JsValidation\JsValidationServiceProvider::class
+       // Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -195,7 +199,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-        'HTML'      => Illuminate\Html\HtmlFacade::class
+        'HTML'      => Illuminate\Html\HtmlFacade::class,
+        'Utils'     => App\Http\Utils::class,
+        'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class
+        //'Image'     => Intervention\Image\Facades\Image::class
 
     ],
 

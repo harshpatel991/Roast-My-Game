@@ -1,5 +1,6 @@
 <?php
 
+use App\Game;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -14,23 +15,31 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('title', 255)->unique();
-            $table->string('developer_name', 255);
             $table->string('slug', 35)->unique();
+            $table->string('developer', 255);
             $table->string('thumbnail', 200);
-            $table->string('game_file', 200);
-            $table->string('version', 20);
-            $table->boolean('beta');
-            $table->enum('genre', ['action', 'fps']); //TODO: replace with Game::genres
+            $table->enum('genre', Game::$genres);
             $table->string('description', 1000);
-            $table->string('controls', 1000);
             $table->integer('likes');
-            $table->integer('dislikes');
             $table->integer('views');
-            $table->string('email', 254);
-            $table->string('private-key', 254);
+            $table->string('platforms', 140);
+
+            $table->string('link-website', 255);
+            $table->string('link-twitter', 255);
+            $table->string('link-youtube', 255);
+            $table->string('link-google-plus', 255);
+            $table->string('link-twitch', 255);
+            $table->string('link-facebook', 255);
+            $table->string('link-google-play', 255);
+            $table->string('link-app-store', 255);
+            $table->string('link-windows-store', 255);
+            $table->string('link-steam', 255);
+
             $table->timestamps();
         });
+
     }
 
     /**

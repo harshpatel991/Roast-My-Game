@@ -1,14 +1,145 @@
 @import "bootstrap/bootstrap";
-@import "bootstrap/bootswatch";
+@import "flat-ui/flat-ui";
+@import "home";
 
-
-.add-game-explanation {
-  border-style: solid;
-  border-width: 0 0 0 3px;
-  border-color: #CACACA;
-  padding-left: 5px;
+.background {
+  background-color: #f2f2f2;
 }
 
-.form-background {
-  background-color: #f8f8f8;
+// ============= Add Your Game styles =============
+
+.add-game-explanation {
+  background-color: #F7F7F7;
+  padding: 5px 10px;
+}
+
+.form-wrapper {
+  padding: 10px 30px;
+  margin: 10px 0px;
+  background-color: #fff;
+}
+
+.form-label {
+  text-transform: uppercase;
+  color: #9CA1A3;
+}
+
+.form-title {
+  font-weight: bold;
+  font-size: 26px;
+  color: #535353;
+  margin-bottom: 35px;
+}
+
+// ============= View A Game styles =============
+
+.content-background {
+  background-color: #ffffff;
+  padding: 10px 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #EBEAEA;
+  margin: @navbar-height+15px 0px;
+}
+
+.text-content-padding {
+  padding: 5px 5px;
+}
+
+.full-width-constrain-proportions {
+  background-color: #333;
+  width: auto;
+  height: 250px;
+
+  max-width: 100%;
+  @media (min-width: @screen-sm-min) {
+    height: 500px;
+  }
+
+  @media (min-width: @screen-md-min) {
+    height: 450px;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    height: 450px;
+  }
+}
+
+.btn-rainbow {
+  color: #fff;
+  font-weight: bold;
+  animation-play-state: paused;
+
+  background: @btn-default-bg;
+}
+
+.btn-rainbow:hover {
+  -webkit-animation: super-rainbow 2s infinite linear;
+  -moz-animation:    super-rainbow 2s infinite linear;
+  -o-animation:      super-rainbow 2s infinite linear;
+  animation:         super-rainbow 2s infinite linear;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbd601+2,fc8300+22,e50047+36,88569b+49,18bcdd+63,90c979+76,fbd601+85,ff9900+100 */
+  background: #fbd601; /* Old browsers */
+  background: -moz-linear-gradient(left,  #fbd601 2%, #fc8300 22%, #e50047 36%, #88569b 49%, #18bcdd 63%, #90c979 76%, #fbd601 85%, #ff9900 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #fbd601 2%,#fc8300 22%,#e50047 36%,#88569b 49%,#18bcdd 63%,#90c979 76%,#fbd601 85%,#ff9900 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #fbd601 2%,#fc8300 22%,#e50047 36%,#88569b 49%,#18bcdd 63%,#90c979 76%,#fbd601 85%,#ff9900 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbd601', endColorstr='#ff9900',GradientType=1 ); /* IE6-9 */
+
+  background-size: 600% 100%;
+}
+
+@-webkit-keyframes super-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+@-moz-keyframes super-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+@-o-keyframes super-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+@keyframes super-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.btn-favorite-container {
+  position: relative;
+}
+
+.btn-favorite-background {
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+.btn-favorite-background-animate {
+  opacity: 0;
+  -webkit-transform: scale(3, 3);
+  -moz-transform: scale(3, 3);
+  transform: scale(3, 3);
 }

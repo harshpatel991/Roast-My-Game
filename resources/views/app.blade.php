@@ -14,49 +14,25 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
-    <!-- Scripts -->
+    {{--<link href='http://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>--}}
+    {{--<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>--}}
+    {{--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>--}}
+    <link href='/css/custom-icons/my-icons.css' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
+    @yield('navbar')
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Clickr</a>
-        </div>
+    @yield('content')
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="/add-game">Add Game</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
+    @include('partials/footer')
 
-    </div><!-- /.container-fluid -->
-</nav>
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
-@yield('content')
-
-<!-- Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-
-@include('partials/footer')
-
-<script src="/js/jquery-2.1.4.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-
-@yield('scripts')
-
+    @yield('scripts')
 
 </body>
 </html>
