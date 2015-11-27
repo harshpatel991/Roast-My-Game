@@ -71,7 +71,7 @@
 @text-color:                @dark-font-color;
 
 //** Global textual link color.
-@link-color:                @green-sea;
+@link-color:                @brand-info;
 @link-hover-color:          @turquoise;
 //** Link hover decoration.
 @link-hover-decoration:     none;
@@ -193,8 +193,12 @@
 @btn-inverse-hover-bg:       overlay(@brand-primary, darken(white, 37.5%));
 @btn-inverse-active-bg:      mix(@brand-primary, black, 85%);
 
-@btn-favorite-hover-bg:       mix(@brand-favorite, white, 80.5%);
+@btn-favorite-hover-bg:       mix(@brand-favorite, white, 40.5%);
 @btn-favorite-active-bg:      mix(@brand-favorite, black, 85%);
+
+@btn-views-hover-bg:       mix(@silver, white, 10.5%);
+@btn-views-active-bg:      mix(@silver, black, 60%);
+
 
 @btn-link-disabled-color:    @gray-light;
 
@@ -367,13 +371,13 @@
 // Basics of a navbar
 @zindex-navbar:              1000;
 @zindex-navbar-fixed:        1030;
-@navbar-height-base:         53px;
+@navbar-height-base:         57px;
 @navbar-height-large:        76px;
 @navbar-input-line-height:   1.4; // ~21px
 @navbar-margin-bottom:       0px;
 @navbar-border-radius:       @border-radius-large;
 
-@navbar-default-bg:          #fff;
+@navbar-default-bg:          rgba(55, 62, 79, 0.93);
 
 // Navbar links
 @navbar-default-link-color:           @brand-primary;
@@ -390,8 +394,8 @@
 @navbar-default-caret-active-color:   @navbar-default-link-active-color;
 
 // Navbar brand label
-@navbar-default-brand-color:          @navbar-default-link-color;
-@navbar-default-brand-hover-color:    @navbar-default-link-hover-color;
+@navbar-default-brand-color:          @text-color;
+@navbar-default-brand-hover-color:    @brand-primary;
 @navbar-default-brand-hover-bg:       transparent;
 
 // Navbar toggle

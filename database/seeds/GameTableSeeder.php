@@ -27,16 +27,16 @@ class GameTableSeeder extends Seeder
                 'views' => 1020,
                 'platforms' => "platform-pc,platform-android,platform-html5",
 
-                'link-website' => 'http://website.com',
-                'link-twitter' => 'http://twitter.com',
-                'link-youtube' => 'http://twitter.com',
-                'link-google-plus' => 'http://plus.google.com',
-                'link-twitch' => 'http://twitch.com',
-                'link-facebook' => 'http://facebook.com',
-                'link-google-play' => 'http://play.google.com',
-                'link-app-store' => 'http://itunes.apple.com',
-                'link-windows-store' => 'http://microsoft.com',
-                'link-steam' => 'http://store.steampowered.com',
+                'link_website' => 'http://website.com',
+                'link_twitter' => 'http://twitter.com',
+                'link_youtube' => 'http://twitter.com',
+                'link_google_plus' => 'http://plus.google.com',
+                'link_twitch' => 'http://twitch.com',
+                'link_facebook' => 'http://facebook.com',
+                'link_google_play' => 'http://play.google.com',
+                'link_app_store' => 'http://itunes.apple.com',
+                'link_windows_store' => 'http://microsoft.com',
+                'link_steam' => 'http://store.steampowered.com',
 
 
             ]

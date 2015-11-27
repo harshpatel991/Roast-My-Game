@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Progress Pop</a>
+            <a class="navbar-brand" href="/">{{Config::get('app.name')}}</a>
         </div>
 
         <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">

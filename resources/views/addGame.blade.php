@@ -5,14 +5,14 @@
 @endsection
 
 @section('navbar')
-    @include('partials/normalNav')
+    @include('partials/fixedNav')
 @endsection
 
 @section('content')
 
     <div class="container-fluid background">
         <div class="row">
-            <div class="col-md-9 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2">
 
                 <div class="content-background" style="margin: 10px 0px;">
                     <h1 class="form-title">Add Your Game</h1>

@@ -26,16 +26,16 @@ class CreateGamesTable extends Migration
             $table->integer('views');
             $table->string('platforms', 140);
 
-            $table->string('link-website', 255);
-            $table->string('link-twitter', 255);
-            $table->string('link-youtube', 255);
-            $table->string('link-google-plus', 255);
-            $table->string('link-twitch', 255);
-            $table->string('link-facebook', 255);
-            $table->string('link-google-play', 255);
-            $table->string('link-app-store', 255);
-            $table->string('link-windows-store', 255);
-            $table->string('link-steam', 255);
+            $table->string('link_website', 255);
+            $table->string('link_twitter', 255);
+            $table->string('link_youtube', 255);
+            $table->string('link_google_plus', 255);
+            $table->string('link_twitch', 255);
+            $table->string('link_facebook', 255);
+            $table->string('link_google_play', 255);
+            $table->string('link_app-store', 255);
+            $table->string('link_windows_store', 255);
+            $table->string('link_steam', 255);
 
             $table->timestamps();
         });

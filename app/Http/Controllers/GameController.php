@@ -41,7 +41,7 @@ class GameController extends Controller
         //TODO: check if this user already liked this game
         $isLiked = false;
 
-        return view('game', compact('game', 'versions', 'currentVersion', 'images', 'platforms', 'links', 'isLiked'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platforms', 'links', 'isLiked'));
     }
 
     public function getAddGame() {
@@ -80,6 +80,52 @@ class GameController extends Controller
         dd($request->all());
 
         //TODO
+        $game = new Game;
+        $game->title = $request->get('title');
+        $game->developer = $request->get('developer');
+
+        //TODO: save the thumbnail image
+        $thumbnailName = '';//$Helper::saveThumbnail($thumbnail);
+        $game->thumbnail = $thumbnailName;
+        $game->genre = $request->genre;
+        $game->description = $request->description;
+        $game->platforms = $request->platforms;
+        $game->link_website = $request->link_website;
+        $game->link_twitter = $request->link_twitter;
+        $game->link_youtube = $request->link_youtube;
+        $game->link_google_plus = $request->link_google_plus;
+        $game->link_facebook = $request->link_facebook;
+        $game->link_google_play = $request->link_google_play;
+        $game->link_app_store = $request->link_app_store;
+        $game->link_windows_store = $request->link_windows_store;
+        $game->link_steam = $request->link_steam;
+
+        $version = new Version;
+        $version->version = $request->version;
+        $version->beta = $request->beta;
+
+        //TODO: save the thumbnail image
+        $image1Name = '';//$Helper::saveThumbnail($thumbnail);
+        $version->image1 = $image1Name;
+
+        //TODO: save the thumbnail image
+        $image2Name = '';//$Helper::saveThumbnail($thumbnail);
+        $version->image2 = $image2Name;
+
+        //TODO: save the thumbnail image
+        $image3Name = '';//$Helper::saveThumbnail($thumbnail);
+        $version->image3 = $image3Name;
+
+        //TODO: save the thumbnail image
+        $image4Name = '';//$Helper::saveThumbnail($thumbnail);
+        $version->image4 = $image4Name;
+
+        $version->upcoming_features = $request->upcoming_features;
+
+        $game->save();
+        $version->save();
+
+
 
     }
 

@@ -14,6 +14,9 @@
 Route::get('/',
     ['as' => 'home', 'uses' => 'HomeController@getHome']);
 
+Route::get('/login',
+    ['as' => 'login', 'uses' => 'UserController@getLogin']);
+
 Route::post('/',
     ['as' => '/', 'uses' => 'HomeController@postHome']);
 

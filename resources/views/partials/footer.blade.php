@@ -1,12 +1,13 @@
-
-<div class="container-fluid">
+<div class="container-fluid footer-wrapper">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="content-background">
 
-            <div class="row">
-                <div class="col-md-4">Contact</div>
-                <div class="col-md-4">Social</div>
-                <div class="col-md-4">How it works</div>
+                <div class="row">
+                    <hr>
+                    <div class="col-md-3 small">About | Privacy Policy | Contact</div>
+                    <div class="col-md-3 col-md-offset-6 small">© 2015 · {{Config::get('app.name')}}</div>
+                </div>
             </div>
 
         </div>
