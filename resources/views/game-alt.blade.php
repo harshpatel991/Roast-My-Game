@@ -21,22 +21,26 @@
                                 <div class="col-sm-10"> {{--Hero left--}}
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <img class="embed-responsive-item full-width-constrain-proportions center-block" id="mainImage" src="{{Utils::get_image_url($currentVersion->image1)}}"/>
-                                        <iframe id="ytplayer" type="text/html"
-                                                src="http://www.youtube.com/embed/{{$video_thumbnail}}"
-                                                frameborder="0"></iframe>
+
+                                        @if(!empty($video_thumbnail))
+                                            <iframe id="ytplayer" type="text/html"
+                                                    src="http://www.youtube.com/embed/{{$video_thumbnail}}"
+                                                    frameborder="0"></iframe>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-sm-2 col-xs-12">{{--Hero right--}}
                                     <div class="row">
 
-                                        <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px;">
-                                            <div class="embed-responsive embed-responsive-16by9 position-relative">
-
-                                                <img class="embed-responsive-item" src="http://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
-                                                <div class="overlay-thumbnail"></div>
-                                                <div class="overlay-play" onclick="selectVideo()"></div>
+                                        @if(!empty($video_thumbnail))
+                                            <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px;">
+                                                <div class="embed-responsive embed-responsive-16by9 position-relative">
+                                                    <img class="embed-responsive-item" src="http://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
+                                                    <div class="overlay-thumbnail"></div>
+                                                    <div class="overlay-play" onclick="selectVideo()"></div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
 
                                         @foreach($images as $image)
                                                 <div class="col-sm-12 col-xs-2" style="margin-bottom: 5px;">
@@ -57,7 +61,6 @@
                         <div class="col-md-8"> {{--Left content--}}
 
                             <div class="text-content-padding">
-
                                 <div class="btn-favorite-container pull-right">
                                     @if($isLiked)
                                         <div class="btn btn-success"><span class="fui-heart"></span> {{$game->likes}} </div>
@@ -74,15 +77,21 @@
                                     <div class="label label-default">BETA</div>
                                 @endif
 
-                                <h3>{{$game->title}}</h3>
+                                <h3 style="margin-bottom: 0px;">{{$game->title}}</h3>
+                                <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by {{$game->developer}}  </p>
 
-                                <p style="font-weight: bold;">DESCRIPTION</p>
-                                <p>{{$game->description}}</p>
 
-                                <p style="font-weight: bold;">UPCOMING FEATURES</p>
-                                <p> {{$currentVersion->upcoming_features}}</p>
 
-                                <div id="disqus_thread"></div>
+                                    <p style="font-weight: bold;">DESCRIPTION</p>
+                                    <p>{{$game->description}}</p>
+
+                                    <p style="font-weight: bold;">UPCOMING FEATURES</p>
+                                    <p> {{$currentVersion->upcoming_features}}</p>
+
+
+                                <div class="small-grey-box">
+                                    <div id="disqus_thread"></div>
+                                </div>
                             </div>
 
                         </div>
@@ -90,14 +99,16 @@
                         <div class="col-sm-4"> {{--Right content--}}
 
                             <div class="text-content-padding">
-                                <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-default">VERSION {{$currentVersion->version}}</button>
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                <div class="text-center">
+                                <div class="btn-group ">
+                                    <button type="button" class="btn btn-views">VERSION {{$currentVersion->version}}</button>
+                                    <button type="button" class="btn btn-views dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         @foreach($versions as $version)
                                         <li><a href="/game/{{$game->slug}}/{{$version->version}}">{{$version->version}}</a></li>
                                         @endforeach
                                     </ul>
+                                </div>
                                 </div>
 
                                 <div class="small-grey-box">
@@ -116,17 +127,8 @@
                                     @endforeach
                                 </div>
 
-                                <div class="small-grey-box">
-                                    <div class="small text-center" style="font-weight: bold;">POSTED</div>
-                                    <hr>
-                                    {{$game->created_at->diffForHumans()}} <br>
-                                </div>
 
-                                <div class="small-grey-box">
-                                    <div class="small text-center" style="font-weight: bold;">DEVELOPER</div>
-                                    <hr>
-                                    {{$game->developer}}
-                                </div>
+
 
                             </div>
                         </div>

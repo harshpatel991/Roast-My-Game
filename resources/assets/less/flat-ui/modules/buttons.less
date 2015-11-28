@@ -100,7 +100,27 @@
 }
 
 .btn-views {
-  .button-variant(@silver, transparent, @btn-views-hover-bg, @btn-views-active-bg);
+//  .button-variant(@silver, transparent, @btn-views-hover-bg, @silver);
+
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @silver;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background: @silver;
+  }
+
+
+  color: @silver;
+  background-color: transparent;
+
   border-color: @silver;
   border-style: solid;
   border-width: 2px;

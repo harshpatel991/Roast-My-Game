@@ -1067,7 +1067,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.72222;
   color: #545454;
@@ -4539,6 +4539,7 @@ select[multiple].input-group-sm > .select2-search input[type="text"] {
   border-top-left-radius: 0;
 }
 .navbar {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   min-height: 60px;
   margin-bottom: 0px;
@@ -6337,7 +6338,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6455,7 +6456,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7575,7 +7576,7 @@ button.close {
   content: "\e660";
 }
 body {
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.72222;
   color: #545454;
@@ -8414,39 +8415,11 @@ fieldset[disabled] .btn-favorite.active {
 .btn-views.active,
 .open > .dropdown-toggle.btn-views {
   color: #bdc3c7;
-  background-color: #f8f9f9;
-  border-color: #f8f9f9;
 }
 .btn-views:active,
 .btn-views.active,
 .open > .dropdown-toggle.btn-views {
-  background: #717577;
-  border-color: #717577;
-}
-.btn-views.disabled,
-.btn-views[disabled],
-fieldset[disabled] .btn-views,
-.btn-views.disabled:hover,
-.btn-views[disabled]:hover,
-fieldset[disabled] .btn-views:hover,
-.btn-views.disabled.hover,
-.btn-views[disabled].hover,
-fieldset[disabled] .btn-views.hover,
-.btn-views.disabled:focus,
-.btn-views[disabled]:focus,
-fieldset[disabled] .btn-views:focus,
-.btn-views.disabled:active,
-.btn-views[disabled]:active,
-fieldset[disabled] .btn-views:active,
-.btn-views.disabled.active,
-.btn-views[disabled].active,
-fieldset[disabled] .btn-views.active {
-  background-color: #bdc3c7;
-  border-color: transparent;
-}
-.btn-views .badge {
-  color: transparent;
-  background-color: white;
+  background: #bdc3c7;
 }
 .btn-dark-blue {
   color: #fff;
@@ -8689,7 +8662,7 @@ fieldset[disabled] .btn-link:focus {
   margin-left: 0;
 }
 .btn-group > .btn + .dropdown-toggle {
-  border-left: 2px solid rgba(149, 165, 166, 0.15);
+  border-left: 0px solid rgba(149, 165, 166, 0.15);
   padding: 10px 12px;
 }
 .btn-group > .btn + .dropdown-toggle .caret {
@@ -8806,7 +8779,7 @@ label {
 .select2-search input[type="text"] {
   border: 2px solid #bdc3c7;
   color: #545454;
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.467;
   padding: 8px 12px;
@@ -12055,7 +12028,7 @@ select[multiple].navbar-form .select2-search input[type="text"] {
 }
 .navbar-unread,
 .navbar-new {
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   background-color: #1abc9c;
   border-radius: 50%;
   color: white;
@@ -12977,7 +12950,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
   bottom: 4em;
   left: 1em;
   right: 1em;
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 .vjs-text-track {
   display: none;
@@ -13206,7 +13179,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
   background-color: #117a65;
 }
 .vjs-time-controls {
-  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 13px;
   line-height: normal;
