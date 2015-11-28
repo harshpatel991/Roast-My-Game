@@ -99,10 +99,40 @@
   z-index: 10;
 }
 
-.btn-views {
-//  .button-variant(@silver, transparent, @btn-views-hover-bg, @silver);
+.btn-transparent-blue {
+  &:hover,
+  &.hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @brand-primary;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background: @brand-primary;
+  }
 
+  color: @brand-primary;
+  background-color: transparent;
 
+  border-color: @brand-primary;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.btn-dark-blue {
+  .button-variant(#fff, #2E3542, #545E6F, #3F4755);
+  font-weight: bold;
+}
+
+.btn-light-blue {
+  .button-variant(#fff, #5F697C, #545E6F, #3F4755);
+  font-weight: bold;
+}
+
+.btn-transparent-silver {
   &:hover,
   &.hover,
   &:focus,
@@ -117,23 +147,12 @@
     background: @silver;
   }
 
-
   color: @silver;
   background-color: transparent;
 
   border-color: @silver;
   border-style: solid;
   border-width: 2px;
-}
-
-.btn-dark-blue {
-  .button-variant(#fff, #2E3542, #545E6F, #3F4755);
-  font-weight: bold;
-}
-
-.btn-light-blue {
-  .button-variant(#fff, #5F697C, #545E6F, #3F4755);
-  font-weight: bold;
 }
 
 

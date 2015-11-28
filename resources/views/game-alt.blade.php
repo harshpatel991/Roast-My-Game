@@ -24,7 +24,7 @@
 
                                         @if(!empty($video_thumbnail))
                                             <iframe id="ytplayer" type="text/html"
-                                                    src="http://www.youtube.com/embed/{{$video_thumbnail}}"
+                                                    src="http://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
                                                     frameborder="0"></iframe>
                                         @endif
                                     </div>
@@ -57,10 +57,16 @@
                         </div>
                     </div>
 
-                    <div class="row"> {{--Main content row--}}
-                        <div class="col-md-8"> {{--Left content--}}
+                    <div class="row"> {{--Info bar--}}
+                        <div class="col-md-12">
 
                             <div class="text-content-padding">
+
+                                <div class="label label-default">{{strtoupper($game->genre)}}</div>
+                                @if($currentVersion->beta)
+                                    <div class="label label-default">BETA</div>
+                                @endif
+
                                 <div class="btn-favorite-container pull-right">
                                     @if($isLiked)
                                         <div class="btn btn-success"><span class="fui-heart"></span> {{$game->likes}} </div>
@@ -70,14 +76,30 @@
                                     @endif
                                 </div>
 
-                                <div class="btn btn-views pull-right" style="margin-right: 10px;"> <span class="fui-eye"></span> {{$game->views}} </div>
-                                <div class="label label-default">{{strtoupper($game->genre)}}</div>
+                                <div class="btn btn-transparent-blue pull-right" style="margin-right: 10px;margin-left: 10px;"> <span class="fui-eye"></span> {{$game->views}} </div>
 
-                                @if($currentVersion->beta)
-                                    <div class="label label-default">BETA</div>
-                                @endif
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-transparent-silver">VERSION {{$currentVersion->version}}</button>
+                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        @foreach($versions as $version)
+                                            <li><a href="/game/{{$game->slug}}/{{$version->version}}">{{$version->version}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
 
-                                <h3 style="margin-bottom: 0px;">{{$game->title}}</h3>
+
+                        </div>
+                    </div>
+
+                    <div class="row"> {{--Main content row--}}
+                        <div class="col-md-8"> {{--Left content--}}
+
+                            <div class="text-content-padding">
+
+
+                                <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
                                 <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by {{$game->developer}}  </p>
 
 
@@ -99,17 +121,7 @@
                         <div class="col-sm-4"> {{--Right content--}}
 
                             <div class="text-content-padding">
-                                <div class="text-center">
-                                <div class="btn-group ">
-                                    <button type="button" class="btn btn-views">VERSION {{$currentVersion->version}}</button>
-                                    <button type="button" class="btn btn-views dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        @foreach($versions as $version)
-                                        <li><a href="/game/{{$game->slug}}/{{$version->version}}">{{$version->version}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                </div>
+
 
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">FOLLOW</div>
