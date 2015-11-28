@@ -27,7 +27,7 @@ Route::post('/add-game',
     ['as' => 'add-game', 'uses' => 'GameController@postAddGame']);
 
 Route::get('/game/{game_slug}/{version?}',
-    ['as' => 'post', 'uses' => 'GameController@getGame']);
+    ['as' => 'getGame', 'uses' => 'GameController@getGame']);
 
 Route::post('/favorite/{game_slug}',
     ['as' => 'favorite', 'uses' => 'GameController@addFavorite']);

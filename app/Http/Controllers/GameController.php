@@ -12,7 +12,14 @@ use App\Game;
 
 class GameController extends Controller
 {
-    public function getGame(Game $game, $selectedVersion = 'latest') {
+    public function getGame(Game $game, Request $request, $selectedVersion='latest') {
+
+        if(!$request->session()->has('v_'.$game->slug)) //Count a view
+        {
+            $request->session()->put('v_'.$game->slug, true);
+            $game->views = $game->views+1;
+            $game->save();
+        }
 
         $versions = $game->versions()->orderBy('version', 'desc')->get();
 
