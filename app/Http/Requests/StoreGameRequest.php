@@ -43,6 +43,7 @@ class StoreGameRequest extends Request
             'link-steam' => $linkRules,
             'version' => 'required|max:255',
             'beta' => 'boolean',
+            'video_link' => 'max:255|url',
             'image1' => 'required|image',
             'image2' => 'image',
             'image3' => 'image',

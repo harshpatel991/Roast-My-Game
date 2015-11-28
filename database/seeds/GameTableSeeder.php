@@ -26,7 +26,6 @@ class GameTableSeeder extends Seeder
                 'likes' => 239,
                 'views' => 1020,
                 'platforms' => "platform-pc,platform-android,platform-html5",
-
                 'link_website' => 'http://website.com',
                 'link_twitter' => 'http://twitter.com',
                 'link_youtube' => 'http://twitter.com',

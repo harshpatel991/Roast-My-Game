@@ -106,6 +106,9 @@
                             </div>
                         </div>
 
+                        {!! Form::myInput('video_link', 'YouTube Link', 'https://www.youtube.com/watch?v=e-ORhEE9VVg') !!}
+
+
                         <div class="form-group">
                             {!! Form::label('image1', 'Images', ['class' => 'col-sm-2 control-label form-label']) !!}
 

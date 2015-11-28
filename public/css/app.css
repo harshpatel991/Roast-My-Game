@@ -1067,7 +1067,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.72222;
   color: #545454;
@@ -1167,8 +1167,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
-  font-weight: 700;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   line-height: 1.1;
   color: inherit;
 }
@@ -6337,7 +6337,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6455,7 +6455,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7575,7 +7575,7 @@ button.close {
   content: "\e660";
 }
 body {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.72222;
   color: #545454;
@@ -7626,8 +7626,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
-  font-weight: 700;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   line-height: 1.1;
   color: inherit;
 }
@@ -8806,7 +8806,7 @@ label {
 .select2-search input[type="text"] {
   border: 2px solid #bdc3c7;
   color: #545454;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.467;
   padding: 8px 12px;
@@ -12055,7 +12055,7 @@ select[multiple].navbar-form .select2-search input[type="text"] {
 }
 .navbar-unread,
 .navbar-new {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   background-color: #1abc9c;
   border-radius: 50%;
   color: white;
@@ -12977,7 +12977,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
   bottom: 4em;
   left: 1em;
   right: 1em;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
 }
 .vjs-text-track {
   display: none;
@@ -13206,7 +13206,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
   background-color: #117a65;
 }
 .vjs-time-controls {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Lato", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 13px;
   line-height: normal;
@@ -14018,6 +14018,11 @@ footer p {
   color: #535353;
   margin-bottom: 35px;
 }
+.small-grey-box {
+  background-color: #F9F9F9;
+  padding: 10px 10px;
+  margin: 10px 0px;
+}
 .content-background {
   background-color: #ffffff;
   margin: 0 10px;
@@ -14048,6 +14053,43 @@ footer p {
   .full-width-constrain-proportions {
     height: 450px;
   }
+}
+.position-relative {
+  position: relative;
+}
+.overlay-play {
+  transition: opacity .2s;
+  background: url('/images/play.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  display: block;
+  z-index: 2;
+}
+.overlay-play:hover {
+  opacity: .6;
+}
+.overlay-thumbnail {
+  transition: background-color 0.2s;
+  background-color: rgba(68, 74, 90, 0.45);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  display: block;
+  z-index: 2;
+}
+.overlay-thumbnail:hover {
+  background-color: rgba(68, 74, 90, 0.25);
 }
 .btn-rainbow {
   color: #fff;

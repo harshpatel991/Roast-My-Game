@@ -21,19 +21,31 @@
                                 <div class="col-sm-10"> {{--Hero left--}}
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <img class="embed-responsive-item full-width-constrain-proportions center-block" id="mainImage" src="{{Utils::get_image_url($currentVersion->image1)}}"/>
+                                        <iframe id="ytplayer" type="text/html"
+                                                src="http://www.youtube.com/embed/{{$video_thumbnail}}"
+                                                frameborder="0"></iframe>
                                     </div>
                                 </div>
                                 <div class="col-sm-2 col-xs-12">{{--Hero right--}}
                                     <div class="row">
-                                    @foreach($images as $image)
 
-                                            <div class="col-sm-12 col-xs-3" style="margin-bottom: 15px;">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <img class="embed-responsive-item" src="{{Utils::get_image_url($image)}}" onclick="selectImage('{{Utils::get_image_url($image)}}')"/>
-                                                </div>
+                                        <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px;">
+                                            <div class="embed-responsive embed-responsive-16by9 position-relative">
+
+                                                <img class="embed-responsive-item" src="http://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
+                                                <div class="overlay-thumbnail"></div>
+                                                <div class="overlay-play" onclick="selectVideo()"></div>
                                             </div>
+                                        </div>
 
-                                    @endforeach
+                                        @foreach($images as $image)
+                                                <div class="col-sm-12 col-xs-2" style="margin-bottom: 5px;">
+                                                    <div class="embed-responsive embed-responsive-16by9 position-relative">
+                                                        <img class="embed-responsive-item" src="{{Utils::get_image_url($image)}}" />
+                                                        <div class="overlay-thumbnail" onclick="selectImage('{{Utils::get_image_url($image)}}')"></div>
+                                                    </div>
+                                                </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -41,15 +53,12 @@
                         </div>
                     </div>
 
-
-
                     <div class="row"> {{--Main content row--}}
                         <div class="col-md-8"> {{--Left content--}}
 
                             <div class="text-content-padding">
 
                                 <div class="btn-favorite-container pull-right">
-
                                     @if($isLiked)
                                         <div class="btn btn-success"><span class="fui-heart"></span> {{$game->likes}} </div>
                                     @else
@@ -79,61 +88,73 @@
                         </div>
 
                         <div class="col-sm-4"> {{--Right content--}}
-                            <div class="">
-                                {{--<div class="embed-responsive embed-responsive-16by9">--}}
-                                    {{--<img class="embed-responsive-item"  src="{{Utils::get_image_url($game->thumbnail)}}"/>--}}
-                                {{--</div>--}}
 
-                                <div class="text-content-padding">
-                                    <div class="btn-group btn-group-sm">
-                                        <button type="button" class="btn btn-default">VERSION {{$currentVersion->version}}</button>
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            @foreach($versions as $version)
-                                            <li><a href="/game/{{$game->slug}}/{{$version->version}}">{{$version->version}}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <br>
-                                    <span style="font-weight: bold;">POSTED</span>  {{$game->created_at->diffForHumans()}} <br>
-                                    <span style="font-weight: bold;">DEVELOPER</span> {{$game->developer}}
+                            <div class="text-content-padding">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-default">VERSION {{$currentVersion->version}}</button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        @foreach($versions as $version)
+                                        <li><a href="/game/{{$game->slug}}/{{$version->version}}">{{$version->version}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
 
+                                <div class="small-grey-box">
+                                    <div class="small text-center" style="font-weight: bold;">FOLLOW</div>
                                     <hr>
-                                    <h4 class="small">PLATFORMS</h4>
+                                    @foreach($links as $linkIcon => $link)
+                                        <a href="{{$link}}" style="color: #5d5d5d;"><i class="demo-icon {{$linkIcon}}"></i></a>
+                                    @endforeach
+                                </div>
 
+                                <div class="small-grey-box">
+                                    <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
+                                    <hr>
                                     @foreach($platforms as $platform)
                                         <i class="demo-icon {{$platform}}"></i>
                                     @endforeach
+                                </div>
 
+                                <div class="small-grey-box">
+                                    <div class="small text-center" style="font-weight: bold;">POSTED</div>
                                     <hr>
-                                    <h4 class="small">FOLLOW</h4>
-                                    @foreach($links as $linkIcon => $link)
-                                        <a href="{{$link}}" style="color: #5d5d5d;""><i class="demo-icon {{$linkIcon}}"></i></a>
-                                    @endforeach
+                                    {{$game->created_at->diffForHumans()}} <br>
+                                </div>
 
+                                <div class="small-grey-box">
+                                    <div class="small text-center" style="font-weight: bold;">DEVELOPER</div>
+                                    <hr>
+                                    {{$game->developer}}
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
     </div>
-
-
-
 
 @endsection
 
 @section('scripts')
     <script>
         var mainImage = $('#mainImage');
+        var youtubePlayer = $('#ytplayer');
+
+        function selectVideo() {
+            mainImage.fadeTo( "fast", .8, function() {
+                youtubePlayer.fadeTo( 0, 1);
+            });
+        }
 
         function selectImage(newImage) {
+
+
             mainImage.fadeTo( "fast", .8, function() {
+                youtubePlayer.hide();
                 mainImage.attr('src', newImage);
                 mainImage.fadeTo( "fast", 1);
             });

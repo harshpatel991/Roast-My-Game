@@ -31,16 +31,16 @@ class Game extends Model
     ];
 
     public static $linkEnumToGlyph = [
-        'link-website'          => 'icon-network',
-        'link-twitter'          => 'icon-twitter',
-        'link-youtube'          => 'icon-youtube',
-        'link-google-plus'      => 'icon-gplus',
-        'link-twitch'           => 'icon-twitch',
-        'link-facebook'         => 'icon-facebook',
-        'link-google-play'      => 'icon-play',
-        'link-app-store'        => 'icon-iphone-home',
-        'link-windows-store'    => 'icon-windows',
-        'link-steam'            => 'icon-steam'
+        'link_website'          => 'icon-network',
+        'link_twitter'          => 'icon-twitter',
+        'link_youtube'          => 'icon-youtube',
+        'link_google_plus'      => 'icon-gplus',
+        'link_twitch'           => 'icon-twitch',
+        'link_facebook'         => 'icon-facebook',
+        'link_google_play'      => 'icon-play',
+        'link_app_store'        => 'icon-iphone-home',
+        'link_windows_store'    => 'icon-windows',
+        'link_steam'            => 'icon-steam'
     ];
 
     public static function translatePlatformToGlyph(&$value,$key) {

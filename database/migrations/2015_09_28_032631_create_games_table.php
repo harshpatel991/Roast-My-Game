@@ -33,7 +33,7 @@ class CreateGamesTable extends Migration
             $table->string('link_twitch', 255);
             $table->string('link_facebook', 255);
             $table->string('link_google_play', 255);
-            $table->string('link_app-store', 255);
+            $table->string('link_app_store', 255);
             $table->string('link_windows_store', 255);
             $table->string('link_steam', 255);
 

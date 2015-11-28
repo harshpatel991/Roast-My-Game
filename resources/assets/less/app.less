@@ -34,6 +34,12 @@
 
 // ============= View A Game styles =============
 
+.small-grey-box {
+  background-color: #F9F9F9;
+  padding: 10px 10px;
+  margin: 10px 0px;
+}
+
 .content-background {
   background-color: #ffffff;
   margin: 0 10px;
@@ -64,6 +70,59 @@
   @media (min-width: @screen-lg-min) {
     height: 450px;
   }
+}
+
+.position-relative {
+  position: relative;
+}
+
+.overlay-play {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+
+  background: url('/images/play.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+
+  position: absolute;
+  display: block;
+
+  z-index: 2;
+}
+
+.overlay-play:hover {
+  opacity: .6;
+}
+
+
+.overlay-thumbnail {
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+
+  background-color: rgba(68, 74, 90, 0.45);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+
+  position: absolute;
+  display: block;
+
+  z-index: 2;
+}
+
+.overlay-thumbnail:hover {
+  background-color: rgba(68, 74, 90, 0.25);
 }
 
 .btn-rainbow {

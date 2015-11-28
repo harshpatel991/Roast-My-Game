@@ -31,17 +31,21 @@ class GameController extends Controller
             $currentVersion = $versions->get(0);
         }
 
+        preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $currentVersion->video_link, $matches);
+        $video_thumbnail = $matches[1];
+
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
         $platforms = explode (',', $game->platforms);
 
         array_walk($platforms, "App\Game::translatePlatformToGlyph");
-        $links = Utils::preg_grep_keys("/link-.+/", $game->getAttributes());
+        $links = Utils::preg_grep_keys("/link_.+/", $game->getAttributes());
         $links = Game::translateLinkToGlyph($links);
 
         //TODO: check if this user already liked this game
         $isLiked = false;
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platforms', 'links', 'isLiked'));
+
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platforms', 'links', 'isLiked', 'video_thumbnail'));
     }
 
     public function getAddGame() {
@@ -74,8 +78,6 @@ class GameController extends Controller
         return view('addGame');
     }
 
-
-
     public function postAddGame(Request $request) {
         dd($request->all());
 
@@ -103,6 +105,8 @@ class GameController extends Controller
         $version = new Version;
         $version->version = $request->version;
         $version->beta = $request->beta;
+
+        $version->video_link = $request->video_link;
 
         //TODO: save the thumbnail image
         $image1Name = '';//$Helper::saveThumbnail($thumbnail);
