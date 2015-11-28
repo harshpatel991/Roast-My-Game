@@ -22,6 +22,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'test-image1.png',
                 'image2' => 'test-image2.png',
                 'image3' => 'test-image3.png',
+                'image4' => 'test-image3-2.png',
                 'upcoming_features' => "Upcomming feaures 1.2.3"
             ],
             ['id' => 2,
@@ -32,6 +33,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'test-image4.png',
                 'image2' => 'test-image5.png',
                 'image3' => 'test-image6.png',
+                'image4' => '',
                 'upcoming_features' => "Upcomming feaures 1.2.5"
             ],
             ['id' => 3,
@@ -42,6 +44,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'test-image7.png',
                 'image2' => 'test-image8.png',
                 'image3' => 'test-image9.png',
+                'image4' => '',
                 'upcoming_features' => "Upcomming feaures 1.1.1"
             ]
         );

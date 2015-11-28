@@ -36,7 +36,6 @@ class GameController extends Controller
             $video_thumbnail = $matches[1];
         }
 
-
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
         $platforms = explode (',', $game->platforms);
 
@@ -89,9 +88,7 @@ class GameController extends Controller
         $game->title = $request->get('title');
         $game->developer = $request->get('developer');
 
-        //TODO: save the thumbnail image
-        $thumbnailName = '';//$Helper::saveThumbnail($thumbnail);
-        $game->thumbnail = $thumbnailName;
+        $game->slug = Str::slug(substr($game->title, 0, 33));
         $game->genre = $request->genre;
         $game->description = $request->description;
         $game->platforms = $request->platforms;
@@ -108,32 +105,15 @@ class GameController extends Controller
         $version = new Version;
         $version->version = $request->version;
         $version->beta = $request->beta;
-
         $version->video_link = $request->video_link;
-
-        //TODO: save the thumbnail image
-        $image1Name = '';//$Helper::saveThumbnail($thumbnail);
-        $version->image1 = $image1Name;
-
-        //TODO: save the thumbnail image
-        $image2Name = '';//$Helper::saveThumbnail($thumbnail);
-        $version->image2 = $image2Name;
-
-        //TODO: save the thumbnail image
-        $image3Name = '';//$Helper::saveThumbnail($thumbnail);
-        $version->image3 = $image3Name;
-
-        //TODO: save the thumbnail image
-        $image4Name = '';//$Helper::saveThumbnail($thumbnail);
-        $version->image4 = $image4Name;
-
+        $version->image1 = Utils::saveThumbnail($request->file('image1'), $game->slug.'-1');
+        $version->image2 = Utils::saveThumbnail($request->file('image2'), $game->slug.'-2');
+        $version->image3 = Utils::saveThumbnail($request->file('image3'), $game->slug.'-3');
+        $version->image4 = Utils::saveThumbnail($request->file('image4'), $game->slug.'-4');
         $version->upcoming_features = $request->upcoming_features;
 
         $game->save();
         $version->save();
-
-
-
     }
 
     public function addFavorite(Game $game) {

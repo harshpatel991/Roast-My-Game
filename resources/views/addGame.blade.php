@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-                <div class="content-background" style="margin: 10px 0px;">
+                <div class="content-background">
                     <h1 class="form-title">Add Your Game</h1>
 
                     {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
@@ -22,23 +22,6 @@
                         {!! Form::myInput('title', 'Title') !!}
                         {!! Form::myInput('developer', 'Developer') !!}
 
-                        <div class="form-group">
-                            {!! Form::label('thumbnail', 'Thumbnail', ['class' => 'col-sm-2 control-label form-label']) !!}
-                            <div class="col-sm-4 col-sm-offset-1">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <img class="embed-responsive-item" id="thumbnail_thumbnail"/>
-                                </div>
-                                {!! Form::file('thumbnail', ['class' => 'form-control', 'accept' => 'image/*']) !!}
-                            </div>
-                            <div class="col-sm-4 col-sm-offset-1">
-                                <p class="small add-game-explanation">
-                                    This image will be displayed on the sidebar and when your game linked on other pages.<br>
-                                    <b>Recommended:</b> 480px by 270px<br>
-                                    <b>Accepted Types:</b> PNG, JPEG, GIF<br>
-                                    <b>Max File Size:</b> 2 MB
-                                </p>
-                            </div>
-                        </div>
                         <div class="form-group">
                             {!! Form::label('genre', 'Genre', ['class' => 'col-sm-2 control-label form-label']) !!}
                             <div class="col-sm-6">
@@ -159,8 +142,12 @@
             </div>
         </div>
     </div>
+@endsection
 
-
+@section('footer')
+    <div class="col-md-8 col-md-offset-2">
+        @include('partials/footer')
+    </div>
 @endsection
 
 @section('scripts')
@@ -180,10 +167,6 @@
             }
         }
 
-        $("#thumbnail").change(function(){
-            readURL(this, $('#thumbnail_thumbnail'));
-        });
-
         $("#image1").change(function(){
             readURL(this, $('#image1-preview'));
         });
@@ -202,3 +185,4 @@
     </script>
 
 @endsection
+

@@ -20,7 +20,6 @@ class GameTableSeeder extends Seeder
                 'title' => 'Test Cool Game',
                 'slug' => 'test-game',
                 'developer' => 'Test Developer',
-                'thumbnail' => 'thumb-main.png',
                 'genre' => 'action',
                 'description' => 'This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',
                 'likes' => 239,

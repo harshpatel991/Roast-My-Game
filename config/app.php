@@ -148,8 +148,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Proengsoft\JsValidation\JsValidationServiceProvider::class
-       // Intervention\Image\ImageServiceProvider::class
+        Proengsoft\JsValidation\JsValidationServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -201,8 +202,8 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Utils'     => App\Http\Utils::class,
-        'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class
-        //'Image'     => Intervention\Image\Facades\Image::class
+        'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
+        'Image'     => Intervention\Image\Facades\Image::class
 
     ],
 

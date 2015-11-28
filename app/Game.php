@@ -43,6 +43,8 @@ class Game extends Model
         'link_steam'            => 'icon-steam'
     ];
 
+    public static $backupImageUploadPath = '/upload/';
+
     public static function translatePlatformToGlyph(&$value,$key) {
         $value = Game::$platformEnumToGlyph[$value];
     }

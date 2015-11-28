@@ -19,7 +19,6 @@ class CreateGamesTable extends Migration
             $table->string('title', 255)->unique();
             $table->string('slug', 35)->unique();
             $table->string('developer', 255);
-            $table->string('thumbnail', 200);
             $table->enum('genre', Game::$genres);
             $table->string('description', 1000);
             $table->integer('likes');

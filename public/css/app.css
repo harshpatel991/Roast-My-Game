@@ -8420,6 +8420,7 @@ fieldset[disabled] .btn-favorite.active {
 .btn-transparent-blue.active,
 .open > .dropdown-toggle.btn-transparent-blue {
   background: #1A9FF7;
+  color: #fff;
 }
 .btn-dark-blue {
   color: #fff;
@@ -8532,6 +8533,7 @@ fieldset[disabled] .btn-light-blue.active {
 .btn-transparent-silver.active,
 .open > .dropdown-toggle.btn-transparent-silver {
   background: #bdc3c7;
+  color: #fff;
 }
 .btn-embossed {
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
@@ -13922,7 +13924,6 @@ footer p {
 }
 .footer-wrapper {
   background-color: #f1f1f1;
-  text-align: center;
 }
 ._body_html {
   height: 100%;

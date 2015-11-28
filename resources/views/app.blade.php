@@ -32,7 +32,11 @@
 
     @yield('content')
 
-    @include('partials/footer')
+    <div class="container-fluid footer-wrapper">
+        <div class="row">
+            @yield('footer')
+        </div>
+    </div>
 
     <script src="/js/jquery-2.1.4.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>

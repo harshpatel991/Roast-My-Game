@@ -94,35 +94,24 @@
                     </div>
 
                     <div class="row"> {{--Main content row--}}
-                        <div class="col-md-8"> {{--Left content--}}
-
+                        <div class="col-sm-8"> {{--Left content--}}
                             <div class="text-content-padding">
-
-
                                 <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
+
                                 <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by {{$game->developer}}  </p>
 
+                                <p style="font-weight: bold;">DESCRIPTION</p>
+                                <p>{{$game->description}}</p>
 
+                                <p style="font-weight: bold;">UPCOMING FEATURES</p>
+                                <p> {{$currentVersion->upcoming_features}}</p>
 
-                                    <p style="font-weight: bold;">DESCRIPTION</p>
-                                    <p>{{$game->description}}</p>
-
-                                    <p style="font-weight: bold;">UPCOMING FEATURES</p>
-                                    <p> {{$currentVersion->upcoming_features}}</p>
-
-
-                                <div class="small-grey-box">
-                                    <div id="disqus_thread"></div>
-                                </div>
                             </div>
-
                         </div>
 
                         <div class="col-sm-4"> {{--Right content--}}
 
                             <div class="text-content-padding">
-
-
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">FOLLOW</div>
                                     <hr>
@@ -139,18 +128,30 @@
                                     @endforeach
                                 </div>
 
-
-
-
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="text-content-padding">
+                                    <div id="disqus_thread"></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
     </div>
 
+@endsection
+
+@section('footer')
+    <div class="col-md-10 col-md-offset-1">
+        @include('partials/footer')
+    </div>
 @endsection
 
 @section('scripts')
