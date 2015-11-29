@@ -5,7 +5,7 @@
 @endsection
 
 @section('navbar')
-    @include('partials/fixedNav')
+    @include('partials.fixedNav')
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
                 <div class="content-background">
                     <h1 class="form-title">Login</h1>
 
-                    {!! Form::open(array('route' => 'login', 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('url' => '/auth/login', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                     <div class="form-group">
                         {!! Form::label('email', 'Email', ['class' => 'col-sm-3 control-label form-label']) !!}
@@ -66,46 +66,11 @@
 
 @section('footer')
     <div class="col-md-8 col-md-offset-2">
-        @include('partials/footer')
+        @include('partials.footer')
     </div>
 @endsection
 
 @section('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
-
-    <script>
-        function readURL(input, previewElem) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    previewElem.attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#thumbnail").change(function(){
-            readURL(this, $('#thumbnail_thumbnail'));
-        });
-
-        $("#image1").change(function(){
-            readURL(this, $('#image1-preview'));
-        });
-
-        $("#image2").change(function(){
-            readURL(this, $('#image2-preview'));
-        });
-
-        $("#image3").change(function(){
-            readURL(this, $('#image3-preview'));
-        });
-
-        $("#image4").change(function(){
-            readURL(this, $('#image4-preview'));
-        });
-    </script>
-
 @endsection

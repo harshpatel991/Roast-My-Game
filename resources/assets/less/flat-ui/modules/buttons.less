@@ -123,8 +123,12 @@
   border-width: 2px;
 }
 
+@btn-dark-blue-bg: #2E3542;
+@btn-dark-blue-hover-bg: #545E6F;
+@btn-dark-blue-active-bg: #39404d;
+
 .btn-dark-blue {
-  .button-variant(#fff, #2E3542, #545E6F, #3F4755);
+  .button-variant(#fff, @btn-dark-blue-bg, @btn-dark-blue-hover-bg, @btn-dark-blue-active-bg);
   font-weight: bold;
 }
 

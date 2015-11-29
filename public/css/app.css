@@ -3819,7 +3819,7 @@ tbody.collapse.in {
   list-style: none;
   font-size: 18px;
   text-align: left;
-  background-color: #f1f1f1;
+  background-color: #2E3542;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 2px;
@@ -3844,13 +3844,13 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.72222;
-  color: #9D9797;
+  color: #fff;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #918a8a;
+  color: #fff;
   background-color: rgba(255, 255, 255, 0.5);
 }
 .dropdown-menu > .active > a,
@@ -8440,8 +8440,8 @@ fieldset[disabled] .btn-favorite.active {
 .btn-dark-blue:active,
 .btn-dark-blue.active,
 .open > .dropdown-toggle.btn-dark-blue {
-  background: #3F4755;
-  border-color: #3F4755;
+  background: #39404d;
+  border-color: #39404d;
 }
 .btn-dark-blue.disabled,
 .btn-dark-blue[disabled],
@@ -10861,10 +10861,10 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .dropdown-menu,
 .select2-drop {
   z-index: 1000;
-  background-color: #f1f1f1;
+  background-color: #2E3542;
   min-width: 220px;
   border: none;
-  margin-top: 9px;
+  margin-top: 0px;
   padding: 0;
   font-size: 14px;
   border-radius: 2px;
@@ -10881,7 +10881,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .dropdown-menu > li > a {
   padding: 8px 16px;
   line-height: 1.429;
-  color: #9D9797;
+  color: #fff;
 }
 .dropdown-menu > li:first-child > a:first-child {
   border-top-right-radius: 2px;
@@ -10910,14 +10910,14 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #918a8a;
-  background-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background-color: #545E6F;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: white;
-  background-color: #1abc9c;
+  color: #fff;
+  background-color: #39404d;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
