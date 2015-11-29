@@ -13,7 +13,6 @@
     <div class="container-fluid background">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-
                 <div class="content-background">
                     <h1 class="form-title">Add Your Game</h1>
 
@@ -134,7 +133,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button id="add-game" class="btn btn-default">Add Game!</button>
+                                <button id="add-game" class="btn btn-success">Add Game!</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

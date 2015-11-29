@@ -17,6 +17,9 @@ Route::get('/',
 Route::get('/login',
     ['as' => 'login', 'uses' => 'UserController@getLogin']);
 
+Route::get('/register',
+    ['as' => 'register', 'uses' => 'UserController@getRegister']);
+
 Route::post('/',
     ['as' => '/', 'uses' => 'HomeController@postHome']);
 
