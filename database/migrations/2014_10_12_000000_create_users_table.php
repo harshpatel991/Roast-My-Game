@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
+            $table->enum('status', ['good', 'warning', 'unconfirmed']);
+            $table->string('confirmation_code', 16)->nullable();
             $table->timestamps();
         });
     }

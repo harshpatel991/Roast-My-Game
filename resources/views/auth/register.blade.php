@@ -16,16 +16,7 @@
                 <div class="content-background">
                     <h1 class="form-title">Register</h1>
 
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    @include('partials.display-input-error')
 
                     {!! Form::open(array('url' => '/auth/register', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 

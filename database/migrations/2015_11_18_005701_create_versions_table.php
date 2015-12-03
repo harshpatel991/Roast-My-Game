@@ -16,14 +16,16 @@ class CreateVersionsTable extends Migration
             $table->increments('id');
             $table->integer('game_id');
             $table->string('version', 255);
+            $table->string('slug', 35);
             $table->boolean('beta');
-            $table->string('video_link', 255);
+            $table->string('video_link', 255)->nullable();
             $table->string('image1', 255);
-            $table->string('image2', 255);
-            $table->string('image3', 255);
-            $table->string('image4', 255);
+            $table->string('image2', 255)->nullable();
+            $table->string('image3', 255)->nullable();
+            $table->string('image4', 255)->nullable();
 
             $table->string('upcoming_features', 1000);
+            $table->string('changes', 1000);
             $table->timestamps();
         });
     }

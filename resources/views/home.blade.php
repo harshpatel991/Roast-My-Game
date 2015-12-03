@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h1 class="home-h1">SHARE YOUR [ WIP]</h1>
-                    <h3 class="home-h3">Show your own progress and get inspiration from other game devs</h3>
+                    <h3 class="home-h3">Motivate your self to finish and get inspiration from other game devs</h3>
                     {{--<h3 class="home-h3">Watch the progress </h3>--}}
                 </div>
             </div>

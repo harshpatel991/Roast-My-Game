@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
-                    <a href="/add-game" class="btn-dark-blue btn navbar-btn btn-sm">Show Me Another!</a>
+                    <a href="/game/test-game" class="btn-dark-blue btn navbar-btn btn-sm">Show Me Another!</a>
 
 
                     @if (Auth::guest())
@@ -32,8 +32,6 @@
                             </ul>
                         </div>
                     @endif
-
-
 
                     <a href="/add-game" class="btn btn-primary navbar-btn btn-sm pull-right">Add Game</a>
                 </div>

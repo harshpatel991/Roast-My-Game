@@ -16,25 +16,26 @@ class CreateGamesTable extends Migration
         Schema::create('games', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('title', 255)->unique();
+            $table->string('title', 255);
             $table->string('slug', 35)->unique();
-            $table->string('developer', 255);
             $table->enum('genre', Game::$genres);
             $table->string('description', 1000);
-            $table->integer('likes');
-            $table->integer('views');
-            $table->string('platforms', 140);
+            $table->integer('likes')->default(0);
+            $table->integer('views')->default(0);
 
-            $table->string('link_website', 255);
-            $table->string('link_twitter', 255);
-            $table->string('link_youtube', 255);
-            $table->string('link_google_plus', 255);
-            $table->string('link_twitch', 255);
-            $table->string('link_facebook', 255);
-            $table->string('link_google_play', 255);
-            $table->string('link_app_store', 255);
-            $table->string('link_windows_store', 255);
-            $table->string('link_steam', 255);
+            $table->string('platforms', 140)->nullable();
+            $table->string('link_platform_pc', 255)->nullable();
+            $table->string('link_platform_mac', 255)->nullable();
+            $table->string('link_platform_ios', 255)->nullable();
+            $table->string('link_platform_android', 255)->nullable();
+            $table->string('link_platform_unity_web', 255)->nullable();
+            $table->string('link_platform_windows_phone', 255)->nullable();
+
+            $table->string('link_social_website', 255)->nullable();
+            $table->string('link_social_twitter', 255)->nullable();
+            $table->string('link_social_youtube', 255)->nullable();
+            $table->string('link_social_google_plus', 255)->nullable();
+            $table->string('link_social_facebook', 255)->nullable();
 
             $table->timestamps();
         });

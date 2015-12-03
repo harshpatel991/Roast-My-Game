@@ -16,6 +16,8 @@
                 <div class="content-background">
                     <h1 class="form-title">Login</h1>
 
+                    @include('partials.display-input-error')
+
                     {!! Form::open(array('url' => '/auth/login', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                     <div class="form-group">

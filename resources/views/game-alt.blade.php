@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid" style="background-color: #f1f1f1;">
+    <div class="container-fluid" style="background-color: #f6f6f6;">
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -67,6 +67,18 @@
                                     <div class="label label-default">BETA</div>
                                 @endif
 
+                                <div class="label label-default"> <span class="fui-eye"></span> {{$game->views}} </div>
+
+                                <div class="btn-group pull-right" style="padding-left: 10px;">
+                                    <button type="button" class="btn btn-transparent-silver">VERSION {{$currentVersion->version}}</button>
+                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        @foreach($versions as $version)
+                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}">{{$version->version}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
                                 <div class="btn-favorite-container pull-right">
                                     @if($isLiked)
                                         <div class="btn btn-success"><span class="fui-heart"></span> {{$game->likes}} </div>
@@ -76,17 +88,9 @@
                                     @endif
                                 </div>
 
-                                <div class="btn btn-transparent-blue pull-right" style="margin-right: 10px;margin-left: 10px;"> <span class="fui-eye"></span> {{$game->views}} </div>
 
-                                <div class="btn-group pull-right">
-                                    <button type="button" class="btn btn-transparent-silver">VERSION {{$currentVersion->version}}</button>
-                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        @foreach($versions as $version)
-                                            <li><a href="/game/{{$game->slug}}/{{$version->version}}">{{$version->version}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+
+
                             </div>
 
 
@@ -98,10 +102,13 @@
                             <div class="text-content-padding">
                                 <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
 
-                                <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by {{$game->developer}}  </p>
+                                <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
 
                                 <p style="font-weight: bold;">DESCRIPTION</p>
                                 <p>{{$game->description}}</p>
+
+                                <p style="font-weight: bold;">CHANGES THIS VERSION</p>
+                                <p>{{$currentVersion->changes}}</p>
 
                                 <p style="font-weight: bold;">UPCOMING FEATURES</p>
                                 <p> {{$currentVersion->upcoming_features}}</p>

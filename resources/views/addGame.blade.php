@@ -19,7 +19,6 @@
                     {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                         {!! Form::myInput('title', 'Title') !!}
-                        {!! Form::myInput('developer', 'Developer') !!}
 
                         <div class="form-group">
                             {!! Form::label('genre', 'Genre', ['class' => 'col-sm-2 control-label form-label']) !!}
@@ -37,99 +36,54 @@
                         <div class="form-group">
                             {!! Form::label('platforms', 'Platforms', ['class' => 'col-sm-2 control-label form-label']) !!}
                             <div class="col-sm-2">
-                                {!! Form::myCheckbox('platform-pc', 'PC') !!}
+                                {!! Form::myCheckbox('platforms[]', 'PC', 'platform_pc') !!}
                             </div>
                             <div class="col-sm-2">
-                                {!! Form::myCheckbox('platform-ios', 'iOS') !!}
+                                {!! Form::myCheckbox('platforms[]', 'iOS', 'platform_ios') !!}
                             </div>
                             <div class="col-sm-6">
-                                {!! Form::myCheckbox('platform-unity', 'Unity') !!}
+                                {!! Form::myCheckbox('platforms[]', 'Unity Web', 'platform_unity') !!}
                             </div>
                             <div class="col-sm-2">
-                                {!! Form::myCheckbox('platform-mac', 'Mac') !!}
+                                {!! Form::myCheckbox('platforms[]', 'Mac', 'platform_mac') !!}
                             </div>
                             <div class="col-sm-2">
-                                {!! Form::myCheckbox('platform-android', 'Android') !!}
+                                {!! Form::myCheckbox('platforms[]', 'Android', 'platform_android') !!}
                             </div>
-                            <div class="col-sm-2">
-                                {!! Form::myCheckbox('platform-html5', 'HTML5') !!}
+                            <div class="col-sm-3">
+                                {!! Form::myCheckbox('platforms[]', 'Windows Phone', 'platform_windows_store') !!}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseLinks">Add Links <span class="fui-triangle-down"></span></a>
-                            <div class="collapse" id="collapseLinks" style="padding-top: 10px;">
-                                {!! Form::myInput('link-website', 'Website', 'http://your-game.com') !!}
-                                {!! Form::myInput('link-twitter', 'Twitter', 'http://twitter.com/your-handle') !!}
-                                {!! Form::myInput('link-youtube', 'YouTube', 'http://youtube.com/user/your-channel') !!}
-                                {!! Form::myInput('link-google-plus', 'Google+', 'http://plus.google.com/your-page') !!}
-                                {!! Form::myInput('link-facebook', 'Facebook', 'http://facebook.com/your-page') !!}
-                                {!! Form::myInput('link-google-play', 'Google Play', 'http://play.google.com/your-game') !!}
-                                {!! Form::myInput('link-app-store', 'Apple App Store', 'http://itunes.apple.com/your-game') !!}
-                                {!! Form::myInput('link-windows-store', 'Windows Store', 'http://microsoft.com/your-game') !!}
-                                {!! Form::myInput('link-steam', 'Steam', 'http://store.steampowered.com/your-game') !!}
+                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlatformLinks">Add Platform Links <span class="fui-triangle-down"></span></a>
+                            <div class="collapse" id="collapsePlatformLinks" style="padding-top: 10px;">
+                                {!! Form::myInput('link_platform_pc', 'PC', 'http://steam.com/your-game') !!}
+                                {!! Form::myInput('link_platform_mac', 'Mac', 'http://itunes.apple.com/us/app/your-game') !!}
+                                {!! Form::myInput('link_platform_ios', 'iOS', 'http://itunes.apple.com/us/app/your-game') !!}
+                                {!! Form::myInput('link_platform_android', 'Android', 'http://play.google.com/store/apps/?id=your-game') !!}
+                                {!! Form::myInput('link_platform_windows_phone', 'Windows Store', 'http://microsoft.com/en-us/store/apps/your-game') !!}
+                                {!! Form::myInput('link_platform_unity_web', 'Unity Web', 'http://youtube.com/user/your-channel') !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <span class="fui-triangle-down"></span></a>
+                            <div class="collapse" id="collapseSocialLinks" style="padding-top: 10px;">
+                                {!! Form::myInput('link_social_website', 'Website', 'http://your-game.com') !!}
+                                {!! Form::myInput('link_social_twitter', 'Twitter', 'http://twitter.com/your-handle') !!}
+                                {!! Form::myInput('link_social_youtube', 'YouTube', 'http://youtube.com/user/your-channel') !!}
+                                {!! Form::myInput('link_social_google_plus', 'Google+', 'http://plus.google.com/your-page') !!}
+                                {!! Form::myInput('link_social_facebook', 'Facebook', 'http://facebook.com/your-page') !!}
                             </div>
                         </div>
 
                         <hr>
+                    <h5 class="small" style="margin-bottom: 0px; color: #c7c7c7;">You'll be able to add more progress after your game is added</h5>
                         <h4 class="small">CURRENT VERSION</h4>
 
-                        <div class="form-group">
-                            {!! Form::label('version', 'Version', ['class' => 'col-sm-2 control-label form-label']) !!}
-                            <div class="col-sm-3">
-                                {!! Form::text('version', old('version'), ['class' => 'form-control', 'placeholder' => '1.1.3']) !!}
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            {!! Form::label('beta', 'In Beta', ['class' => 'col-sm-2 control-label form-label']) !!}
-                            <div class="col-sm-3">
-                                {!! Form::checkbox('beta', 'true', old("beta")) !!}
-                            </div>
-                        </div>
-
-                        {!! Form::myInput('video_link', 'YouTube Link', 'https://www.youtube.com/watch?v=e-ORhEE9VVg') !!}
-
-
-                        <div class="form-group">
-                            {!! Form::label('image1', 'Images', ['class' => 'col-sm-2 control-label form-label']) !!}
-
-                            {!! Form::myImageWithThumbnail('image1') !!}
-                            {!! Form::myImageWithThumbnail('image2') !!}
-                            <div class="col-sm-4">
-                                <p class="small add-game-explanation">
-                                    <b>Recommended:</b> 720px by 405px<br>
-                                    <b>Accepted Types:</b> PNG, JPEG, GIF<br>
-                                    <b>Max File Size:</b> 2 MB
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-2"></div>
-                            {!! Form::myImageWithThumbnail('image3') !!}
-                            {!! Form::myImageWithThumbnail('image4') !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('upcoming_features', 'Upcoming Features', ['class' => 'col-sm-2 control-label form-label']) !!}
-                            <div class="col-sm-6">
-                                {!! Form::textarea('upcoming_features', old('upcoming_features'), ['class' => 'form-control', 'rows' => 4]) !!}
-                            </div>
-                        </div>
-
-                        <hr>
-                        <h5 class="small" style="margin-bottom: 0px; color: #cdcdcd;">One last thing...</h5>
-                        <h4 class="small" style="margin-top: 0px;">CREATE AN ACCOUNT</h4>
-
-                        {!! Form::myInput('email', 'Email') !!}
-
-                        <div class="form-group">
-                            {!! Form::label('password', 'Password', ['class' => 'col-sm-2 control-label form-label']) !!}
-                            <div class="col-sm-6">
-                                {!! Form::password('password', ['class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                        @include('partials.version-form')
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
