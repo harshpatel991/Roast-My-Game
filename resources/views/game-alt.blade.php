@@ -70,8 +70,7 @@
                                 <div class="label label-default"> <span class="fui-eye"></span> {{$game->views}} </div>
 
                                 <div class="btn-group pull-right" style="padding-left: 10px;">
-                                    <button type="button" class="btn btn-transparent-silver">VERSION {{$currentVersion->version}}</button>
-                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown">VERSION {{$currentVersion->version}}<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         @foreach($versions as $version)
                                             <li><a href="/game/{{$game->slug}}/{{$version->slug}}">{{$version->version}}</a></li>
@@ -98,7 +97,7 @@
                     </div>
 
                     <div class="row"> {{--Main content row--}}
-                        <div class="col-sm-8"> {{--Left content--}}
+                        <div class="col-sm-9"> {{--Left content--}}
                             <div class="text-content-padding">
                                 <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
 
@@ -116,22 +115,26 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4"> {{--Right content--}}
+                        <div class="col-sm-3"> {{--Right content--}}
 
                             <div class="text-content-padding">
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">FOLLOW</div>
                                     <hr>
-                                    @foreach($links as $linkIcon => $link)
-                                        <a href="{{$link}}" style="color: #5d5d5d;"><i class="demo-icon {{$linkIcon}}"></i></a>
+                                    @foreach($linkIcons as $link_id => $linkIcon)
+                                        <div style="background-color: #F1F1F1; margin-bottom: 5px;">
+                                            <a class="small" href="{{$links[$link_id]}}" style="color: #5d5d5d;"><i class="demo-icon {{$linkIcon}}"></i>{{$linkTexts[$link_id]}}</a>
+                                        </div>
                                     @endforeach
                                 </div>
 
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
                                     <hr>
-                                    @foreach($platforms as $platform)
-                                        <i class="demo-icon {{$platform}}"></i>
+                                    @foreach($platformIconsToNames as $platform => $platformName)
+                                        <div class="small" style="color: #5d5d5d; background-color: #F1F1F1; margin-bottom: 5px;">
+                                            <i class="demo-icon {{$platform}}"></i>{{$platformName}}
+                                        </div>
                                     @endforeach
                                 </div>
 

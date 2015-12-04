@@ -25,9 +25,18 @@ class Game extends Model
         'platform_pc'       => 'icon-windows',
         'platform_mac'      => 'icon-apple',
         'platform_unity'    => 'icon-unity',
-        'platform_windows_store'    => 'icon-windows',
+        'platform_windows_store'    => 'icon-network',
         'platform_ios'      => 'icon-apple',
         'platform_android'  => 'icon-android'
+    ];
+
+    public static $platformEnumToText = [
+        'platform_pc'       => 'PC',
+        'platform_mac'      => 'Mac',
+        'platform_unity'    => 'Unity Web',
+        'platform_windows_store'    => 'Windows Mobile',
+        'platform_ios'      => 'iOS',
+        'platform_android'  => 'Android'
     ];
 
     public static $linkEnumToGlyph = [
@@ -38,17 +47,39 @@ class Game extends Model
         'link_social_facebook'         => 'icon-facebook'
     ];
 
+    public static $linkEnumToText = [
+        'link_social_website'          => 'Website',
+        'link_social_twitter'          => 'Twitter',
+        'link_social_youtube'          => 'YouTube',
+        'link_social_google_plus'      => 'Google Plus',
+        'link_social_facebook'         => 'Facebook'
+    ];
+
     public static function getBackupImageUploadPath() { return public_path().'/upload/'; }
 
-    public static function translatePlatformToGlyph(&$value,$key) {
-        $value = Game::$platformEnumToGlyph[$value];
+    public static function translatePlatformToGlyphAndText($toTranslate) {
+        $translated = array();
+        foreach($toTranslate as $oldkey => $platform) {
+            $translated[Game::$platformEnumToGlyph[$platform]] = Game::$platformEnumToText[$platform];
+        }
+        return $translated;
     }
 
     public static function translateLinkToGlyph($toTranslate) {
         $translated = array();
         foreach($toTranslate as $oldkey => $value) {
             if($value != null) {
-                $translated[Game::$linkEnumToGlyph[$oldkey]] = $value;
+                $translated[$oldkey] = Game::$linkEnumToGlyph[$oldkey];
+            }
+        }
+        return $translated;
+    }
+
+    public static function translateLinkText($toTranslate) {
+        $translated = array();
+        foreach($toTranslate as $oldkey => $value) {
+            if($value != null) {
+                $translated[$oldkey] = Game::$linkEnumToText[$oldkey];
             }
         }
         return $translated;

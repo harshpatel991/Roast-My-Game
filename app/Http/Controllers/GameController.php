@@ -45,17 +45,20 @@ class GameController extends Controller
         }
 
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
+
+
         $platforms = explode (',', $game->platforms);
+        $platformIconsToNames = Game::translatePlatformToGlyphAndText($platforms);
 
-        array_walk($platforms, "App\Game::translatePlatformToGlyph");
         $links = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
-        $links = Game::translateLinkToGlyph($links);
-
+        $linkIcons = Game::translateLinkToGlyph($links);
+        $linkTexts = Game::translateLinkText($links);
+//        dd($links);
         //TODO: check if this user already liked this game
         $isLiked = false;
 
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platforms', 'links', 'isLiked', 'video_thumbnail'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'links', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail'));
     }
 
     public function getAddGame() {

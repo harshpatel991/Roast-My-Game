@@ -22,7 +22,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button id="add-game" class="btn btn-success">Add Game!</button>
+                                <button id="add-game" class="btn btn-success">Add Progress!</button>
                             </div>
                         </div>
                     {!! Form::close() !!}

@@ -1082,13 +1082,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #1A9FF7;
+  color: #2ecc71;
   text-decoration: none;
 }
 a:hover,
 a:focus {
   color: #1abc9c;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:focus {
   outline: thin dotted;
@@ -3693,7 +3693,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #fff;
 }
 .btn-link {
-  color: #1A9FF7;
+  color: #2ecc71;
   font-weight: normal;
   border-radius: 0;
 }
@@ -3714,7 +3714,7 @@ fieldset[disabled] .btn-link {
 .btn-link:hover,
 .btn-link:focus {
   color: #1abc9c;
-  text-decoration: none;
+  text-decoration: underline;
   background-color: transparent;
 }
 .btn-link[disabled]:hover,
@@ -4377,7 +4377,7 @@ select[multiple].input-group-sm > .select2-search input[type="text"] {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #1A9FF7;
+  border-color: #2ecc71;
 }
 .nav .nav-divider {
   height: 1px;
@@ -5230,7 +5230,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .label {
   display: inline;
-  padding: 10px 15px;
+  padding: 5px 17px;
   font-size: 15px;
   line-height: 1;
   color: #fff;
@@ -5254,7 +5254,7 @@ a.label:focus {
 }
 .label-default {
   background-color: #f6f6f6;
-  color: #BFBFBF;
+  color: #a7a7a7;
 }
 .label-default[href]:hover,
 .label-default[href]:focus {
@@ -5329,7 +5329,7 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #1A9FF7;
+  color: #2ecc71;
   background-color: #fff;
 }
 .list-group-item > .badge {
@@ -5400,7 +5400,7 @@ a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #1A9FF7;
+  border-color: #2ecc71;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -7584,14 +7584,14 @@ body {
   background-color: #fff;
 }
 a {
-  color: #1A9FF7;
+  color: #2ecc71;
   text-decoration: none;
-  transition: .25s;
+  transition: .2s;
 }
 a:hover,
 a:focus {
   color: #1abc9c;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:focus {
   outline: none;
@@ -7937,7 +7937,7 @@ pre {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #1A9FF7;
+  border-color: #2ecc71;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -8549,7 +8549,7 @@ fieldset[disabled] .btn-light-blue.active {
   padding-right: 30px;
 }
 .btn-link {
-  color: #1A9FF7;
+  color: #2ecc71;
 }
 .btn-link:hover,
 .btn-link:focus {
@@ -11824,7 +11824,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   line-height: 57px;
 }
 .navbar-toggle:before {
-  color: #1A9FF7;
+  color: #2ecc71;
   content: "\e61a";
   font-family: "Flat-UI-Icons";
   font-size: 22px;

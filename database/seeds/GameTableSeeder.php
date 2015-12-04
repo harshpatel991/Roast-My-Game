@@ -26,7 +26,7 @@ class GameTableSeeder extends Seeder
                 'platforms' => "platform_pc,platform_android,platform_windows_store",
                 'link_social_website' => 'http://website.com',
                 'link_social_twitter' => 'http://twitter.com',
-                'link_social_youtube' => 'http://twitter.com',
+                'link_social_youtube' => 'http://youtube.com',
                 'link_social_google_plus' => 'http://plus.google.com',
                 'link_social_facebook' => 'http://facebook.com'
 
