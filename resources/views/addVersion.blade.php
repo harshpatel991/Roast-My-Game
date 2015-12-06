@@ -16,6 +16,8 @@
                 <div class="content-background">
                     <h1 class="form-title">Add Progress</h1>
 
+                    @include('partials.display-input-error')
+
                     {!! Form::open(array('url' => '/add-version/'.$game->slug, 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                         @include('partials.version-form')

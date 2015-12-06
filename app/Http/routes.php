@@ -1,5 +1,7 @@
 <?php
 
+use Slynova\Commentable\Models\Comment;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -46,8 +48,20 @@ Route::get('/game/{game_slug}/{version_slug?}',
 Route::post('/favorite/{game_slug}',
     ['as' => 'favorite', 'uses' => 'GameController@addFavorite']);
 
+Route::post('/add-comment/{game_slug}',
+    ['as' => 'add-comment', 'uses' => 'CommentController@postAddComment']);
+
+Route::post('/add-comment-reply/{comment_id}',
+    ['as' => 'add-comment-reply', 'uses' => 'CommentController@postAddCommentReply']);
+
 Route::bind('game_slug', function($value, $route) {
     $game = App\Game::whereSlug($value)->first();
     if($game) return $game; //if game is found
     App::abort(404); //game not found
 });
+
+Route::bind('comment_id', function($value, $route) {
+    return Comment::findOrFail($value);
+});
+
+

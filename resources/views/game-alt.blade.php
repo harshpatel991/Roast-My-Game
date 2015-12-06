@@ -16,6 +16,7 @@
                 <div class="content-background">
                     <div class="row">
                         <div class="col-md-12">
+                            @include('partials.display-input-error')
 
                             <div class="row"> {{--hero row--}}
                                 <div class="col-sm-10"> {{--Hero left--}}
@@ -119,11 +120,13 @@
 
                             <div class="text-content-padding">
                                 <div class="small-grey-box">
-                                    <div class="small text-center" style="font-weight: bold;">FOLLOW</div>
+                                    <div class="small text-center" style="font-weight: bold;">LINKS</div>
                                     <hr>
                                     @foreach($linkIcons as $link_id => $linkIcon)
-                                        <div style="background-color: #F1F1F1; margin-bottom: 5px;">
-                                            <a class="small" href="{{$links[$link_id]}}" style="color: #5d5d5d;"><i class="demo-icon {{$linkIcon}}"></i>{{$linkTexts[$link_id]}}</a>
+                                        <div style="margin-bottom: 5px;">
+                                            <a class="small" href="{{$links[$link_id]}}" style="color: #5d5d5d; font-weight: bold;">
+                                                <i class="demo-icon {{$linkIcon}}" style="color:#BFBFBF;"></i>{{$linkTexts[$link_id]}}
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -132,8 +135,8 @@
                                     <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
                                     <hr>
                                     @foreach($platformIconsToNames as $platform => $platformName)
-                                        <div class="small" style="color: #5d5d5d; background-color: #F1F1F1; margin-bottom: 5px;">
-                                            <i class="demo-icon {{$platform}}"></i>{{$platformName}}
+                                        <div class="small" style="color: #5d5d5d;margin-bottom: 5px;font-weight: bold;">
+                                            <i class="demo-icon {{$platform}}" style="color:#BFBFBF;"></i>{{$platformName}}
                                         </div>
                                     @endforeach
                                 </div>
@@ -145,7 +148,20 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="text-content-padding">
-                                    <div id="disqus_thread"></div>
+
+                                <h4>Comments</h4>
+                                @if($game->comments()->count() > 0)
+                                    @foreach($game->comments as $comment)
+                                        @include('partials.comment', ['comment' => $comment])
+                                    @endforeach
+                                @else
+                                    <p>0 Comments</p>
+                                @endif
+
+                                <h4>Leave A Comment</h4>
+                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
+
+
                             </div>
                         </div>
                     </div>
@@ -230,6 +246,30 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.reply-link').click(createForm);
+            function createForm(e)
+            {
+                e.preventDefault();
+                var form = [];
+                form[form.length] = '<form class="reply-form" action="' + $(this).data('url')
+                + '" method="post">';
+                form[form.length] = '   {!! csrf_field() !!}';
+                form[form.length] = '   <div class="form-group">';
+                form[form.length] = '       <label for="body">Comment</label>';
+                form[form.length] = '       <textarea class="form-control" name="body" rows=5></textarea>';
+                form[form.length] = '   </div>';
+                form[form.length] = '   <div class="form-group">';
+                form[form.length] = '       <button class="btn btn-light-blue btn-sm" type="submit">Reply</button>';
+                form[form.length] = '   </div>';
+                form[form.length] = '</form>';
+                $(this).replaceWith(form.join(''));
+            }
+        });
+    </script>
+
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 @endsection

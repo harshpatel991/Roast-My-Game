@@ -14,20 +14,22 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="content-background">
-                    <h3>{{$user->username}}'s Profile</h3>
+                    <h1 class="form-title">{{$user->username}}'s Profile</h1>
 
-                    <h5>My Games</h5>
+                    @include('partials.display-input-error')
+
+                    <h6>My Games</h6>
                     @if(count($games) > 0)
                         @foreach($games as $game)
 
                             <div class="media small-grey-box">
                                 <div class="media-left">
-                                    <a href="#">
+                                    <a href="/game/{{$game->slug}}">
                                         <img class="media-object" width="150" height="100" src="{{Utils::get_image_url($latestImage)}}"/>
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">{{$game->title}}</h4>
+                                    <h4 class="media-heading"><a href="/game/{{$game->slug}}" style="color: #535353;">{{$game->title}}</a></h4>
                                     <p> <b>Views: </b>{{$game->views}} <b>Likes: </b>{{$game->likes}}</p>
                                 </div>
                                 <div class="media-right">
@@ -35,17 +37,32 @@
                                 </div>
                             </div>
                         @endforeach
-
-                        <a href="/add-game" class="btn btn-primary navbar-btn btn-lg pull-right">Add Game</a>
                     @else
-                        <h3 class="text-center"><div class="font-light-gray">There's nothing here!</div>
                         <br>
-                        <a href="/add-game" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Post</a> </h3>
+                        <h4 class="text-center"><div class="font-light-gray">No games here!</div></h4>
+
+                    @endif
+                    <p class="text-center">
+                        <a href="/add-game" class="btn btn-primary navbar-btn btn-lg">Add a Game</a>
+                    </p>
+
+
+                    <h6>My Comments</h6>
+                    @if(count($comments) > 0)
+                        @foreach($comments as $comment)
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p>{{ $comment->body }}</p>
+                                    <small>{{ $comment->created_at->diffForHumans() }}</small>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <br>
+                        <h4 class="text-center"><div class="font-light-gray">No comments here!</div></h4>
+                        <br>
                     @endif
                     <br>
-                    <br>
-
-
 
                 </div>
             </div>

@@ -14137,5 +14137,8 @@ footer p {
   -webkit-transform: scale(3, 3);
   transform: scale(3, 3);
 }
+.font-light-gray {
+  color: #bdc3c7;
+}
 
 /*# sourceMappingURL=app.css.map */

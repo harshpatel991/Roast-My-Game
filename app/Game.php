@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Slynova\Commentable\Traits\Commentable;
+
 
 class Game extends Model
 {
+    use Commentable;
+
     public static $genres = [
         '' => 'Select Genre',
         'action' => 'Action',
@@ -40,6 +44,7 @@ class Game extends Model
     ];
 
     public static $linkEnumToGlyph = [
+        'link_social_greenlight'          => 'icon-network',
         'link_social_website'          => 'icon-network',
         'link_social_twitter'          => 'icon-twitter',
         'link_social_youtube'          => 'icon-youtube',
@@ -48,6 +53,7 @@ class Game extends Model
     ];
 
     public static $linkEnumToText = [
+        'link_social_greenlight'          => 'Steam Greenlight',
         'link_social_website'          => 'Website',
         'link_social_twitter'          => 'Twitter',
         'link_social_youtube'          => 'YouTube',

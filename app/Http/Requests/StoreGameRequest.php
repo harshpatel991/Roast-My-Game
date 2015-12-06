@@ -39,6 +39,7 @@ class StoreGameRequest extends Request
             'link_platform_unity_web' => $linkRules,
             'link_platform_windows_phone' => $linkRules,
 
+            'link_social_greenlight' => $linkRules,
             'link_social_website' => $linkRules,
             'link_social_twitter' => $linkRules,
             'link_social_youtube' => $linkRules,

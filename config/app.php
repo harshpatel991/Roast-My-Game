@@ -149,7 +149,8 @@ return [
         Illuminate\Html\HtmlServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        Slynova\Commentable\ServiceProvider::class
 
     ],
 

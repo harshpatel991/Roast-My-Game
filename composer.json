@@ -10,7 +10,8 @@
         "illuminate/html": "5.0.*",
         "intervention/image": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "proengsoft/laravel-jsvalidation": "^1.2"
+        "proengsoft/laravel-jsvalidation": "^1.2",
+        "slynova/laravel-commentable": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

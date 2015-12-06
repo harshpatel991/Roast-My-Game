@@ -57,8 +57,12 @@ class GameController extends Controller
         //TODO: check if this user already liked this game
         $isLiked = false;
 
+        $comments = $game->comments()->get();
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'links', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail'));
+//        dd($comments);
+
+
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'links', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments'));
     }
 
     public function getAddGame() {
@@ -85,6 +89,7 @@ class GameController extends Controller
         $game->link_platform_android = $request->link_platform_android;
         $game->link_platform_unity_web = $request->link_platform_unity_web;
         $game->link_platform_windows_phone = $request->link_platform_windows_phone;
+        $game->link_social_greenlight = $request->link_social_greenlight;
         $game->link_social_website = $request->link_social_website;
         $game->link_social_twitter = $request->link_social_twitter;
         $game->link_social_youtube = $request->link_social_youtube;

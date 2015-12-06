@@ -16,6 +16,8 @@
                 <div class="content-background">
                     <h1 class="form-title">Add Your Game</h1>
 
+                    @include('partials.display-input-error')
+
                     {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                         {!! Form::myInput('title', 'Title') !!}
@@ -70,6 +72,7 @@
                         <div class="form-group">
                             <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <span class="fui-triangle-down"></span></a>
                             <div class="collapse" id="collapseSocialLinks" style="padding-top: 10px;">
+                                {!! Form::myInput('link_social_greenlight', 'Greenlight', 'http://steam.com/your-game') !!}
                                 {!! Form::myInput('link_social_website', 'Website', 'http://your-game.com') !!}
                                 {!! Form::myInput('link_social_twitter', 'Twitter', 'http://twitter.com/your-handle') !!}
                                 {!! Form::myInput('link_social_youtube', 'YouTube', 'http://youtube.com/user/your-channel') !!}

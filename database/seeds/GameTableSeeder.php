@@ -24,6 +24,7 @@ class GameTableSeeder extends Seeder
                 'likes' => 239,
                 'views' => 1020,
                 'platforms' => "platform_pc,platform_android,platform_windows_store",
+                'link_social_greenlight' => 'http://steam.com/greenligh',
                 'link_social_website' => 'http://website.com',
                 'link_social_twitter' => 'http://twitter.com',
                 'link_social_youtube' => 'http://youtube.com',

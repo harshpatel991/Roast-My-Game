@@ -31,6 +31,7 @@ class CreateGamesTable extends Migration
             $table->string('link_platform_unity_web', 255)->nullable();
             $table->string('link_platform_windows_phone', 255)->nullable();
 
+            $table->string('link_social_greenlight', 255)->nullable();
             $table->string('link_social_website', 255)->nullable();
             $table->string('link_social_twitter', 255)->nullable();
             $table->string('link_social_youtube', 255)->nullable();
