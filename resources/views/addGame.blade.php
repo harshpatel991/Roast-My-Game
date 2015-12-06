@@ -20,10 +20,10 @@
 
                     {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
-                        {!! Form::myInput('title', 'Title') !!}
+                        {!! Form::myInput('title', 'Title*') !!}
 
                         <div class="form-group">
-                            {!! Form::label('genre', 'Genre', ['class' => 'col-sm-2 control-label form-label']) !!}
+                            {!! Form::label('genre', 'Genre*', ['class' => 'col-sm-2 control-label form-label']) !!}
                             <div class="col-sm-6">
                                 {!! Form::select('genre', App\Game::$genres, old('genre'), ['class' => 'form-control']) !!}
                             </div>

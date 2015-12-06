@@ -1,7 +1,9 @@
 <div class="form-group">
-    {!! Form::label('version', 'Version', ['class' => 'col-sm-2 control-label form-label']) !!}
+    {!! Form::label('version', 'Version*', ['class' => 'col-sm-2 control-label form-label']) !!}
+
     <div class="col-sm-3">
         {!! Form::text('version', old('version'), ['class' => 'form-control', 'placeholder' => '1.1.3']) !!}
+
     </div>
 </div>
 
@@ -14,12 +16,15 @@
 
 {!! Form::myInput('video_link', 'Gameplay Link', 'https://www.youtube.com/watch?v=e-ORhEE9VVg') !!}
 
-
 <div class="form-group">
-    {!! Form::label('image1', 'Screenshots', ['class' => 'col-sm-2 control-label form-label']) !!}
+    {!! Form::label('image1', 'Screenshots*', ['class' => 'col-sm-2 control-label form-label']) !!}
 
-    {!! Form::myImageWithThumbnail('image1') !!}
+    <span>
+        {!! Form::myImageWithThumbnail('image1') !!}
+    </span>
+    <span>
     {!! Form::myImageWithThumbnail('image2') !!}
+        </span>
     <div class="col-sm-4">
         <p class="small add-game-explanation">
             <b>Recommended:</b> 720px by 405px<br>

@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid" style="background-color: #f6f6f6;">
+    <div class="container-fluid background">
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -107,9 +107,10 @@
                                 <p style="font-weight: bold;">DESCRIPTION</p>
                                 <p>{{$game->description}}</p>
 
+                                <hr>
                                 <p style="font-weight: bold;">CHANGES THIS VERSION</p>
                                 <p>{{$currentVersion->changes}}</p>
-
+                                <hr>
                                 <p style="font-weight: bold;">UPCOMING FEATURES</p>
                                 <p> {{$currentVersion->upcoming_features}}</p>
 
@@ -149,7 +150,7 @@
                         <div class="col-md-8">
                             <div class="text-content-padding">
 
-                                <h4>Comments</h4>
+                                <p style="font-weight: bold;">COMMENTS</p>
                                 @if($game->comments()->count() > 0)
                                     @foreach($game->comments as $comment)
                                         @include('partials.comment', ['comment' => $comment])
@@ -158,7 +159,7 @@
                                     <p>0 Comments</p>
                                 @endif
 
-                                <h4>Leave A Comment</h4>
+                                <p style="font-weight: bold;">LEAVE A COMMENT</p>
                                 @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
 
 
