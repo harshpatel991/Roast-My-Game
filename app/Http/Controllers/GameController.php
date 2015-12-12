@@ -8,19 +8,20 @@ use Illuminate\Http\Request;
 use App\Http\Utils;
 use Illuminate\Html\FormBuilder;
 
+use DB;
 use App\Game;
 use App\Version;
 
 class GameController extends Controller
 {
     public function getGame(Game $game, Request $request, $selectedVersionSlug='latest') {
-
-        if(!$request->session()->has('v_'.$game->slug)) //Count a view
+        if(!$request->session()->has($game->slug)) //Count a view
         {
-            $request->session()->put('v_'.$game->slug, true);
+            $request->session()->put($game->slug, true);
             $game->views = $game->views+1;
             $game->save();
         }
+
 
         $versions = $game->versions()->orderBy('version', 'desc')->get();
 
@@ -46,8 +47,7 @@ class GameController extends Controller
 
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
 
-
-        $platforms = explode (',', $game->platforms);
+        $platforms = $game->platforms == "" ? array() : explode (',', $game->platforms);
         $platformIconsToNames = Game::translatePlatformToGlyphAndText($platforms);
 
         $links = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
@@ -59,10 +59,10 @@ class GameController extends Controller
 
         $comments = $game->comments()->get();
 
-//        dd($comments);
+        $nextGame = $this->getNextGame(array_keys($request->session()->all()))->slug; //the link to view the next game
 
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'links', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'links', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
     }
 
     public function getAddGame() {
@@ -82,7 +82,7 @@ class GameController extends Controller
         $game->slug = Utils::generate_unique_slug($game->title);
         $game->genre = $request->genre;
         $game->description = $request->description;
-        $game->platforms = implode(",", $request->platforms);
+        $game->platforms = $request->platforms == "" ? "" : implode(",", $request->platforms);
         $game->link_platform_pc = $request->link_platform_pc;
         $game->link_platform_mac = $request->link_platform_mac;
         $game->link_platform_ios = $request->link_platform_ios;
@@ -171,6 +171,19 @@ class GameController extends Controller
             FormBuilder::file($id, ['class' => 'form-control', 'accept' => 'image/*', 'id' => $id]).
             '</div>';
         });
+    }
+
+    private function getNextGame($allViewedGames) {
+        $searchRange = 60;
+        $avgLikes = DB::table('games')->avg('likes');
+        $game = Game::whereBetween('likes', [$avgLikes-$searchRange, $avgLikes+$searchRange])->orderBy('likes')
+            ->whereNotIn('slug', $allViewedGames)->first();
+
+        if($game == null) {
+            return Game::orderByRaw("RAND()")->first();
+        }
+        return $game;
+
     }
 
 

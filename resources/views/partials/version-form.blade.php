@@ -43,7 +43,7 @@
 <div class="form-group">
     {!! Form::label('changes', 'Changes Made This Version', ['class' => 'col-sm-2 control-label form-label']) !!}
     <div class="col-sm-6">
-        {!! Form::textarea('changes', old('upcoming_features'), ['class' => 'form-control', 'rows' => 7]) !!}
+        {!! Form::textarea('changes', old('changes'), ['class' => 'form-control', 'rows' => 7]) !!}
     </div>
 </div>
 

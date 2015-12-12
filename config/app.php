@@ -138,6 +138,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -204,8 +205,9 @@ return [
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Utils'     => App\Http\Utils::class,
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
-        'Image'     => Intervention\Image\Facades\Image::class
+        'Image'     => Intervention\Image\Facades\Image::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class
 
-    ],
+    ]
 
 ];

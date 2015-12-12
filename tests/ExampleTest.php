@@ -1,19 +1,16 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+require ('MyTestBase.php');
 
-class ExampleTest extends TestCase
-{
-    /**
-     * A basic functional test example.
-     *
-     * @return void
-     */
-    public function testBasicExample()
+class ExampleTest extends MyTestBase{
+
+    /** @test */
+    public function it_verifies_that_pages_load_properly()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+        $this->visit('/');
     }
+
+
+
+
 }

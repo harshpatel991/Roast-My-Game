@@ -107,7 +107,52 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+
+    <script>
+    tinymce.init({
+        selector: '#upcoming_features',
+        menubar: '',
+        toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+        plugins: [
+            'advlist autolink link'
+        ],
+        statusbar: false,
+        content_css: 'css/tinymce.css',
+        editor_css: 'css/editor.css',
+        skin: "custom"
+      });
+    </script>
+
+    <script>
+        tinymce.init({
+            selector: '#changes',
+            menubar: '',
+            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            plugins: [
+                'advlist autolink link'
+            ],
+            statusbar: false,
+            content_css: 'css/tinymce.css',
+            skin: "custom"
+        });
+    </script>
+
+    <script>
+        tinymce.init({
+            selector: '#description',
+            menubar: '',
+            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            plugins: [
+                'advlist autolink link'
+            ],
+            statusbar: false,
+            content_css: 'css/tinymce.css',
+            skin: "custom"
+        });
+    </script>
+
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
 
     <script>

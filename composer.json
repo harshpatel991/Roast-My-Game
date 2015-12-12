@@ -11,13 +11,15 @@
         "intervention/image": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.1",
         "proengsoft/laravel-jsvalidation": "^1.2",
-        "slynova/laravel-commentable": "^1.0"
+        "slynova/laravel-commentable": "^1.0",
+        "mews/purifier": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "laracasts/integrated": "^0.15.6"
     },
     "autoload": {
         "classmap": [

@@ -104,15 +104,22 @@
 
                                 <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
 
+                                @if(strlen($game->description) > 0)
                                 <p style="font-weight: bold;">DESCRIPTION</p>
-                                <p>{{$game->description}}</p>
+                                <p>{!! clean($game->description) !!}</p>
+                                @endif
 
+                                @if(strlen($currentVersion->changes) > 0)
                                 <hr>
                                 <p style="font-weight: bold;">CHANGES THIS VERSION</p>
-                                <p>{{$currentVersion->changes}}</p>
+                                <p>{!! clean($currentVersion->changes) !!}</p>
+                                @endif
+
+                                @if(strlen($currentVersion->upcoming_features) > 0)
                                 <hr>
                                 <p style="font-weight: bold;">UPCOMING FEATURES</p>
-                                <p> {{$currentVersion->upcoming_features}}</p>
+                                <p> {!! clean($currentVersion->upcoming_features) !!}</p>
+                                @endif
 
                             </div>
                         </div>
