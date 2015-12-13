@@ -6,7 +6,7 @@ use WebDriver\WebDriver;
 class MyTestBase extends \Laracasts\Integrated\Extensions\Selenium
 {
 
-    protected $baseUrl = 'http://example.dev';
+    protected $baseUrl = 'http://clickr.app';
 
     /**
      * Create a new WebDriver session.

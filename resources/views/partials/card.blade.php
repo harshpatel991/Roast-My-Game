@@ -1,0 +1,11 @@
+<div class="col-sm-3">
+
+    <div class="white-background-box">
+        <div class="embed-responsive embed-responsive-16by9">
+            <img class="embed-responsive-item" src="/upload/{{$game->versions()->first()->image1}}"/>
+        </div>
+        <h6>{{$game->title}}</h6>
+        <p class="small card-description">{{$game->description}}</p>
+        <a class="btn btn-transparent-silver btn-block" href="/game/{{$game->slug}}">View</a>
+    </div>
+</div>

@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Game;
 
 class HomeController extends Controller
 {
     public function getHome() {
-        return view('home');
+        $games = Game::all();
+//        dd($games);
+        return view('home', compact('games'));
     }
 
     /**

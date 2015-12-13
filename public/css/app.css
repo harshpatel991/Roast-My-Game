@@ -13926,18 +13926,12 @@ footer p {
 .footer-wrapper {
   background-color: #f6f6f6;
 }
-._body_html {
-  height: 100%;
-}
-._body {
-  background: url('/images/background.jpg') no-repeat center center fixed;
+.banner-background-overlay {
+  padding: 0px 10px;
+  background: url('/images/background-3.jpg') no-repeat;
+  background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  height: 100%;
-}
-.home-background-overlay {
-  background-color: rgba(84, 97, 134, 0.21);
-  min-height: 100%;
 }
 .logo {
   font-size: 30px;
@@ -13948,7 +13942,9 @@ footer p {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
-  padding-top: 50px;
+  margin-top: 0px;
+  padding-top: 80px;
+  font-size: 40px;
 }
 @media (min-width: 768px) {
   .home-h1 {
@@ -13965,11 +13961,29 @@ footer p {
     font-size: 70px;
   }
 }
+.left-bracket {
+  letter-spacing: 6px;
+}
+@media (min-width: 768px) {
+  .left-bracket {
+    letter-spacing: 8px;
+  }
+}
+@media (min-width: 992px) {
+  .left-bracket {
+    letter-spacing: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .left-bracket {
+    letter-spacing: 12px;
+  }
+}
 .home-h3 {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
 }
 @media (min-width: 768px) {
   .home-h3 {
@@ -13988,8 +14002,13 @@ footer p {
 }
 .white-background-box {
   background-color: #fff;
-  padding: 20px 25px 30px 30px;
-  margin: 10px 30px;
+  padding: 10px;
+}
+.card-description {
+  color: #bfbfbf;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .background {
   background-color: #f6f6f6;
@@ -14012,6 +14031,9 @@ footer p {
   font-size: 26px;
   color: #535353;
   margin-bottom: 35px;
+}
+.cktextarea {
+  background-color: #333;
 }
 .small-grey-box {
   background-color: #f6f6f6;
