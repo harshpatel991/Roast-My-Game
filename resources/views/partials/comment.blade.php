@@ -5,7 +5,7 @@
         <small><b>{{ $comment->username }}</b> - {{ $comment->created_at->diffForHumans() }}</small>
     </div>
     <div class="panel-footer">
-        <a class="btn btn-light-blue btn-sm reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a>
+        <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a>
     </div>
 </div>
 

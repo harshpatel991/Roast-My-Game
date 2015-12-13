@@ -28,31 +28,30 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('profile', 'UserController@getProfile');
+Route::get('profile',
+    ['middleware' => 'auth', 'uses' => 'UserController@getProfile']);
 
 Route::get('/add-game',
-    ['as' => 'add-game', 'uses' => 'GameController@getAddGame']);
+    ['as' => 'add-game', 'middleware' => 'auth', 'uses' => 'GameController@getAddGame']);
+Route::post('/add-game',
+    ['as' => 'add-game', 'middleware' => 'auth',  'uses' => 'GameController@postAddGame']);
 
 Route::get('/add-version/{game_slug}',
-    ['as' => 'add-version', 'uses' => 'GameController@getAddVersion']);
-
-Route::post('/add-game',
-    ['as' => 'add-game', 'uses' => 'GameController@postAddGame']);
-
+    ['as' => 'add-version', 'middleware' => 'auth', 'uses' => 'GameController@getAddVersion']);
 Route::post('/add-version/{game_slug}',
-    ['as' => 'add-version', 'uses' => 'GameController@postAddVersion']);
+    ['as' => 'add-version', 'middleware' => 'auth', 'uses' => 'GameController@postAddVersion']);
 
 Route::get('/game/{game_slug}/{version_slug?}',
     ['as' => 'getGame', 'uses' => 'GameController@getGame']);
 
 Route::post('/favorite/{game_slug}',
-    ['as' => 'favorite', 'uses' => 'GameController@addFavorite']);
+    ['as' => 'favorite', 'middleware' => 'auth', 'uses' => 'GameController@addFavorite']);
 
 Route::post('/add-comment/{game_slug}',
-    ['as' => 'add-comment', 'uses' => 'CommentController@postAddComment']);
+    ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@postAddComment']);
 
 Route::post('/add-comment-reply/{comment_id}',
-    ['as' => 'add-comment-reply', 'uses' => 'CommentController@postAddCommentReply']);
+    ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@postAddCommentReply']);
 
 Route::bind('game_slug', function($value, $route) {
     $game = App\Game::whereSlug($value)->first();

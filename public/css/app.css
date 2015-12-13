@@ -13929,7 +13929,8 @@ footer p {
 .banner-background-overlay {
   padding: 0px 10px;
   background: url('/images/background-3.jpg') no-repeat;
-  background-position: center;
+  background-position-y: top;
+  background-position-x: right;
   background-attachment: fixed;
   background-size: cover;
 }

@@ -25,7 +25,7 @@
                             <div class="media small-grey-box">
                                 <div class="media-left">
                                     <a href="/game/{{$game->slug}}">
-                                        <img class="media-object" width="150" height="100" src="{{Utils::get_image_url($latestImage)}}"/>
+                                        <img class="media-object" width="150" height="100" src="{{Utils::get_image_url($game->latestScreenshot()->image1)}}"/>
                                     </a>
                                 </div>
                                 <div class="media-body">

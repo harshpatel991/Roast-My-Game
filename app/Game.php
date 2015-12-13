@@ -91,6 +91,10 @@ class Game extends Model
         return $translated;
     }
 
+    public function latestScreenshot() {
+        return $this->versions()->orderBy('version', 'desc')->first();
+    }
+
     public function versions()
     {
         return $this->hasMany('App\Version');
