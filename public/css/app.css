@@ -14053,24 +14053,8 @@ footer p {
 }
 .full-width-constrain-proportions {
   background-color: #333;
-  width: auto;
-  height: 250px;
-  max-width: 100%;
-}
-@media (min-width: 768px) {
-  .full-width-constrain-proportions {
-    height: 500px;
-  }
-}
-@media (min-width: 992px) {
-  .full-width-constrain-proportions {
-    height: 450px;
-  }
-}
-@media (min-width: 1200px) {
-  .full-width-constrain-proportions {
-    height: 450px;
-  }
+  object-fit: cover;
+  max-height: 100%;
 }
 .position-relative {
   position: relative;

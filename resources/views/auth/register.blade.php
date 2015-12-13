@@ -50,7 +50,7 @@
 
                     <div class="row">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <button id="add-game" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" id="register" class="btn btn-primary btn-block">Register</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

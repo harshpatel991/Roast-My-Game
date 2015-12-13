@@ -21,13 +21,15 @@
                             <div class="row"> {{--hero row--}}
                                 <div class="col-sm-10"> {{--Hero left--}}
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <img class="embed-responsive-item full-width-constrain-proportions center-block" id="mainImage" src="{{Utils::get_image_url($currentVersion->image1)}}"/>
+                                        <div class="embed-responsive-item">
+                                            <img class="full-width-constrain-proportions center-block" id="mainImage" src="{{Utils::get_image_url($currentVersion->image1)}}"/>
 
-                                        @if(!empty($video_thumbnail))
-                                            <iframe id="ytplayer" type="text/html"
-                                                    src="http://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
-                                                    frameborder="0"></iframe>
-                                        @endif
+                                            @if(!empty($video_thumbnail))
+                                                <iframe id="ytplayer" type="text/html"
+                                                        src="http://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
+                                                        frameborder="0"></iframe>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-2 col-xs-12">{{--Hero right--}}

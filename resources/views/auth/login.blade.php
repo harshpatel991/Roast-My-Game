@@ -46,7 +46,7 @@
 
                     <div class="row">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <button id="add-game" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" id="login" class="btn btn-primary btn-block">Login</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

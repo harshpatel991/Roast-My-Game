@@ -21,7 +21,7 @@
 
                     @if (Auth::guest())
                         <a href="/auth/login" class="btn btn-light-blue navbar-btn btn-sm pull-right" style="margin-left: 10px;"><span class="fui-user"></span> Login</a>
-                        <a href="/auth/register" class="btn btn-light-blue navbar-btn btn-sm pull-right" style="margin-left: 10px;"><span class="glyphicon glyphicon-usd"></span> Register</a>
+                        <a href="/auth/register" class="btn btn-light-blue navbar-btn btn-sm pull-right" style="margin-left: 10px;">Register</a>
                     @else
                         <div class="btn-group pull-right">
                             <button type="button" class="btn btn-light-blue navbar-btn btn-sm dropdown-toggle" style="margin-left: 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -20,11 +20,21 @@ class Utils
 
     public static function upload_image($requestImage, $uploadName)
     {
-        $saveFileName = Utils::get_valid_upload_name($uploadName, '.jpg');
-        Image::make($requestImage)
-            ->encode('jpg')
-            ->heighten(600, function ($constraint) { $constraint->upsize();})
-            ->save(Game::getBackupImageUploadPath().$saveFileName, 85);
+
+        if($requestImage->getMimeType() == 'image/gif') {
+            $saveFileName = Utils::get_valid_upload_name($uploadName, '.gif');
+            copy($requestImage->getRealPath(), Game::getBackupImageUploadPath() . $saveFileName);
+        }
+
+        else {
+            $saveFileName = Utils::get_valid_upload_name($uploadName, '.jpg');
+            Image::make($requestImage)
+                ->encode('jpg')
+                ->heighten(600, function ($constraint) {
+                    $constraint->upsize();
+                })
+                ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
+        }
 //        $s3->putObject(array(
 //            'ACL'        => 'public-read',
 //            'Bucket'     => 'topicloop-upload2',
