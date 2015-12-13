@@ -1,10 +1,13 @@
-<div class="panel panel-default col-md-offset-{{ $comment->depth }}">
-    <div class="panel-body">
-        <p>{{ $comment->body }}</p>
-
-        <small><b>{{ $comment->username }}</b> - {{ $comment->created_at->diffForHumans() }}</small>
+<div class="media col-md-offset-{{ $comment->depth }}">
+    <div class="media-left">
+        <a href="#">
+            <img class="media-object" src="/images/user-profile-icon.jpg">
+        </a>
     </div>
-    <div class="panel-footer">
+    <div class="media-body">
+        <p class="media-heading small"><b>{{ $comment->username }}</b> - {{ $comment->created_at->diffForHumans() }}</p>
+        {{ $comment->body }}
+        <br>
         <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a> {{--Adds the reply box--}}
     </div>
 </div>

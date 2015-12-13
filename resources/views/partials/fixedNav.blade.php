@@ -35,7 +35,7 @@
                         </div>
                     @endif
 
-                    <a href="/add-game" class="btn btn-primary navbar-btn btn-sm pull-right">Add Game</a>
+                    <a href="/add-game" id="btn-add-game" class="btn btn-primary navbar-btn btn-sm pull-right">Add Game</a>
                 </div>
             </div>
 
