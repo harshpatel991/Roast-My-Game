@@ -1,7 +1,7 @@
-<div class="media col-md-offset-{{ $comment->depth }}">
+<div class="media col-sm-offset-{{ $comment->depth }}">
     <div class="media-left">
         <a href="#">
-            <img class="media-object" src="/images/user-profile-icon.jpg">
+            <img class="media-object" style="padding-top:10px;" src="/images/user-profile-icon.jpg">
         </a>
     </div>
     <div class="media-body">

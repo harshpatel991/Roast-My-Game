@@ -22,7 +22,7 @@
         <div class="row">
             <div class="banner-background-overlay">
                 <h1 class="home-h1">SHARE YOUR <span class="left-bracket">[</span>WIP]</h1>
-                <h3 class="home-h3">Gain a following even before launching and find inspiration from other game devs</h3>
+                <h3 class="home-h3">Get feedback and find inspiration from other game devs</h3>
                 <br>
             </div>
         </div>
@@ -39,7 +39,14 @@
         <div class="row">
             <div class="col-md-offset-1 col-md-10 col-sm-12">
 
-                <div class="row" style="margin-top: 20px;">
+
+                <div class="row">
+                    <h6 class="small">RECENTLY UPDATED GAMES</h6>
+
+
+                    @include('partials/card', ['game' => $games[0]])
+                    @include('partials/card', ['game' => $games[1]])
+                    @include('partials/card', ['game' => $games[2]])
 
                     <div class="col-sm-3"> {{--Add your game card--}}
                         <div class="white-background-box">
@@ -52,18 +59,9 @@
                         </div>
                     </div>
 
-                    @include('partials/card', ['game' => $games[0]])
-                    @include('partials/card', ['game' => $games[1]])
-                    @include('partials/card', ['game' => $games[2]])
-
                 </div>
 
-                <div class="row" style="margin-top: 20px;">
-                    @include('partials/card', ['game' => $games[3]])
-                    @include('partials/card', ['game' => $games[4]])
-                    @include('partials/card', ['game' => $games[5]])
-                    @include('partials/card', ['game' => $games[6]])
-                </div>
+
 
             </div>
         </div>

@@ -49,6 +49,9 @@ class CreateCommentsTable extends Migration
             $table->index('user_id');
             $table->index('commentable_id');
             $table->index('commentable_type');
+
+            $table->string('positive');
+            $table->string('negative');
         });
     }
 

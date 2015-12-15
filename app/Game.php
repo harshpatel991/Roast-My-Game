@@ -29,7 +29,7 @@ class Game extends Model
         'platform_pc'       => 'icon-windows',
         'platform_mac'      => 'icon-apple',
         'platform_unity'    => 'icon-unity',
-        'platform_windows_store'    => 'icon-network',
+        'platform_windows_store'    => 'icon-html5',
         'platform_ios'      => 'icon-apple',
         'platform_android'  => 'icon-android'
     ];
@@ -44,7 +44,7 @@ class Game extends Model
     ];
 
     public static $linkEnumToGlyph = [
-        'link_social_greenlight'          => 'icon-network',
+        'link_social_greenlight'       => 'icon-greenlight',
         'link_social_website'          => 'icon-network',
         'link_social_twitter'          => 'icon-twitter',
         'link_social_youtube'          => 'icon-youtube',
@@ -53,7 +53,7 @@ class Game extends Model
     ];
 
     public static $linkEnumToText = [
-        'link_social_greenlight'          => 'Steam Greenlight',
+        'link_social_greenlight'       => 'Steam Greenlight',
         'link_social_website'          => 'Website',
         'link_social_twitter'          => 'Twitter',
         'link_social_youtube'          => 'YouTube',

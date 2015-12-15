@@ -9,11 +9,15 @@
 @endsection
 
 @section('content')
+
+
+
     <div class="container-fluid background">
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="content-background">
+
                     <div class="row">
                         <div class="col-md-12">
                             @include('partials.display-input-error')
@@ -168,7 +172,7 @@
                                     <p>0 Comments</p>
                                 @endif
 
-                                <p style="font-weight: bold;">LEAVE A COMMENT</p>
+
                                 @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
 
 

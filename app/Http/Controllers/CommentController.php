@@ -16,6 +16,8 @@ class CommentController extends Controller
         $comment->user_id = $request->user()->id;
         $comment->username = $request->user()->username;
         $comment->body = $request->input('body');
+        $comment->positive = $request->input('positive');
+        $comment->negative = $request->input('negative');
         $game->comments()->save($comment);
         return redirect()->back()->with('message', 'Comment added!');
     }

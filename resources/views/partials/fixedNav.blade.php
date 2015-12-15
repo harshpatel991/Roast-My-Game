@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 
                     @if(isset($nextGame))
-                        <a href="/game/{{$nextGame}}" class="btn-dark-blue btn navbar-btn btn-sm">Show Me Another!</a>
+                        <a href="/game/{{$nextGame}}" class="btn-dark-blue btn navbar-btn btn-sm"  role="button">Show Me Another!</a>
                     @endif
 
                     @if (Auth::guest())

@@ -60,12 +60,16 @@
                         <div class="form-group">
                             <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlatformLinks">Add Platform Links <span class="fui-triangle-down"></span></a>
                             <div class="collapse" id="collapsePlatformLinks" style="padding-top: 10px;">
+                                <div class="col-sm-offset-2">
+                                <p>Add any links to play your game</p>
+                                </div>
                                 {!! Form::myInput('link_platform_pc', 'PC', 'http://steam.com/your-game') !!}
                                 {!! Form::myInput('link_platform_mac', 'Mac', 'http://itunes.apple.com/us/app/your-game') !!}
                                 {!! Form::myInput('link_platform_ios', 'iOS', 'http://itunes.apple.com/us/app/your-game') !!}
                                 {!! Form::myInput('link_platform_android', 'Android', 'http://play.google.com/store/apps/?id=your-game') !!}
                                 {!! Form::myInput('link_platform_windows_phone', 'Windows Store', 'http://microsoft.com/en-us/store/apps/your-game') !!}
                                 {!! Form::myInput('link_platform_unity_web', 'Unity Web', 'http://youtube.com/user/your-channel') !!}
+
                             </div>
                         </div>
 
