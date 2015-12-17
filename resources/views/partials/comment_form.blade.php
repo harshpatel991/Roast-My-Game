@@ -1,7 +1,7 @@
 <form action="{{ $action }}" method="POST">
     {!! csrf_field() !!}
 
-    <div class="small-grey-box">
+    {{--<div class="small-grey-box">--}}
         <h6>Leave some feedback</h6>
 
         <div class="row">
@@ -20,10 +20,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Comments</label>
-                    <textarea class="form-control" name="body" rows="5"></textarea>
+                    <textarea class="form-control" name="body" rows="4"></textarea>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <button class="btn btn-light-blue btn-sm" type="submit">Reply</button>
         </div>
 
-    </div>
+    {{--</div>--}}
 
 
 </form>

@@ -53,7 +53,7 @@
                                 {!! Form::myCheckbox('platforms[]', 'Android', 'platform_android') !!}
                             </div>
                             <div class="col-sm-3">
-                                {!! Form::myCheckbox('platforms[]', 'Windows Phone', 'platform_windows_store') !!}
+                                {!! Form::myCheckbox('platforms[]', 'Other Web', 'platform_other') !!}
                             </div>
                         </div>
 
@@ -67,8 +67,8 @@
                                 {!! Form::myInput('link_platform_mac', 'Mac', 'http://itunes.apple.com/us/app/your-game') !!}
                                 {!! Form::myInput('link_platform_ios', 'iOS', 'http://itunes.apple.com/us/app/your-game') !!}
                                 {!! Form::myInput('link_platform_android', 'Android', 'http://play.google.com/store/apps/?id=your-game') !!}
-                                {!! Form::myInput('link_platform_windows_phone', 'Windows Store', 'http://microsoft.com/en-us/store/apps/your-game') !!}
                                 {!! Form::myInput('link_platform_unity_web', 'Unity Web', 'http://youtube.com/user/your-channel') !!}
+                                {!! Form::myInput('link_platform_other', 'Other Web', 'http://microsoft.com/en-us/store/apps/your-game') !!}
 
                             </div>
                         </div>

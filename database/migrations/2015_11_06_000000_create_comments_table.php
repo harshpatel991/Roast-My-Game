@@ -34,7 +34,7 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
 
             $table->string('title')->nullable();
-            $table->text('body');
+            $table->text('body')->nullable();
 
             $table->integer('parent_id')->nullable();
             $table->integer('lft')->nullable();
@@ -50,8 +50,8 @@ class CreateCommentsTable extends Migration
             $table->index('commentable_id');
             $table->index('commentable_type');
 
-            $table->string('positive');
-            $table->string('negative');
+            $table->string('positive')->nullable();
+            $table->string('negative')->nullable();
         });
     }
 

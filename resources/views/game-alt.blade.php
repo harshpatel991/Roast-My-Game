@@ -138,7 +138,7 @@
                                     <hr>
                                     @foreach($linkIcons as $link_id => $linkIcon)
                                         <div style="margin-bottom: 5px;">
-                                            <a class="small" href="{{$links[$link_id]}}" style="color: #5d5d5d; font-weight: bold;">
+                                            <a class="small" href="{{$socialLinks[$link_id]}}" style="color: #5d5d5d; font-weight: bold;">
                                                 <i class="demo-icon {{$linkIcon}}" style="color:#BFBFBF;"></i>{{$linkTexts[$link_id]}}
                                             </a>
                                         </div>
@@ -148,9 +148,11 @@
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
                                     <hr>
-                                    @foreach($platformIconsToNames as $platform => $platformName)
+                                    @foreach($platformIconsToNames as $platformIcon => $platformName)
                                         <div class="small" style="color: #5d5d5d;margin-bottom: 5px;font-weight: bold;">
-                                            <i class="demo-icon {{$platform}}" style="color:#BFBFBF;"></i>{{$platformName}}
+                                            <a href="{{$platformIconsToLinks[$platformIcon]}}" style="color: #5d5d5d; font-weight: bold;">
+                                                <i class="demo-icon {{$platformIcon}}" style="color:#BFBFBF;"></i>{{$platformName}}
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -163,6 +165,8 @@
                         <div class="col-md-8">
                             <div class="text-content-padding">
 
+                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
+
                                 <p style="font-weight: bold;">COMMENTS</p>
                                 @if($game->comments()->count() > 0)
                                     @foreach($game->comments as $comment)
@@ -173,7 +177,7 @@
                                 @endif
 
 
-                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
+
 
 
                             </div>

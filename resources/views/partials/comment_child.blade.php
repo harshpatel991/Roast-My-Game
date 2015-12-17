@@ -1,11 +1,11 @@
 <div class="media col-sm-offset-{{ $comment->depth }}">
     <div class="media-left">
         <a href="#">
-            <img class="media-object" style="padding-top:10px;" src="/images/user-profile-icon.jpg">
+            <img width="30px" class="media-object" src="/images/user-profile-icon.jpg">
         </a>
     </div>
     <div class="media-body">
-        <p class="media-heading small"><b>{{ $comment->username }}</b> - {{ $comment->created_at->diffForHumans() }}</p>
+        <p class="media-heading small" style="line-height: 1; "><b>{{ $comment->username }}</b> - {{ $comment->created_at->diffForHumans() }}</p>
         {{ $comment->body }}
         <br>
         <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a> {{--Adds the reply box--}}

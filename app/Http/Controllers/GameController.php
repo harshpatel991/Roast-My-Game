@@ -48,11 +48,13 @@ class GameController extends Controller
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
 
         $platforms = $game->platforms == "" ? array() : explode (',', $game->platforms);
+        $platformLinks = Utils::preg_grep_keys("/link_platform_.+/", $game->getAttributes());
         $platformIconsToNames = Game::translatePlatformToGlyphAndText($platforms);
+        $platformIconsToLinks = Game::translatePlatformLinkToGlyphAndLink($platformLinks);
 
-        $links = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
-        $linkIcons = Game::translateLinkToGlyph($links);
-        $linkTexts = Game::translateLinkText($links);
+        $socialLinks = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
+        $linkIcons = Game::translateLinkToGlyph($socialLinks);
+        $linkTexts = Game::translateLinkText($socialLinks);
 //        dd($links);
         //TODO: check if this user already liked this game
         $isLiked = false;
@@ -62,7 +64,7 @@ class GameController extends Controller
         $nextGame = $this->getNextGame(array_keys($request->session()->all()))->slug; //the link to view the next game
 
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'links', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'platformIconsToLinks', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
     }
 
     public function getAddGame() {
@@ -87,8 +89,8 @@ class GameController extends Controller
         $game->link_platform_mac = $request->link_platform_mac;
         $game->link_platform_ios = $request->link_platform_ios;
         $game->link_platform_android = $request->link_platform_android;
-        $game->link_platform_unity_web = $request->link_platform_unity_web;
-        $game->link_platform_windows_phone = $request->link_platform_windows_phone;
+        $game->link_platform_unity = $request->link_platform_unity;
+        $game->link_platform_other = $request->link_platform_other;
         $game->link_social_greenlight = $request->link_social_greenlight;
         $game->link_social_website = $request->link_social_website;
         $game->link_social_twitter = $request->link_social_twitter;

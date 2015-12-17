@@ -29,7 +29,7 @@ class Game extends Model
         'platform_pc'       => 'icon-windows',
         'platform_mac'      => 'icon-apple',
         'platform_unity'    => 'icon-unity',
-        'platform_windows_store'    => 'icon-html5',
+        'platform_other'    => 'icon-html5',
         'platform_ios'      => 'icon-apple',
         'platform_android'  => 'icon-android'
     ];
@@ -38,7 +38,7 @@ class Game extends Model
         'platform_pc'       => 'PC',
         'platform_mac'      => 'Mac',
         'platform_unity'    => 'Unity Web',
-        'platform_windows_store'    => 'Windows Mobile',
+        'platform_other'    => 'Other Web',
         'platform_ios'      => 'iOS',
         'platform_android'  => 'Android'
     ];
@@ -70,6 +70,15 @@ class Game extends Model
         }
         return $translated;
     }
+
+    public static function translatePlatformLinkToGlyphAndLink($toTranslate) {
+        $translated = array();
+        foreach($toTranslate as $oldkey => $link) {
+            $translated[Game::$platformEnumToGlyph[ substr($oldkey, 5, strlen($oldkey)) ]] = $link;
+        }
+        return $translated;
+    }
+
 
     public static function translateLinkToGlyph($toTranslate) {
         $translated = array();
