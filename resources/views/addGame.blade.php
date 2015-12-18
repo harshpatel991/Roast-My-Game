@@ -61,14 +61,14 @@
                             <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlatformLinks">Add Platform Links <span class="fui-triangle-down"></span></a>
                             <div class="collapse" id="collapsePlatformLinks" style="padding-top: 10px;">
                                 <div class="col-sm-offset-2">
-                                <p>Add any links to play your game</p>
+                                <p>If your game is avaiable to play, add links to download your game</p>
                                 </div>
-                                {!! Form::myInput('link_platform_pc', 'PC', 'http://steam.com/your-game') !!}
-                                {!! Form::myInput('link_platform_mac', 'Mac', 'http://itunes.apple.com/us/app/your-game') !!}
-                                {!! Form::myInput('link_platform_ios', 'iOS', 'http://itunes.apple.com/us/app/your-game') !!}
-                                {!! Form::myInput('link_platform_android', 'Android', 'http://play.google.com/store/apps/?id=your-game') !!}
-                                {!! Form::myInput('link_platform_unity_web', 'Unity Web', 'http://youtube.com/user/your-channel') !!}
-                                {!! Form::myInput('link_platform_other', 'Other Web', 'http://microsoft.com/en-us/store/apps/your-game') !!}
+                                {!! Form::myInput('link_platform_pc', 'PC', '') !!}
+                                {!! Form::myInput('link_platform_mac', 'Mac', '') !!}
+                                {!! Form::myInput('link_platform_ios', 'iOS', '') !!}
+                                {!! Form::myInput('link_platform_android', 'Android', '') !!}
+                                {!! Form::myInput('link_platform_unity_web', 'Unity Web', '') !!}
+                                {!! Form::myInput('link_platform_other', 'Other Web', '') !!}
 
                             </div>
                         </div>
@@ -76,12 +76,12 @@
                         <div class="form-group">
                             <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <span class="fui-triangle-down"></span></a>
                             <div class="collapse" id="collapseSocialLinks" style="padding-top: 10px;">
-                                {!! Form::myInput('link_social_greenlight', 'Greenlight', 'http://steam.com/your-game') !!}
-                                {!! Form::myInput('link_social_website', 'Website', 'http://your-game.com') !!}
-                                {!! Form::myInput('link_social_twitter', 'Twitter', 'http://twitter.com/your-handle') !!}
-                                {!! Form::myInput('link_social_youtube', 'YouTube', 'http://youtube.com/user/your-channel') !!}
-                                {!! Form::myInput('link_social_google_plus', 'Google+', 'http://plus.google.com/your-page') !!}
-                                {!! Form::myInput('link_social_facebook', 'Facebook', 'http://facebook.com/your-page') !!}
+                                {!! Form::myInput('link_social_greenlight', 'Greenlight', '') !!}
+                                {!! Form::myInput('link_social_website', 'Website', '') !!}
+                                {!! Form::myInput('link_social_twitter', 'Twitter', '') !!}
+                                {!! Form::myInput('link_social_youtube', 'YouTube', '') !!}
+                                {!! Form::myInput('link_social_google_plus', 'Google+', '') !!}
+                                {!! Form::myInput('link_social_facebook', 'Facebook', '') !!}
                             </div>
                         </div>
 

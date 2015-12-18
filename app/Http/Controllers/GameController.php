@@ -52,6 +52,7 @@ class GameController extends Controller
         $platformIconsToNames = Game::translatePlatformToGlyphAndText($platforms);
         $platformIconsToLinks = Game::translatePlatformLinkToGlyphAndLink($platformLinks);
 
+
         $socialLinks = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
         $linkIcons = Game::translateLinkToGlyph($socialLinks);
         $linkTexts = Game::translateLinkText($socialLinks);

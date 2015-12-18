@@ -2,7 +2,6 @@
     {!! csrf_field() !!}
 
     {{--<div class="small-grey-box">--}}
-        <h6>Leave some feedback</h6>
 
         <div class="row">
             <div class="col-md-4">

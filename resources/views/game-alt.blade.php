@@ -111,19 +111,22 @@
                                 <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
 
                                 @if(strlen($game->description) > 0)
-                                <p style="font-weight: bold;">DESCRIPTION</p>
+                                {{--<p style="font-weight: bold;">DESCRIPTION</p>--}}
+                                <h6 class="subheading">Description</h6>
                                 <p>{!! clean($game->description) !!}</p>
                                 @endif
 
                                 @if(strlen($currentVersion->changes) > 0)
-                                <hr>
-                                <p style="font-weight: bold;">CHANGES THIS VERSION</p>
+                                {{--<hr>--}}
+                                {{--<p style="font-weight: bold;">CHANGES THIS VERSION</p>--}}
+                                <h6 class="subheading">Changes this version</h6>
                                 <p>{!! clean($currentVersion->changes) !!}</p>
                                 @endif
 
                                 @if(strlen($currentVersion->upcoming_features) > 0)
-                                <hr>
-                                <p style="font-weight: bold;">UPCOMING FEATURES</p>
+                                {{--<hr>--}}
+                                {{--<p style="font-weight: bold;">UPCOMING FEATURES</p>--}}
+                                <h6 class="subheading">Upcoming features</h6>
                                 <p> {!! clean($currentVersion->upcoming_features) !!}</p>
                                 @endif
 
@@ -137,9 +140,10 @@
                                     <div class="small text-center" style="font-weight: bold;">LINKS</div>
                                     <hr>
                                     @foreach($linkIcons as $link_id => $linkIcon)
-                                        <div style="margin-bottom: 5px;">
-                                            <a class="small" href="{{$socialLinks[$link_id]}}" style="color: #5d5d5d; font-weight: bold;">
-                                                <i class="demo-icon {{$linkIcon}}" style="color:#BFBFBF;"></i>{{$linkTexts[$link_id]}}
+                                        <div class="small"  style="margin-bottom: 5px;font-weight: bold;">
+                                            <i class="demo-icon {{$linkIcon}}" style="color:#aaaaaa;"></i>{{$linkTexts[$link_id]}}
+                                            <a href="{{$socialLinks[$link_id]}}">
+                                                <i class="demo-icon icon-link-ext-alt small"></i>
                                             </a>
                                         </div>
                                     @endforeach
@@ -149,10 +153,14 @@
                                     <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
                                     <hr>
                                     @foreach($platformIconsToNames as $platformIcon => $platformName)
-                                        <div class="small" style="color: #5d5d5d;margin-bottom: 5px;font-weight: bold;">
-                                            <a href="{{$platformIconsToLinks[$platformIcon]}}" style="color: #5d5d5d; font-weight: bold;">
-                                                <i class="demo-icon {{$platformIcon}}" style="color:#BFBFBF;"></i>{{$platformName}}
-                                            </a>
+                                        <div class="small" style="margin-bottom: 5px;font-weight: bold;">
+                                            <i class="demo-icon {{$platformIcon}}" style="color:#aaaaaa;"></i>{{$platformName}}
+
+                                            @if(isset($platformIconsToLinks[$platformIcon]))
+                                                <a href="{{$platformIconsToLinks[$platformIcon]}}">
+                                                    <i class="demo-icon icon-link-ext-alt small"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>
@@ -165,9 +173,11 @@
                         <div class="col-md-8">
                             <div class="text-content-padding">
 
+                                <h6 class="subheading">Leave some feedback</h6>
+
                                 @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
 
-                                <p style="font-weight: bold;">COMMENTS</p>
+                                <h6 class="subheading">Comments</h6>
                                 @if($game->comments()->count() > 0)
                                     @foreach($game->comments as $comment)
                                         @include('partials.comment', ['comment' => $comment])
@@ -175,9 +185,6 @@
                                 @else
                                     <p>0 Comments</p>
                                 @endif
-
-
-
 
 
                             </div>

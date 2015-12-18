@@ -14048,6 +14048,10 @@ footer p {
   padding-left: 20px;
   padding-right: 20px;
 }
+.subheading {
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
 .text-content-padding {
   padding: 10px 0px;
 }
