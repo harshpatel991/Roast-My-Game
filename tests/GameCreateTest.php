@@ -1,13 +1,16 @@
 <?php
 
 require ('MyTestBase.php');
+use Laracasts\Integrated\Services\Laravel\DatabaseTransactions;
 
-class GameCreateTest extends MyTestBase{
+class GameCreateTest extends MyTestBase {
 
+    use DatabaseTransactions;
 
     /** @test */
     public function create_minimal_game()
     {
+
         $imagesDir = '~/Development/Code/clickr/tests/test-images/';
         $this->visit('/auth/login')
             ->type('user1@gmail.com', '#email')
@@ -22,9 +25,10 @@ class GameCreateTest extends MyTestBase{
             ->see('Test Minimal Title')
             ->see('Action-Adventure')
             ->see('1.5.6')
-            ->see('test-minimal-title-156-1.png');
+            ->see('test-minimal-title-156');
     }
 
+    /** @test */
     public function create_full_game() {
         $imagesDir = '~/Development/Code/clickr/tests/test-images/';
 
@@ -38,7 +42,8 @@ class GameCreateTest extends MyTestBase{
             ->click('Add Game')
             ->type('Test Full Title', '#title')
             ->select('genre', 'shooter')
-            ->type($description, '#description')
+            ->switchFrame()
+            ->type($description, '#tinymce')
             ->tick('platforms[0]')
             ->tick('platforms[1]')
             ->tick('platforms[2]')
@@ -50,8 +55,8 @@ class GameCreateTest extends MyTestBase{
             ->type('http://mac.com', 'link_platform_mac')
             ->type('http://ios.com', 'link_platform_ios')
             ->type('http://android.com', 'link_platform_android')
-            ->type('http://windows-phone.com', 'link_platform_windows_phone')
             ->type('http://unity-web.com', 'link_platform_unity_web')
+            ->type('http://other-web.com', 'link_platform_other')
             ->click('Add Social Links')
             ->type('http://greenlight.com', 'link_social_greenlight')
             ->type('http://website.com', 'link_social_website')
@@ -72,7 +77,8 @@ class GameCreateTest extends MyTestBase{
             ->see('Test Full Title')
             ->see('Shooter')
             ->see('1')
-            ->see('test-full-title-1-1.png');
+            ->see('test-full-title-1-1.png')
+            ->seeInAlert("hi");
 
     }
 

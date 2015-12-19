@@ -15,6 +15,10 @@ class MyTestBase extends \Laracasts\Integrated\Extensions\Selenium
      */
     protected function newSession()
     {
+
+        Artisan::call('migrate:refresh', ['--path'     => "database/migrations",]);
+        Artisan::call('db:seed');
+
         $host = 'http://10.0.2.2:4444/wd/hub'; #find this value by running on vagrant box: netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10
 
         $this->webDriver = new WebDriver($host);
@@ -54,5 +58,7 @@ class MyTestBase extends \Laracasts\Integrated\Extensions\Selenium
 
         return $app;
     }
+
+
 
 }
