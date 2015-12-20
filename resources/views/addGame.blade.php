@@ -67,7 +67,7 @@
                                 {!! Form::myInput('link_platform_mac', 'Mac', '') !!}
                                 {!! Form::myInput('link_platform_ios', 'iOS', '') !!}
                                 {!! Form::myInput('link_platform_android', 'Android', '') !!}
-                                {!! Form::myInput('link_platform_unity_web', 'Unity Web', '') !!}
+                                {!! Form::myInput('link_platform_unity', 'Unity Web', '') !!}
                                 {!! Form::myInput('link_platform_other', 'Other Web', '') !!}
 
                             </div>

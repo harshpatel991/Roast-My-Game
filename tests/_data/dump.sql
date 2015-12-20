@@ -87,7 +87,7 @@ CREATE TABLE `games` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `games_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','Action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',239,1020,'platform_pc,platform_android,platform_other',NULL,NULL,NULL,NULL,NULL,NULL,'http://steam.com/greenligh','http://website.com','http://twitter.com','http://youtube.com','http://plus.google.com','http://facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','Shooter','This my description',50000,600000,'',NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Test Game 3','test-game-3','Strategy','This is a teeny tiny description',54,764,'',NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','Puzzle','This is a short description.',85423,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','Strategy','This is a teeny tiny description',54,764,'',NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,2,'Test Game 6','test-game-6','Puzzle','This is a short description.',85423,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,2,'Test Game 7','test-game-7','Puzzle','This is a short description.',85423,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','Action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',239,1020,'platform_pc,platform_android,platform_other','http://pc.com',NULL,NULL,'http://android.com',NULL,'http://other-web.com','http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','Shooter','This my description',50000,600001,'',NULL,NULL,NULL,NULL,NULL,NULL,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','2015-12-20 17:49:20'),(3,1,'Test Game 3','test-game-3','Strategy','This is a teeny tiny description',54,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','Puzzle','This is a short description.',85423,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','Strategy','This is a teeny tiny description',54,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +207,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$hmqIWKCGMAHgxXTm3XT6O.B8aIfAmN37ig4XGzR4vXdRub35z1L1G',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$aK0lb.B1DWzUewVqYXmV6.KbSx3OmV/5/Mx5yOuSauMKQOrLYrnVG',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$XUF.c34C3tauNFBLJSa1tOHOMwuHIQj9a.a5RJVBpL8zGy3k4UNt6',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$A6iHDDQYxvcHVj5ekccPOuPWmqMxj3B6Mv2lC.TqTQN4R1OyrwKDG',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$hMaLuLmq/cB1kzVwY4ru7OG8rz3pQxY8XJx6307gbzAXcPNQY8FEW',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$pExPcjgAEGbvKpYfjlkR/.anPKRL3REYXFFA1dO99R7faiod6reka',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-19 18:27:06
+-- Dump completed on 2015-12-20 17:50:51

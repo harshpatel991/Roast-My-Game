@@ -30,7 +30,7 @@ class Game extends Model
         'platform_mac'      => 'icon-apple',
         'platform_unity'    => 'icon-unity',
         'platform_other'    => 'icon-html5',
-        'platform_ios'      => 'icon-apple',
+        'platform_ios'      => 'icon-iphone-home',
         'platform_android'  => 'icon-android'
     ];
 
@@ -63,10 +63,10 @@ class Game extends Model
 
     public static function getBackupImageUploadPath() { return public_path().'/upload/'; }
 
-    public static function translatePlatformToGlyphAndText($toTranslate) {
+    public static function translatePlatformToTextAndGlyph($toTranslate) {
         $translated = array();
         foreach($toTranslate as $oldkey => $platform) {
-            $translated[Game::$platformEnumToGlyph[$platform]] = Game::$platformEnumToText[$platform];
+            $translated[Game::$platformEnumToText[$platform]] = Game::$platformEnumToGlyph[$platform];
         }
         return $translated;
     }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Utils;
 use Illuminate\Html\FormBuilder;
+use App\Http\Requests\StoreGameRequest;
+use App\Http\Requests\StoreVersionRequest;
 
 use DB;
 use App\Game;
@@ -49,7 +51,10 @@ class GameController extends Controller
 
         $platforms = $game->platforms == "" ? array() : explode (',', $game->platforms);
         $platformLinks = Utils::preg_grep_keys("/link_platform_.+/", $game->getAttributes());
-        $platformIconsToNames = Game::translatePlatformToGlyphAndText($platforms);
+
+//        dd($platforms);
+        $platformNamesToIcons = Game::translatePlatformToTextAndGlyph($platforms);
+//        dd($platformNamesToIcons);
         $platformIconsToLinks = Game::translatePlatformLinkToGlyphAndLink($platformLinks);
 
 
@@ -65,7 +70,7 @@ class GameController extends Controller
         $nextGame = $this->getNextGame(array_keys($request->session()->all()))->slug; //the link to view the next game
 
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformIconsToNames', 'platformIconsToLinks', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformNamesToIcons', 'platformIconsToLinks', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
     }
 
     public function getAddGame() {
@@ -78,26 +83,29 @@ class GameController extends Controller
         return view('addVersion', compact('game'));
     }
 
-    public function postAddGame(Request $request) {
+    public function postAddGame(StoreGameRequest $request) {
+
         $game = new Game;
         $game->title = $request->get('title');
         $game->user_id = $request->user()->id;
         $game->slug = Utils::generate_unique_slug($game->title);
         $game->genre = $request->genre;
         $game->description = $request->description;
+
         $game->platforms = $request->platforms == "" ? "" : implode(",", $request->platforms);
-        $game->link_platform_pc = $request->link_platform_pc;
-        $game->link_platform_mac = $request->link_platform_mac;
-        $game->link_platform_ios = $request->link_platform_ios;
-        $game->link_platform_android = $request->link_platform_android;
-        $game->link_platform_unity = $request->link_platform_unity;
-        $game->link_platform_other = $request->link_platform_other;
-        $game->link_social_greenlight = $request->link_social_greenlight;
-        $game->link_social_website = $request->link_social_website;
-        $game->link_social_twitter = $request->link_social_twitter;
-        $game->link_social_youtube = $request->link_social_youtube;
-        $game->link_social_google_plus = $request->link_social_google_plus;
-        $game->link_social_facebook = $request->link_social_facebook;
+        $game->link_platform_pc = $request->has('link_platform_pc') ? $request->link_platform_pc : null;
+        $game->link_platform_mac = $request->has('link_platform_mac') ? $request->link_platform_mac : null;
+        $game->link_platform_ios = $request->has('link_platform_ios') ? $request->link_platform_ios : null;
+        $game->link_platform_android = $request->has('link_platform_android') ? $request->link_platform_android : null;
+        $game->link_platform_unity = $request->has('link_platform_unity') ? $request->link_platform_unity : null;
+        $game->link_platform_other = $request->has('link_platform_other') ? $request->link_platform_other : null;
+
+        $game->link_social_greenlight = $request->has('link_social_greenlight') ? $request->link_social_greenlight : null;
+        $game->link_social_website = $request->has('link_social_website') ? $request->link_social_website : null;
+        $game->link_social_twitter = $request->has('link_social_twitter') ? $request->link_social_twitter : null;
+        $game->link_social_youtube = $request->has('link_social_youtube') ? $request->link_social_youtube : null;
+        $game->link_social_google_plus = $request->has('link_social_google_plus') ? $request->link_social_google_plus : null;
+        $game->link_social_facebook = $request->has('link_social_facebook') ? $request->link_social_facebook : null;
 
         $version = $this->createVersion($game, $request);
 
@@ -109,7 +117,7 @@ class GameController extends Controller
         return redirect('game/'.$game->slug);
     }
 
-    public function postAddVersion(Game $game, Request $request) {
+    public function postAddVersion(Game $game, StoreVersionRequest $request) {
         $version = $this->createVersion($game, $request);
         $version->save();
         return redirect('game/'.$game->slug);
@@ -161,7 +169,7 @@ class GameController extends Controller
 
         FormBuilder::macro('myCheckbox', function($id, $name, $checkBoxValue)
         {
-            return FormBuilder::checkbox($id, $checkBoxValue, old($id, false))
+            return FormBuilder::checkbox($id, $checkBoxValue, old($id, false), ['id' => $checkBoxValue])
             .FormBuilder::label('', $name, ['class' => 'control-label form-label']);
         });
 

@@ -152,7 +152,7 @@
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
                                     <hr>
-                                    @foreach($platformIconsToNames as $platformIcon => $platformName)
+                                    @foreach($platformNamesToIcons as $platformName => $platformIcon)
                                         <div class="small" style="margin-bottom: 5px;font-weight: bold;">
                                             <i class="demo-icon {{$platformIcon}}" style="color:#aaaaaa;"></i>{{$platformName}}
 

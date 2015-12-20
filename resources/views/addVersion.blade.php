@@ -18,7 +18,7 @@
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('url' => '/add-version/'.$game->slug, 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('url' => '/add-version/'.$game->slug, 'class'=>'form-horizontal', 'files'=>true)) !!}
 
                         @include('partials.version-form')
 
@@ -41,8 +41,39 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#upcoming_features',
+            menubar: '',
+            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            plugins: [
+                'advlist autolink link'
+            ],
+            statusbar: false,
+            content_css: 'css/tinymce.css',
+            editor_css: 'css/editor.css',
+            skin: "custom"
+        });
+    </script>
+
+    <script>
+        tinymce.init({
+            selector: '#changes',
+            menubar: '',
+            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            plugins: [
+                'advlist autolink link'
+            ],
+            statusbar: false,
+            content_css: 'css/tinymce.css',
+            skin: "custom"
+        });
+    </script>
+
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreVersionRequest') !!}
 
     <script>
         function readURL(input, previewElem) {

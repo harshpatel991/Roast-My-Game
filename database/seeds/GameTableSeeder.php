@@ -24,12 +24,19 @@ class GameTableSeeder extends Seeder
                 'likes' => 239,
                 'views' => 1020,
                 'platforms' => "platform_pc,platform_android,platform_other",
-                'link_social_greenlight' => 'http://steam.com/greenligh',
+                'link_platform_pc' => 'http://pc.com',
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => 'http://android.com',
+                'link_platform_unity' => null,
+                'link_platform_other' => 'http://other-web.com',
+
+                'link_social_greenlight' => 'http://greenlight.com',
                 'link_social_website' => 'http://website.com',
-                'link_social_twitter' => 'http://twitter.com',
-                'link_social_youtube' => 'http://youtube.com',
-                'link_social_google_plus' => 'http://plus.google.com',
-                'link_social_facebook' => 'http://facebook.com'
+                'link_social_twitter' => 'http://link-twitter.com',
+                'link_social_youtube' => 'http://link-youtube.com',
+                'link_social_google_plus' => 'http://link-gplus.com',
+                'link_social_facebook' => 'http://link-facebook.com'
 
             ],
             [
@@ -42,12 +49,20 @@ class GameTableSeeder extends Seeder
                 'likes' => 50000,
                 'views' => 600000,
                 'platforms' => "",
-                'link_social_greenlight' => '',
-                'link_social_website' => '',
-                'link_social_twitter' => '',
-                'link_social_youtube' => '',
-                'link_social_google_plus' => '',
-                'link_social_facebook' => ''
+
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
+                'link_social_greenlight' => 'http://greenlight.com',
+                'link_social_website' => 'http://website.com',
+                'link_social_twitter' => 'http://link-twitter.com',
+                'link_social_youtube' => null,
+                'link_social_google_plus' => null,
+                'link_social_facebook' => null
             ],
             [
                 'id' => 3,
@@ -59,12 +74,19 @@ class GameTableSeeder extends Seeder
                 'likes' => 54,
                 'views' => 764,
                 'platforms' => "",
-                'link_social_greenlight' => '',
-                'link_social_website' => '',
-                'link_social_twitter' => '',
-                'link_social_youtube' => '',
-                'link_social_google_plus' => '',
-                'link_social_facebook' => ''
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
+                'link_social_greenlight' => null,
+                'link_social_website' => null,
+                'link_social_twitter' => null,
+                'link_social_youtube' => null,
+                'link_social_google_plus' => null,
+                'link_social_facebook' => null
             ],
             [
                 'id' => 4,
@@ -76,12 +98,19 @@ class GameTableSeeder extends Seeder
                 'likes' => 85423,
                 'views' => 887,
                 'platforms' => "platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android",
-                'link_social_greenlight' => '',
-                'link_social_website' => '',
-                'link_social_twitter' => '',
-                'link_social_youtube' => '',
-                'link_social_google_plus' => '',
-                'link_social_facebook' => ''
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
+                'link_social_greenlight' => null,
+                'link_social_website' => null,
+                'link_social_twitter' => null,
+                'link_social_youtube' => null,
+                'link_social_google_plus' => null,
+                'link_social_facebook' => null
             ],
             [
                 'id' => 5,
@@ -93,47 +122,21 @@ class GameTableSeeder extends Seeder
                 'likes' => 54,
                 'views' => 764,
                 'platforms' => "",
-                'link_social_greenlight' => '',
-                'link_social_website' => '',
-                'link_social_twitter' => '',
-                'link_social_youtube' => '',
-                'link_social_google_plus' => '',
-                'link_social_facebook' => ''
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
+                'link_social_greenlight' => null,
+                'link_social_website' => null,
+                'link_social_twitter' => null,
+                'link_social_youtube' => null,
+                'link_social_google_plus' => null,
+                'link_social_facebook' => null
             ],
-            [
-                'id' => 6,
-                'user_id' => 2,
-                'title' => 'Test Game 6',
-                'slug' => 'test-game-6',
-                'genre' => 'puzzle',
-                'description' => 'This is a short description.',
-                'likes' => 85423,
-                'views' => 887,
-                'platforms' => "platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android",
-                'link_social_greenlight' => '',
-                'link_social_website' => '',
-                'link_social_twitter' => '',
-                'link_social_youtube' => '',
-                'link_social_google_plus' => '',
-                'link_social_facebook' => ''
-            ],
-            [
-                'id' => 7,
-                'user_id' => 2,
-                'title' => 'Test Game 7',
-                'slug' => 'test-game-7',
-                'genre' => 'puzzle',
-                'description' => 'This is a short description.',
-                'likes' => 85423,
-                'views' => 887,
-                'platforms' => "platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android",
-                'link_social_greenlight' => '',
-                'link_social_website' => '',
-                'link_social_twitter' => '',
-                'link_social_youtube' => '',
-                'link_social_google_plus' => '',
-                'link_social_facebook' => ''
-            ],
+
         );
 
         // Uncomment the below to run the seeder
