@@ -87,10 +87,10 @@
 
                                 <div class="btn-favorite-container pull-right">
                                     @if($isLiked)
-                                        <div class="btn btn-success"><span class="fui-heart"></span> {{$game->likes}} </div>
+                                        <div class="btn btn-success"><span class="icon-heart"></span> {{$game->likes}} </div>
                                     @else
-                                        <div class="btn btn-favorite"><span class="fui-heart"></span> {{$game->likes}} </div>
-                                        <div id="btn-favorite-background" class="btn btn-favorite btn-favorite-background"><span class="fui-heart"></span> {{$game->likes}} </div>
+                                        <div class="btn btn-favorite"><span class="icon-heart"></span> {{$game->likes}} </div>
+                                        <div id="btn-favorite-background" class="btn btn-favorite btn-favorite-background"><span class="icon-heart"></span> {{$game->likes}} </div>
                                     @endif
                                 </div>
 
@@ -237,11 +237,11 @@
                 beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');},
                 success: function(data) {
                     console.log(data);
-                    $('.btn-favorite').html('<span class="fui-heart"></span> '+ data);
+                    $('.btn-favorite').html('<span class="icon-heart"></span> '+ data);
                     $('.btn-favorite').addClass('btn-success').removeClass('btn-favorite');
                 }
             }).fail(function(data) {
-                $('.btn-favorite').html('<span class="fui-cross"></span> Error');
+                $('.btn-favorite').html('<span class="icon-cancel"></span> Error');
                 $('.btn-favorite').addClass('btn-danger').removeClass('btn-favorite');
             });
 
@@ -249,27 +249,6 @@
                 $('.btn-favorite-background').remove();
             },400);
         });
-    </script>
-
-    <script>
-        /**
-         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-         */
-        /*
-         var disqus_config = function () {
-         this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-         };
-         */
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-
-            s.src = '//unityclickr.disqus.com/embed.js';
-
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
     </script>
 
     <script>

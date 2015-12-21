@@ -5,12 +5,9 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-menu"></span>
                     </button>
-                    <a class="navbar-brand" href="/" style="color: #fff;">{{Config::get('app.name')}}</a>
+                    <a class="navbar-brand" href="/" style="color: #fff;font-weight: 400;padding-left:5px;">{{Config::get('app.name')}}</a>
                 </div>
 
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
@@ -19,24 +16,34 @@
                         <a href="/game/{{$nextGame}}" class="btn-dark-blue btn navbar-btn btn-sm"  role="button">Roast Another</a>
                     @endif
 
-                    @if (Auth::guest())
-                        <a href="/auth/login" class="btn btn-light-blue navbar-btn btn-sm pull-right" style="margin-left: 10px;"><span class="fui-user"></span> Login</a>
-                        <a href="/auth/register" class="btn btn-light-blue navbar-btn btn-sm pull-right" style="margin-left: 10px;">Register</a>
-                    @else
-                        <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-light-blue navbar-btn btn-sm dropdown-toggle" style="margin-left: 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> <span >Profile</span></a></li>
+                    <ul class="nav navbar-nav navbar-right">
 
-                                <li><a href="{{ url('/auth/logout') }}" class="category" id="logout-button"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                            </ul>
-                        </div>
-                    @endif
+                        @if (Auth::guest())
+                            <li>
+                                <form action="/auth/register">
+                                    <button class="btn btn-light-blue navbar-btn btn-sm" style="margin-left: 10px;">Register</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="/auth/login">
+                                    <button class="btn btn-light-blue navbar-btn btn-sm" style="margin-left: 10px;">Login</button>
+                                </form>
+                            </li>
+                        @else
 
-                    <a href="/add-game" id="btn-add-game" class="btn btn-primary navbar-btn btn-sm pull-right">Add Game</a>
+                            <li class="dropdown text-center">
+                                <button href="#" class="btn btn-light-blue navbar-btn btn-sm dropdown-toggle" data-toggle="dropdown" role="button">{{ Auth::user()->username }} <span class="caret"></span></button>
+                                <ul class="dropdown-menu" style="margin-top:0px;">
+                                    <li><a href="/profile"><span class="icon-user">Profile</span></a></li>
+                                    <li><a href="{{ url('/auth/logout') }}" class="category" id="logout-button"><span class="icon-logout"></span>Logout</a></li>
+                                </ul>
+                            </li>
+
+                        @endif
+
+                    </ul>
                 </div>
+
             </div>
 
         </div>

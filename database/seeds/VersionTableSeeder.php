@@ -104,32 +104,6 @@ class VersionTableSeeder extends Seeder
                 'image4' => '',
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
-            ],
-            ['id' => 8,
-                'game_id' => 6,
-                'version' => '1.1.1',
-                'slug' => '1.1.1',
-                'beta' => true,
-                'video_link' => '',
-                'image1' => 'image9.jpg',
-                'image2' => 'image8.jpg',
-                'image3' => 'image7.jpg',
-                'image4' => '',
-                'upcoming_features' => "Upcomming feaures 1.1.1",
-                'changes' => ''
-            ],
-            ['id' => 9,
-                'game_id' => 7,
-                'version' => '1.1.1',
-                'slug' => '1.1.1',
-                'beta' => true,
-                'video_link' => '',
-                'image1' => 'image8.jpg',
-                'image2' => 'image7.jpg',
-                'image3' => 'image9.jpg',
-                'image4' => '',
-                'upcoming_features' => "Upcomming feaures 1.1.1",
-                'changes' => ''
             ]
         );
 

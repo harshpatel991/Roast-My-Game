@@ -14,7 +14,8 @@ class CreateVersionsTable extends Migration
     {
         Schema::create('versions', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('game_id');
+            $table->integer('game_id')->unsigned();
+            $table->foreign('game_id')->references('id')->on('games');;
             $table->string('version', 255);
             $table->string('slug', 35);
             $table->boolean('beta');
