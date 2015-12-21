@@ -18,6 +18,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
 
+
                         @if (Auth::guest())
                             <li>
                                 <form action="/auth/register">
@@ -40,6 +41,8 @@
                             </li>
 
                         @endif
+
+                        <a href="/add-game" id="btn-add-game" class="btn btn-primary navbar-btn btn-sm" style="margin-left: 10px;">Add Game</a>
 
                     </ul>
                 </div>
