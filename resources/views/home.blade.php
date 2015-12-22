@@ -12,8 +12,6 @@
     @include('partials/fixedNav')
 @endsection
 
-
-
 @section('content')
 
     <div class="container-fluid background">
@@ -34,15 +32,11 @@
             </div>
         </div>
 
-
-
         <div class="row">
             <div class="col-md-offset-1 col-md-10 col-sm-12">
 
-
                 <div class="row">
                     <h6 class="small">RECENTLY UPDATED GAMES</h6>
-
 
                     @include('partials/card', ['game' => $games[0]])
                     @include('partials/card', ['game' => $games[1]])
@@ -60,8 +54,6 @@
                     </div>
 
                 </div>
-
-
 
             </div>
         </div>

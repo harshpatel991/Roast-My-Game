@@ -4,14 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Game;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Slynova\Commentable\Models\Comment;
+use App\Http\Requests\StoreCommentRequest;
 
 class CommentController extends Controller
 {
-    public function postAddComment($game, Request $request)
+    // Check that at least one of the fields is provided
+    public static function shouldStore(StoreCommentRequest $request) {
+        if($request->has('body') || $request->has('positive') || $request->has('negative')) {
+            return true;
+        }
+        return false;
+    }
+
+    public function postAddComment($game, StoreCommentRequest $request)
     {
+        if(!CommentController::shouldStore($request)) {
+            return redirect()->back()->withErrors('Please specify a comment.');
+        }
         $comment = new Comment;
         $comment->user_id = $request->user()->id;
         $comment->username = $request->user()->username;
@@ -22,8 +35,12 @@ class CommentController extends Controller
         return redirect()->back()->with('message', 'Comment added!');
     }
 
-    public function postAddCommentReply($comment, Request $request)
+    public function postAddCommentReply($comment, StoreCommentRequest $request)
     {
+        if(!CommentController::shouldStore($request)) {
+            return redirect()->back()->withErrors('Please specify a comment.');
+        }
+
         $newComment = new Comment;
         $newComment->user_id = $request->user()->id;
         $newComment->commentable_id = $comment->commentable_id;
@@ -33,6 +50,17 @@ class CommentController extends Controller
         $newComment->save();
         $newComment->makeChildOf($comment);
         return redirect()->back()->with('message', 'Comment reply added!');
+    }
+
+    public function getAddComment($game, Request $request)
+    {
+        return redirect('game/'.$game->slug);
+    }
+
+    public function getAddCommentReply($comment)
+    {
+        $game = Game::findOrFail($comment->commentable_id);
+        return redirect('game/'.$game->slug);
     }
 
 }

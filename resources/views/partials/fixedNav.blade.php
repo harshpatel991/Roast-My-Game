@@ -33,7 +33,7 @@
                         @else
 
                             <li class="dropdown text-center">
-                                <button href="#" class="btn btn-light-blue navbar-btn btn-sm dropdown-toggle" data-toggle="dropdown" role="button">{{ Auth::user()->username }} <span class="caret"></span></button>
+                                <button href="#" id="profile-dropdown" class="btn btn-light-blue navbar-btn btn-sm dropdown-toggle" data-toggle="dropdown" role="button">{{ Auth::user()->username }} <span class="caret"></span></button>
                                 <ul class="dropdown-menu" style="margin-top:0px;">
                                     <li><a href="/profile"><span class="icon-user">Profile</span></a></li>
                                     <li><a href="{{ url('/auth/logout') }}" class="category" id="logout-button"><span class="icon-logout"></span>Logout</a></li>

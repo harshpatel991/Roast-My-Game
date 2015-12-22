@@ -47,6 +47,12 @@ Route::get('/game/{game_slug}/{version_slug?}',
 Route::post('/favorite/{game_slug}',
     ['as' => 'favorite', 'middleware' => 'auth', 'uses' => 'GameController@addFavorite']);
 
+Route::get('/add-comment/{game_slug}',
+    ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@getAddComment']); //so users not logged in get redirected
+
+Route::get('/add-comment-reply/{comment_id}',
+    ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@getAddCommentReply']); //so users not logged in get redirected
+
 Route::post('/add-comment/{game_slug}',
     ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@postAddComment']);
 
