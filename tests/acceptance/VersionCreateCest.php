@@ -42,6 +42,10 @@ class VersionCreateCest
 
         $I->dontSee('Changes made this version in 1.2.5');
         $I->dontSee('Upcomming feaures 1.2.5');
+
+        $I->seeInDatabase('versions', array('version' => '2',
+            'beta' => 0,
+            'image1' => 'test-game-1-2-1.jpg'));
     }
 
     public function testAddFullVersionValues(\AcceptanceTester $I)
@@ -109,6 +113,16 @@ class VersionCreateCest
 
         $I->see('Here are some changes for version 3.');
         $I->see('Here are some upcoming features for version 3.');
+
+        $I->seeInDatabase('versions', array('version' => '3',
+            'beta' => 1,
+            'video_link' => 'https://www.youtube.com/watch?v=BsjuLsKAEFA',
+            'image1' => 'test-game-1-3-1.jpg',
+            'image2' => 'test-game-1-3-2.jpg',
+            'image3' => 'test-game-1-3-3.jpg',
+            'image4' => 'test-game-1-3-4.jpg',
+            'changes' => '<p>Here are some changes for version 3.</p>',
+            'upcoming_features' => '<p>Here are some upcoming features for version 3.</p>'));
 
     }
 }

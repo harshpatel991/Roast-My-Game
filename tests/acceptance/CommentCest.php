@@ -2,7 +2,6 @@
 
 class CommentCest
 {
-    //TODO: add see in db to everything: $I->seeInDatabase('users', array('name' => 'Davert', 'email' => 'davert * `mail.com'));`
     private function loginAs(AcceptanceTester $I, $email, $password)
     {
         $I->amOnPage('/auth/login');

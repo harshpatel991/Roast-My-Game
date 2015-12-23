@@ -27,6 +27,11 @@ class GameCreateCest
         $I->see('VERSION 3.4.5');
         $I->dontSee('BETA');
         $I->seeInSource("selectImage('/upload/test-minimal-title-345-1.jpg')");
+        $I->seeInDatabase('games', array('title' => 'Test Minimal Title',
+                                        'genre' => 'action'));
+        $I->seeInDatabase('versions', array('version' => '3.4.5',
+                                        'beta' => 0,
+                                        'image1' => 'test-minimal-title-345-1.jpg'));
     }
 
     public function testAddAllGameValues(\AcceptanceTester $I)
@@ -55,6 +60,7 @@ class GameCreateCest
         $I->checkOption('#platform_other');
 
         $I->click(['link' => 'Add Platform Links']);
+        $I->wait(1);
         $I->fillField('link_platform_pc', 'http://pc.com');
         $I->fillField('link_platform_mac', 'http://mac.com');
         $I->fillField('link_platform_ios', 'http://ios.com');
@@ -63,6 +69,7 @@ class GameCreateCest
         $I->fillField('link_platform_other', 'http://other-web.com');
 
         $I->click(['link' => 'Add Social Links']);
+        $I->wait(1);
         $I->fillField('link_social_greenlight', 'http://greenlight.com');
         $I->fillField('link_social_website', 'http://website.com');
         $I->fillField('link_social_twitter', 'http://link-twitter.com');
@@ -127,6 +134,31 @@ class GameCreateCest
 
         $I->see('Here are some changes.');
         $I->see('Here are some upcoming features.');
+        $I->seeInDatabase('games', array('title' => 'Test Full Title',
+                                'genre' => 'shooter',
+                                'description' => '<p>Here is a description.</p>',
+                                'platforms' => 'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',
+                                'link_platform_pc' => 'http://pc.com',
+                                'link_platform_mac' => 'http://mac.com',
+                                'link_platform_ios' => 'http://ios.com',
+                                'link_platform_android' => 'http://android.com',
+                                'link_platform_unity' => 'http://unity-web.com',
+                                'link_platform_other' => 'http://other-web.com',
+                                'link_social_greenlight' => 'http://greenlight.com',
+                                'link_social_website' => 'http://website.com',
+                                'link_social_twitter' => 'http://link-twitter.com',
+                                'link_social_youtube' => 'http://link-youtube.com',
+                                'link_social_google_plus' => 'http://link-gplus.com',
+                                'link_social_facebook' => 'http://link-facebook.com'));
+        $I->seeInDatabase('versions', array('version' => '1',
+            'beta' => 1,
+            'video_link' => 'https://www.youtube.com/watch?v=BsjuLsKAEFA',
+            'image1' => 'test-full-title-1-1.jpg',
+            'image2' => 'test-full-title-1-2.jpg',
+            'image3' => 'test-full-title-1-3.jpg',
+            'image4' => 'test-full-title-1-4.jpg',
+            'changes' => '<p>Here are some changes.</p>',
+            'upcoming_features' => '<p>Here are some upcoming features.</p>'));
     }
 
     public function testAddFormattedTextBoxValues(\AcceptanceTester $I)

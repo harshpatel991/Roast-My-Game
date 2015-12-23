@@ -19,7 +19,7 @@ class CreateGamesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');;
             $table->string('title', 255);
             $table->string('slug', 35)->unique();
-            $table->enum('genre', Game::$genres);
+            $table->enum('genre', array_keys(Game::$genres));
             $table->string('description', 1000);
             $table->integer('likes')->default(0);
             $table->integer('views')->default(0);

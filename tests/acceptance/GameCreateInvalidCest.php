@@ -15,7 +15,16 @@ class GameCreateInvalidCest
 
     public function testAddWithoutPermissions(\AcceptanceTester $I)
     {
-        //TODO
+        $I->amOnPage('/');
+        $I->click('Add Game');
+
+        $I->see('Login');
+
+        $I->fillField('email', 'user1@gmail.com');
+        $I->fillField('password', 'password1');
+        $I->click(['id' => 'login']);
+
+        $I->see('Add Your Game');//test got redirected
     }
 
     public function testCreateInvalidTitle(\AcceptanceTester $I)

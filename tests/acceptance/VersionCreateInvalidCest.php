@@ -14,7 +14,16 @@ class VersionCreateInvalidCest
 
     public function testAddWithoutPermissions(\AcceptanceTester $I)
     {
-        //TODO
+        $I->amOnPage('/');
+        $I->amOnPage('/add-version/test-game-1');
+
+        $I->see('Login');
+
+        $I->fillField('email', 'user1@gmail.com');
+        $I->fillField('password', 'password1');
+        $I->click(['id' => 'login']);
+
+        $I->see('Add Progress');//test got redirected
     }
 
     public function testCreateInvalidVersion(\AcceptanceTester $I)
