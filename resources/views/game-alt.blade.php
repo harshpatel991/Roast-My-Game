@@ -94,11 +94,7 @@
                                     @endif
                                 </div>
 
-
-
-
                             </div>
-
 
                         </div>
                     </div>
@@ -229,11 +225,12 @@
 
     <script>
         $('.btn-favorite-background').on('click', function() {
+
             $('.btn-favorite-background').addClass('btn-favorite-background-animate');
 
             $.ajax({
                 type: "POST",
-                url: '/favorite/{{$game->slug}}',
+                url: '/like/{{$game->slug}}',
                 beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');},
                 success: function(data) {
                     console.log(data);
@@ -241,6 +238,10 @@
                     $('.btn-favorite').addClass('btn-success').removeClass('btn-favorite');
                 }
             }).fail(function(data) {
+                console.log(data);
+                if(data.status == 401) {
+                    window.location.href = "/auth/login";
+                }
                 $('.btn-favorite').html('<span class="icon-cancel"></span> Error');
                 $('.btn-favorite').addClass('btn-danger').removeClass('btn-favorite');
             });

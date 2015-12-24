@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
-
-use App\Http\Utils;
-use Illuminate\Html\FormBuilder;
+use App\Game;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\StoreVersionRequest;
-
-use DB;
-use App\Game;
+use App\Http\Utils;
+use App\Like;
 use App\Version;
+use Auth;
+use DB;
+use Illuminate\Html\FormBuilder;
+use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
@@ -23,7 +22,6 @@ class GameController extends Controller
             $game->views = $game->views+1;
             $game->save();
         }
-
 
         $versions = $game->versions()->orderBy('version', 'desc')->get();
 
@@ -61,9 +59,15 @@ class GameController extends Controller
         $socialLinks = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
         $linkIcons = Game::translateLinkToGlyph($socialLinks);
         $linkTexts = Game::translateLinkText($socialLinks);
-//        dd($links);
-        //TODO: check if this user already liked this game
+
         $isLiked = false;
+        if (Auth::check()) {
+            $likes = Like::where('user_id', Auth::user()->id)->where('game_id', $game->id)->count();
+            if( $likes >= 1) {
+                $isLiked = true;
+            }
+        }
+
 
         $comments = $game->comments()->get();
 
@@ -146,12 +150,22 @@ class GameController extends Controller
         return $version;
     }
 
-    public function addFavorite(Game $game) {
-        //TODO: check that this user has not already liked this game
-        $game->likes = $game->likes + 1;
-        $game->save();
+    public function addLike(Game $game, Request $request) {
+        $user = $request->user();
 
-        //TODO: add record to likes table
+        $likeCount = Like::where('user_id', $user->id)->where('game_id', $game->id)->count();
+        if($likeCount >= 1) {
+            return response('Precondition Failed', 412);
+        }
+
+        $game->likes = $game->likes + 1;
+
+        $like = new Like;
+        $like->game_id = $game->id;
+        $like->user_id = $user->id;
+
+        $game->save();
+        $like->save();
 
         return $game->likes;
     }

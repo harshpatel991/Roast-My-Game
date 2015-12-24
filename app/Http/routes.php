@@ -44,8 +44,8 @@ Route::post('/add-version/{game_slug}',
 Route::get('/game/{game_slug}/{version_slug?}',
     ['as' => 'getGame', 'uses' => 'GameController@getGame']);
 
-Route::post('/favorite/{game_slug}',
-    ['as' => 'favorite', 'middleware' => 'auth', 'uses' => 'GameController@addFavorite']);
+Route::post('/like/{game_slug}',
+    ['as' => 'like', 'middleware' => 'auth', 'uses' => 'GameController@addLike']);
 
 Route::get('/add-comment/{game_slug}',
     ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@getAddComment']); //so users not logged in get redirected

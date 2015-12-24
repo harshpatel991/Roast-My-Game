@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.27, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: homestead
+-- Host: 127.0.0.1    Database: homestead
 -- ------------------------------------------------------
 -- Server version	5.6.27-0ubuntu0.14.04.1
 
@@ -66,7 +66,7 @@ CREATE TABLE `games` (
   `user_id` int(10) unsigned NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `genre` enum('Select Genre','Action','Action-Adventure','Idle','Puzzle','Role-Playing','Shooter','Simulation','Sports','Strategy') COLLATE utf8_unicode_ci NOT NULL,
+  `genre` enum('','action','action-adventure','idle','puzzle','role-playing','shooter','simulation','sports','strategy') COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `likes` int(11) NOT NULL DEFAULT '0',
   `views` int(11) NOT NULL DEFAULT '0',
@@ -98,7 +98,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','Action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',239,1020,'platform_pc,platform_android,platform_other','http://pc.com',NULL,NULL,'http://android.com',NULL,'http://other-web.com','http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','Shooter','This my description',50000,600000,'',NULL,NULL,NULL,NULL,NULL,NULL,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Test Game 3','test-game-3','Strategy','This is a teeny tiny description',54,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','Puzzle','This is a short description.',85423,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','Strategy','This is a teeny tiny description',54,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',1,1020,'platform_pc,platform_android,platform_other','http://pc.com',NULL,NULL,'http://android.com',NULL,'http://other-web.com','http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','shooter','This my description',2,600000,'',NULL,NULL,NULL,NULL,NULL,NULL,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Test Game 3','test-game-3','strategy','This is a teeny tiny description',1,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','puzzle','This is a short description.',0,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','strategy','This is a teeny tiny description',0,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `likes` (
   KEY `likes_game_id_foreign` (`game_id`),
   CONSTRAINT `likes_game_id_foreign` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`),
   CONSTRAINT `likes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,6 +129,7 @@ CREATE TABLE `likes` (
 
 LOCK TABLES `likes` WRITE;
 /*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+INSERT INTO `likes` VALUES (1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,3,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +210,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$9IjkTs6YdqXYiIDcQWeyc.DYlh0YfQ.an3NNscCG5sz2rKh3fMuXG',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$r3q4jkT.4dInTDJUjWpxZOKhTLXsD6ReoCmC1IqFOXsuQAjzw6egK',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$6/tTaCH36QY4beQjlQW2s.vViriU9gNabQwZN9XIYErW.mTzOOG0e',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$IaSZ1.Axd37LcY6Y.nglzuTYjYY3PgVveZ50XZPadlOpAedFEHj4G',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$tbdOn7Gkf196xT0V.kBxPO7VYvPVap0OqsSuQoZqqFd.ieuwYGa.W',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$xY1gmVth7OXwil5dZ.RVNOoNZAEnRdEfQ.MrztNlFf9GSfUY3jwum',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-20 22:05:20
+-- Dump completed on 2015-12-24  3:20:36
