@@ -46,6 +46,19 @@ class VersionCreateCest
         $I->seeInDatabase('versions', array('version' => '2',
             'beta' => 0,
             'image1' => 'test-game-1-2-1.jpg'));
+
+        //try to switch versions
+        $I->click(['id' => 'version-dropdown']);
+        $I->click(['id' => 'version-1.2.5']);
+        $I->see('Test Game 1');
+        $I->seeInSource("selectImage('/upload/image4.jpg')");
+        $I->seeInCurrentUrl('1.2.5');
+
+        //and switch back
+        $I->click(['id' => 'version-dropdown']);
+        $I->click(['id' => 'version-2']);
+        $I->seeInSource("selectImage('/upload/test-game-1-2-1.jpg')");
+        $I->seeInCurrentUrl('2');
     }
 
     public function testAddFullVersionValues(\AcceptanceTester $I)
@@ -123,6 +136,20 @@ class VersionCreateCest
             'image4' => 'test-game-1-3-4.jpg',
             'changes' => '<p>Here are some changes for version 3.</p>',
             'upcoming_features' => '<p>Here are some upcoming features for version 3.</p>'));
+
+        //try to switch versions
+        $I->click(['id' => 'version-dropdown']);
+        $I->click(['id' => 'version-1.2.3']);
+
+        $I->see('Test Game 1');
+        $I->seeInSource("selectImage('/upload/image1.jpg')");
+        $I->seeInCurrentUrl('1.2.3');
+
+        //and switch back
+        $I->click(['id' => 'version-dropdown']);
+        $I->click(['id' => 'version-3']);
+        $I->seeInSource("selectImage('/upload/test-game-1-3-1.jpg')");
+        $I->seeInCurrentUrl('3');
 
     }
 }

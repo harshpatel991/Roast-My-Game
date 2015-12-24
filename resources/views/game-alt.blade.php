@@ -77,10 +77,10 @@
                                 <div class="label label-default"> <span class="fui-eye"></span> {{$game->views}} </div>
 
                                 <div class="btn-group pull-right" style="padding-left: 10px;">
-                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown">VERSION {{$currentVersion->version}}<span class="caret"></span></button>
+                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown" id="version-dropdown">VERSION {{$currentVersion->version}}<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         @foreach($versions as $version)
-                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}">{{$version->version}}</a></li>
+                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}" id="version-{{$version->slug}}">{{$version->version}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

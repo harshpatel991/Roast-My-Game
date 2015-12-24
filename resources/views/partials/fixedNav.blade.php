@@ -13,7 +13,7 @@
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 
                     @if(isset($nextGame))
-                        <a href="/game/{{$nextGame}}" class="btn-dark-blue btn navbar-btn btn-sm"  role="button">Roast Another</a>
+                        <a href="/game/{{$nextGame}}" class="btn-dark-blue btn navbar-btn btn-sm"  role="button" id="next_game">Roast Another</a>
                     @endif
 
                     <ul class="nav navbar-nav navbar-right">
