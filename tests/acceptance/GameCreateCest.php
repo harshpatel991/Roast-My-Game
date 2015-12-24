@@ -137,7 +137,7 @@ class GameCreateCest
         $I->seeInDatabase('games', array('title' => 'Test Full Title',
                                 'genre' => 'shooter',
                                 'description' => '<p>Here is a description.</p>',
-                                'platforms' => 'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',
+                                'platforms' => 'platform_pc,platform_ios,platform_unity,platform_mac,platform_android,platform_other',
                                 'link_platform_pc' => 'http://pc.com',
                                 'link_platform_mac' => 'http://mac.com',
                                 'link_platform_ios' => 'http://ios.com',

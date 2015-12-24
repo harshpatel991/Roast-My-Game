@@ -42,7 +42,7 @@ CREATE TABLE `comments` (
   KEY `comments_user_id_index` (`user_id`),
   KEY `comments_commentable_id_index` (`commentable_id`),
   KEY `comments_commentable_type_index` (`commentable_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,6 +51,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 1 on game 5',NULL,1,2,0,5,'App\\Game',1,'user1','story','level_design');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +211,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$IaSZ1.Axd37LcY6Y.nglzuTYjYY3PgVveZ50XZPadlOpAedFEHj4G',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$tbdOn7Gkf196xT0V.kBxPO7VYvPVap0OqsSuQoZqqFd.ieuwYGa.W',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$xY1gmVth7OXwil5dZ.RVNOoNZAEnRdEfQ.MrztNlFf9GSfUY3jwum',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$0ODpyo1a0iCrxJjpgKrgB.gu1NF8002TQYbVmuYMYGso8Ci4vWZge',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$0sPPkem/jQTz7Fy7toQ.aOT2st6pa70431ZfmtHEUArFnMFsocoFG',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$0VD3lFnK2vgdwRcHBOVgjemBzsCcU.JMeIsFWUO9nksRcYbULqJ3q',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,4 +262,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-24  3:20:36
+-- Dump completed on 2015-12-24 18:51:01
