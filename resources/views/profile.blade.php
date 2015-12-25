@@ -14,38 +14,59 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="content-background">
-                    <h1 class="form-title">{{$user->username}}'s Profile</h1>
 
+                    <div class="row">
+                        <div class="col-lg-6 col-md-5">
+                            <h4 class="">{{$user->username}}'s Profile</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-7">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4 class="text-center" style="margin-bottom: 0px">{{$versionsCount}}</h4>
+                                    <p class="small text-center">Progress Updates</p>
+                                </div>
+                                <div class="col-xs-4" style="border-style: solid;border-width: 0px 1px;border-color: #ddd;">
+                                    <h4 class="text-center" style="margin-bottom: 0px">{{$comments->count()}}</h4>
+                                    <p class="small text-center">Comments</p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <h4 class="text-center" style="margin-bottom: 0px">{{$likes->count()}}</h4>
+                                    <p class="small text-center">Likes</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                     @include('partials.display-input-error')
 
                     <h6>My Games</h6>
                     @if(count($games) > 0)
                         @foreach($games as $game)
 
-                            <div class="media small-grey-box">
-                                <div class="media-left">
+                            <div class="row small-grey-box">
+                                <div class="col-md-3 ">
                                     <a href="/game/{{$game->slug}}">
-                                        <img class="media-object" width="150" height="100" src="{{Utils::get_image_url($game->latestScreenshot()->image1)}}"/>
+                                        <img width="100%" height="100%" style="padding: 5px 0px;" src="{{Utils::get_image_url($game->latestScreenshot()->image1)}}"/>
                                     </a>
                                 </div>
-                                <div class="media-body">
+                                <div class="col-sm-8 col-md-5">
                                     <h4 class="media-heading"><a href="/game/{{$game->slug}}" style="color: #535353;">{{$game->title}}</a></h4>
                                     <p> <b>Views: </b>{{$game->views}} <b>Likes: </b>{{$game->likes}}</p>
                                 </div>
-                                <div class="media-right">
-                                    <a class="btn btn-default" href="/add-version/{{$game->slug}}">Add Progress</a>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default pull-right" href="/add-version/{{$game->slug}}">Add Progress</a>
                                 </div>
                             </div>
                         @endforeach
                     @else
                         <br>
-                        <h4 class="text-center"><div class="font-light-gray">No games here!</div></h4>
+                        <h4 class="text-center"><div class="font-light-gray">No games here</div></h4>
 
                     @endif
                     <p class="text-center">
                         <a href="/add-game" class="btn btn-primary navbar-btn btn-lg">Add a Game</a>
                     </p>
-
 
                     <h6>My Comments</h6>
                     @if(count($comments) > 0)
@@ -59,10 +80,24 @@
                         @endforeach
                     @else
                         <br>
-                        <h4 class="text-center"><div class="font-light-gray">No comments here!</div></h4>
+                        <h4 class="text-center"><div class="font-light-gray">No comments here</div></h4>
                         <br>
                     @endif
-                    <br>
+
+
+                    <h6>My Likes</h6>
+                    @if(count($likes) > 0)
+                        @foreach($likes as $like)
+
+                            <p><a href="/game/{{$like->game()->first()->slug}}">{{ $like->game()->first()->title }}</a></p>
+
+                        @endforeach
+                    @else
+                        <br>
+                        <h4 class="text-center"><div class="font-light-gray">No likes here</div></h4>
+                        <br>
+                    @endif
+
 
                 </div>
             </div>

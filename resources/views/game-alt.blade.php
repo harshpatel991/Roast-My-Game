@@ -74,7 +74,7 @@
                                     <div class="label label-default">BETA</div>
                                 @endif
 
-                                <div class="label label-default"> <span class="fui-eye"></span> {{$game->views}} </div>
+                                <div class="label label-default"><span class="icon-eye"></span>{{$game->views}} </div>
 
                                 <div class="btn-group pull-right" style="padding-left: 10px;">
                                     <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown" id="version-dropdown">VERSION {{$currentVersion->version}}<span class="caret"></span></button>

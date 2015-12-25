@@ -16,13 +16,15 @@ class UserController extends Controller
         $user = $request->user();
         $games = $user->games()->get();
         $comments = Comment::where('user_id', $user->id)->get();
+        $likes = $user->likes()->get();
+        $versionsCount = 0;
 
-        if(count($games) > 0) {
-            $latestImage = $games[0]->versions()->orderBy('version', 'desc')->limit(1)->first()->image1;
+        foreach($games as $game){
+            $versionsCount += $game->versions()->count();
         }
 
 
-        return view('profile', compact('user', 'games', 'latestImage', 'comments'));
+        return view('profile', compact('user', 'games', 'comments', 'versionsCount', 'likes'));
     }
 
 }
