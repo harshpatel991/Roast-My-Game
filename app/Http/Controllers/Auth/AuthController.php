@@ -60,11 +60,25 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $confirmationCode = str_random(16);
+
+        $newUser = User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'status' => 'unconfirmed',
+            'confirmation_code' => $confirmationCode
         ]);
+
+        //TODO: this is copied from Topic Loop email, update to fit RMG
+//        Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['confirmationCode' => $confirmationCode, 'logoPath' => 'http://www.topicloop.com/images/logo.png'], function($message) {
+//            $message->to(Input::get('email'))
+//                ->bcc('support@topicloop.com', 'Support')
+//                ->subject('Please confirm your email');
+//        });
+//        Log::info('Confirm email sent out to '.Input::get('email'));
+
+        return $newUser;
     }
 
     /**
