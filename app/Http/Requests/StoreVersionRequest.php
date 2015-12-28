@@ -16,6 +16,14 @@ class StoreVersionRequest extends Request
         'image2' => 'image|max:2000',
         'image3' => 'image|max:2000',
         'image4' => 'image|max:2000',
+
+        'link_platform_pc' => 'max:255|url',
+        'link_platform_mac' => 'max:255|url',
+        'link_platform_ios' => 'max:255|url',
+        'link_platform_android' => 'max:255|url',
+        'link_platform_unity' => 'max:255|url',
+        'link_platform_other' => 'max:255|url',
+
         'upcoming_features' => 'max:1000',
         'changes' => 'max:1000'
         ];

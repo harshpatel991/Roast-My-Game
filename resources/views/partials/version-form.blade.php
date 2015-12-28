@@ -14,7 +14,7 @@
     </div>
 </div>
 
-{!! Form::myInput('video_link', 'Gameplay Link', 'https://www.youtube.com/watch?v=e-ORhEE9VVg') !!}
+{!! Form::myInput('video_link', 'Gameplay Video', 'https://www.youtube.com/watch?v=e-ORhEE9VVg') !!}
 
 <div class="form-group">
     {!! Form::label('image1', 'Screenshots*', ['class' => 'col-sm-2 control-label form-label']) !!}
@@ -38,6 +38,22 @@
     <div class="col-sm-2"></div>
     {!! Form::myImageWithThumbnail('image3') !!}
     {!! Form::myImageWithThumbnail('image4') !!}
+</div>
+
+<div class="form-group">
+    <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlayGameLinks">Add Download Game Links <i class="icon-down-dir"></i></a>
+    <div class="collapse" id="collapsePlayGameLinks" style="padding-top: 10px;">
+        <div class="col-sm-offset-2">
+            <p>If your game is avaiable to play, add links to download your game</p>
+        </div>
+        {!! Form::myInput('link_platform_pc', 'PC', '') !!}
+        {!! Form::myInput('link_platform_mac', 'Mac', '') !!}
+        {!! Form::myInput('link_platform_ios', 'iOS', '') !!}
+        {!! Form::myInput('link_platform_android', 'Android', '') !!}
+        {!! Form::myInput('link_platform_unity', 'Unity Web', '') !!}
+        {!! Form::myInput('link_platform_other', 'Other Web', '') !!}
+
+    </div>
 </div>
 
 <div class="form-group">

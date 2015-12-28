@@ -24,6 +24,14 @@ class VersionTableSeeder extends Seeder
                 'image2' => 'image2.jpg',
                 'image3' => 'image3.jpg',
                 'image4' => '',
+
+                'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => 'http://android-game-1-version-1.2.3.com',
+                'link_platform_unity' => null,
+                'link_platform_other' => 'http://other-web-game-1-version-1.2.3.com',
+
                 'upcoming_features' => "Upcomming feaures 1.2.3",
                 'changes' => "Changes made this version in 1.2.3"
             ],
@@ -37,6 +45,14 @@ class VersionTableSeeder extends Seeder
                 'image2' => 'image5.jpg',
                 'image3' => 'image6.jpg',
                 'image4' => '',
+
+                'link_platform_pc' => 'http://pc-game-1-version-1.2.5.com',
+                'link_platform_mac' => 'http://mac-game-1-version-1.2.5.com',
+                'link_platform_ios' => 'http://ios-game-1-version-1.2.5.com',
+                'link_platform_android' => 'http://android-game-1-version-1.2.5.com',
+                'link_platform_unity' => 'http://unity-game-1-version-1.2.5.com',
+                'link_platform_other' => 'http://other-web-game-1-version-1.2.5.com',
+
                 'upcoming_features' => "Upcomming feaures 1.2.5",
                 'changes' => "Changes made this version in 1.2.5"
             ],
@@ -50,6 +66,14 @@ class VersionTableSeeder extends Seeder
                 'image2' => 'image8.jpg',
                 'image3' => 'image9.jpg',
                 'image4' => '',
+
+                'link_platform_pc' => 'http://pc-game-1-version-1.1.1.com',
+                'link_platform_mac' => 'http://mac-game-1-version-1.1.1.com',
+                'link_platform_ios' => 'http://ios-game-1-version-1.1.1.com',
+                'link_platform_android' => 'http://android-game-1-version-1.1.1.com',
+                'link_platform_unity' => 'http://unity-game-1-version-1.1.1.com',
+                'link_platform_other' => 'http://other-web-game-1-version-1.1.1.com',
+
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
             ],
@@ -63,6 +87,15 @@ class VersionTableSeeder extends Seeder
                 'image2' => '',
                 'image3' => '',
                 'image4' => '',
+
+                'link_platform_pc' => 'http://pc-game-2-version-1.1.1.com',
+                'link_platform_mac' => 'http://mac-game-2-version-1.1.1.com',
+                'link_platform_ios' => 'http://ios-game-2-version-1.1.1.com',
+                'link_platform_android' => 'http://android-game-2-version-1.1.1.com',
+                'link_platform_unity' => 'http://unity-game-2-version-1.1.1.com',
+                'link_platform_other' => 'http://other-web-game-2-version-1.1.1.com',
+
+
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
             ],
@@ -76,6 +109,14 @@ class VersionTableSeeder extends Seeder
                 'image2' => 'image3.jpg',
                 'image3' => '',
                 'image4' => '',
+
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
             ],
@@ -89,6 +130,14 @@ class VersionTableSeeder extends Seeder
                 'image2' => 'image3.jpg',
                 'image3' => 'image5.jpg',
                 'image4' => '',
+
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
             ],
@@ -102,6 +151,14 @@ class VersionTableSeeder extends Seeder
                 'image2' => 'image4.jpg',
                 'image3' => 'image5.jpg',
                 'image4' => '',
+
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
             ]

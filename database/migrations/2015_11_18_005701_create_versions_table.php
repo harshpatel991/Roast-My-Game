@@ -25,6 +25,13 @@ class CreateVersionsTable extends Migration
             $table->string('image3', 255)->nullable();
             $table->string('image4', 255)->nullable();
 
+            $table->string('link_platform_pc', 255)->nullable();
+            $table->string('link_platform_mac', 255)->nullable();
+            $table->string('link_platform_ios', 255)->nullable();
+            $table->string('link_platform_android', 255)->nullable();
+            $table->string('link_platform_unity', 255)->nullable();
+            $table->string('link_platform_other', 255)->nullable();
+
             $table->string('upcoming_features', 1000);
             $table->string('changes', 1000);
             $table->timestamps();

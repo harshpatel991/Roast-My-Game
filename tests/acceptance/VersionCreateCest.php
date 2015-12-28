@@ -22,12 +22,12 @@ class VersionCreateCest
         $I->see('Action');
         $I->see('This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.');
 
-        $I->see('PC');
-        $I->see('Android');
-        $I->see('Other Web');
-        $I->seeInSource('<a href="http://pc.com">');
-        $I->seeInSource('<a href="http://android.com">');
-        $I->seeInSource('<a href="http://other-web.com">');
+        $I->dontSee('PC');
+        $I->dontSee('Android');
+        $I->dontSee('Other Web');
+        $I->dontSeeInSource('http://pc.com');
+        $I->dontSeeInSource('http://android.com');
+        $I->dontSeeInSource('http://other-web.com');
 
         $I->seeInSource('<a href="http://greenlight.com">');
         $I->seeInSource('<a href="http://website.com">');
@@ -80,6 +80,15 @@ class VersionCreateCest
         $I->attachFile('image3', 'image3.jpg');
         $I->attachFile('image4', 'image4.jpg');
 
+        $I->click(['link' => 'Add Download Game Links']);
+        $I->wait(1);
+        $I->fillField('link_platform_pc', 'http://pc-full-version-version-3.com');
+        $I->fillField('link_platform_mac', 'http://mac-full-version-version-3.com');
+        $I->fillField('link_platform_ios', 'http://ios-full-version-version-3.com');
+        $I->fillField('link_platform_android', 'http://android-full-version-version-3.com');
+        $I->fillField('link_platform_unity', 'http://unity-web-full-version-version-3.com');
+        $I->fillField('link_platform_other', 'http://other-web-full-version-version-3.com');
+
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('changes_ifr');
             $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
@@ -100,14 +109,17 @@ class VersionCreateCest
         $I->see('This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.');
 
         $I->see('PC');
-        $I->dontSee('Mac');
+        $I->see('Mac');
         $I->see('Android');
-        $I->dontSee('iOS');
-        $I->dontSee('Unity Web');
+        $I->see('iOS');
+        $I->see('Unity Web');
         $I->see('Other Web');
-        $I->seeInSource('<a href="http://pc.com">');
-        $I->seeInSource('<a href="http://android.com">');
-        $I->seeInSource('<a href="http://other-web.com">');
+        $I->seeInSource('http://pc-full-version-version-3.com');
+        $I->seeInSource('http://mac-full-version-version-3.com');
+        $I->seeInSource('http://ios-full-version-version-3.com');
+        $I->seeInSource('http://android-full-version-version-3.com');
+        $I->seeInSource('http://unity-web-full-version-version-3.com');
+        $I->seeInSource('http://other-web-full-version-version-3.com');
 
         $I->seeInSource('<a href="http://greenlight.com">');
         $I->seeInSource('<a href="http://website.com">');
@@ -134,6 +146,12 @@ class VersionCreateCest
             'image2' => 'test-game-1-3-2.jpg',
             'image3' => 'test-game-1-3-3.jpg',
             'image4' => 'test-game-1-3-4.jpg',
+            'link_platform_pc' => 'http://pc-full-version-version-3.com',
+            'link_platform_mac' => 'http://mac-full-version-version-3.com',
+            'link_platform_ios' => 'http://ios-full-version-version-3.com',
+            'link_platform_android' => 'http://android-full-version-version-3.com',
+            'link_platform_unity' => 'http://unity-web-full-version-version-3.com',
+            'link_platform_other' => 'http://other-web-full-version-version-3.com',
             'changes' => '<p>Here are some changes for version 3.</p>',
             'upcoming_features' => '<p>Here are some upcoming features for version 3.</p>'));
 

@@ -36,45 +36,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('platforms', 'Platforms', ['class' => 'col-sm-2 control-label form-label']) !!}
-                            <div class="col-sm-2">
-                                {!! Form::myCheckbox('platforms[]', 'PC', 'platform_pc') !!}
-                            </div>
-                            <div class="col-sm-2">
-                                {!! Form::myCheckbox('platforms[]', 'iOS', 'platform_ios') !!}
-                            </div>
-                            <div class="col-sm-6">
-                                {!! Form::myCheckbox('platforms[]', 'Unity Web', 'platform_unity') !!}
-                            </div>
-                            <div class="col-sm-2">
-                                {!! Form::myCheckbox('platforms[]', 'Mac', 'platform_mac') !!}
-                            </div>
-                            <div class="col-sm-2">
-                                {!! Form::myCheckbox('platforms[]', 'Android', 'platform_android') !!}
-                            </div>
-                            <div class="col-sm-3">
-                                {!! Form::myCheckbox('platforms[]', 'Other Web', 'platform_other') !!}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlatformLinks">Add Platform Links <span class="fui-triangle-down"></span></a>
-                            <div class="collapse" id="collapsePlatformLinks" style="padding-top: 10px;">
-                                <div class="col-sm-offset-2">
-                                <p>If your game is avaiable to play, add links to download your game</p>
-                                </div>
-                                {!! Form::myInput('link_platform_pc', 'PC', '') !!}
-                                {!! Form::myInput('link_platform_mac', 'Mac', '') !!}
-                                {!! Form::myInput('link_platform_ios', 'iOS', '') !!}
-                                {!! Form::myInput('link_platform_android', 'Android', '') !!}
-                                {!! Form::myInput('link_platform_unity', 'Unity Web', '') !!}
-                                {!! Form::myInput('link_platform_other', 'Other Web', '') !!}
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <span class="fui-triangle-down"></span></a>
+                            <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <i class="icon-down-dir"></i></a>
                             <div class="collapse" id="collapseSocialLinks" style="padding-top: 10px;">
                                 {!! Form::myInput('link_social_greenlight', 'Greenlight', '') !!}
                                 {!! Form::myInput('link_social_website', 'Website', '') !!}
@@ -88,7 +50,6 @@
                         <hr>
                     <h5 class="small" style="margin-bottom: 0px; color: #c7c7c7;">You'll be able to add more progress after your game is added</h5>
                         <h4 class="small">CURRENT VERSION</h4>
-
 
                         @include('partials.version-form')
 

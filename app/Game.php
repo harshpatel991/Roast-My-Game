@@ -25,22 +25,22 @@ class Game extends Model
 
     public static $platforms = ['platform_pc', 'platform_mac', 'platform_ios', 'platform_android', 'platform_unity', 'platform_windows_store'];
 
-    public static $platformEnumToGlyph = [
-        'platform_pc'       => 'icon-windows',
-        'platform_mac'      => 'icon-apple',
-        'platform_unity'    => 'icon-unity',
-        'platform_other'    => 'icon-html5',
-        'platform_ios'      => 'icon-iphone-home',
-        'platform_android'  => 'icon-android'
+    public static $platformColumnToIcon = [
+        'link_platform_pc'       => 'icon-windows',
+        'link_platform_mac'      => 'icon-apple',
+        'link_platform_unity'    => 'icon-unity',
+        'link_platform_other'    => 'icon-html5',
+        'link_platform_ios'      => 'icon-iphone-home',
+        'link_platform_android'  => 'icon-android'
     ];
 
-    public static $platformEnumToText = [
-        'platform_pc'       => 'PC',
-        'platform_mac'      => 'Mac',
-        'platform_unity'    => 'Unity Web',
-        'platform_other'    => 'Other Web',
-        'platform_ios'      => 'iOS',
-        'platform_android'  => 'Android'
+    public static $platformColumnToText = [
+        'link_platform_pc'       => 'PC',
+        'link_platform_mac'      => 'Mac',
+        'link_platform_unity'    => 'Unity Web',
+        'link_platform_other'    => 'Other Web',
+        'link_platform_ios'      => 'iOS',
+        'link_platform_android'  => 'Android'
     ];
 
     public static $linkEnumToGlyph = [
@@ -63,22 +63,18 @@ class Game extends Model
 
     public static function getBackupImageUploadPath() { return public_path().'/upload/'; }
 
-    public static function translatePlatformToTextAndGlyph($toTranslate) {
+    public static function translatePlatformLinkTo_Icon_Name_Link($platformLinks) {
         $translated = array();
-        foreach($toTranslate as $oldkey => $platform) {
-            $translated[Game::$platformEnumToText[$platform]] = Game::$platformEnumToGlyph[$platform];
+        foreach($platformLinks as $columnName => $link) {
+            $row = array();
+            array_push($row, Game::$platformColumnToIcon[$columnName]);
+            array_push($row, Game::$platformColumnToText[$columnName]);
+            array_push($row, $link);
+
+            array_push($translated, $row);
         }
         return $translated;
     }
-
-    public static function translatePlatformLinkToGlyphAndLink($toTranslate) {
-        $translated = array();
-        foreach($toTranslate as $oldkey => $link) {
-            $translated[Game::$platformEnumToGlyph[ substr($oldkey, 5, strlen($oldkey)) ]] = $link;
-        }
-        return $translated;
-    }
-
 
     public static function translateLinkToGlyph($toTranslate) {
         $translated = array();

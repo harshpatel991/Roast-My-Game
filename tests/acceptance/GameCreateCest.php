@@ -52,22 +52,6 @@ class GameCreateCest
             $webdriver->switchTo()->defaultContent();
         });
 
-        $I->checkOption('#platform_pc');
-        $I->checkOption('#platform_mac');
-        $I->checkOption('#platform_ios');
-        $I->checkOption('#platform_android');
-        $I->checkOption('#platform_unity');
-        $I->checkOption('#platform_other');
-
-        $I->click(['link' => 'Add Platform Links']);
-        $I->wait(1);
-        $I->fillField('link_platform_pc', 'http://pc.com');
-        $I->fillField('link_platform_mac', 'http://mac.com');
-        $I->fillField('link_platform_ios', 'http://ios.com');
-        $I->fillField('link_platform_android', 'http://android.com');
-        $I->fillField('link_platform_unity', 'http://unity-web.com');
-        $I->fillField('link_platform_other', 'http://other-web.com');
-
         $I->click(['link' => 'Add Social Links']);
         $I->wait(1);
         $I->fillField('link_social_greenlight', 'http://greenlight.com');
@@ -84,6 +68,15 @@ class GameCreateCest
         $I->attachFile('image2', 'image2.jpg');
         $I->attachFile('image3', 'image3.jpg');
         $I->attachFile('image4', 'image4.jpg');
+
+        $I->click(['link' => 'Add Download Game Links']);
+        $I->wait(1);
+        $I->fillField('link_platform_pc', 'http://pc-full-game-version-1.com');
+        $I->fillField('link_platform_mac', 'http://mac-full-game-version-1.com');
+        $I->fillField('link_platform_ios', 'http://ios-full-game-version-1.com');
+        $I->fillField('link_platform_android', 'http://android-full-game-version-1.com');
+        $I->fillField('link_platform_unity', 'http://unity-web-full-game-version-1.com');
+        $I->fillField('link_platform_other', 'http://other-web-full-game-version-1.com');
 
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('changes_ifr');
@@ -110,12 +103,12 @@ class GameCreateCest
         $I->see('iOS');
         $I->see('Unity Web');
         $I->see('Other Web');
-        $I->seeInSource('<a href="http://pc.com">');
-        $I->seeInSource('<a href="http://mac.com">');
-        $I->seeInSource('<a href="http://ios.com">');
-        $I->seeInSource('<a href="http://android.com">');
-        $I->seeInSource('<a href="http://unity-web.com">');
-        $I->seeInSource('<a href="http://other-web.com">');
+        $I->seeInSource('http://pc-full-game-version-1.com');
+        $I->seeInSource('http://mac-full-game-version-1.com');
+        $I->seeInSource('http://ios-full-game-version-1.com');
+        $I->seeInSource('http://android-full-game-version-1.com');
+        $I->seeInSource('http://unity-web-full-game-version-1.com');
+        $I->seeInSource('http://other-web-full-game-version-1.com');
 
         $I->seeInSource('<a href="http://greenlight.com">');
         $I->seeInSource('<a href="http://website.com">');
@@ -137,13 +130,6 @@ class GameCreateCest
         $I->seeInDatabase('games', array('title' => 'Test Full Title',
                                 'genre' => 'shooter',
                                 'description' => '<p>Here is a description.</p>',
-                                'platforms' => 'platform_pc,platform_ios,platform_unity,platform_mac,platform_android,platform_other',
-                                'link_platform_pc' => 'http://pc.com',
-                                'link_platform_mac' => 'http://mac.com',
-                                'link_platform_ios' => 'http://ios.com',
-                                'link_platform_android' => 'http://android.com',
-                                'link_platform_unity' => 'http://unity-web.com',
-                                'link_platform_other' => 'http://other-web.com',
                                 'link_social_greenlight' => 'http://greenlight.com',
                                 'link_social_website' => 'http://website.com',
                                 'link_social_twitter' => 'http://link-twitter.com',
@@ -157,6 +143,12 @@ class GameCreateCest
             'image2' => 'test-full-title-1-2.jpg',
             'image3' => 'test-full-title-1-3.jpg',
             'image4' => 'test-full-title-1-4.jpg',
+            'link_platform_pc' => 'http://pc-full-game-version-1.com',
+            'link_platform_mac' => 'http://mac-full-game-version-1.com',
+            'link_platform_ios' => 'http://ios-full-game-version-1.com',
+            'link_platform_android' => 'http://android-full-game-version-1.com',
+            'link_platform_unity' => 'http://unity-web-full-game-version-1.com',
+            'link_platform_other' => 'http://other-web-full-game-version-1.com',
             'changes' => '<p>Here are some changes.</p>',
             'upcoming_features' => '<p>Here are some upcoming features.</p>'));
     }

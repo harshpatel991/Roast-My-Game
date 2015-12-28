@@ -24,14 +24,6 @@ class CreateGamesTable extends Migration
             $table->integer('likes')->default(0);
             $table->integer('views')->default(0);
 
-            $table->string('platforms', 140)->nullable();
-            $table->string('link_platform_pc', 255)->nullable();
-            $table->string('link_platform_mac', 255)->nullable();
-            $table->string('link_platform_ios', 255)->nullable();
-            $table->string('link_platform_android', 255)->nullable();
-            $table->string('link_platform_unity', 255)->nullable();
-            $table->string('link_platform_other', 255)->nullable();
-
             $table->string('link_social_greenlight', 255)->nullable();
             $table->string('link_social_website', 255)->nullable();
             $table->string('link_social_twitter', 255)->nullable();

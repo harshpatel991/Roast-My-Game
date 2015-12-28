@@ -47,14 +47,9 @@ class GameController extends Controller
 
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
 
-        $platforms = $game->platforms == "" ? array() : explode (',', $game->platforms);
-        $platformLinks = Utils::preg_grep_keys("/link_platform_.+/", $game->getAttributes());
+        $platformLinks = array_filter(Utils::preg_grep_keys("/link_platform_.+/", $currentVersion->getAttributes()));
 
-//        dd($platforms);
-        $platformNamesToIcons = Game::translatePlatformToTextAndGlyph($platforms);
-//        dd($platformNamesToIcons);
-        $platformIconsToLinks = Game::translatePlatformLinkToGlyphAndLink($platformLinks);
-
+        $platform_Icon_Name_Link = Game::translatePlatformLinkTo_Icon_Name_Link($platformLinks);
 
         $socialLinks = Utils::preg_grep_keys("/link_social_.+/", $game->getAttributes());
         $linkIcons = Game::translateLinkToGlyph($socialLinks);
@@ -68,13 +63,12 @@ class GameController extends Controller
             }
         }
 
-
         $comments = $game->comments()->get();
 
         $nextGame = $this->getNextGame(array_keys($request->session()->all()))->slug; //the link to view the next game
 
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platformNamesToIcons', 'platformIconsToLinks', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
     }
 
     public function getAddGame() {
@@ -95,14 +89,6 @@ class GameController extends Controller
         $game->slug = Utils::generate_unique_slug($game->title);
         $game->genre = $request->genre;
         $game->description = $request->description;
-
-        $game->platforms = $request->platforms == "" ? "" : implode(",", $request->platforms);
-        $game->link_platform_pc = $request->has('link_platform_pc') ? $request->link_platform_pc : null;
-        $game->link_platform_mac = $request->has('link_platform_mac') ? $request->link_platform_mac : null;
-        $game->link_platform_ios = $request->has('link_platform_ios') ? $request->link_platform_ios : null;
-        $game->link_platform_android = $request->has('link_platform_android') ? $request->link_platform_android : null;
-        $game->link_platform_unity = $request->has('link_platform_unity') ? $request->link_platform_unity : null;
-        $game->link_platform_other = $request->has('link_platform_other') ? $request->link_platform_other : null;
 
         $game->link_social_greenlight = $request->has('link_social_greenlight') ? $request->link_social_greenlight : null;
         $game->link_social_website = $request->has('link_social_website') ? $request->link_social_website : null;
@@ -145,6 +131,13 @@ class GameController extends Controller
             $version->image4 = Utils::upload_image($request->file('image4'), $game->slug . '-' . $version->slug . '-4');
         }
 
+        $version->link_platform_pc = $request->has('link_platform_pc') ? $request->link_platform_pc : null;
+        $version->link_platform_mac = $request->has('link_platform_mac') ? $request->link_platform_mac : null;
+        $version->link_platform_ios = $request->has('link_platform_ios') ? $request->link_platform_ios : null;
+        $version->link_platform_android = $request->has('link_platform_android') ? $request->link_platform_android : null;
+        $version->link_platform_unity = $request->has('link_platform_unity') ? $request->link_platform_unity : null;
+        $version->link_platform_other = $request->has('link_platform_other') ? $request->link_platform_other : null;
+
         $version->upcoming_features = $request->upcoming_features;
         $version->changes = $request->changes;
         return $version;
@@ -184,7 +177,7 @@ class GameController extends Controller
         FormBuilder::macro('myCheckbox', function($id, $name, $checkBoxValue)
         {
             return FormBuilder::checkbox($id, $checkBoxValue, old($id, false), ['id' => $checkBoxValue])
-            .FormBuilder::label('', $name, ['class' => 'control-label form-label']);
+            .FormBuilder::label('', $name, ['class' => 'control-label']);
         });
 
         FormBuilder::macro('myImageWithThumbnail', function($id)

@@ -25,3 +25,6 @@
 .icon-cancel:before { content: '\e817'; } /* '' */
 .icon-menu:before { content: '\e818'; } /* '' */
 .icon-eye:before { content: '\e819'; } /* '' */
+.icon-emo-happy:before { content: '\e81a'; } /* '' */
+.icon-emo-displeased:before { content: '\e81b'; } /* '' */
+.icon-down-dir:before { content: '\e81c'; } /* '' */

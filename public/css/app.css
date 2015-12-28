@@ -13027,6 +13027,22 @@ footer p {
   -webkit-transform: scale(3, 3);
   transform: scale(3, 3);
 }
+.play-button-wrapper {
+  border-width: 3px;
+  border-style: solid;
+  border-color: #eee;
+}
+.play-button-image-content-wrapper {
+  display: inline-block;
+  background-color: #d6e6ee;
+}
+.play-button-text-content-wrapper {
+  display: inline-block;
+  color: #ddd;
+}
+.play-button-text-content {
+  padding: 10px;
+}
 .font-light-gray {
   color: #bdc3c7;
 }

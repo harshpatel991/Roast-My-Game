@@ -37,13 +37,6 @@ class StoreGameRequest extends Request
             'description' => 'max: 1000',
             'platforms' => 'max: 140',
 
-            'link_platform_pc' => $linkRules,
-            'link_platform_mac' => $linkRules,
-            'link_platform_ios' => $linkRules,
-            'link_platform_android' => $linkRules,
-            'link_platform_unity' => $linkRules,
-            'link_platform_other' => $linkRules,
-
             'link_social_greenlight' => $linkRules,
             'link_social_website' => $linkRules,
             'link_social_twitter' => $linkRules,

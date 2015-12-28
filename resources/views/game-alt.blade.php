@@ -131,7 +131,40 @@
 
                         <div class="col-sm-3"> {{--Right content--}}
 
+
+
                             <div class="text-content-padding">
+
+
+                                <div class="small-grey-box">
+                                    <div class="small text-center" style="font-weight: bold;">DOWNLOAD</div>
+                                    <hr>
+                                    {{--@foreach($platformNamesToIcons as $platformName => $platformIcon)--}}
+                                    {{--<div class="small" style="margin-bottom: 5px;font-weight: bold;">--}}
+                                    {{--<i class="demo-icon {{$platformIcon}}" style="color:#aaaaaa;"></i>{{$platformName}}--}}
+
+                                    {{--@if(isset($platformIconsToLinks[$platformIcon]))--}}
+                                    {{--<a href="{{$platformIconsToLinks[$platformIcon]}}">--}}
+                                    {{--<i class="demo-icon icon-link-ext-alt small"></i>--}}
+                                    {{--</a>--}}
+                                    {{--@endif--}}
+                                    {{--</div>--}}
+                                    {{--@endforeach--}}
+
+                                    @foreach($platform_Icon_Name_Link as $platform)
+                                        <div class="small" style="margin-bottom: 5px;font-weight: bold;">
+
+
+                                            <a class="btn btn-light-blue btn-block" href="{{$platform[2]}}">
+                                                {{--<img width="100%" src="/images/{{$platform[0]}}">--}}
+                                                <i class="{{$platform[0]}}" style="font-size: 25px;"></i>
+                                                <span>{{$platform[1]}}</span>
+                                            </a>
+
+                                        </div>
+                                    @endforeach
+                                </div>
+
                                 <div class="small-grey-box">
                                     <div class="small text-center" style="font-weight: bold;">LINKS</div>
                                     <hr>
@@ -145,21 +178,7 @@
                                     @endforeach
                                 </div>
 
-                                <div class="small-grey-box">
-                                    <div class="small text-center" style="font-weight: bold;">PLATFORMS</div>
-                                    <hr>
-                                    @foreach($platformNamesToIcons as $platformName => $platformIcon)
-                                        <div class="small" style="margin-bottom: 5px;font-weight: bold;">
-                                            <i class="demo-icon {{$platformIcon}}" style="color:#aaaaaa;"></i>{{$platformName}}
 
-                                            @if(isset($platformIconsToLinks[$platformIcon]))
-                                                <a href="{{$platformIconsToLinks[$platformIcon]}}">
-                                                    <i class="demo-icon icon-link-ext-alt small"></i>
-                                                </a>
-                                            @endif
-                                        </div>
-                                    @endforeach
-                                </div>
 
                             </div>
                         </div>

@@ -77,6 +77,50 @@ class VersionCreateInvalidCest
         $I->see('The video link format is invalid.');
     }
 
+    public function testCreateInvalidPlayGameLinks(\AcceptanceTester $I)
+    {
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/profile');
+        $I->click('Add Progress');
+
+        $I->fillField('version', '3.4.5');
+        $I->attachFile('image1', 'image1.jpg');
+
+        //test: non valid links
+        $I->click(['link' => 'Add Download Game Links']);
+        $I->wait(1);
+        $I->fillField('link_platform_pc', 'invalid-link');
+        $I->fillField('link_platform_mac', 'invalid-link');
+        $I->fillField('link_platform_ios', 'invalid-link');
+        $I->fillField('link_platform_android', 'invalid-link');
+        $I->fillField('link_platform_unity', 'invalid-link');
+        $I->fillField('link_platform_other', 'invalid-link');
+        $I->click('Add Progress');
+
+        $I->see('The link platform pc format is invalid.');
+        $I->see('The link platform mac format is invalid.');
+        $I->see('The link platform ios format is invalid.');
+        $I->see('The link platform android format is invalid.');
+        $I->see('The link platform unity format is invalid.');
+        $I->see('The link platform other format is invalid.');
+
+        //test: too long links
+        $I->fillField('link_platform_pc', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $I->fillField('link_platform_mac', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $I->fillField('link_platform_ios', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $I->fillField('link_platform_android', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $I->fillField('link_platform_unity', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $I->fillField('link_platform_other', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $I->click('Add Progress');
+
+        $I->see('The link platform pc may not be greater than 255 characters.');
+        $I->see('The link platform mac may not be greater than 255 characters.');
+        $I->see('The link platform ios may not be greater than 255 characters.');
+        $I->see('The link platform android may not be greater than 255 characters.');
+        $I->see('The link platform unity may not be greater than 255 characters.');
+        $I->see('The link platform other may not be greater than 255 characters.');
+    }
+
     public function testCreateInvalidChanges(\AcceptanceTester $I) {
         $I->wantTo('Create long changes version');
         $this->loginAs($I, 'user1@gmail.com', 'password1');

@@ -71,13 +71,6 @@ CREATE TABLE `games` (
   `description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `likes` int(11) NOT NULL DEFAULT '0',
   `views` int(11) NOT NULL DEFAULT '0',
-  `platforms` varchar(140) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_platform_pc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_platform_mac` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_platform_ios` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_platform_android` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_platform_unity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_platform_other` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link_social_greenlight` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link_social_website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link_social_twitter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -99,7 +92,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',1,1020,'platform_pc,platform_android,platform_other','http://pc.com',NULL,NULL,'http://android.com',NULL,'http://other-web.com','http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','shooter','This my description',2,600000,'',NULL,NULL,NULL,NULL,NULL,NULL,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Test Game 3','test-game-3','strategy','This is a teeny tiny description',1,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','puzzle','This is a short description.',0,887,'platform_pc,platform_mac,platform_unity,platform_other,platform_ios,platform_android',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','strategy','This is a teeny tiny description',0,764,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',1,1020,'http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','shooter','This my description',2,600000,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Test Game 3','test-game-3','strategy','This is a teeny tiny description',1,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','puzzle','This is a short description.',0,887,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','strategy','This is a teeny tiny description',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +204,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$0ODpyo1a0iCrxJjpgKrgB.gu1NF8002TQYbVmuYMYGso8Ci4vWZge',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$0sPPkem/jQTz7Fy7toQ.aOT2st6pa70431ZfmtHEUArFnMFsocoFG',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$0VD3lFnK2vgdwRcHBOVgjemBzsCcU.JMeIsFWUO9nksRcYbULqJ3q',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$zjWy.SuDwWei38TSF1BhSuVq3Ic2DUGw5RQyutFF49VBgfULEM6UG',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$nRS1JAl/taxqOZyVYqypku.UOOf79iNCwdX0vFl0gKFawUixfElCC',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$J1.vGFmli0o/qtCz/sLss.6k.f1e/hsxtifqkfjcCVhTkxSI/Tb.C',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,6 +226,12 @@ CREATE TABLE `versions` (
   `image2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image4` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_platform_pc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_platform_mac` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_platform_ios` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_platform_android` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_platform_unity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_platform_other` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `upcoming_features` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `changes` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -249,7 +248,7 @@ CREATE TABLE `versions` (
 
 LOCK TABLES `versions` WRITE;
 /*!40000 ALTER TABLE `versions` DISABLE KEYS */;
-INSERT INTO `versions` VALUES (1,1,'1.2.3','1.2.3',1,'https://www.youtube.com/watch?v=e-ORhEE9VVg','image1.jpg','image2.jpg','image3.jpg','','Upcomming feaures 1.2.3','Changes made this version in 1.2.3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'1.2.5','1.2.5',1,'https://www.youtube.com/watch?v=WA4iX5D9Z64','image4.jpg','image5.jpg','image6.jpg','','Upcomming feaures 1.2.5','Changes made this version in 1.2.5','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'1.1.1','1.1.1',1,'','image7.jpg','image8.jpg','image9.jpg','','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,'1.1.1','1.1.1',1,'','image6.jpg','','','','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,3,'1.1.1','1.1.1',1,'','image5.jpg','image3.jpg','','','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,4,'1.1.1','1.1.1',1,'','image2.jpg','image3.jpg','image5.jpg','','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,5,'1.1.1','1.1.1',1,'','image3.jpg','image4.jpg','image5.jpg','','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `versions` VALUES (1,1,'1.2.3','1.2.3',1,'https://www.youtube.com/watch?v=e-ORhEE9VVg','image1.jpg','image2.jpg','image3.jpg','','http://pc-game-1-version-1.2.3.com',NULL,NULL,'http://android-game-1-version-1.2.3.com',NULL,'http://other-web-game-1-version-1.2.3.com','Upcomming feaures 1.2.3','Changes made this version in 1.2.3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'1.2.5','1.2.5',1,'https://www.youtube.com/watch?v=WA4iX5D9Z64','image4.jpg','image5.jpg','image6.jpg','','http://pc-game-1-version-1.2.5.com','http://mac-game-1-version-1.2.5.com','http://ios-game-1-version-1.2.5.com','http://android-game-1-version-1.2.5.com','http://unity-game-1-version-1.2.5.com','http://other-web-game-1-version-1.2.5.com','Upcomming feaures 1.2.5','Changes made this version in 1.2.5','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'1.1.1','1.1.1',1,'','image7.jpg','image8.jpg','image9.jpg','','http://pc-game-1-version-1.1.1.com','http://mac-game-1-version-1.1.1.com','http://ios-game-1-version-1.1.1.com','http://android-game-1-version-1.1.1.com','http://unity-game-1-version-1.1.1.com','http://other-web-game-1-version-1.1.1.com','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,2,'1.1.1','1.1.1',1,'','image6.jpg','','','','http://pc-game-2-version-1.1.1.com','http://mac-game-2-version-1.1.1.com','http://ios-game-2-version-1.1.1.com','http://android-game-2-version-1.1.1.com','http://unity-game-2-version-1.1.1.com','http://other-web-game-2-version-1.1.1.com','Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,3,'1.1.1','1.1.1',1,'','image5.jpg','image3.jpg','','',NULL,NULL,NULL,NULL,NULL,NULL,'Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,4,'1.1.1','1.1.1',1,'','image2.jpg','image3.jpg','image5.jpg','',NULL,NULL,NULL,NULL,NULL,NULL,'Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,5,'1.1.1','1.1.1',1,'','image3.jpg','image4.jpg','image5.jpg','',NULL,NULL,NULL,NULL,NULL,NULL,'Upcomming feaures 1.1.1','','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `versions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -262,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-24 18:51:01
+-- Dump completed on 2015-12-28  0:54:57

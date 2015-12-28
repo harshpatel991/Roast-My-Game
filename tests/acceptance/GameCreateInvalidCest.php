@@ -84,7 +84,7 @@ class GameCreateInvalidCest
         $I->see('The description may not be greater than 1000 characters.');
     }
 
-    public function testCreateInvalidPlatformLinks(\AcceptanceTester $I)
+    public function testCreateInvalidPlayGameLinks(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid description game');
         $this->loginAs($I, 'user1@gmail.com', 'password1');
@@ -96,7 +96,8 @@ class GameCreateInvalidCest
         $I->attachFile('image1', 'image1.jpg');
 
         //test: non valid links
-        $I->click(['link' => 'Add Platform Links']);
+        $I->click(['link' => 'Add Download Game Links']);
+        $I->wait(1);
         $I->fillField('link_platform_pc', 'invalid-link');
         $I->fillField('link_platform_mac', 'invalid-link');
         $I->fillField('link_platform_ios', 'invalid-link');
