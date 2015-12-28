@@ -37,9 +37,9 @@ Route::post('/add-game',
     ['as' => 'add-game', 'middleware' => 'auth',  'uses' => 'GameController@postAddGame']);
 
 Route::get('/add-version/{game_slug}',
-    ['as' => 'add-version', 'middleware' => 'auth', 'uses' => 'GameController@getAddVersion']);
+    ['as' => 'add-version', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getAddVersion']);
 Route::post('/add-version/{game_slug}',
-    ['as' => 'add-version', 'middleware' => 'auth', 'uses' => 'GameController@postAddVersion']);
+    ['as' => 'add-version', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postAddVersion']);
 
 Route::get('/game/{game_slug}/{version_slug?}',
     ['as' => 'getGame', 'uses' => 'GameController@getGame']);

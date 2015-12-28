@@ -26,6 +26,15 @@ class VersionCreateInvalidCest
         $I->see('Add Progress');//test got redirected
     }
 
+    public function testAddWithoutOwningGame(\AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/add-version/test-game-5');
+
+        $I->see('user1\'s Profile');//test got redirected
+    }
+
     public function testCreateInvalidVersion(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid version Progress');
