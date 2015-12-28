@@ -57,7 +57,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <p class="small">Already have an account? <a href="/login">Login</a> or <a href="/how-it-works">Learn More</a></p>
+                            <p class="small">Already have an account? <a href="/auth/login">Login</a></p>
                             <br>
                             <br>
                         </div>
