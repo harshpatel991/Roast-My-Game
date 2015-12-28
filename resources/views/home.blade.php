@@ -16,7 +16,6 @@
 
     <div class="container-fluid background">
 
-
         <div class="row">
             <div class="banner-background-overlay">
                 <h1 class="home-h1">SHARE YOUR <span class="left-bracket">[</span>WIP]</h1>
@@ -24,6 +23,8 @@
                 <br>
             </div>
         </div>
+
+
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -34,6 +35,8 @@
 
         <div class="row">
             <div class="col-md-offset-1 col-md-10 col-sm-12">
+
+                @include('partials.display-input-error')
 
                 <div class="row">
                     <h6 class="small">RECENTLY UPDATED GAMES</h6>
@@ -61,8 +64,8 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="row" style="padding-bottom: 30px; padding-top: 30px;">
-                    <div class="col-md-6 small">About · Privacy Policy · Contact</div>
-                    <div class="col-md-4 col-md-offset-2 small"><div class="pull-right">2015 · {{Config::get('app.name')}}</div></div>
+                    <div class="col-md-6 small"><a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms and Conditions</a> · <a href="/contact-us">Contact</a> </div>
+                    <div class="col-md-4 col-md-offset-2 small"><div class="pull-right">2016 · {{Config::get('app.name')}}</div></div>
                 </div>
             </div>
         </div>

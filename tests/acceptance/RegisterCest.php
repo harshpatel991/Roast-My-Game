@@ -2,6 +2,12 @@
 
 class RegisterCest
 {
+
+    public function _before(AcceptanceTester $I)
+    {
+//        putenv("MAIL_DRIVER=log");
+    }
+
     private function loginAs(AcceptanceTester $I, $email, $password)
     {
         $I->amOnPage('/auth/login');
@@ -19,10 +25,16 @@ class RegisterCest
         $I->fillField('password_confirmation', 'password-new-register');
 
         $I->click(['id' => 'register']);
-        $I->seeInDatabase('users', ['username' => 'new-register', 'email' => 'new-register@gmail.com']);
+        $I->seeInDatabase('users', ['username' => 'new-register', 'email' => 'new-register@gmail.com', 'status' => 'unconfirmed']);
+        $confirmationCode = $I->grabFromDatabase('users', 'confirmation_code', array('username' => 'new-register'));
 
         //verify logged in
         $I->see('new-register');
+
+        //confirm the user
+        $I->amOnPage('/verify/'.$confirmationCode);
+        $I->see('Your email has been verified!');
+        $I->seeInDatabase('users', array('username' => 'new-register', 'email' => 'new-register@gmail.com', 'status' => 'good'));
     }
 
     public function testRegisterInvalidUsername(\AcceptanceTester $I)

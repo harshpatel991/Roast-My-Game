@@ -54,7 +54,7 @@
                     <div class="row">
                         <div class="col-sm-9 col-sm-offset-3">
                             <p class="small"><a href="{{ url('/password/email') }}">Forgot Your Password?</a></p>
-                            <p class="small">Don't have an account? <a href="/auth/register">Register</a> or <a href="/how-it-works">Learn More</a></p>
+                            <p class="small">Don't have an account? <a href="/auth/register">Register</a></p>
                             <br>
                             <br>
                         </div>

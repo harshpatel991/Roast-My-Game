@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
+use Input;
+use Log;
+
 use App\User;
 use Validator;
 use JsValidator;
@@ -70,13 +74,12 @@ class AuthController extends Controller
             'confirmation_code' => $confirmationCode
         ]);
 
-        //TODO: this is copied from Topic Loop email, update to fit RMG
-//        Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['confirmationCode' => $confirmationCode, 'logoPath' => 'http://www.topicloop.com/images/logo.png'], function($message) {
-//            $message->to(Input::get('email'))
+        Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['confirmationCode' => $confirmationCode, 'logoPath' => 'http://www.topicloop.com/images/logo.png'], function($message) {
+            $message->to(Input::get('email'))
 //                ->bcc('support@topicloop.com', 'Support')
-//                ->subject('Please confirm your email');
-//        });
-//        Log::info('Confirm email sent out to '.Input::get('email'));
+                ->subject('Please confirm your email');
+        });
+        Log::info('Confirm account email sent out to '.Input::get('email').' with confirmation code '.$confirmationCode);
 
         return $newUser;
     }

@@ -24,6 +24,8 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
+Route::get('/verify/{confirmation_code}', 'UserController@verifySuccess');
+
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
@@ -68,5 +70,13 @@ Route::bind('game_slug', function($value, $route) {
 Route::bind('comment_id', function($value, $route) {
     return Comment::findOrFail($value);
 });
+
+Route::get('/contact-us',
+    ['as' => '/contact-us', 'uses' => 'HomeController@getContactUs']);
+Route::post('/contact-us',
+    ['uses' => 'HomeController@postContactUs']);
+
+Route::get('/privacy-policy', 'HomeController@privacyPolicy');
+Route::get('/terms-conditions', 'HomeController@termsAndConditions');
 
 

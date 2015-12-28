@@ -15,6 +15,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="content-background">
 
+                    @include('partials.display-input-error')
+
                     <div class="row">
                         <div class="col-lg-6 col-md-5">
                             <h4 class="">{{$user->username}}'s Profile</h4>
@@ -34,11 +36,8 @@
                                     <p class="small text-center">Likes</p>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-                    @include('partials.display-input-error')
 
                     <h6>My Games</h6>
                     @if(count($games) > 0)
@@ -60,13 +59,9 @@
                             </div>
                         @endforeach
                     @else
-                        <br>
                         <h4 class="text-center"><div class="font-light-gray">No games here</div></h4>
-
+                        <br>
                     @endif
-                    <p class="text-center">
-                        <a href="/add-game" class="btn btn-primary navbar-btn btn-lg">Add a Game</a>
-                    </p>
 
                     <h6>My Comments</h6>
                     @if(count($comments) > 0)
@@ -79,23 +74,17 @@
                             </div>
                         @endforeach
                     @else
-                        <br>
                         <h4 class="text-center"><div class="font-light-gray">No comments here</div></h4>
                         <br>
                     @endif
 
-
                     <h6>My Likes</h6>
                     @if(count($likes) > 0)
                         @foreach($likes as $like)
-
                             <p><a href="/game/{{$like->game()->first()->slug}}">{{ $like->game()->first()->title }}</a></p>
-
                         @endforeach
                     @else
-                        <br>
                         <h4 class="text-center"><div class="font-light-gray">No likes here</div></h4>
-                        <br>
                     @endif
 
                     <br>
