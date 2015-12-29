@@ -35,12 +35,9 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-7 col-md-offset-2">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember"> Remember Me
-                                </label>
-                            </div>
+                        {!! Form::label('remember', 'Remember Me', ['class' => 'col-sm-3 control-label form-label']) !!}
+                        <div class="col-sm-3">
+                            {!! Form::checkbox('remember', 'true', old("remember")) !!}
                         </div>
                     </div>
 
@@ -53,10 +50,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <p class="small"><a href="{{ url('/password/email') }}">Forgot Your Password?</a></p>
-                            <p class="small">Don't have an account? <a href="/auth/register">Register</a></p>
-                            <br>
-                            <br>
+                            <p class="small"><a href="{{ url('/password/email') }}">Forgot Your Password?</a> Don't have an account? <a href="/auth/register">Register</a></p>
                         </div>
                     </div>
 

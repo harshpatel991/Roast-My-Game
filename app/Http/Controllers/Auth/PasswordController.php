@@ -29,4 +29,6 @@ class PasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected $redirectTo = '/profile'; //after changing password redirect to this page
 }
