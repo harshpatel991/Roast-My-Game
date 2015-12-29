@@ -28,6 +28,36 @@ class UserCest
         $I->dontSeeInDatabase('comments', array('body' => 'This is a sample comment. This is a sample comment.'));
     }
 
+    public function resetPassword(\AcceptanceTester $I)
+    {
+        $I->amOnPage('/password/email');
+        $I->fillField('email', 'user1@gmail.com');
+        $I->click('Send Reset Link');
+        $I->see('We have e-mailed your password reset link!');
+
+        $resetToken = $I->grabFromDatabase('password_resets', 'token', array('email' => 'user1@gmail.com'));
+        $I->amOnPage('/password/reset/'.$resetToken);
+
+        $I->fillField('email', 'user1@gmail.com');
+        $I->fillField('password', 'mynewpassword');
+        $I->fillField('password_confirmation', 'mynewpassword');
+        $I->click('Reset Password');
+        $I->see('Your password has been reset!');
+
+        //logout and make sure old doesn't work and new does work
+        $I->click('#profile-dropdown');
+        $I->wait(1);
+        $I->click('#logout-button');
+        $I->wait(1);
+
+        $I->amOnPage('/auth/login');
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->see('These credentials do not match our records.');
+        $this->loginAs($I, 'user1@gmail.com', 'mynewpassword');
+        $I->see('user1');
+
+    }
+
     public function testLoginInvalidEmail(\AcceptanceTester $I)
     {
         $I->amOnPage('/auth/login');
@@ -54,7 +84,7 @@ class UserCest
     {
         $this->loginAs($I, 'user1@gmail.com', 'password1');
 
-        //Logout
+
         $I->click('#profile-dropdown');
         $I->wait(1);
         $I->click('#profile-button');
