@@ -54,7 +54,7 @@
                                     <p> <b>Views: </b>{{$game->views}} <b>Likes: </b>{{$game->likes}}</p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <a class="btn btn-default pull-right" href="/add-version/{{$game->slug}}">Add Progress</a>
+                                    <a class="btn btn-info pull-right" href="/add-version/{{$game->slug}}">Add Progress</a>
                                 </div>
                             </div>
                         @endforeach
@@ -78,7 +78,7 @@
                         <br>
                     @endif
 
-                    <h6>My Likes</h6>
+                    <h6>Liked</h6>
                     @if(count($likes) > 0)
                         @foreach($likes as $like)
                             <p><a href="/game/{{$like->game()->first()->slug}}">{{ $like->game()->first()->title }}</a></p>

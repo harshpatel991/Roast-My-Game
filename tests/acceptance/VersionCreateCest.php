@@ -108,6 +108,7 @@ class VersionCreateCest
         $I->see('Action');
         $I->see('This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.');
 
+        $I->click(['id' => 'download-dropdown']); //click download drop down
         $I->see('PC');
         $I->see('Mac');
         $I->see('Android');
@@ -136,7 +137,11 @@ class VersionCreateCest
         $I->seeInSource("selectImage('/upload/test-game-1-3-3.jpg')");
         $I->seeInSource("selectImage('/upload/test-game-1-3-4.jpg')");
 
+        $I->click(['id' => 'link-tab-changes']); //open upcoming changes
+        $I->wait(2);
         $I->see('Here are some changes for version 3.');
+        $I->click(['id' => 'link-tab-upcoming_features']); //open upcoming changes
+        $I->wait(2);
         $I->see('Here are some upcoming features for version 3.');
 
         $I->seeInDatabase('versions', array('version' => '3',
