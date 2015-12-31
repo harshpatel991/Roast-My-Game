@@ -139,6 +139,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -206,7 +207,8 @@ return [
         'Utils'     => App\Http\Utils::class,
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Purifier' => Mews\Purifier\Facades\Purifier::class
+        'Purifier'  => Mews\Purifier\Facades\Purifier::class,
+        'AWS'       => Aws\Laravel\AwsFacade::class
 
     ]
 

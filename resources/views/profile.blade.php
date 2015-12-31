@@ -46,7 +46,7 @@
                             <div class="row small-grey-box">
                                 <div class="col-md-3 ">
                                     <a href="/game/{{$game->slug}}">
-                                        <img width="100%" height="100%" style="padding: 5px 0px;" src="{{Utils::get_image_url($game->latestScreenshot()->image1)}}"/>
+                                        <img width="100%" height="100%" style="padding: 5px 0px;" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>
                                     </a>
                                 </div>
                                 <div class="col-sm-8 col-md-5">

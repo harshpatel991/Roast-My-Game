@@ -23,7 +23,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'image1.jpg',
                 'image2' => 'image2.jpg',
                 'image3' => 'image3.jpg',
-                'image4' => '',
+                'image4' => null,
 
                 'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
                 'link_platform_mac' => null,
@@ -44,7 +44,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'image4.jpg',
                 'image2' => 'image5.jpg',
                 'image3' => 'image6.jpg',
-                'image4' => '',
+                'image4' => null,
 
                 'link_platform_pc' => 'http://pc-game-1-version-1.2.5.com',
                 'link_platform_mac' => 'http://mac-game-1-version-1.2.5.com',
@@ -63,9 +63,9 @@ class VersionTableSeeder extends Seeder
                 'beta' => true,
                 'video_link' => '',
                 'image1' => 'image7.jpg',
-                'image2' => 'image8.jpg',
-                'image3' => 'image9.jpg',
-                'image4' => '',
+                'image2' => null,
+                'image3' => null,
+                'image4' => null,
 
                 'link_platform_pc' => 'http://pc-game-1-version-1.1.1.com',
                 'link_platform_mac' => 'http://mac-game-1-version-1.1.1.com',
@@ -84,9 +84,9 @@ class VersionTableSeeder extends Seeder
                 'beta' => true,
                 'video_link' => '',
                 'image1' => 'image6.jpg',
-                'image2' => '',
-                'image3' => '',
-                'image4' => '',
+                'image2' => null,
+                'image3' => null,
+                'image4' => null,
 
                 'link_platform_pc' => 'http://pc-game-2-version-1.1.1.com',
                 'link_platform_mac' => 'http://mac-game-2-version-1.1.1.com',
@@ -107,8 +107,8 @@ class VersionTableSeeder extends Seeder
                 'video_link' => '',
                 'image1' => 'image5.jpg',
                 'image2' => 'image3.jpg',
-                'image3' => '',
-                'image4' => '',
+                'image3' => null,
+                'image4' => null,
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
@@ -129,7 +129,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'image2.jpg',
                 'image2' => 'image3.jpg',
                 'image3' => 'image5.jpg',
-                'image4' => '',
+                'image4' => null,
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
@@ -150,7 +150,7 @@ class VersionTableSeeder extends Seeder
                 'image1' => 'image3.jpg',
                 'image2' => 'image4.jpg',
                 'image3' => 'image5.jpg',
-                'image4' => '',
+                'image4' => null,
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,

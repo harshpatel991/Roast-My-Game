@@ -26,7 +26,9 @@ class GameCreateCest
         $I->see('Action');
         $I->see('VERSION 3.4.5');
         $I->dontSee('BETA');
-        $I->seeInSource("selectImage('/upload/test-minimal-title-345-1.jpg')");
+        $I->dontSee('Download');
+        $I->dontSee('Links');
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-minimal-title/test-minimal-title-345-1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Minimal Title',
                                         'genre' => 'action'));
         $I->seeInDatabase('versions', array('version' => '3.4.5',
@@ -121,10 +123,10 @@ class GameCreateCest
         $I->see('VERSION 1');
         $I->see('BETA');
         $I->seeInSource('http://img.youtube.com/vi/BsjuLsKAEFA/mqdefault.jpg');
-        $I->seeInSource("selectImage('/upload/test-full-title-1-1.jpg')");
-        $I->seeInSource("selectImage('/upload/test-full-title-1-2.jpg')");
-        $I->seeInSource("selectImage('/upload/test-full-title-1-3.jpg')");
-        $I->seeInSource("selectImage('/upload/test-full-title-1-4.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-1.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-2.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-3.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-4.jpg')");
 
         $I->click(['id' => 'link-tab-changes']); //open changes tab
         $I->wait(2);
@@ -158,7 +160,17 @@ class GameCreateCest
             'upcoming_features' => '<p>Here are some upcoming features.</p>'));
     }
 
+    public function testAddExistingGameTitleGame(\AcceptanceTester $I)
+    {
+        //TODO
+    }
+
     public function testAddFormattedTextBoxValues(\AcceptanceTester $I)
+    {
+        //TODO
+    }
+
+    public function testAddGameWithGIFImages(\AcceptanceTester $I)
     {
         //TODO
     }

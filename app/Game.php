@@ -97,7 +97,7 @@ class Game extends Model
     }
 
     public function latestScreenshot() {
-        return $this->versions()->orderBy('version', 'desc')->first();
+        return $this->versions()->orderBy('version', 'desc')->first(); //TODO: optimzie this?
     }
 
     public function versions()

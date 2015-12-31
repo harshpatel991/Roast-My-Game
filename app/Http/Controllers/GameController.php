@@ -122,13 +122,13 @@ class GameController extends Controller
         $version->video_link = $request->video_link;
 
         if($request->hasFile('image1')) {
-            $version->image1 = Utils::upload_image($request->file('image1'), $game->slug . '-' . $version->slug . '-1');
+            $version->image1 = Utils::upload_image($request->file('image1'), $game->slug . '-' . $version->slug . '-1', $game->slug);
         } if($request->hasFile('image2')) {
-            $version->image2 = Utils::upload_image($request->file('image2'), $game->slug . '-' . $version->slug . '-2');
+            $version->image2 = Utils::upload_image($request->file('image2'), $game->slug . '-' . $version->slug . '-2', $game->slug);
         } if($request->hasFile('image3')) {
-            $version->image3 = Utils::upload_image($request->file('image3'), $game->slug . '-' . $version->slug . '-3');
+            $version->image3 = Utils::upload_image($request->file('image3'), $game->slug . '-' . $version->slug . '-3', $game->slug);
         } if($request->hasFile('image4')) {
-            $version->image4 = Utils::upload_image($request->file('image4'), $game->slug . '-' . $version->slug . '-4');
+            $version->image4 = Utils::upload_image($request->file('image4'), $game->slug . '-' . $version->slug . '-4', $game->slug);
         }
 
         $version->link_platform_pc = $request->has('link_platform_pc') ? $request->link_platform_pc : null;

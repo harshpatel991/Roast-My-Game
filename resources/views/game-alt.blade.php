@@ -24,7 +24,7 @@
                                 <div class="col-sm-10"> {{--Hero left--}}
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <div class="embed-responsive-item">
-                                            <img class="full-width-constrain-proportions center-block" id="mainImage" src="{{Utils::get_image_url($currentVersion->image1)}}"/>
+                                            <img class="full-width-constrain-proportions center-block" id="mainImage" src="{{Utils::get_image_url($game->slug.'/'.$currentVersion->image1)}}"/>
 
                                             @if(!empty($video_thumbnail))
                                                 <iframe id="ytplayer" type="text/html"
@@ -50,8 +50,8 @@
                                         @foreach($images as $image)
                                                 <div class="col-sm-12 col-xs-2" style="margin-bottom: 5px;">
                                                     <div class="embed-responsive embed-responsive-16by9 position-relative">
-                                                        <img class="embed-responsive-item" src="{{Utils::get_image_url($image)}}" />
-                                                        <div class="overlay-thumbnail" onclick="selectImage('{{Utils::get_image_url($image)}}')"></div>
+                                                        <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$image)}}" />
+                                                        <div class="overlay-thumbnail" onclick="selectImage('{{Utils::get_image_url($game->slug.'/'.$image)}}')"></div>
                                                     </div>
                                                 </div>
                                         @endforeach
@@ -78,10 +78,10 @@
                         <div class="col-sm-6">
                             <div class="text-content-padding">
                                 <div class="btn-group pull-right" style="padding-left: 10px;">
-                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown" id="version-dropdown">VERSION {{$currentVersion->version}}<span class="caret"></span></button>
+                                    <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown" id="version-dropdown">Version {{$currentVersion->version}}<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         @foreach($versions as $version)
-                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}" id="version-{{$version->slug}}">VERSION {{$version->version}}</a></li>
+                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}" id="version-{{$version->slug}}">Version {{$version->version}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -105,14 +105,13 @@
                                 <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
                                 <p class="small subheading-color"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
 
-                                <div class="small-grey-box">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase subheading-color" role="tab" data-toggle="tab">Description</a></li>
-                                        @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes">Changes</a></li> @endif
-                                        @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features">Upcoming Features</a></li> @endif
-                                    </ul>
-
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase subheading-color" role="tab" data-toggle="tab">Description</a></li>
+                                    @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes">Changes</a></li> @endif
+                                    @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features">Upcoming Features</a></li> @endif
+                                </ul>
+                                <div class="small-grey-box" style="margin-top: 0px;">
                                     <!-- Tab panes -->
                                     <div class="tab-content" style="padding: 10px 0">
                                         <div role="tabpanel" class="tab-pane active fade in" id="tab-description">
@@ -139,7 +138,7 @@
                                         @include('partials.comment', ['comment' => $comment])
                                     @endforeach
                                 @else
-                                    <p>0 Comments</p>
+                                    <p>Nobody's roasted yet, be the first!</p>
                                 @endif
 
                                 <h6 class="subheading subheading-color">Roast Em</h6>
@@ -153,7 +152,7 @@
                                 @if(count($platform_Icon_Name_Link) > 0)
                                     <div class="small-grey-box">
                                         <div class="btn-group btn-block">
-                                            <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" id="download-dropdown">DOWNLOAD <span class="caret"></span></button>
+                                            <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" id="download-dropdown">Download <span class="caret"></span></button>
                                             <ul class="dropdown-menu btn-block">
                                                 @foreach($platform_Icon_Name_Link as $platform)
                                                     <li>

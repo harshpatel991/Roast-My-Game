@@ -2,15 +2,17 @@
 
 namespace App\Http;
 
+use App;
 use Image;
 use App\Game;
 use Illuminate\Support\Str;
 
 class Utils
 {
-    public static function get_image_url($fileName)
+    public static function get_image_url($fileLocation)
     {
-        return '/upload/'.$fileName;
+//        return '/upload/'.$fileName; //local image path
+        return 'http://s3-us-west-2.amazonaws.com/rmg-upload/'.$fileLocation;
     }
 
     public static function preg_grep_keys($pattern, $input, $flags = 0)
@@ -18,7 +20,7 @@ class Utils
         return array_intersect_key($input, array_flip(preg_grep($pattern, array_keys($input), $flags)));
     }
 
-    public static function upload_image($requestImage, $uploadName)
+    public static function upload_image($requestImage, $uploadName, $s3containingFolder)
     {
 
         if($requestImage->getMimeType() == 'image/gif') {
@@ -35,13 +37,15 @@ class Utils
                 })
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
         }
-//        $s3->putObject(array(
-//            'ACL'        => 'public-read',
-//            'Bucket'     => 'topicloop-upload2',
-//            'CacheControl' => 'max-age=1814400',
-//            'Key'        => Post::getImageUploadPath().$imageUploadedName,
-//            'SourceFile' => Post::getBackupImageUploadPath().$imageUploadedName,
-//        ));
+
+        $s3 = App::make('aws')->createClient('s3');
+        $s3->putObject(array(
+            'ACL'        => 'public-read',
+            'Bucket'     => 'rmg-upload',
+            'CacheControl' => 'max-age=1814400',
+            'Key'        => $s3containingFolder.'/'.$saveFileName,
+            'SourceFile' => Game::getBackupImageUploadPath().$saveFileName,
+        ));
 
         return $saveFileName;
     }

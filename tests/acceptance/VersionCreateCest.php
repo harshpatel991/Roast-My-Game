@@ -38,7 +38,7 @@ class VersionCreateCest
 
         $I->see('VERSION 2');
         $I->dontSee('BETA');
-        $I->seeInSource("selectImage('/upload/test-game-1-2-1.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-2-1.jpg')");
 
         $I->dontSee('Changes made this version in 1.2.5');
         $I->dontSee('Upcomming feaures 1.2.5');
@@ -51,13 +51,13 @@ class VersionCreateCest
         $I->click(['id' => 'version-dropdown']);
         $I->click(['id' => 'version-1.2.5']);
         $I->see('Test Game 1');
-        $I->seeInSource("selectImage('/upload/image4.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image4.jpg')");
         $I->seeInCurrentUrl('1.2.5');
 
         //and switch back
         $I->click(['id' => 'version-dropdown']);
         $I->click(['id' => 'version-2']);
-        $I->seeInSource("selectImage('/upload/test-game-1-2-1.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-2-1.jpg')");
         $I->seeInCurrentUrl('2');
     }
 
@@ -132,10 +132,10 @@ class VersionCreateCest
         $I->see('VERSION 3');
         $I->see('BETA');
         $I->seeInSource('http://img.youtube.com/vi/BsjuLsKAEFA/mqdefault.jpg');
-        $I->seeInSource("selectImage('/upload/test-game-1-3-1.jpg')");
-        $I->seeInSource("selectImage('/upload/test-game-1-3-2.jpg')");
-        $I->seeInSource("selectImage('/upload/test-game-1-3-3.jpg')");
-        $I->seeInSource("selectImage('/upload/test-game-1-3-4.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-3-1.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-3-2.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-3-3.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-3-4.jpg')");
 
         $I->click(['id' => 'link-tab-changes']); //open upcoming changes
         $I->wait(2);
@@ -165,14 +165,25 @@ class VersionCreateCest
         $I->click(['id' => 'version-1.2.3']);
 
         $I->see('Test Game 1');
-        $I->seeInSource("selectImage('/upload/image1.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image1.jpg')");
         $I->seeInCurrentUrl('1.2.3');
 
         //and switch back
         $I->click(['id' => 'version-dropdown']);
         $I->click(['id' => 'version-3']);
-        $I->seeInSource("selectImage('/upload/test-game-1-3-1.jpg')");
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-3-1.jpg')");
         $I->seeInCurrentUrl('3');
-
     }
+
+    public function testAddExistingVersionNumberVersion(\AcceptanceTester $I)
+    {
+        //TODO: this behavior is undefined, fix it later
+        // right now, will overwrite images of the older exsing version but add a new version
+    }
+
+    public function testAddVersionWithGIFImages(\AcceptanceTester $I)
+    {
+        //TODO
+    }
+
 }
