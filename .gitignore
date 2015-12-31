@@ -6,3 +6,7 @@ Homestead.json
 .idea/
 
 tests/_output/*
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
