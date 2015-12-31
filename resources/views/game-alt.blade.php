@@ -10,8 +10,6 @@
 
 @section('content')
 
-
-
     <div class="container-fluid background">
 
         <div class="row">
@@ -65,8 +63,7 @@
                     </div>
 
                     <div class="row"> {{--Info bar--}}
-                        <div class="col-md-12">
-
+                        <div class="col-sm-6">
                             <div class="text-content-padding">
 
                                 <div class="label label-default">{{strtoupper($game->genre)}}</div>
@@ -75,12 +72,16 @@
                                 @endif
 
                                 <div class="label label-default"><span class="icon-eye"></span>{{$game->views}} </div>
+                            </div>
+                        </div>
 
+                        <div class="col-sm-6">
+                            <div class="text-content-padding">
                                 <div class="btn-group pull-right" style="padding-left: 10px;">
                                     <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown" id="version-dropdown">VERSION {{$currentVersion->version}}<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         @foreach($versions as $version)
-                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}" id="version-{{$version->slug}}">{{$version->version}}</a></li>
+                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}" id="version-{{$version->slug}}">VERSION {{$version->version}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -95,7 +96,6 @@
                                 </div>
 
                             </div>
-
                         </div>
                     </div>
 
@@ -103,96 +103,37 @@
                         <div class="col-sm-9"> {{--Left content--}}
                             <div class="text-content-padding">
                                 <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
-
-                                <p class="small" style="color:#bfbfbf;"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
-
-                                @if(strlen($game->description) > 0)
-                                {{--<p style="font-weight: bold;">DESCRIPTION</p>--}}
-                                <h6 class="subheading">Description</h6>
-                                <p>{!! clean($game->description) !!}</p>
-                                @endif
-
-                                @if(strlen($currentVersion->changes) > 0)
-                                {{--<hr>--}}
-                                {{--<p style="font-weight: bold;">CHANGES THIS VERSION</p>--}}
-                                <h6 class="subheading">Changes this version</h6>
-                                <p>{!! clean($currentVersion->changes) !!}</p>
-                                @endif
-
-                                @if(strlen($currentVersion->upcoming_features) > 0)
-                                {{--<hr>--}}
-                                {{--<p style="font-weight: bold;">UPCOMING FEATURES</p>--}}
-                                <h6 class="subheading">Upcoming features</h6>
-                                <p> {!! clean($currentVersion->upcoming_features) !!}</p>
-                                @endif
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3"> {{--Right content--}}
-
-
-
-                            <div class="text-content-padding">
-
+                                <p class="small subheading-color"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
 
                                 <div class="small-grey-box">
-                                    <div class="small text-center" style="font-weight: bold;">DOWNLOAD</div>
-                                    <hr>
-                                    {{--@foreach($platformNamesToIcons as $platformName => $platformIcon)--}}
-                                    {{--<div class="small" style="margin-bottom: 5px;font-weight: bold;">--}}
-                                    {{--<i class="demo-icon {{$platformIcon}}" style="color:#aaaaaa;"></i>{{$platformName}}--}}
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase subheading-color" role="tab" data-toggle="tab">Description</a></li>
+                                        @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes">Changes</a></li> @endif
+                                        @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features">Upcoming Features</a></li> @endif
+                                    </ul>
 
-                                    {{--@if(isset($platformIconsToLinks[$platformIcon]))--}}
-                                    {{--<a href="{{$platformIconsToLinks[$platformIcon]}}">--}}
-                                    {{--<i class="demo-icon icon-link-ext-alt small"></i>--}}
-                                    {{--</a>--}}
-                                    {{--@endif--}}
-                                    {{--</div>--}}
-                                    {{--@endforeach--}}
-
-                                    @foreach($platform_Icon_Name_Link as $platform)
-                                        <div class="small" style="margin-bottom: 5px;font-weight: bold;">
-
-
-                                            <a class="btn btn-light-blue btn-block" href="{{$platform[2]}}">
-                                                {{--<img width="100%" src="/images/{{$platform[0]}}">--}}
-                                                <i class="{{$platform[0]}}" style="font-size: 25px;"></i>
-                                                <span>{{$platform[1]}}</span>
-                                            </a>
-
+                                    <!-- Tab panes -->
+                                    <div class="tab-content" style="padding: 10px 0">
+                                        <div role="tabpanel" class="tab-pane active fade in" id="tab-description">
+                                            @if(strlen($game->description) > 0)
+                                                <p>{!! clean($game->description) !!}</p>
+                                            @endif
                                         </div>
-                                    @endforeach
+                                        <div role="tabpanel" class="tab-pane fade" id="tab-changes">
+                                            @if(strlen($currentVersion->changes) > 0)
+                                                <p>{!! clean($currentVersion->changes) !!}</p>
+                                            @endif
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab-upcoming_features">
+                                            @if(strlen($currentVersion->upcoming_features) > 0)
+                                                <p> {!! clean($currentVersion->upcoming_features) !!}</p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="small-grey-box">
-                                    <div class="small text-center" style="font-weight: bold;">LINKS</div>
-                                    <hr>
-                                    @foreach($linkIcons as $link_id => $linkIcon)
-                                        <div class="small"  style="margin-bottom: 5px;font-weight: bold;">
-                                            <i class="demo-icon {{$linkIcon}}" style="color:#aaaaaa;"></i>{{$linkTexts[$link_id]}}
-                                            <a href="{{$socialLinks[$link_id]}}">
-                                                <i class="demo-icon icon-link-ext-alt small"></i>
-                                            </a>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="text-content-padding">
-
-                                <h6 class="subheading">Leave some feedback</h6>
-
-                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
-
-                                <h6 class="subheading">Comments</h6>
+                                <h6 class="subheading subheading-color">Comments</h6>
                                 @if($game->comments()->count() > 0)
                                     @foreach($game->comments as $comment)
                                         @include('partials.comment', ['comment' => $comment])
@@ -201,6 +142,47 @@
                                     <p>0 Comments</p>
                                 @endif
 
+                                <h6 class="subheading subheading-color">Roast Em</h6>
+                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3"> {{--Right content--}}
+                            <div class="text-content-padding">
+                                @if(count($platform_Icon_Name_Link) > 0)
+                                    <div class="small-grey-box">
+                                        <div class="btn-group btn-block">
+                                            <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" id="download-dropdown">DOWNLOAD <span class="caret"></span></button>
+                                            <ul class="dropdown-menu btn-block">
+                                                @foreach($platform_Icon_Name_Link as $platform)
+                                                    <li>
+                                                        <a href="{{$platform[2]}}">
+                                                            <i class="{{$platform[0]}}"></i>
+                                                            <span>Download for {{$platform[1]}}</span>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if(count($linkIcons) > 0)
+                                    <div class="small-grey-box">
+                                        <div class="small subheading-color" style="font-weight: bold;">LINKS</div>
+                                        <hr>
+                                        @foreach($linkIcons as $link_id => $linkIcon)
+                                            <div style="margin-bottom: 5px;">
+                                                <i class="demo-icon {{$linkIcon}}" style=""></i>
+                                                {{$linkTexts[$link_id]}}
+                                                <a href="{{$socialLinks[$link_id]}}">
+                                                    <i class="demo-icon icon-link-ext-alt small"></i>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
 
                             </div>
                         </div>
@@ -286,14 +268,11 @@
                 form[form.length] = '       <textarea class="form-control" name="body" rows=5></textarea>';
                 form[form.length] = '   </div>';
                 form[form.length] = '   <div class="form-group">';
-                form[form.length] = '       <button class="btn btn-light-blue btn-sm" type="submit">Reply</button>';
+                form[form.length] = '       <button class="btn btn-primary btn-sm" type="submit">Reply</button>';
                 form[form.length] = '   </div>';
                 form[form.length] = '</form>';
                 $(this).replaceWith(form.join(''));
             }
         });
     </script>
-
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
 @endsection

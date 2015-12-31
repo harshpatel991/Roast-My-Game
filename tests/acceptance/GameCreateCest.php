@@ -97,6 +97,7 @@ class GameCreateCest
         $I->see('Shooter');
         $I->see('Here is a description.');
 
+        $I->click(['id' => 'download-dropdown']); //click download drop down
         $I->see('PC');
         $I->see('Mac');
         $I->see('Android');
@@ -125,7 +126,11 @@ class GameCreateCest
         $I->seeInSource("selectImage('/upload/test-full-title-1-3.jpg')");
         $I->seeInSource("selectImage('/upload/test-full-title-1-4.jpg')");
 
+        $I->click(['id' => 'link-tab-changes']); //open changes tab
+        $I->wait(2);
         $I->see('Here are some changes.');
+        $I->click(['id' => 'link-tab-upcoming_features']); //open upcoming changes
+        $I->wait(2);
         $I->see('Here are some upcoming features.');
         $I->seeInDatabase('games', array('title' => 'Test Full Title',
                                 'genre' => 'shooter',
