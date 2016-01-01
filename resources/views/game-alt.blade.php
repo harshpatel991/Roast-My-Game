@@ -38,7 +38,7 @@
                                     <div class="row">
 
                                         @if(!empty($video_thumbnail))
-                                            <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px;">
+                                            <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px; padding-right:1px;">
                                                 <div class="embed-responsive embed-responsive-16by9 position-relative">
                                                     <img class="embed-responsive-item" src="http://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
                                                     <div class="overlay-thumbnail"></div>
@@ -48,7 +48,7 @@
                                         @endif
 
                                         @foreach($images as $image)
-                                                <div class="col-sm-12 col-xs-2" style="margin-bottom: 5px;">
+                                                <div class="col-sm-12 col-xs-2" style="margin-bottom: 5px; padding-right:1px;">
                                                     <div class="embed-responsive embed-responsive-16by9 position-relative">
                                                         <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$image)}}" />
                                                         <div class="overlay-thumbnail" onclick="selectImage('{{Utils::get_image_url($game->slug.'/'.$image)}}')"></div>
