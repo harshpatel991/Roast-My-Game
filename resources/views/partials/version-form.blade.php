@@ -8,8 +8,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('beta', 'In Beta', ['class' => 'col-sm-2 control-label form-label']) !!}
-    <div class="col-sm-3">
+    {!! Form::label('beta', 'In Beta', ['class' => 'col-sm-2 col-xs-3 control-label form-label']) !!}
+    <div class="col-xs-3">
         {!! Form::checkbox('beta', 'true', old("beta")) !!}
     </div>
 </div>
@@ -19,12 +19,9 @@
 <div class="form-group">
     {!! Form::label('image1', 'Screenshots*', ['class' => 'col-sm-2 control-label form-label']) !!}
 
-    <span>
-        {!! Form::myImageWithThumbnail('image1') !!}
-    </span>
-    <span>
+    {!! Form::myImageWithThumbnail('image1') !!}
     {!! Form::myImageWithThumbnail('image2') !!}
-        </span>
+
     <div class="col-sm-4">
         <p class="small add-game-explanation">
             <b>Recommended:</b> 720px by 405px<br>
