@@ -107,9 +107,9 @@
 
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase" role="tab" data-toggle="tab"><i class="icon-info-circled visible-xs-block"></i><span class="hidden-xs">Description</span></a></li>
-                                    @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes"><i class="icon-exchange visible-xs-block"></i><span class="hidden-xs">Changes</span></a></li> @endif
-                                    @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features"><i class="icon-arrows-cw visible-xs-block"></i><span class="hidden-xs">Upcoming Features</span></a></li> @endif
+                                    <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase" role="tab" data-toggle="tab"><span class="icon-info-circled visible-xs-block"></span><span class="hidden-xs">Description</span></a></li>
+                                    @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes"><span class="icon-exchange visible-xs-block"></span><span class="hidden-xs">Changes</span></a></li> @endif
+                                    @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features"><span class="icon-arrows-cw visible-xs-block"></span><span class="hidden-xs">Upcoming Features</span></a></li> @endif
                                 </ul>
                                 <div class="small-grey-box" style="margin-top: 0px;">
                                     <!-- Tab panes -->
@@ -157,7 +157,7 @@
                                                 @foreach($platform_Icon_Name_Link as $platform)
                                                     <li>
                                                         <a href="{{$platform[2]}}">
-                                                            <i class="{{$platform[0]}}"></i>
+                                                            <span class="{{$platform[0]}}"></span>
                                                             <span>Download for {{$platform[1]}}</span>
                                                         </a>
                                                     </li>
@@ -173,10 +173,10 @@
                                         <hr>
                                         @foreach($linkIcons as $link_id => $linkIcon)
                                             <div style="margin-bottom: 5px;">
-                                                <i class="demo-icon {{$linkIcon}}" style=""></i>
+                                                <span class="{{$linkIcon}}"></span>
                                                 {{$linkTexts[$link_id]}}
                                                 <a href="{{$socialLinks[$link_id]}}">
-                                                    <i class="demo-icon icon-link-ext-alt small"></i>
+                                                    <span class="icon-link-ext-alt small"></span>
                                                 </a>
                                             </div>
                                         @endforeach
