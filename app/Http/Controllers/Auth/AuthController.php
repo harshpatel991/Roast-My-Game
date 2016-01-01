@@ -76,7 +76,7 @@ class AuthController extends Controller
 
         Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['confirmationCode' => $confirmationCode, 'logoPath' => 'http://www.topicloop.com/images/logo.png'], function($message) {
             $message->to(Input::get('email'))
-//                ->bcc('support@topicloop.com', 'Support')
+                ->bcc('support@roastmygame.com', 'Support')
                 ->subject('Please confirm your email');
         });
         Log::info('Confirm account email sent out to '.Input::get('email').' with confirmation code '.$confirmationCode);
