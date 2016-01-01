@@ -16,11 +16,6 @@
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
-    {{--<link href='http://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>--}}
-    {{--<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>--}}
-    {{--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>--}}
-    <link href='/css/custom-icons/my-icons.css' rel='stylesheet' type='text/css'>
-
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 </head>
@@ -38,8 +33,9 @@
     <script src="/js/jquery-2.1.4.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
-    @include('partials.googleAnalytics')
     @yield('scripts')
+    @include('partials.googleAnalytics')
+    @include('partials.lazyLoadIcons')
 
 </body>
 </html>
