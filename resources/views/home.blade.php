@@ -39,7 +39,7 @@
                 @include('partials.display-input-error')
 
                 <div class="row">
-                    <h6 class="small">RECENTLY UPDATED GAMES</h6>
+                    <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
 
                     @include('partials/card', ['game' => $games[0]])
                     @include('partials/card', ['game' => $games[1]])
