@@ -7,7 +7,11 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="icon-menu"></span>
                     </button>
-                    <a class="navbar-brand" href="/" style="color: #fff;font-weight: 400;padding-left:5px;">{{Config::get('app.name')}}</a>
+                    <a class="navbar-brand" href="/" style="color: #fff;font-weight: 400;padding-left:5px;">
+
+                        {{--<img alt="{{Config::get('app.name')}}" src="/images/logo.png" height="100%">--}}
+                        {{Config::get('app.name')}}
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
@@ -17,7 +21,6 @@
                     @endif
 
                     <ul class="nav navbar-nav navbar-right">
-
 
                         @if (Auth::guest())
                             <li>

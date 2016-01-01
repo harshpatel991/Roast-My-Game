@@ -184,7 +184,7 @@ class GameController extends Controller
         {
             return '<div class="col-sm-3">'.
             '<div class="embed-responsive embed-responsive-16by9">'.
-            '<img class="embed-responsive-item" id="' . $id . '-preview"/>'.
+            '<img class="embed-responsive-item" id="' . $id . '-preview" src="/images/placeholder.jpg"/>'.
             '</div>'.
             FormBuilder::file($id, ['class' => 'form-control', 'accept' => 'image/*', 'id' => $id]).
             '</div>';
