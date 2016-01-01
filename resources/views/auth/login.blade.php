@@ -35,8 +35,8 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('remember', 'Remember Me', ['class' => 'col-sm-3 control-label form-label']) !!}
-                        <div class="col-sm-3">
+                        {!! Form::label('remember', 'Remember Me', ['class' => 'col-sm-3 col-xs-4 control-label form-label']) !!}
+                        <div class="col-xs-3">
                             {!! Form::checkbox('remember', 'true', old("remember")) !!}
                         </div>
                     </div>

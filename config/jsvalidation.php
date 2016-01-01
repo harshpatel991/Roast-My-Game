@@ -17,13 +17,13 @@ return array(
      * If you change the focus on detect some error then active
      * this parameter to move the focus to the first error found.
      */
-    'focus_on_error' => false,
+    'focus_on_error' => true,
 
     /*
      * Duration time for the animation when We are moving the focus
      * to the first error, http://api.jquery.com/animate/ for more information.
      */
-    'duration_animate' => 1000,
+    'duration_animate' => 500,
 
     /*
      * Enable or disable Ajax validations of Database and custom rules.
