@@ -107,9 +107,9 @@
 
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase subheading-color" role="tab" data-toggle="tab">Description</a></li>
-                                    @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes">Changes</a></li> @endif
-                                    @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features">Upcoming Features</a></li> @endif
+                                    <li role="presentation" class="active small "><a href="#tab-description" class="bold-uppercase" role="tab" data-toggle="tab"><i class="icon-info-circled visible-xs-block"></i><span class="hidden-xs">Description</span></a></li>
+                                    @if(strlen($currentVersion->changes) > 0) <li role="presentation" class="small"><a href="#tab-changes" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-changes"><i class="icon-exchange visible-xs-block"></i><span class="hidden-xs">Changes</span></a></li> @endif
+                                    @if(strlen($currentVersion->upcoming_features) > 0) <li role="presentation" class="small"><a href="#tab-upcoming_features" class="bold-uppercase" role="tab" data-toggle="tab" id="link-tab-upcoming_features"><i class="icon-arrows-cw visible-xs-block"></i><span class="hidden-xs">Upcoming Features</span></a></li> @endif
                                 </ul>
                                 <div class="small-grey-box" style="margin-top: 0px;">
                                     <!-- Tab panes -->

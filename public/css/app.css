@@ -3606,6 +3606,7 @@ select[multiple].input-group-sm > .select2-search input[type="text"] {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
+  color: #bfbfbf;
   background-color: #fff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
