@@ -15,6 +15,9 @@ extensions:
 modules:
     config:
         Db:
+#            dsn: 'mysql:host=rmg2.cwqtmomh10su.us-west-2.rds.amazonaws.com;port=3306;dbname=rmg' #PROD
+#            user: 'rmg_master_user'
+#            password: 'rmg_master_password1'
             dsn: 'mysql:host=127.0.0.1;port=3306;dbname=homestead'
             user: 'homestead'
             password: 'secret'
