@@ -28,18 +28,15 @@ class UserController extends Controller
         return view('profile', compact('user', 'games', 'comments', 'versionsCount', 'likes'));
     }
 
-    //TODO: show users success page after signing up
-//    public function signupSuccess() {
-//
-//        $recentPosts = Post::orderBy('created_at')->limit(5)->get();
-//
-//        $email = 'your email';
-//        if(\Auth::check()) {
-//            $email = \Auth::user()->email;
-//        }
-//
-//        return view('signUpSuccess', compact('email', 'recentPosts', 'randomPost'));
-//    }
+    public function registerSuccess() {
+
+        $email = 'your email';
+        if(\Auth::check()) {
+            $email = \Auth::user()->email;
+        }
+
+        return view('auth.registerSuccess', compact('email'));
+    }
 
     public function verifySuccess($confirmation_code)
     {

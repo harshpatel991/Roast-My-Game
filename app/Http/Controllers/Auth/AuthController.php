@@ -10,6 +10,8 @@ use App\User;
 use Validator;
 use JsValidator;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -30,6 +32,7 @@ class AuthController extends Controller
 
     protected $redirectPath = '/';
     protected $redirectTo = '/';
+
 
     /**
      * Create a new authentication controller instance.
@@ -54,6 +57,22 @@ class AuthController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
+    }
+
+    public function postRegister(Request $request)
+    {
+        $registerRedirectPath = '/register-success';
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Auth::login($this->create($request->all()));
+
+        return redirect($registerRedirectPath);
     }
 
     /**
