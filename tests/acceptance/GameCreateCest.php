@@ -162,18 +162,162 @@ class GameCreateCest
 
     public function testAddExistingGameTitleGame(\AcceptanceTester $I)
     {
-        //TODO
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+
+        $I->click('Add Game');
+        $I->fillField('title', 'Test Game 3');
+        $I->selectOption('select[name=genre]', 'Action');
+        $I->fillField('version', '3.4.5');
+        $I->attachFile('image1', 'image1.jpg');
+        $I->click('Add Game!');
+
+        $I->see('Test Game 3');
+        $I->see('Action');
+        $I->see('VERSION 3.4.5');
+        $I->dontSee('BETA');
+        $I->dontSee('Download');
+        $I->dontSee('Links');
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-3-1/test-game-3-1-345-1.jpg')");
+        $I->seeInDatabase('games', array('title' => 'Test Game 3',
+            'genre' => 'action',
+            'slug' => 'test-game-3-1'));
+        $I->seeInDatabase('versions', array('version' => '3.4.5',
+            'beta' => 0,
+            'image1' => 'test-game-3-1-345-1.jpg'));
     }
 
-    public function testAddFormattedTextBoxValues(\AcceptanceTester $I)
+    public function testViewFormattedTextBoxValues(\AcceptanceTester $I)
     {
-        //TODO
+        $I->amOnPage('/game/test-game-6');
+        $I->seeInSource("<p><strong>Bold Text</strong></p>");
+        $I->seeInSource('<p><em>Italic Text</em></p>');
+        $I->seeInSource('<p><a href="http://google.com">Link</a></p>');
+        $I->seeInSource('<p style="text-align:left;">Left Justified</p>');
+        $I->seeInSource('<p style="text-align:center;">Centered</p>');
+        $I->seeInSource('<p style="text-align:right;">Right Justified</p>');
+        $I->seeInSource('<ul><li>Bulleted1</li>');
+        $I->seeInSource('<li>Bulleted2</li>');
+        $I->seeInSource('<li>Bulleted 3</li>');
+        $I->seeInSource('</ul><ol><li>Number1</li>');
+        $I->seeInSource('<li>Number2</li>');
+        $I->seeInSource('<li>Number3</li>');
+        $I->seeInSource('</ol>');
+
+        $I->click(['id' => 'link-tab-changes']); //open changes tab
+        $I->wait(2);
+        $I->amOnPage('/game/test-game-6');
+        $I->seeInSource("<p><strong>Bold Text</strong></p>");
+        $I->seeInSource('<p><em>Italic Text</em></p>');
+        $I->seeInSource('<p><a href="http://google.com">Link</a></p>');
+        $I->seeInSource('<p style="text-align:left;">Left Justified</p>');
+        $I->seeInSource('<p style="text-align:center;">Centered</p>');
+        $I->seeInSource('<p style="text-align:right;">Right Justified</p>');
+        $I->seeInSource('<ul><li>Bulleted1</li>');
+        $I->seeInSource('<li>Bulleted2</li>');
+        $I->seeInSource('<li>Bulleted 3</li>');
+        $I->seeInSource('</ul><ol><li>Number1</li>');
+        $I->seeInSource('<li>Number2</li>');
+        $I->seeInSource('<li>Number3</li>');
+        $I->seeInSource('</ol>');
+
+        $I->click(['id' => 'link-tab-upcoming_features']); //open upcoming changes
+        $I->wait(2);
+        $I->amOnPage('/game/test-game-6');
+        $I->seeInSource("<p><strong>Bold Text</strong></p>");
+        $I->seeInSource('<p><em>Italic Text</em></p>');
+        $I->seeInSource('<p><a href="http://google.com">Link</a></p>');
+        $I->seeInSource('<p style="text-align:left;">Left Justified</p>');
+        $I->seeInSource('<p style="text-align:center;">Centered</p>');
+        $I->seeInSource('<p style="text-align:right;">Right Justified</p>');
+        $I->seeInSource('<ul><li>Bulleted1</li>');
+        $I->seeInSource('<li>Bulleted2</li>');
+        $I->seeInSource('<li>Bulleted 3</li>');
+        $I->seeInSource('</ul><ol><li>Number1</li>');
+        $I->seeInSource('<li>Number2</li>');
+        $I->seeInSource('<li>Number3</li>');
+        $I->seeInSource('</ol>');
     }
 
     public function testAddGameWithGIFImages(\AcceptanceTester $I)
     {
-        //TODO
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+
+        $I->click('Add Game');
+        $I->fillField('title', 'Test Game With GIF');
+        $I->selectOption('select[name=genre]', 'Action');
+        $I->fillField('version', '1');
+        $I->attachFile('image1', 'image.gif');
+        $I->click('Add Game!');
+
+        $I->see('Test Game With GIF');
+        $I->see('Action');
+        $I->see('VERSION 1');
+        $I->dontSee('BETA');
+        $I->dontSee('Download');
+        $I->dontSee('Links');
+        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-with-gif/test-game-with-gif-1-1.gif')");
+        $I->seeInDatabase('games', array('title' => 'Test Game With GIF',
+            'genre' => 'action',
+            'slug' => 'test-game-with-gif'));
+        $I->seeInDatabase('versions', array('version' => '1',
+            'beta' => 0,
+            'image1' => 'test-game-with-gif-1-1.gif'));
     }
 
+    public function testAddScriptTags(\AcceptanceTester $I)
+    {
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
 
+        $I->click('Add Game');
+        $I->fillField('title', 'Test Game With Script Tags');
+        $I->selectOption('select[name=genre]', 'Action');
+        $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
+            $webdriver->switchTo()->frame('description_ifr');
+            $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
+            $webdriver->findElement(WebDriverBy::id("tinymce"))->sendKeys("<script>alert('Should not show up 1');</script>");
+            $webdriver->switchTo()->defaultContent();
+        });
+
+        $I->fillField('version', '1');
+        $I->attachFile('image1', 'image1.jpg');
+
+        $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
+            $webdriver->switchTo()->frame('changes_ifr');
+            $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
+            $webdriver->findElement(WebDriverBy::id("tinymce"))->sendKeys("<script>alert('Should not show up 2');</script>");
+            $webdriver->switchTo()->defaultContent();
+        });
+
+        $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
+            $webdriver->switchTo()->frame('upcoming_features_ifr');
+            $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
+            $webdriver->findElement(WebDriverBy::id("tinymce"))->sendKeys("<script>alert('Should not show up 3');</script>");
+            $webdriver->switchTo()->defaultContent();
+        });
+
+        $I->click('Add Game!');
+
+        $I->see('Test Game With Script Tags');
+        $I->see('Action');
+        $I->see('VERSION 1');
+        $I->dontSee('BETA');
+        $I->dontSee('Download');
+        $I->dontSee('Links');
+        $I->see("<script>alert('Should not show up 1');</script>");
+        $I->click(['id' => 'link-tab-changes']); //open changes tab
+        $I->wait(2);
+        $I->see("<script>alert('Should not show up 2');</script>");
+        $I->click(['id' => 'link-tab-upcoming_features']); //open upcoming changes
+        $I->wait(2);
+        $I->see("<script>alert('Should not show up 3');</script>");
+        $I->seeInDatabase('games', array('title' => 'Test Game With Script Tags',
+            'genre' => 'action',
+            'slug' => 'test-game-with-script-tags',
+            'description' => "<p>&lt;script&gt;alert('Should not show up 1');&lt;/script&gt;</p>"));
+        $I->seeInDatabase('versions', array('version' => '1',
+            'beta' => 0,
+            'image1' => 'test-game-with-script-tags-1-1.jpg',
+            'changes' => "<p>&lt;script&gt;alert('Should not show up 2');&lt;/script&gt;</p>",
+            'upcoming_features' => "<p>&lt;script&gt;alert('Should not show up 3');&lt;/script&gt;</p>"));
+    }
 }

@@ -161,6 +161,57 @@ class VersionTableSeeder extends Seeder
 
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
+            ],
+            ['id' => 8,
+                'game_id' => 6,
+                'version' => '1.1.1',
+                'slug' => '1.1.1',
+                'beta' => true,
+                'video_link' => '',
+                'image1' => 'image3.jpg',
+                'image2' => 'image4.jpg',
+                'image3' => 'image5.jpg',
+                'image4' => null,
+
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
+                'upcoming_features' => '<p><strong>Bold Text</strong></p>
+                                        <p><em>Italic Text</em></p>
+                                        <p><a href="http://google.com">Link</a></p>
+                                        <p style="text-align: left;">Left Justified</p>
+                                        <p style="text-align: center;">Centered</p>
+                                        <p style="text-align: right;">Right Justified</p>
+                                        <ul>
+                                        <li>Bulleted1</li>
+                                        <li>Bulleted2</li>
+                                        <li>Bulleted 3</li>
+                                        </ul>
+                                        <ol>
+                                        <li>Number1</li>
+                                        <li>Number2</li>
+                                        <li>Number3</li>
+                                        </ol>',
+                'changes' => '<p><strong>Bold Text</strong></p>
+                            <p><em>Italic Text</em></p>
+                            <p><a href="http://google.com">Link</a></p>
+                            <p style="text-align: left;">Left Justified</p>
+                            <p style="text-align: center;">Centered</p>
+                            <p style="text-align: right;">Right Justified</p>
+                            <ul>
+                            <li>Bulleted1</li>
+                            <li>Bulleted2</li>
+                            <li>Bulleted 3</li>
+                            </ul>
+                            <ol>
+                            <li>Number1</li>
+                            <li>Number2</li>
+                            <li>Number3</li>
+                            </ol>'
             ]
         );
 
