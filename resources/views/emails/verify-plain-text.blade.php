@@ -4,6 +4,6 @@ Thanks so much for joining {{Config::get('app.name')}}. Confirm your email by cl
 {{ URL::to('verify/' . $confirmationCode) }}
 
 <br><br>
--The {{Config::get('app.name')}} Team
+-{{Config::get('app.name')}}
 <br>
 {{ URL::to('/') }}
