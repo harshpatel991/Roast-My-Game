@@ -66,7 +66,7 @@ class CommentCest
         $I->selectOption('select[name=positive]', 'Animation');
         $I->selectOption('select[name=negative]', 'Level Design');
         $I->fillField('body', 'This is a sample comment. This is a sample comment.');
-        $I->click('Reply');
+        $I->click(['id' =>'main-reply-button']);
 
         $I->see('Comment added!');
         $I->see('Animation', '.media-body');

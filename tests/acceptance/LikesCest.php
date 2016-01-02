@@ -28,6 +28,21 @@ class LikesCest
 
         $I->see('2', '.btn-favorite-container .btn-success');
         $I->seeInDatabase('likes', ['game_id' => '1', 'user_id' => '2']);
+        $I->seeInDatabase('games', ['id' => '1', 'likes' => '2']);
+
+        //login as another user and like game
+        $I->click('#profile-dropdown');
+        $I->wait(1);
+        $I->click('#logout-button');
+        $I->wait(1);
+        $this->loginAs($I, 'user3@gmail.com', 'password3');
+        $I->amOnPage('/game/test-game-1');
+        $I->click('.btn-favorite-background');
+        $I->wait(3);
+
+        $I->see('3', '.btn-favorite-container .btn-success');
+        $I->seeInDatabase('likes', ['game_id' => '1', 'user_id' => '1']);
+        $I->seeInDatabase('games', ['id' => '1', 'likes' => '3']);
     }
 
     public function testLikeAlreadyLiked(\AcceptanceTester $I)
