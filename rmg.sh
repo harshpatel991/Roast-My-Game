@@ -1,14 +1,14 @@
 #!/bin/bash
 
 proddeploy() {
-  echo "------------Production Deploy------------"
+  printf "${RED}------------Production Deploy------------${NC}\n"
 
 #  echo "---Backing Up Production DB"
 #  backupremotedb
 
 #  echo "Verify DB backup was made."
 #  ls -l prod-db-backups
-  echo "Continue PROD deploy? [y/n]"
+  printf "${RED}Continue PROD deploy? [y/n]${NC}\n"
   read continue
 
   if [ "$continue" == "y" ]; then
@@ -26,7 +26,7 @@ proddeploy() {
 }
 
 localdev() {
-  echo "------------Start Local Dev Enviroment------------"
+  printf "${RED}------------Start Local Dev Enviroment------------${NC}\n"
   #start local dev environment
     #start homestead
     #ssh into homestead
@@ -34,12 +34,12 @@ localdev() {
 }
 
 backupremotedb() {
-  echo "------------Backup Remote DB------------"
+  printf "${RED}------------Backup Remote DB------------${NC}\n"
   #backup remote db
-  echo "Enter DB password..."
+  echo "User: rmg_ec2_user. Enter DB password..."
   read dbpassword
-  dt_now=$(date '+%d_%m_%Y_%H_%M_%S');
-  mysqldump --user=devmaster -p$dbpassword --host=nupicture-dev-db.cwqtmomh10su.us-west-2.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "nupicture_dev_db" -r "./prod-db-backups/backup$dt_now.sql"
+  dt_now=$(date '+%d_%m_%Y__%H_%M_%S');
+  mysqldump --user=rmg_ec2_user -p$dbpassword --host=rmg2.cwqtmomh10su.us-west-2.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
   echo "Copy remote dump to local test folder? [y/n]"
   read continue
 
@@ -52,7 +52,7 @@ backupremotedb() {
 }
 
 runtests() {
-  echo "------------Run Automation Tests------------"
+  printf "${RED}------------Run Automation Tests------------${NC}\n"
 
   echo "---Backing Up Production DB"
   backupremotedb
@@ -71,19 +71,21 @@ runtests() {
 }
 
 prodlogs() {
-    echo "------------Get Latest Production Logs------------"
-
-    echo "Enter EC2 instance IP"
-    read ec2instanceIP
-    ssh -i ~/.ssh/nupicture-dev.pem ec2-user@$ec2instanceIP 'cd /var/app/current/storage/logs/; test=$(ls -t | head -1); cat $test;'
+    printf "${RED}------------Get Latest Production Logs------------${NC}\n"
+    ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod`].PublicIpAddress' --output text)
+    echo "Logging into ${ec2instanceIP}"
+    ssh ec2-user@"${ec2instanceIP}" 'cat /var/app/current/storage/logs/laravel.log;'
 }
+
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 
 echo "Available Commands"
 echo "1. Production Deploy"
 echo "2. Start Local Dev Enviroment (localdev)"
-echo "3. Backup Remote DB (backupremotedb)"
+echo "3. Backup Remote DB"
 echo "4. Run Automation Tests (runtests)"
-echo "5. Get Production Logs(prodlogs)"
+echo "5. Get Production Logs"
 
 read command
 
@@ -91,11 +93,11 @@ if [ "$command" ==  "1" ]; then
   proddeploy
 elif [ $command == "localdev" ]; then
   localdev
-elif [ $command == "backupremotedb" ]; then
+elif [ $command == "3" ]; then
   backupremotedb
 elif [ $command == "runtests" ]; then
   runtests
-elif [ $command == "prodlogs" ]; then
+elif [ $command == "5" ]; then
   prodlogs
 else
   echo "Invalid command"

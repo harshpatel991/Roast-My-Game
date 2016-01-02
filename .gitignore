@@ -4,6 +4,7 @@ Homestead.yaml
 Homestead.json
 .env
 .idea/
+/prod-db-backups/*
 
 tests/_output/*
 # Elastic Beanstalk Files
