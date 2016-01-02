@@ -31,3 +31,5 @@
 .icon-info-circled:before { content: '\e81d'; } /* '' */
 .icon-exchange:before { content: '\e81e'; } /* '' */
 .icon-arrows-cw:before { content: '\e81f'; } /* '' */
+.icon-comment-empty:before { content: '\e820'; } /* '' */
+.icon-gamepad:before { content: '\e821'; } /* '' */
