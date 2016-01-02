@@ -8,6 +8,7 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
+#            url: http://roastmygame.com #PROD
             url: http://clickr.app
             browser: firefox
             host: 10.0.2.2 #find this value by running on vagrant box: netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10

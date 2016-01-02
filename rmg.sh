@@ -16,7 +16,7 @@ proddeploy() {
       gulp --production
       echo "---Tag version [ex v1.2]"
       read tag
-      git commit -m "Release $tag"
+      git commit -m "Release $tag" public/css/app.css
       git tag -a "$tag" -m "$tag"
       echo "---Deploying"
       eb deploy rmg-prod
