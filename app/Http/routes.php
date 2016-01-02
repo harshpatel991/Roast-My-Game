@@ -32,6 +32,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+Route::get('/register-success', 'UserController@registerSuccess');
 Route::get('/verify/{confirmation_code}', 'UserController@verifySuccess');
 
 // Registration routes...

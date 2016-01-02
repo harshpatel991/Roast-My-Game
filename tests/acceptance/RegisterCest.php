@@ -30,6 +30,7 @@ class RegisterCest
 
         //verify logged in
         $I->see('new-register');
+        $I->see('A verification link has been sent to new-register@gmail.com');
 
         //confirm the user
         $I->amOnPage('/verify/'.$confirmationCode);
