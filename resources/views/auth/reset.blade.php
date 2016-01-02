@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('password', 'password', ['class' => 'col-sm-3 control-label form-label']) !!}
+                            {!! Form::label('password', 'New Password', ['class' => 'col-sm-3 control-label form-label']) !!}
                             <div class="col-sm-6">
                                 {!! Form::password('password', ['class' => 'form-control']) !!}
                             </div>
