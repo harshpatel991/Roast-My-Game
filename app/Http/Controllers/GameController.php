@@ -10,6 +10,7 @@ use App\Like;
 use App\Version;
 use Auth;
 use DB;
+use Log;
 use Illuminate\Html\FormBuilder;
 use Illuminate\Http\Request;
 
@@ -82,7 +83,7 @@ class GameController extends Controller
     }
 
     public function postAddGame(StoreGameRequest $request) {
-
+        Log::info('Request to store a game: ' . print_R($request->all(), TRUE));
         $game = new Game;
         $game->title = $request->get('title');
         $game->user_id = $request->user()->id;
@@ -108,6 +109,7 @@ class GameController extends Controller
     }
 
     public function postAddVersion(Game $game, StoreVersionRequest $request) {
+        Log::info('Request to store a version: ' . print_R($request->all(), TRUE));
         $version = $this->createVersion($game, $request);
         $version->save();
         return redirect('game/'.$game->slug);
