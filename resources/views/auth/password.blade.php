@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('page-title')
-    {{Config::get('app.name')}}
+    Forgot Your Password - {{Config::get('app.name')}}
 @endsection
 
 @section('navbar')
