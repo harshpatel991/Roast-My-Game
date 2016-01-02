@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary btn-sm" type="submit">Reply</button>
+            <button class="btn btn-primary btn-sm" type="submit" id="main-reply-button">Reply</button>
         </div>
 
     {{--</div>--}}
