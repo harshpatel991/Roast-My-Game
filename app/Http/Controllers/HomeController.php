@@ -24,6 +24,10 @@ class HomeController extends Controller
         return redirect('/add-game')->withInput(['title' => $request->get('title'), 'email' => $request->get('email')]);
     }
 
+    public function about() {
+        return view('boilerplate.about');
+    }
+
     public function privacyPolicy() {
         return view('boilerplate.privacy-policy');
     }
