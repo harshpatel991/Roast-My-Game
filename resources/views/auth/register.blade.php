@@ -33,6 +33,11 @@
                                     <strong><p class="small text-center">ADD GAMES</p></strong>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="/about" class="pull-right">ABOUT<span class="icon-right-circled"></span></a>
+                                </div>
+                            </div>
                         </div>
 
 
