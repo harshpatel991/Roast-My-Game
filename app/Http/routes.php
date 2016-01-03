@@ -85,6 +85,7 @@ Route::get('/contact-us',
 Route::post('/contact-us',
     ['uses' => 'HomeController@postContactUs']);
 
+Route::get('/about', 'HomeController@about');
 Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 Route::get('/terms-conditions', 'HomeController@termsAndConditions');
 
