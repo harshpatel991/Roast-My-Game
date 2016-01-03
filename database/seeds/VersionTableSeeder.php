@@ -180,37 +180,29 @@ class VersionTableSeeder extends Seeder
                 'link_platform_unity' => null,
                 'link_platform_other' => null,
 
-                'upcoming_features' => '<p><strong>Bold Text</strong></p>
-                                        <p><em>Italic Text</em></p>
-                                        <p><a href="http://google.com">Link</a></p>
-                                        <p style="text-align: left;">Left Justified</p>
-                                        <p style="text-align: center;">Centered</p>
-                                        <p style="text-align: right;">Right Justified</p>
+                'upcoming_features' => 'text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href="http://google.com">link</a><br /><br />
                                         <ul>
-                                        <li>Bulleted1</li>
-                                        <li>Bulleted2</li>
-                                        <li>Bulleted 3</li>
+                                        <li>bullet1</li>
+                                        <li>bullet2</li>
+                                        <li>bullet3</li>
                                         </ul>
+                                        <br />
                                         <ol>
-                                        <li>Number1</li>
-                                        <li>Number2</li>
-                                        <li>Number3</li>
+                                        <li>number1</li>
+                                        <li>number2</li>
+                                        <li>number3</li>
                                         </ol>',
-                'changes' => '<p><strong>Bold Text</strong></p>
-                            <p><em>Italic Text</em></p>
-                            <p><a href="http://google.com">Link</a></p>
-                            <p style="text-align: left;">Left Justified</p>
-                            <p style="text-align: center;">Centered</p>
-                            <p style="text-align: right;">Right Justified</p>
+                'changes' => 'text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href="http://google.com">link</a><br /><br />
                             <ul>
-                            <li>Bulleted1</li>
-                            <li>Bulleted2</li>
-                            <li>Bulleted 3</li>
+                            <li>bullet1</li>
+                            <li>bullet2</li>
+                            <li>bullet3</li>
                             </ul>
+                            <br />
                             <ol>
-                            <li>Number1</li>
-                            <li>Number2</li>
-                            <li>Number3</li>
+                            <li>number1</li>
+                            <li>number2</li>
+                            <li>number3</li>
                             </ol>'
             ]
         );
