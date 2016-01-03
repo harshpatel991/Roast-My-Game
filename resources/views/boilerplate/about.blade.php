@@ -45,7 +45,7 @@
                     </p>
 
                     <h3 class="form-title">Who can post a game?</h3>
-                    <p>Anyone is allowed to post their game. Current games and games that you have worked on in the past are allowed to be posted as long as you have full permission from al the developers to post the game.</p>
+                    <p>Anyone is allowed to post their game. Current games and games that you have worked on in the past are allowed to be posted as long as you have full permission from all the developers to post the game.</p>
 
                     <br>
                 </div>
