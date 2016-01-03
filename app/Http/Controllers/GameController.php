@@ -68,7 +68,6 @@ class GameController extends Controller
 
         $nextGame = $this->getNextGame(array_keys($request->session()->all()))->slug; //the link to view the next game
 
-
         return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'nextGame', 'comments'));
     }
 
@@ -105,14 +104,14 @@ class GameController extends Controller
         $version->game_id = $game->id;
         $version->save();
 
-        return redirect('game/'.$game->slug);
+        return redirect('game/'.$game->slug)->with('message', 'Your game has been added! Please consider leaving feedback for other games.');
     }
 
     public function postAddVersion(Game $game, StoreVersionRequest $request) {
         Log::info('Request to store a version: ' . print_R($request->all(), TRUE));
         $version = $this->createVersion($game, $request);
         $version->save();
-        return redirect('game/'.$game->slug);
+        return redirect('game/'.$game->slug)->with('message', 'Your progress has been added! Please consider leaving feedback for other games.');
     }
 
     private function createVersion($game, Request $request) {

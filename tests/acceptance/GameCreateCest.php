@@ -22,6 +22,7 @@ class GameCreateCest
         $I->attachFile('image1', 'image1.jpg');
         $I->click('Add Game!');
 
+        $I->see('Your game has been added!');
         $I->see('Test Minimal Title');
         $I->see('Action');
         $I->see('VERSION 3.4.5');
@@ -93,8 +94,9 @@ class GameCreateCest
             $webdriver->findElement(WebDriverBy::id("tinymce"))->sendKeys("Here are some upcoming features.");
             $webdriver->switchTo()->defaultContent();
         });
-
         $I->click('Add Game!');
+
+        $I->see('Your game has been added!');
         $I->see('Test Full Title');
         $I->see('Shooter');
         $I->see('Here is a description.');
@@ -171,6 +173,7 @@ class GameCreateCest
         $I->attachFile('image1', 'image1.jpg');
         $I->click('Add Game!');
 
+        $I->see('Your game has been added!');
         $I->see('Test Game 3');
         $I->see('Action');
         $I->see('VERSION 3.4.5');
@@ -189,52 +192,47 @@ class GameCreateCest
     public function testViewFormattedTextBoxValues(\AcceptanceTester $I)
     {
         $I->amOnPage('/game/test-game-6');
-        $I->seeInSource("<p><strong>Bold Text</strong></p>");
-        $I->seeInSource('<p><em>Italic Text</em></p>');
-        $I->seeInSource('<p><a href="http://google.com">Link</a></p>');
-        $I->seeInSource('<p style="text-align:left;">Left Justified</p>');
-        $I->seeInSource('<p style="text-align:center;">Centered</p>');
-        $I->seeInSource('<p style="text-align:right;">Right Justified</p>');
-        $I->seeInSource('<ul><li>Bulleted1</li>');
-        $I->seeInSource('<li>Bulleted2</li>');
-        $I->seeInSource('<li>Bulleted 3</li>');
-        $I->seeInSource('</ul><ol><li>Number1</li>');
-        $I->seeInSource('<li>Number2</li>');
-        $I->seeInSource('<li>Number3</li>');
+        $I->seeInSource('text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href="http://google.com">link</a><br /><br />');
+        $I->seeInSource('<ul>');
+        $I->seeInSource('<li>bullet1</li>');
+        $I->seeInSource('<li>bullet2</li>');
+        $I->seeInSource('<li>bullet3</li>');
+        $I->seeInSource('</ul>');
+        $I->seeInSource('<br />');
+        $I->seeInSource('<ol>');
+        $I->seeInSource('<li>number1</li>');
+        $I->seeInSource('<li>number2</li>');
+        $I->seeInSource('<li>number3</li>');
         $I->seeInSource('</ol>');
 
         $I->click(['id' => 'link-tab-changes']); //open changes tab
         $I->wait(2);
-        $I->amOnPage('/game/test-game-6');
-        $I->seeInSource("<p><strong>Bold Text</strong></p>");
-        $I->seeInSource('<p><em>Italic Text</em></p>');
-        $I->seeInSource('<p><a href="http://google.com">Link</a></p>');
-        $I->seeInSource('<p style="text-align:left;">Left Justified</p>');
-        $I->seeInSource('<p style="text-align:center;">Centered</p>');
-        $I->seeInSource('<p style="text-align:right;">Right Justified</p>');
-        $I->seeInSource('<ul><li>Bulleted1</li>');
-        $I->seeInSource('<li>Bulleted2</li>');
-        $I->seeInSource('<li>Bulleted 3</li>');
-        $I->seeInSource('</ul><ol><li>Number1</li>');
-        $I->seeInSource('<li>Number2</li>');
-        $I->seeInSource('<li>Number3</li>');
+        $I->seeInSource('text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href="http://google.com">link</a><br /><br />');
+        $I->seeInSource('<ul>');
+        $I->seeInSource('<li>bullet1</li>');
+        $I->seeInSource('<li>bullet2</li>');
+        $I->seeInSource('<li>bullet3</li>');
+        $I->seeInSource('</ul>');
+        $I->seeInSource('<br />');
+        $I->seeInSource('<ol>');
+        $I->seeInSource('<li>number1</li>');
+        $I->seeInSource('<li>number2</li>');
+        $I->seeInSource('<li>number3</li>');
         $I->seeInSource('</ol>');
 
         $I->click(['id' => 'link-tab-upcoming_features']); //open upcoming changes
         $I->wait(2);
-        $I->amOnPage('/game/test-game-6');
-        $I->seeInSource("<p><strong>Bold Text</strong></p>");
-        $I->seeInSource('<p><em>Italic Text</em></p>');
-        $I->seeInSource('<p><a href="http://google.com">Link</a></p>');
-        $I->seeInSource('<p style="text-align:left;">Left Justified</p>');
-        $I->seeInSource('<p style="text-align:center;">Centered</p>');
-        $I->seeInSource('<p style="text-align:right;">Right Justified</p>');
-        $I->seeInSource('<ul><li>Bulleted1</li>');
-        $I->seeInSource('<li>Bulleted2</li>');
-        $I->seeInSource('<li>Bulleted 3</li>');
-        $I->seeInSource('</ul><ol><li>Number1</li>');
-        $I->seeInSource('<li>Number2</li>');
-        $I->seeInSource('<li>Number3</li>');
+        $I->seeInSource('text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href="http://google.com">link</a><br /><br />');
+        $I->seeInSource('<ul>');
+        $I->seeInSource('<li>bullet1</li>');
+        $I->seeInSource('<li>bullet2</li>');
+        $I->seeInSource('<li>bullet3</li>');
+        $I->seeInSource('</ul>');
+        $I->seeInSource('<br />');
+        $I->seeInSource('<ol>');
+        $I->seeInSource('<li>number1</li>');
+        $I->seeInSource('<li>number2</li>');
+        $I->seeInSource('<li>number3</li>');
         $I->seeInSource('</ol>');
     }
 
@@ -249,6 +247,7 @@ class GameCreateCest
         $I->attachFile('image1', 'image.gif');
         $I->click('Add Game!');
 
+        $I->see('Your game has been added!');
         $I->see('Test Game With GIF');
         $I->see('Action');
         $I->see('VERSION 1');
@@ -297,6 +296,7 @@ class GameCreateCest
 
         $I->click('Add Game!');
 
+        $I->see('Your game has been added!');
         $I->see('Test Game With Script Tags');
         $I->see('Action');
         $I->see('VERSION 1');

@@ -18,6 +18,7 @@ class VersionCreateCest
         $I->click('Add Progress!');
 
         //verify
+        $I->see('Your progress has been added!');
         $I->see('Test Game 1');
         $I->see('Action');
         $I->see('This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.');
@@ -104,6 +105,7 @@ class VersionCreateCest
         });
 
         $I->click('Add Progress!');
+        $I->see('Your progress has been added!');
         $I->see('Test Game 1');
         $I->see('Action');
         $I->see('This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.');
@@ -180,10 +182,4 @@ class VersionCreateCest
         //TODO: this behavior is undefined, fix it later
         // right now, will overwrite images of the older exsing version but add a new version
     }
-
-    public function testAddVersionWithGIFImages(\AcceptanceTester $I)
-    {
-        //TODO
-    }
-
 }
