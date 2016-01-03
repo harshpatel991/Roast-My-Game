@@ -64,7 +64,7 @@
         tinymce.init({
             selector: '#changes',
             menubar: '',
-            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            toolbar: 'bold italic | link image | bullist numlist',
             plugins: [
                 'advlist autolink link'
             ],
