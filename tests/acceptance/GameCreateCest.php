@@ -136,7 +136,7 @@ class GameCreateCest
         $I->see('Here are some upcoming features.');
         $I->seeInDatabase('games', array('title' => 'Test Full Title',
                                 'genre' => 'shooter',
-                                'description' => '<p>Here is a description.</p>',
+                                'description' => 'Here is a description.',
                                 'link_social_greenlight' => 'http://greenlight.com',
                                 'link_social_website' => 'http://website.com',
                                 'link_social_twitter' => 'http://link-twitter.com',
@@ -156,8 +156,8 @@ class GameCreateCest
             'link_platform_android' => 'http://android-full-game-version-1.com',
             'link_platform_unity' => 'http://unity-web-full-game-version-1.com',
             'link_platform_other' => 'http://other-web-full-game-version-1.com',
-            'changes' => '<p>Here are some changes.</p>',
-            'upcoming_features' => '<p>Here are some upcoming features.</p>'));
+            'changes' => 'Here are some changes.',
+            'upcoming_features' => 'Here are some upcoming features.'));
     }
 
     public function testAddExistingGameTitleGame(\AcceptanceTester $I)
@@ -313,11 +313,11 @@ class GameCreateCest
         $I->seeInDatabase('games', array('title' => 'Test Game With Script Tags',
             'genre' => 'action',
             'slug' => 'test-game-with-script-tags',
-            'description' => "<p>&lt;script&gt;alert('Should not show up 1');&lt;/script&gt;</p>"));
+            'description' => "&lt;script&gt;alert('Should not show up 1');&lt;/script&gt;"));
         $I->seeInDatabase('versions', array('version' => '1',
             'beta' => 0,
             'image1' => 'test-game-with-script-tags-1-1.jpg',
-            'changes' => "<p>&lt;script&gt;alert('Should not show up 2');&lt;/script&gt;</p>",
-            'upcoming_features' => "<p>&lt;script&gt;alert('Should not show up 3');&lt;/script&gt;</p>"));
+            'changes' => "&lt;script&gt;alert('Should not show up 2');&lt;/script&gt;",
+            'upcoming_features' => "&lt;script&gt;alert('Should not show up 3');&lt;/script&gt;"));
     }
 }

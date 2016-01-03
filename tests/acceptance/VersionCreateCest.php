@@ -157,8 +157,8 @@ class VersionCreateCest
             'link_platform_android' => 'http://android-full-version-version-3.com',
             'link_platform_unity' => 'http://unity-web-full-version-version-3.com',
             'link_platform_other' => 'http://other-web-full-version-version-3.com',
-            'changes' => '<p>Here are some changes for version 3.</p>',
-            'upcoming_features' => '<p>Here are some upcoming features for version 3.</p>'));
+            'changes' => 'Here are some changes for version 3.',
+            'upcoming_features' => 'Here are some upcoming features for version 3.'));
 
         //try to switch versions
         $I->click(['id' => 'version-dropdown']);

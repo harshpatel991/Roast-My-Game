@@ -78,14 +78,16 @@
     tinymce.init({
         selector: '#upcoming_features',
         menubar: '',
-        toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+        toolbar: 'bold italic | link image | bullist numlist',
         plugins: [
             'advlist autolink link'
         ],
         statusbar: false,
-        content_css: 'css/tinymce.css',
-        editor_css: 'css/editor.css',
-        skin: "custom"
+        content_css: '/css/tinymce.css',
+        skin: "custom",
+
+        forced_root_block : false,
+        force_p_newlines : false
       });
     </script>
 
@@ -93,13 +95,16 @@
         tinymce.init({
             selector: '#changes',
             menubar: '',
-            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            toolbar: 'bold italic | link image | bullist numlist',
             plugins: [
                 'advlist autolink link'
             ],
             statusbar: false,
-            content_css: 'css/tinymce.css',
-            skin: "custom"
+            content_css: '/css/tinymce.css',
+            skin: "custom",
+
+            forced_root_block : false,
+            force_p_newlines : false
         });
     </script>
 
@@ -107,13 +112,16 @@
         tinymce.init({
             selector: '#description',
             menubar: '',
-            toolbar: 'bold italic | link image | alignleft aligncenter alignright, | bullist numlist',
+            toolbar: 'bold italic | link image | bullist numlist',
             plugins: [
                 'advlist autolink link'
             ],
             statusbar: false,
-            content_css: 'css/tinymce.css',
-            skin: "custom"
+            content_css: '/css/tinymce.css',
+            skin: "custom",
+
+            forced_root_block : false,
+            force_p_newlines : false
         });
     </script>
 

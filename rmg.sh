@@ -35,11 +35,12 @@ localdev() {
 
 backupremotedb() {
   printf "${RED}------------Backup Remote DB------------${NC}\n"
-  #backup remote db
+  backupremotedb
   echo "User: rmg_ec2_user. Enter DB password..."
   read dbpassword
   dt_now=$(date '+%d_%m_%Y__%H_%M_%S');
-  mysqldump --user=rmg_ec2_user -p$dbpassword --host=rmg2.cwqtmomh10su.us-west-2.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
+  mysqldump --single-transaction --user=rmg_ec2_user -p$dbpassword --host=rmg2.cwqtmomh10su.us-west-2.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
+  echo "Completed"
   echo "Copy remote dump to local test folder? [y/n]"
   read continue
 
