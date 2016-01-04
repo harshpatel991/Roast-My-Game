@@ -7,7 +7,9 @@
             </a>
         </div>
         <h6>{{$game->title}}</h6>
+        <p class="small card-date"><span class="icon-clock"></span> {{$game->created_at->diffForHumans()}} </p>
         <p class="small card-description">{{clean($game->description, 'noneAllowed')}}</p>
+
         <a class="btn btn-info btn-block" href="/game/{{$game->slug}}">View</a>
     </div>
 </div>
