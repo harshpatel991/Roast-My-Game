@@ -41,9 +41,9 @@
                 <div class="row">
                     <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
 
-                    @include('partials/card', ['game' => $games[0]])
-                    @include('partials/card', ['game' => $games[1]])
                     @include('partials/card', ['game' => $games[2]])
+                    @include('partials/card', ['game' => $games[1]])
+                    @include('partials/card', ['game' => $games[0]])
 
                     <div class="col-sm-3"> {{--Add your game card--}}
                         <div class="white-background-box">
