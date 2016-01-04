@@ -15,6 +15,20 @@ use Slynova\Commentable\Models\Comment;
 
 Route::get('/',
     ['as' => 'home', 'uses' => 'HomeController@getHome']);
+Route::get('/games',
+    ['as' => 'games', 'uses' => 'HomeController@getGames']);
+
+Route::get('/games/{genre}',
+    ['as' => 'gamesByGenre', 'uses' => 'HomeController@getGamesByGenre']);
+
+Route::bind('genre', function($value, $route) {
+    if(array_key_exists($value, App\Game::$genres)) {
+        return $value; //if genre is found
+    }
+    App::abort(404); //genre not found
+});
+
+
 
 Route::post('/',
     ['as' => '/', 'uses' => 'HomeController@postHome']);

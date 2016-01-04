@@ -19,6 +19,17 @@ class HomeController extends Controller
         return view('home', compact('games'));
     }
 
+
+    public function getGames(Request $request) {
+        $games = Game::orderBy('created_at', 'desc')->take(16)->get();
+        return view('games', compact('games'));
+    }
+
+    public function getGamesByGenre($genre, Request $request) {
+        $games = Game::where('genre', $genre)->orderBy('created_at', 'desc')->take(16)->get();
+        return view('games', compact('games'));
+    }
+
     /**
      * User has started to create a new game from the home page, redirect with info to add game page
      */
