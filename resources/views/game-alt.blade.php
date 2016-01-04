@@ -66,7 +66,7 @@
                         <div class="col-sm-6">
                             <div class="text-content-padding">
 
-                                <div class="label label-default">{{strtoupper($game->genre)}}</div>
+                                <a href="/games/{{$game->genre}}" class="label label-default">{{strtoupper($game->genre)}}</a>
                                 @if($currentVersion->beta)
                                     <div class="label label-default">BETA</div>
                                 @endif

@@ -12885,6 +12885,10 @@ footer p {
   background-color: #fff;
   padding: 10px;
 }
+.card-title {
+  text-transform: capitalize;
+  color: #545454;
+}
 .card-date {
   color: #e4e4e4;
   margin-bottom: 0;
