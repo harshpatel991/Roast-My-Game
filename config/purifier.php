@@ -27,7 +27,8 @@ return [
             'HTML.Allowed'             => 'b,em,strong,i,a[href|title],ul,ol,li,p[style],br,img[width|height|alt|src]',
             'CSS.AllowedProperties'    => '',
             'AutoFormat.AutoParagraph' => false,
-            'AutoFormat.RemoveEmpty'   => true,
+            'AutoFormat.RemoveEmpty'   => true, // removes <p></p>
+            'AutoFormat.RemoveEmpty.RemoveNbsp' => true
         ],
         'noneAllowed' => [
             'HTML.Doctype'             => 'XHTML 1.0 Strict',
