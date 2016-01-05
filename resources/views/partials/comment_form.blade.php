@@ -21,7 +21,6 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group">
-
                     <textarea class="form-control" name="body" rows="4" placeholder="Additional comments (optional)"></textarea>
                 </div>
             </div>

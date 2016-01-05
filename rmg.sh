@@ -5,6 +5,8 @@ proddeploy() {
 
 #  echo "---Backing Up Production DB"
   backupremotedb
+  #TODO if backup fails, this should not go through
+  #TODO backup production logs as well
 
 #  echo "Verify DB backup was made."
 #  ls -l prod-db-backups
