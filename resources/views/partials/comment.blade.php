@@ -11,20 +11,11 @@
         @if(isset($comment->positive))
         <i class="icon-thumbs-up-alt font-light-gray"></i> {{ App\Feedback::$feedbackCategories[$comment->positive] }}  @endif
 
-
         @if(isset($comment->negative)) <b><i class="icon-thumbs-down-alt font-light-gray"></i></b> {{ App\Feedback::$feedbackCategories[$comment->negative] }}  @endif
 
-
-
         @if(isset($comment->body))
-            <div>{{ $comment->body }}</div>
-
+            <div>{!! str_replace( "\n", '<br />', clean($comment->body)) !!}</div>
         @endif
-
-
-        @if(isset($comment->positive) || isset($comment->negative)) @endif
-
-
 
         <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a>
 

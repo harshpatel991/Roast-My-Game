@@ -6,7 +6,7 @@
     </div>
     <div class="media-body">
         <p class="media-heading small" style="line-height: 1; "><b>{{ $comment->username }}</b> {{ $comment->created_at->diffForHumans() }}</p>
-        {{ $comment->body }}
+        {!! str_replace( "\n", '<br />', clean($comment->body)) !!}
         <br>
         <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a> {{--Adds the reply box--}}
     </div>
