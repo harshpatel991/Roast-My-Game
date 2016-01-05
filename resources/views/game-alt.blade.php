@@ -158,7 +158,7 @@
                                                     <li>
                                                         <a href="{{$platform[2]}}">
                                                             <span class="{{$platform[0]}}"></span>
-                                                            <span>Download for {{$platform[1]}}</span>
+                                                            <span>{{$platform[1]}}</span>
                                                         </a>
                                                     </li>
                                                 @endforeach

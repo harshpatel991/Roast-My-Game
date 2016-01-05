@@ -34,13 +34,13 @@ class Game extends Model
         'link_platform_android'  => 'icon-android'
     ];
 
-    public static $platformColumnToText = [
-        'link_platform_pc'       => 'PC',
-        'link_platform_mac'      => 'Mac',
-        'link_platform_unity'    => 'Unity Web',
-        'link_platform_other'    => 'Other Web',
-        'link_platform_ios'      => 'iOS',
-        'link_platform_android'  => 'Android'
+    public static $platformColumnToDownloadText= [
+        'link_platform_pc'       => 'Download for PC',
+        'link_platform_mac'      => 'Download for Mac',
+        'link_platform_unity'    => 'Play with Unity Web',
+        'link_platform_other'    => 'Play with Other Web',
+        'link_platform_ios'      => 'Download for iOS',
+        'link_platform_android'  => 'Download for Android'
     ];
 
     public static $linkEnumToGlyph = [
@@ -68,7 +68,7 @@ class Game extends Model
         foreach($platformLinks as $columnName => $link) {
             $row = array();
             array_push($row, Game::$platformColumnToIcon[$columnName]);
-            array_push($row, Game::$platformColumnToText[$columnName]);
+            array_push($row, Game::$platformColumnToDownloadText[$columnName]);
             array_push($row, $link);
 
             array_push($translated, $row);

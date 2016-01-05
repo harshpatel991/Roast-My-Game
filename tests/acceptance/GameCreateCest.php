@@ -102,12 +102,12 @@ class GameCreateCest
         $I->see('Here is a description.');
 
         $I->click(['id' => 'download-dropdown']); //click download drop down
-        $I->see('PC');
-        $I->see('Mac');
-        $I->see('Android');
-        $I->see('iOS');
-        $I->see('Unity Web');
-        $I->see('Other Web');
+        $I->see('Download for PC');
+        $I->see('Download for Mac');
+        $I->see('Download for Android');
+        $I->see('Download for iOS');
+        $I->see('Play with Unity Web');
+        $I->see('Play with Other Web');
         $I->seeInSource('http://pc-full-game-version-1.com');
         $I->seeInSource('http://mac-full-game-version-1.com');
         $I->seeInSource('http://ios-full-game-version-1.com');

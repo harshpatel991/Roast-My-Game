@@ -111,12 +111,12 @@ class VersionCreateCest
         $I->see('This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.');
 
         $I->click(['id' => 'download-dropdown']); //click download drop down
-        $I->see('PC');
-        $I->see('Mac');
-        $I->see('Android');
-        $I->see('iOS');
-        $I->see('Unity Web');
-        $I->see('Other Web');
+        $I->see('Download for PC');
+        $I->see('Download for Mac');
+        $I->see('Download for Android');
+        $I->see('Download for iOS');
+        $I->see('Play with Unity Web');
+        $I->see('Play with Other Web');
         $I->seeInSource('http://pc-full-version-version-3.com');
         $I->seeInSource('http://mac-full-version-version-3.com');
         $I->seeInSource('http://ios-full-version-version-3.com');
