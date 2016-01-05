@@ -102,7 +102,7 @@
                     <div class="row"> {{--Main content row--}}
                         <div class="col-sm-9"> {{--Left content--}}
                             <div class="text-content-padding">
-                                <h3 style="margin-bottom: 0px; margin-top: 0px;">{{$game->title}}</h3>
+                                <h3 class="game-title">{{$game->title}}</h3>
                                 <p class="small subheading-color"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
 
                                 <!-- Nav tabs -->
