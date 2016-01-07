@@ -32,7 +32,7 @@ class StoreCommentRequest extends Request
         return [
             'positive' => 'max:100|in:'. implode(',', array_keys(\App\Feedback::$feedbackCategories)),
             'negative' => 'max: 100|in:'. implode(',', array_keys(\App\Feedback::$feedbackCategories)),
-            'body' => 'max: 1000'
+            'body' => 'max: 5000'
         ];
     }
 }
