@@ -24,8 +24,8 @@ class StoreVersionRequest extends Request
         'link_platform_unity' => 'max:255|url',
         'link_platform_other' => 'max:255|url',
 
-        'upcoming_features' => 'max:1000',
-        'changes' => 'max:1000'
+        'upcoming_features' => 'max:5000',
+        'changes' => 'max:5000'
         ];
     /**
      * Determine if the user is authorized to make this request.

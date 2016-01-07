@@ -139,7 +139,7 @@ class VersionCreateInvalidCest
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongChanges();
         $I->click('Add Progress!');
-        $I->see('The changes may not be greater than 1000 characters.');
+        $I->see('The changes may not be greater than 5000 characters.');
     }
 
     public function testCreateInvalidUpcomingFeatures(\AcceptanceTester $I) {
@@ -151,7 +151,7 @@ class VersionCreateInvalidCest
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongUpcomingFeatures();
         $I->click('Add Progress!');
-        $I->see('The upcoming features may not be greater than 1000 characters.');
+        $I->see('The upcoming features may not be greater than 5000 characters.');
     }
 
 }

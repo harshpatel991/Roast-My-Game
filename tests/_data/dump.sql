@@ -68,7 +68,7 @@ CREATE TABLE `games` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `genre` enum('','action','action-adventure','idle','puzzle','role-playing','shooter','simulation','sports','strategy') COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
   `likes` int(11) NOT NULL DEFAULT '0',
   `views` int(11) NOT NULL DEFAULT '0',
   `link_social_greenlight` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -146,7 +146,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$gjxxcqsGCPSv/rIBfDLoTOYCR7ugQeTMtt5HV92FiY6QLs6wSFgYa',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$Z2OQmW39XqdR/.dazgwE..EU.XE3k73J7Sw/pjVKcnMrLd9azWypq',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$cWa0Enbl5uvCqDQwuX4maeNo4iFymHlQcWlJlkjtMm0Kxnwa7xhLC',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$pf2DzhUOovbHIJZDUhnBLO9fGqxScaqpAy.GwX2WamUcD80uB9aua',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$T6tePcqfjFN3dSdkaAW1a.emiK/8giSzglUlDKcHvE3RzfCBPKiAW',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$2Bg5Ky8r2CNxEzYGLNHmPeV66oOXgSWmrKOz7X5yf.9C.z6Z1AKxO',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,8 +232,8 @@ CREATE TABLE `versions` (
   `link_platform_android` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link_platform_unity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link_platform_other` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `upcoming_features` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `changes` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `upcoming_features` text COLLATE utf8_unicode_ci,
+  `changes` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -261,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-03  5:19:47
+-- Dump completed on 2016-01-06  6:51:26
