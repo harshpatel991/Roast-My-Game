@@ -167,7 +167,7 @@ class GameCreateCest
 
     public function testAddExistingGameTitleGame(\AcceptanceTester $I)
     {
-        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $this->loginAs($I, 'user3@gmail.com', 'password3');
 
         $I->click('Add Game');
         $I->fillField('title', 'Test Game 3');
@@ -241,7 +241,7 @@ class GameCreateCest
 
     public function testAddGameWithGIFImages(\AcceptanceTester $I)
     {
-        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
 
         $I->click('Add Game');
         $I->fillField('title', 'Test Game With GIF');
@@ -268,7 +268,7 @@ class GameCreateCest
 
     public function testAddScriptTags(\AcceptanceTester $I)
     {
-        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
 
         $I->click('Add Game');
         $I->fillField('title', 'Test Game With Script Tags');

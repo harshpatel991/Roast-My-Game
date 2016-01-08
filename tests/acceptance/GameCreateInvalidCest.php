@@ -27,6 +27,17 @@ class GameCreateInvalidCest
         $I->see('Add Your Game');//test got redirected
     }
 
+    public function testAddWithoutMinimumComments(\AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+
+        $I->click('Add Game');
+
+        $I->see('Profile');
+        $I->see('To give a chance for all games to get feedback, you must roast one game before adding your own game.');
+    }
+
     public function testCreateInvalidTitle(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid title game');
