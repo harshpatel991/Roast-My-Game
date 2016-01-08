@@ -14,10 +14,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="content-background">
-                    <h1 class="form-title">Login</h1>
 
                     @include('partials.display-input-error')
 
+                    <h1 class="form-title">Login</h1>
                     {!! Form::open(array('url' => '/auth/login', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                     <div class="form-group">
