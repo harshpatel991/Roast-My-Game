@@ -14,34 +14,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="content-background">
+                    @include('partials.display-input-error')
                     <h1 class="form-title" style="margin-bottom: 0px;">Register</h1>
 
-
-                        <div class="small-grey-box hidden-xs">
-                            <strong><p class="small text-center">WITH AN ACCOUNT YOU CAN</p></strong>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="icon-heart text-center register-page-icons"></div>
-                                    <strong><p class="small text-center">LIKE</p></strong>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="icon-comment-empty text-center register-page-icons"></div>
-                                    <strong><p class="small text-center">ROAST</p></strong>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="icon-gamepad text-center register-page-icons"></div>
-                                    <strong><p class="small text-center">ADD GAMES</p></strong>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="/about" class="pull-right">ABOUT<span class="icon-right-circled"></span></a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    @include('partials.display-input-error')
+                    <p class="small">With an account you can add your game, roast games, and like games. <a href="/about">Learn more.</a></p>
 
                     {!! Form::open(array('url' => '/auth/register', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
