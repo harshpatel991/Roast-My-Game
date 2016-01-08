@@ -20,3 +20,9 @@
         {{ session('status') }}
     </div>
 @endif
+
+@if (session('warning'))
+    <div class="alert alert-info text-center">
+        <span class="icon-info-circled"></span> {{ session('warning') }}
+    </div>
+@endif

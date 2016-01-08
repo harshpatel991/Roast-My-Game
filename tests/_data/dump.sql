@@ -42,7 +42,7 @@ CREATE TABLE `comments` (
   KEY `comments_user_id_index` (`user_id`),
   KEY `comments_commentable_id_index` (`commentable_id`),
   KEY `comments_commentable_type_index` (`commentable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 1 on game 5',NULL,1,2,0,5,'App\\Game',1,'user1','story','level_design');
+INSERT INTO `comments` VALUES (1,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 1 on game 5',NULL,1,2,0,5,'App\\Game',1,'user1','story','level_design'),(2,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 3 on game 3',NULL,1,2,0,3,'App\\Game',3,'user3','level_design','animation');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$pf2DzhUOovbHIJZDUhnBLO9fGqxScaqpAy.GwX2WamUcD80uB9aua',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$T6tePcqfjFN3dSdkaAW1a.emiK/8giSzglUlDKcHvE3RzfCBPKiAW',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$2Bg5Ky8r2CNxEzYGLNHmPeV66oOXgSWmrKOz7X5yf.9C.z6Z1AKxO',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$bDlZsuGoaVkFkbBJrMRRm.scPrM5.79no4gtmDaHgUK3BwXXiRUIC',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'user2','user2@gmail.com','$2y$10$.JJmdHcGYRjiKi5/LPM7OOGzAxo1HF2btAdP2W3EaY9cX8WLta2BW',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'user3','user3@gmail.com','$2y$10$rCKph5Q477CSot26lpez/OdvyhUN4INz1L.7gRYcJHsqYQW2rsEyq',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-06  6:51:26
+-- Dump completed on 2016-01-08  1:03:08

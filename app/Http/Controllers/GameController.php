@@ -10,9 +10,10 @@ use App\Like;
 use App\Version;
 use Auth;
 use DB;
-use Log;
 use Illuminate\Html\FormBuilder;
 use Illuminate\Http\Request;
+use Log;
+use Slynova\Commentable\Models\Comment;
 
 class GameController extends Controller
 {
@@ -72,6 +73,14 @@ class GameController extends Controller
     }
 
     public function getAddGame() {
+        // check if user has minimum comments to add a game
+        $user = Auth::user();
+        $commentCount = Comment::where('user_id', $user->id)->count();
+
+        if($commentCount < 1) {
+            return redirect('profile')->with('warning', 'To give a chance for all games to get feedback, you must roast one game before adding your own game.');
+        }
+
         $this->addCustomFormBuilders();
         return view('addGame');
     }

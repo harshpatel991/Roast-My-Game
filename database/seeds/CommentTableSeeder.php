@@ -30,6 +30,23 @@ class CommentTableSeeder extends Seeder
 
                 'positive' => 'story',
                 'negative' => 'level_design'
+            ],
+            ['id' => 2,
+                'title' => '',
+                'body' => 'This is a test comment by user 3 on game 3',
+
+                'parent_id' => NULL,
+                'lft' => 1,
+                'rgt' => 2,
+                'depth' => 0,
+
+                'commentable_id' => 3,
+                'commentable_type' => 'App\Game',
+                'user_id' => 3,
+                'username' => 'user3',
+
+                'positive' => 'level_design',
+                'negative' => 'animation'
             ]
         );
 
