@@ -183,6 +183,16 @@
                                     </div>
                                 @endif
 
+                                <div class="small-grey-box">
+                                    <div class="small subheading-color" style="font-weight: bold;">SHARE THIS ROAST</div>
+                                    <hr>
+                                    <div style="margin-bottom: 5px;">
+                                        <a href="https://twitter.com/intent/tweet?url={{Request::url()}}&text=Roast my game"><img src="/images/twitter.png" class="social-media-icons"></a>
+                                        <a href="http://www.facebook.com/sharer/sharer.php?u={{Request::url()}}"><img src="/images/facebook.png" class="social-media-icons"></a>
+                                        <a href="https://plus.google.com/share?url={{Request::url()}}"><img src="/images/google-plus.png" class="social-media-icons"></a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

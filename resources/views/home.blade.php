@@ -45,10 +45,6 @@
                 </div>
 
                 <div class="row">
-                    @include('partials/card', ['game' => $games[6]])
-                    @include('partials/card', ['game' => $games[5]])
-                    @include('partials/card', ['game' => $games[4]])
-
                     <div class="col-sm-3"> {{--Add your game card--}}
                         <div class="white-background-box">
                             <div class="embed-responsive embed-responsive-16by9">
@@ -60,6 +56,17 @@
                             <a class="btn btn-primary btn-block" href="/add-game">Add Your Game</a>
                         </div>
                     </div>
+
+                    @include('partials/card', ['game' => $games[10]])
+                    @include('partials/card', ['game' => $games[9]])
+                    @include('partials/card', ['game' => $games[8]])
+                </div>
+
+                <div class="row">
+                    @include('partials/card', ['game' => $games[7]])
+                    @include('partials/card', ['game' => $games[6]])
+                    @include('partials/card', ['game' => $games[5]])
+                    @include('partials/card', ['game' => $games[4]])
                 </div>
 
                 <div class="row">
@@ -70,8 +77,8 @@
                 </div>
 
                 <div class= "row">
-                    <div class="col-sm-12">
-                        <a href="/games" class="btn btn-sm btn-primary pull-right" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                    <div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4">
+                        <a href="/games" class="btn btn-sm btn-default btn-block" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
