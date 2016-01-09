@@ -9,8 +9,8 @@
                     </button>
                     <a class="navbar-brand" href="/" style="color: #fff;font-weight: 400;padding-left:5px;">
 
-                        {{--<img alt="{{Config::get('app.name')}}" src="/images/logo.png" height="100%">--}}
-                        {{Config::get('app.name')}}
+                        <img alt="{{Config::get('app.name')}}" src="/images/logo.png" height="100%">
+                        {{--{{Config::get('app.name')}}--}}
                     </a>
                 </div>
 
