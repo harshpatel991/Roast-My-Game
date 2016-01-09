@@ -3,31 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\Version;
 use App\Http\Requests;
+use App\Version;
 use Illuminate\Http\Request;
 use Input;
-use Redirect;
-use Mail;
 use Log;
+use Mail;
+use Redirect;
+use Slynova\Commentable\Models\Comment;
 
 class HomeController extends Controller
 {
     public function getHome() {
-        $gameIds = Version::orderBy('created_at', 'desc')->groupBy('game_id')->select('game_id')->take(3)->get();
+        $gameIds = Version::orderBy('created_at', 'desc')->groupBy('game_id')->select('game_id')->take(7)->get();
         $games = Game::whereIn('id', $gameIds)->get();
         return view('home', compact('games'));
     }
 
-
     public function getGames(Request $request) {
+        $pageTitle = 'Most Recently Updated';
         $games = Game::orderBy('created_at', 'desc')->take(16)->get();
-        return view('games', compact('games'));
+        return view('games', compact('games', 'pageTitle'));
     }
 
     public function getGamesByGenre($genre, Request $request) {
+        $pageTitle = Game::$genres[$genre];
         $games = Game::where('genre', $genre)->orderBy('created_at', 'desc')->take(16)->get();
-        return view('games', compact('games'));
+        return view('games', compact('games', 'pageTitle'));
+    }
+
+    public function getNonRoasterGames(Request $request) {
+        $gamesWithComments = Comment::groupBy('commentable_id')->lists('commentable_id');
+        $games = Game::whereNotIn('id', $gamesWithComments)->orderBy('created_at', 'desc')->take(16)->get();
+        $pageTitle = 'Not Yet Roasted';
+        return view('games', compact('games', 'pageTitle'));
     }
 
     /**

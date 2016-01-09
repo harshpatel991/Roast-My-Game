@@ -24,7 +24,7 @@
                     </h6>
                     <div class="row">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <a href="/games" class="btn btn-info navbar-btn btn-lg btn-block" id="next_game">Recent Games <span class="icon-right-circled"></span></a>
+                            <a href="/games/not-yet-roasted" class="btn btn-info navbar-btn btn-lg btn-block" id="next_game">Not Yet Roasted Games <span class="icon-right-circled"></span></a>
                         </div>
                     </div>
                     <br>
