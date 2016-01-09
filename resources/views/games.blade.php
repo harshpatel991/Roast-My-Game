@@ -17,10 +17,11 @@
 
                 @include('partials.display-input-error')
 
-                <h6 class="small" style="padding: 60px 5px 5px 5px;">RECENTLY UPDATED GAMES</h6>
+                <h6 class="small" style="padding: 60px 5px 5px 5px;text-transform: uppercase">{{$pageTitle}} Games</h6>
 
                 <div class="row" style="padding: 5px;">
                     <div class="col-sm-12">
+                        <a href="/games/not-yet-roasted" class="label label-warning">NOT YET ROASTED</a>
                         <a href="/games" class="label label-default">ALL</a>
                         @foreach(array_slice(App\Game::$genres, 1) as $genreKey => $genre)
                             <a href="/games/{{$genreKey}}" class="label label-default">{{strtoupper($genre)}}</a>

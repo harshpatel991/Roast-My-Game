@@ -18,6 +18,9 @@ Route::get('/',
 Route::get('/games',
     ['as' => 'games', 'uses' => 'HomeController@getGames']);
 
+Route::get('/games/not-yet-roasted',
+    ['as' => 'gamesNotYetRoasted', 'uses' => 'HomeController@getNonRoasterGames']);
+
 Route::get('/games/{genre}',
     ['as' => 'gamesByGenre', 'uses' => 'HomeController@getGamesByGenre']);
 
@@ -27,8 +30,6 @@ Route::bind('genre', function($value, $route) {
     }
     App::abort(404); //genre not found
 });
-
-
 
 Route::post('/',
     ['as' => '/', 'uses' => 'HomeController@postHome']);
