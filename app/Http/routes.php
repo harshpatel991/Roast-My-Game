@@ -77,6 +77,11 @@ Route::get('/add-version/{game_slug}',
 Route::post('/add-version/{game_slug}',
     ['as' => 'add-version', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postAddVersion']);
 
+Route::get('/edit-game/{game_slug}',
+    ['as' => 'edit-game', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getEditGame']);
+Route::post('/edit-game/{game_slug}',
+    ['as' => 'edit-game', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postEditGame']);
+
 Route::get('/game/{game_slug}/{version_slug?}',
     ['as' => 'getGame', 'uses' => 'GameController@getGame']);
 

@@ -1,6 +1,8 @@
 @extends('app')
 
-@section('page-title')Add Game - {{Config::get('app.name')}}@endsection
+@section('page-title')
+    Edit Game - {{Config::get('app.name')}}
+@endsection
 
 @section('navbar')
     @include('partials/fixedNav')
@@ -12,26 +14,24 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="content-background">
-                    <h1 class="form-title">Add Your Game</h1>
+                    <h1 class="form-title">Edit {{$game->title}}</h1>
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true, 'id' => 'add-game-form')) !!}
+                    {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                         @include('partials.game-form')
 
                         <hr>
-                    <h5 class="small" style="margin-bottom: 0px; color: #c7c7c7;">You'll be able to add more progress after your game is added</h5>
-                        <h4 class="small">CURRENT VERSION</h4>
 
                         @include('partials.version-form')
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button id="add-game" class="btn btn-success">Add Game!</button>
+                                <button id="add-game" class="btn btn-success">Save Changes</button>
                             </div>
                         </div>
-                        {!! Form::close() !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
     @include('partials/version-script-init')
 
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest', '#add-game-form') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
 
     <script>
         function readURL(input, previewElem) {

@@ -7,6 +7,21 @@ use App\Http\Requests\Request;
 
 class StoreGameRequest extends Request
 {
+
+    public static function storeRulesList() {
+        return ['title' => 'required|max:255',
+            'genre' => 'required|max: 255|in:'. implode(',', array_keys(\App\Game::$genres)),
+            'description' => 'max: 5000',
+            'platforms' => 'max: 140',
+
+            'link_social_greenlight' => 'max:255|url',
+            'link_social_website' => 'max:255|url',
+            'link_social_twitter' => 'max:255|url',
+            'link_social_youtube' => 'max:255|url',
+            'link_social_google_plus' => 'max:255|url',
+            'link_social_facebook' => 'max:255|url'
+        ];
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -17,7 +32,6 @@ class StoreGameRequest extends Request
         if (Auth::check())
         {
             return true;
-
         }
 
         return false;
@@ -30,21 +44,10 @@ class StoreGameRequest extends Request
      */
     public function rules()
     {
-        $linkRules = 'max:255|url';
         return array_merge(
-            ['title' => 'required|max:255',
-            'genre' => 'required|max: 255|in:'. implode(',', array_keys(\App\Game::$genres)),
-            'description' => 'max: 5000',
-            'platforms' => 'max: 140',
-
-            'link_social_greenlight' => $linkRules,
-            'link_social_website' => $linkRules,
-            'link_social_twitter' => $linkRules,
-            'link_social_youtube' => $linkRules,
-            'link_social_google_plus' => $linkRules,
-            'link_social_facebook' => $linkRules
-            ],
-            StoreVersionRequest::$rulesList
+            StoreGameRequest::storeRulesList(),
+            StoreVersionRequest::$editableRulesList,
+            StoreVersionRequest::$notEditableRulesList
         );
     }
 }
