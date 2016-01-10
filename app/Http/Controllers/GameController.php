@@ -25,7 +25,7 @@ class GameController extends Controller
             $game->save();
         }
 
-        $versions = $game->versions()->orderBy('version', 'desc')->get();
+        $versions = $game->versions()->orderBy('created_at', 'desc')->get();
 
         if(count($versions) <= 0) {
             abort(404);
@@ -80,14 +80,16 @@ class GameController extends Controller
         if($commentCount < 1) {
             return redirect('/profile/'.$user->username)->with('warning', 'To give a chance for all games to get feedback, you must roast one game before adding your own game.');
         }
-
+        $game = new Game;
+        $version = new Version;
         $this->addCustomFormBuilders();
-        return view('addGame');
+        return view('addGame', compact('game', 'version'));
     }
 
     public function getAddVersion(Game $game) {
         $this->addCustomFormBuilders();
-        return view('addVersion', compact('game'));
+        $version = new Version;
+        return view('addVersion', compact('game', 'version'));
     }
 
     public function postAddGame(StoreGameRequest $request) {
@@ -153,6 +155,19 @@ class GameController extends Controller
         return $version;
     }
 
+    public function getEditGame(Game $game, Request $request) {
+        $isEdit = true;
+        $this->addCustomFormBuilders();
+
+        $version = $game->versions()->orderBy('created_at', 'desc')->first();
+        return view('editGame', compact('game', 'version', 'isEdit'));
+    }
+
+    public function postEditGame(Game $game, Request $request) {
+        return view('editGame');
+    }
+
+
     public function addLike(Game $game, Request $request) {
         $user = $request->user();
 
@@ -174,13 +189,15 @@ class GameController extends Controller
     }
 
     private function addCustomFormBuilders() {
-        FormBuilder::macro('myInput', function($id, $name, $placeholder='')
+        FormBuilder::macro('myInput', function($id, $name, $placeholder='', $primaryValue='', $secondaryValue='')
         {
-            return '<div class="form-group">'.
-            FormBuilder::label($id, $name, ['class' => 'col-sm-2 control-label form-label'])
-            .'<div class="col-sm-6">'.
-            FormBuilder::text($id, old($id), ['class' => 'form-control', 'placeholder' => $placeholder])
-            .'</div>'
+            $value = $primaryValue!='' ? $primaryValue : $secondaryValue;
+            return
+            '<div class="form-group">'.
+                FormBuilder::label($id, $name, ['class' => 'col-sm-2 control-label form-label'])
+                .'<div class="col-sm-6">'.
+                    FormBuilder::text($id, $value, ['class' => 'form-control', 'placeholder' => $placeholder])
+                .'</div>'
             .'</div>';
         });
 
