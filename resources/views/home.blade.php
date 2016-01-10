@@ -57,23 +57,23 @@
                         </div>
                     </div>
 
-                    @include('partials/card', ['game' => $games[10]])
-                    @include('partials/card', ['game' => $games[9]])
-                    @include('partials/card', ['game' => $games[8]])
+                    @include('partials/card', ['game' => $games->get(10)])
+                    @include('partials/card', ['game' => $games->get(9)])
+                    @include('partials/card', ['game' => $games->get(8)])
                 </div>
 
                 <div class="row">
-                    @include('partials/card', ['game' => $games[7]])
-                    @include('partials/card', ['game' => $games[6]])
-                    @include('partials/card', ['game' => $games[5]])
-                    @include('partials/card', ['game' => $games[4]])
+                    @include('partials/card', ['game' => $games->get(7)])
+                    @include('partials/card', ['game' => $games->get(6)])
+                    @include('partials/card', ['game' => $games->get(5)])
+                    @include('partials/card', ['game' => $games->get(4)])
                 </div>
 
                 <div class="row">
-                    @include('partials/card', ['game' => $games[3]])
-                    @include('partials/card', ['game' => $games[2]])
-                    @include('partials/card', ['game' => $games[1]])
-                    @include('partials/card', ['game' => $games[0]])
+                    @include('partials/card', ['game' => $games->get(3)])
+                    @include('partials/card', ['game' => $games->get(2)])
+                    @include('partials/card', ['game' => $games->get(1)])
+                    @include('partials/card', ['game' => $games->get(0)])
                 </div>
 
                 <div class= "row">
