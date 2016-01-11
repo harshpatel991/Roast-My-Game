@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Mail;
+use Log;
 use App\Game;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -32,6 +34,15 @@ class CommentController extends Controller
         $comment->positive = trim($request->input('positive')) !== '' ? $request->input('positive') : null;
         $comment->negative = trim($request->input('negative')) !== '' ? $request->input('negative') : null;
         $game->comments()->save($comment);
+
+        $email = $game->user()->first()->email;
+        Mail::queue(['emails.comment-added', 'emails.comment-added-plain-text'], ['game' => $game], function($message) use ($email) {
+            $message->to($email)
+                ->bcc('support@roastmygame.com', 'Support')
+                ->subject('Your Game Has Been Roasted!');
+        });
+        Log::info('Your game has been roasted sent out to '.$email);
+
         return redirect()->back()->with('message', 'Comment added!');
     }
 
