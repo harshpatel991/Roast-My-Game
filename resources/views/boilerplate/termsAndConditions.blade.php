@@ -74,7 +74,6 @@
                         Users warrant that any content sent by the user to be published on the website will comply with the following constraints:
                         <ol>
                             <li>will be original work</li>
-                            <li>will not be posted anywhere else, in whole or in part, on the Internet or in any other media</li>
                             <li>will not contain any content of any kind whatsoever that is illegal, infringes any copyrights, or is libelous
                             <li>any third parties contents are included with materials submitted to the site for publishing will have been given appropriate rights from those appropriate thrid parties which hold the copyrights on the published content</li>
                             <li>will be free of offensive, derogatory, harmful, unlawful, threatening, vulgar, profane, abusive, harassing, obscene, pornographic, defamatory or tortuous content.</li>
