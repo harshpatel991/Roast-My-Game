@@ -18,7 +18,7 @@
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true, 'id' => 'add-game-form')) !!}
 
                         {!! Form::myInput('title', 'Title*') !!}
 
@@ -126,7 +126,7 @@
     </script>
 
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest', '#add-game-form') !!}
 
     <script>
         function readURL(input, previewElem) {

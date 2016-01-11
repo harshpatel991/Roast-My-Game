@@ -16,9 +16,9 @@
 
                 <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 
-                    @if(isset($nextGame))
-                        <a href="/game/{{$nextGame}}" class="btn btn-info navbar-btn btn-sm"  role="button" id="next_game">Roast Another</a>
-                    @endif
+                    {{--@if(isset($nextGame))--}}
+                    {{--<a href="/game/{{$nextGame}}" class="btn btn-info navbar-btn btn-sm"  role="button" id="next_game">Roast Another</a>--}}
+                    {{--@endif--}}
 
                     <ul class="nav navbar-nav navbar-right">
 
@@ -45,7 +45,11 @@
 
                         @endif
 
-                        <a href="/add-game" id="btn-add-game" class="btn btn-primary navbar-btn btn-sm" style="margin-left: 10px;">Add Game</a>
+                        <li>
+                            <form action="/add-game">
+                                <button id="btn-add-game" class="btn btn-primary navbar-btn btn-sm" style="margin-left: 10px;">Add Game</button>
+                            </form>
+                        </li>
 
                     </ul>
                 </div>
