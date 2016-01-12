@@ -44,9 +44,9 @@
                             <div class="embed-responsive embed-responsive-16by9">
                                 <img class="embed-responsive-item" src="/images/placeholder.jpg"/>
                             </div>
-                            <h6>Your Game Here</h6>
+                            <h6 class="card-title">Your Game Here</h6>
                             <p class="small card-date"> </p>
-                            <p class="small"> </p>
+                            <p class="small card-description"> </p>
                             <a class="btn btn-primary btn-block" href="/add-game">Add Your Game</a>
                         </div>
                     </div>

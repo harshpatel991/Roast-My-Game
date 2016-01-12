@@ -84,6 +84,10 @@
 .card-title {
   text-transform: capitalize;
   color: @dark-font-color;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-date {
@@ -93,8 +97,9 @@
 }
 
 .card-description {
+  margin-top: 10px;
   color: #bfbfbf;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.5em;
+  height: 3em;       /* height is 2x line-height, so two lines will display */
+  overflow: hidden;  /* prevents extra lines from being visible */
 }
