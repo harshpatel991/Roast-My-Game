@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\User;
 use App\Http\Requests;
 use App\Version;
 use Illuminate\Http\Request;
 use Input;
 use Log;
+use DB;
 use Mail;
 use Redirect;
 use Slynova\Commentable\Models\Comment;
@@ -37,6 +39,33 @@ class HomeController extends Controller
         $games = Game::whereNotIn('id', $gamesWithComments)->orderBy('created_at', 'desc')->take(16)->get();
         $pageTitle = 'Not Yet Roasted';
         return view('games', compact('games', 'pageTitle'));
+    }
+
+    public function getLeaderboard(Request $request) {
+        $mostRoastedGameIds = Comment::select('commentable_id', DB::raw('count(*) as roast_count'))
+                                ->groupBy('commentable_id')
+                                ->orderBy('roast_count', 'desc')
+                                ->limit(5)
+                                ->get();
+        $gameIds = array();
+        foreach($mostRoastedGameIds as $mostRoastedGameId) {
+            array_push($gameIds, $mostRoastedGameId['commentable_id']);
+        }
+        $gameIdsString = implode(",", $gameIds);
+        $mostRoastedGames = Game::whereIn('id', $gameIds)
+                                ->orderByRaw(DB::raw("FIELD(id, $gameIdsString)"))
+                                ->get();
+
+
+        $mostRoastingUsers = Comment::select('user_id', DB::raw('count(*) as roast_count'))
+                                ->groupBy('commentable_id')
+                                ->orderBy('roast_count', 'desc')
+                                ->limit(5)
+                                ->get();
+
+
+
+        return view('leaderboard', compact('mostRoastedGames', 'mostRoastingUsers'));
     }
 
     /**

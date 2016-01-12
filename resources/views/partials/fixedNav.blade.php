@@ -24,7 +24,7 @@
 
                         <li>
                             <form action="/leaderboards" style="margin-left: 10px;">
-                                <button class="btn btn-info navbar-btn btn-sm btn-block" >Leaderboards</button>
+                                <button class="btn btn-light-blue navbar-btn btn-sm btn-block"><span class="icon-award"></span></button>
                             </form>
                         </li>
 
