@@ -85,6 +85,9 @@ Route::post('/add-comment/{game_slug}',
 Route::post('/add-comment-reply/{comment_id}',
     ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@postAddCommentReply']);
 
+Route::get('/leaderboards',
+    ['as' => 'leaderboards', 'uses' => 'HomeController@getLeaderboard']);
+
 Route::bind('game_slug', function($value, $route) {
     $game = App\Game::whereSlug($value)->first();
     if($game) return $game; //if game is found
