@@ -4,10 +4,6 @@
     {{Config::get('app.name')}}
 @endsection
 
-@section('navbar-color')
-    style="background-color: rgba(56, 56, 56, 0.51);"
-@endsection
-
 @section('navbar')
     @include('partials/fixedNav')
 @endsection
@@ -23,8 +19,6 @@
                 <br>
             </div>
         </div>
-
-
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
