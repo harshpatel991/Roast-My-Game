@@ -156,7 +156,7 @@
                                             <ul class="dropdown-menu btn-block">
                                                 @foreach($platform_Icon_Name_Link as $platform)
                                                     <li>
-                                                        <a href="{{$platform[2]}}">
+                                                        <a href="{{$platform[2]}}" target="_blank" rel="nofollow">
                                                             <span class="{{$platform[0]}}"></span>
                                                             <span>{{$platform[1]}}</span>
                                                         </a>
@@ -175,7 +175,7 @@
                                             <div style="margin-bottom: 5px;">
                                                 <span class="{{$linkIcon}}"></span>
                                                 {{$linkTexts[$link_id]}}
-                                                <a href="{{$socialLinks[$link_id]}}">
+                                                <a href="{{$socialLinks[$link_id]}}" target="_blank" rel="nofollow">
                                                     <span class="icon-link-ext-alt small"></span>
                                                 </a>
                                             </div>
