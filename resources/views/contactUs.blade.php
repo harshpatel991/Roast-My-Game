@@ -1,8 +1,6 @@
 @extends('app')
 
-@section('page-title')
-    Contact Us - {{Config::get('app.name')}}
-@endsection
+@section('page-title')Contact Us - {{Config::get('app.name')}}@endsection
 
 @section('navbar')
     @include('partials/fixedNav')

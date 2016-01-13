@@ -1,8 +1,8 @@
 @extends('app')
 
-@section('page-title')
-    Leaderboard - {{Config::get('app.name')}}
-@endsection
+@section('page-title')Leaderboard - {{Config::get('app.name')}}@endsection
+
+@section('page-description')Top rated users and games on Roast My Game.@endsection
 
 @section('navbar')
     @include('partials/fixedNav')

@@ -1,8 +1,8 @@
 @extends('app')
 
-@section('page-title')
-    {{Config::get('app.name')}}
-@endsection
+@section('page-title'){{$pageTitle}} Games - {{Config::get('app.name')}}@endsection
+
+@section('page-description')Roast idle games, puzzle games, strategy games, Roast My Game is the best way to find indie developed games to voice your opinion.@endsection
 
 @section('navbar')
     @include('partials/fixedNav')

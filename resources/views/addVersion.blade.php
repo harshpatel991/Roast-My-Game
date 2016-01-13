@@ -1,8 +1,6 @@
 @extends('app')
 
-@section('page-title')
-    Add Version - {{Config::get('app.name')}}
-@endsection
+@section('page-title')Add Version - {{Config::get('app.name')}}@endsection
 
 @section('navbar')
     @include('partials/fixedNav')
