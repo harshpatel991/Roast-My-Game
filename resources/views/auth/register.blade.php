@@ -1,8 +1,8 @@
 @extends('app')
 
-@section('page-title')
-    Register - {{Config::get('app.name')}}
-@endsection
+@section('page-title')Register - {{Config::get('app.name')}}@endsection
+
+@section('page-description')Register on Roast My Game to add your game and also comment and like other games.@endsection
 
 @section('navbar')
     @include('partials.fixedNav')

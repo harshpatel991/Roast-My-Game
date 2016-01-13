@@ -1,8 +1,8 @@
 @extends('app')
 
-@section('page-title')
-    {{Config::get('app.name')}}
-@endsection
+@section('page-title'){{Config::get('app.name')}}@endsection
+
+@section('page-description')Roast My Game is a site for indie game developers to get honest feedback, find inspriation and for gamers to influence games they want to play.@endsection
 
 @section('navbar')
     @include('partials/fixedNav')

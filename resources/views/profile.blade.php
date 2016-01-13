@@ -1,8 +1,6 @@
 @extends('app')
 
-@section('page-title')
-    Profile - {{Config::get('app.name')}}
-@endsection
+@section('page-title')Profile - {{Config::get('app.name')}}@endsection
 
 @section('navbar')
     @include('partials/fixedNav')
