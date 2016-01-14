@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Redirect;
+use Auth;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -13,9 +14,7 @@ use Slynova\Commentable\Models\Comment;
 class UserController extends Controller
 {
 
-    public function getProfile(Request $request) {
-
-        $user = $request->user();
+    public function getProfile($user, Request $request) {
         $games = $user->games()->get();
         $comments = Comment::where('user_id', $user->id)->get();
         $likes = $user->likes()->get();
@@ -25,7 +24,12 @@ class UserController extends Controller
             $versionsCount += $game->versions()->count();
         }
 
-        return view('profile', compact('user', 'games', 'comments', 'versionsCount', 'likes'));
+        $isTheLoggedInUser = false;
+        if(Auth::check() && Auth::user()->id == $user->id) {
+            $isTheLoggedInUser = true;
+        }
+
+        return view('profile', compact('user', 'games', 'comments', 'versionsCount', 'likes', 'isTheLoggedInUser'));
     }
 
     public function registerSuccess() {

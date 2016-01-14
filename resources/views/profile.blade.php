@@ -1,6 +1,8 @@
 @extends('app')
 
-@section('page-title')Profile - {{Config::get('app.name')}}@endsection
+@section('page-title'){{$user->username}}'s Profile - {{Config::get('app.name')}}@endsection
+
+@section('page-description')View {{$user->username}}'s Profile on Roast My Game.@endsection
 
 @section('navbar')
     @include('partials/fixedNav')
@@ -37,37 +39,56 @@
                         </div>
                     </div>
 
-                    <h6>My Games</h6>
+                    <h6 class="subheading subheading-color">Games</h6>
                     @if(count($games) > 0)
                         @foreach($games as $game)
 
-                            <div class="row small-grey-box">
-                                <div class="col-md-3 ">
-                                    <a href="/game/{{$game->slug}}">
-                                        <img width="100%" height="100%" style="padding: 5px 0px;" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>
-                                    </a>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <a href="/game/{{$game->slug}}">
+                                            <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-sm-8 col-md-5">
-                                    <h4 class="media-heading"><a href="/game/{{$game->slug}}" style="color: #535353;">{{$game->title}}</a></h4>
-                                    <p> <b>Views: </b>{{$game->views}} <b>Likes: </b>{{$game->likes}}</p>
+
+                                <div class="@if($isTheLoggedInUser) col-sm-6 @lse col-sm-9 @endif">
+                                    <a href="/game/{{$game->slug}}"><h6 class="list-group-item-heading card-title">{{$game->title}}</h6></a>
+
+                                    <div class="label label-default" style="margin-right: 5px;"><span class="icon-eye"></span> {{$game->views}} </div>
+                                    <div class="label label-default"><span class="icon-heart"></span> {{$game->likes}} </div>
+                                    <p class="list-group-item-text card-description">{{clean($game->description, 'noneAllowed')}}</p>
                                 </div>
-                                <div class="col-sm-4">
-                                    <a class="btn btn-info pull-right" href="/add-version/{{$game->slug}}">Add Progress</a>
-                                </div>
+
+                                @if($isTheLoggedInUser)
+                                    <div class="col-sm-3">
+                                        <a class="btn btn-info btn-block" href="/add-version/{{$game->slug}}">Add Progress</a>
+                                    </div>
+                                @endif
+
                             </div>
+                            <hr>
                         @endforeach
                     @else
                         <h4 class="text-center"><div class="font-light-gray">No games here</div></h4>
                         <br>
                     @endif
 
-                    <h6>My Comments</h6>
+                    <h6 class="subheading subheading-color">Roasts</h6>
                     @if(count($comments) > 0)
                         @foreach($comments as $comment)
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <p>{{ $comment->body }}</p>
-                                    <small>{{ $comment->created_at->diffForHumans() }}</small>
+                                    @if(isset($comment->positive))
+                                        <i class="icon-thumbs-up-alt font-light-gray"></i> {{ App\Feedback::$feedbackCategories[$comment->positive] }}  @endif
+
+                                    @if(isset($comment->negative)) <b><i class="icon-thumbs-down-alt font-light-gray"></i></b> {{ App\Feedback::$feedbackCategories[$comment->negative] }}  @endif
+
+                                    <p>{!! str_replace( "\n", '<br />', clean($comment->body)) !!}</p>
+                                    <small><span class="icon-clock"></span> {{ $comment->created_at->diffForHumans() }}
+                                        <a href="/game/{{App\Game::where('id', $comment->commentable_id)->first()->slug}}"><span class="icon-link-ext-alt small"></span></a>
+                                    </small>
+
                                 </div>
                             </div>
                         @endforeach
@@ -76,7 +97,7 @@
                         <br>
                     @endif
 
-                    <h6>Liked</h6>
+                    <h6 class="subheading subheading-color">Liked</h6>
                     @if(count($likes) > 0)
                         @foreach($likes as $like)
                             <p><a href="/game/{{$like->game()->first()->slug}}">{{ $like->game()->first()->title }}</a></p>
@@ -98,8 +119,3 @@
         @include('partials/footer')
     </div>
 @endsection
-
-@section('scripts')
-
-@endsection
-

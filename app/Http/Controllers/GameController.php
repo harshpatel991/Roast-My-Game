@@ -78,7 +78,7 @@ class GameController extends Controller
         $commentCount = Comment::where('user_id', $user->id)->count();
 
         if($commentCount < 1) {
-            return redirect('profile')->with('warning', 'To give a chance for all games to get feedback, you must roast one game before adding your own game.');
+            return redirect('/profile/'.$user->username)->with('warning', 'To give a chance for all games to get feedback, you must roast one game before adding your own game.');
         }
 
         $this->addCustomFormBuilders();
