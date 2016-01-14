@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
 
-                                <div class="@if($isTheLoggedInUser) col-sm-6 @lse col-sm-9 @endif">
+                                <div class="@if($isTheLoggedInUser) col-sm-6 @else col-sm-9 @endif">
                                     <a href="/game/{{$game->slug}}"><h6 class="list-group-item-heading card-title">{{$game->title}}</h6></a>
 
                                     <div class="label label-default" style="margin-right: 5px;"><span class="icon-eye"></span> {{$game->views}} </div>
