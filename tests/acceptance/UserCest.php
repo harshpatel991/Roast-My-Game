@@ -55,7 +55,6 @@ class UserCest
         $I->see('These credentials do not match our records.');
         $this->loginAs($I, 'user1@gmail.com', 'mynewpassword');
         $I->see('user1');
-
     }
 
     public function testLoginInvalidEmail(\AcceptanceTester $I)
@@ -80,23 +79,6 @@ class UserCest
         $I->seeInCurrentUrl('/auth/login');
     }
 
-    public function testProfile(\AcceptanceTester $I)
-    {
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-
-
-        $I->click('#profile-dropdown');
-        $I->wait(1);
-        $I->click('#profile-button');
-        $I->wait(1);
-
-        $I->see('Test Game 1');
-        $I->see('Test Game 2');
-        $I->see('Test Game 3');
-        $I->see('Test Game 4');
-        $I->see('This is a test comment by user 1 on game 5');
-    }
-
     public function testLogout(\AcceptanceTester $I)
     {
         $this->loginAs($I, 'user1@gmail.com', 'password1');
@@ -109,15 +91,5 @@ class UserCest
         $I->wait(1);
 
         $I->dontSee('user1');
-    }
-
-    public function profileWithoutPermissions(\AcceptanceTester $I)
-    {
-        $I->amOnPage('/');
-
-        $I->amOnPage('/profile');
-
-        $I->dontSee('Profile');
-        $I->dontSeeInCurrentUrl('profile');
     }
 }

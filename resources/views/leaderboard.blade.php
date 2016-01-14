@@ -21,24 +21,16 @@
                         <div class="col-sm-6">
 
                             <h6 class="subheading-2 subheading-color">Most Roasting Users</h6>
-
                             @foreach($mostRoastingUsers as $index=>$commentUser)
-
                                 <div class="row">
                                     <div class="col-xs-3">
-
                                         <img src="/images/user-profile-icon.jpg"/>
-
                                     </div>
-
                                     <div class="col-sm-9">
-                                        <a href="#"><h6 class="list-group-item-heading card-title">{{($index+1)}}. {{$commentUser->user->username}}</h6></a>
-
-
+                                        <a href="/profile/{{$commentUser->user->username}}"><h6 class="list-group-item-heading card-title">{{($index+1)}}. {{$commentUser->user->username}}</h6></a>
                                     </div>
                                 </div>
                                 <hr>
-
                             @endforeach
 
                         </div>

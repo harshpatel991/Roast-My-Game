@@ -118,12 +118,12 @@ class GameCreateCest
         $I->seeInSource('http://unity-web-full-game-version-1.com');
         $I->seeInSource('http://other-web-full-game-version-1.com');
 
-        $I->seeInSource('<a href="http://greenlight.com">');
-        $I->seeInSource('<a href="http://website.com">');
-        $I->seeInSource('<a href="http://link-twitter.com">');
-        $I->seeInSource('<a href="http://link-youtube.com">');
-        $I->seeInSource('<a href="http://link-gplus.com">');
-        $I->seeInSource('<a href="http://link-facebook.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://greenlight.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://website.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-twitter.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-youtube.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-gplus.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-facebook.com">');
 
         $I->see('VERSION 1');
         $I->see('BETA');

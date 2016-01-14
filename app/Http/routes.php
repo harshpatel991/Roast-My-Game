@@ -54,8 +54,8 @@ Route::get('/verify/{confirmation_code}', 'UserController@verifySuccess');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('profile',
-    ['middleware' => 'auth', 'uses' => 'UserController@getProfile']);
+Route::get('profile/{username}',
+    ['uses' => 'UserController@getProfile']);
 
 Route::get('/add-game',
     ['as' => 'add-game', 'middleware' => 'auth', 'uses' => 'GameController@getAddGame']);
@@ -92,6 +92,12 @@ Route::bind('game_slug', function($value, $route) {
     $game = App\Game::whereSlug($value)->first();
     if($game) return $game; //if game is found
     App::abort(404); //game not found
+});
+
+Route::bind('username', function($value, $route) {
+    $user = App\User::where('username', $value)->first();
+    if($user) return $user; //if user is found
+    App::abort(404); //user not found
 });
 
 Route::bind('comment_id', function($value, $route) {

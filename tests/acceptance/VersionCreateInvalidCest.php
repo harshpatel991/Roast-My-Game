@@ -32,14 +32,14 @@ class VersionCreateInvalidCest
         $this->loginAs($I, 'user1@gmail.com', 'password1');
         $I->amOnPage('/add-version/test-game-5');
 
-        $I->see('user1\'s Profile');//test got redirected
+        $I->see('RECENTLY UPDATED GAMES');//test got redirected
     }
 
     public function testCreateInvalidVersion(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid version Progress');
         $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $versionPage = new VersionPage($I);
@@ -56,7 +56,7 @@ class VersionCreateInvalidCest
     {
         $I->wantTo('Create invalid genre game');
         $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $versionPage = new VersionPage($I);
@@ -72,7 +72,7 @@ class VersionCreateInvalidCest
     public function testCreateInvalidVideoLink(\AcceptanceTester $I) {
         $I->wantTo('Create long video link version');
         $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $versionPage = new VersionPage($I);
@@ -89,7 +89,7 @@ class VersionCreateInvalidCest
     public function testCreateInvalidPlayGameLinks(\AcceptanceTester $I)
     {
         $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $I->fillField('version', '3.4.5');
@@ -133,7 +133,7 @@ class VersionCreateInvalidCest
     public function testCreateInvalidChanges(\AcceptanceTester $I) {
         $I->wantTo('Create long changes version');
         $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $versionPage = new VersionPage($I);
@@ -145,7 +145,7 @@ class VersionCreateInvalidCest
     public function testCreateInvalidUpcomingFeatures(\AcceptanceTester $I) {
         $I->wantTo('Create long upcoming features version');
         $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $versionPage = new VersionPage($I);

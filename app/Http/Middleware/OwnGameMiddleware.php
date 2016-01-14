@@ -21,7 +21,7 @@ class OwnGameMiddleware
             return $next($request);
         }
 
-        return redirect('/profile');
+        return redirect('/');
 
     }
 }

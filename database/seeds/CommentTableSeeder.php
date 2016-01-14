@@ -47,6 +47,23 @@ class CommentTableSeeder extends Seeder
 
                 'positive' => 'level_design',
                 'negative' => 'animation'
+            ],
+            ['id' => 3,
+                'title' => '',
+                'body' => 'Reply to user1 by user3',
+
+                'parent_id' => 1,
+                'lft' => 2,
+                'rgt' => 3,
+                'depth' => 1,
+
+                'commentable_id' => 5,
+                'commentable_type' => NULL,
+                'user_id' => 3,
+                'username' => 'user3',
+
+                'positive' => NULL,
+                'negative' => NULL
             ]
         );
 

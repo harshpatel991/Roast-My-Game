@@ -6,7 +6,7 @@
     </div>
 
     <div class="media-body">
-        <p class="media-heading small" style="line-height: 1;"><b>{{ $comment->username }}</b> {{ $comment->created_at->diffForHumans() }}</p>
+        <p class="media-heading small" style="line-height: 1;"><b><a href="/profile/{{$comment->username}}">{{ $comment->username }}</a></b> {{ $comment->created_at->diffForHumans() }}</p>
 
         @if(isset($comment->positive))
         <i class="icon-thumbs-up-alt font-light-gray"></i> {{ App\Feedback::$feedbackCategories[$comment->positive] }}  @endif

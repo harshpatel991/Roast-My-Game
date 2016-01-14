@@ -103,7 +103,7 @@
                         <div class="col-sm-9"> {{--Left content--}}
                             <div class="text-content-padding">
                                 <h3 class="game-title">{{$game->title}}</h3>
-                                <p class="small subheading-color"><span class="fui-time"></span> {{strtoupper($game->created_at->diffForHumans())}} BY {{strtoupper($game->user()->first()->username)}}  </p>
+                                <p class="small subheading-color text-uppercase"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="/profile/{{$game->user()->first()->username}}">{{$game->user()->first()->username}}</a></p>
 
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">

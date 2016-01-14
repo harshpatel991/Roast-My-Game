@@ -28,7 +28,7 @@
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> <span >Profile</span></a></li>
+                                <li><a href="/profile/{{$user->username}}"><span class="glyphicon glyphicon-user"></span> <span >Profile</span></a></li>
 
                                 <li><a href="{{ url('/auth/logout') }}" class="category" id="logout-button"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                             </ul>

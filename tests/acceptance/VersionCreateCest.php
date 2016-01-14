@@ -10,7 +10,7 @@ class VersionCreateCest
         $I->fillField('password', 'password1');
         $I->click(['id' => 'login']);
 
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $I->fillField('version', '2');
@@ -30,12 +30,12 @@ class VersionCreateCest
         $I->dontSeeInSource('http://android.com');
         $I->dontSeeInSource('http://other-web.com');
 
-        $I->seeInSource('<a href="http://greenlight.com">');
-        $I->seeInSource('<a href="http://website.com">');
-        $I->seeInSource('<a href="http://link-twitter.com">');
-        $I->seeInSource('<a href="http://link-youtube.com">');
-        $I->seeInSource('<a href="http://link-gplus.com">');
-        $I->seeInSource('<a href="http://link-facebook.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://greenlight.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://website.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-twitter.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-youtube.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-gplus.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-facebook.com">');
 
         $I->see('VERSION 2');
         $I->dontSee('BETA');
@@ -70,7 +70,7 @@ class VersionCreateCest
         $I->fillField('password', 'password1');
         $I->click(['id' => 'login']);
 
-        $I->amOnPage('/profile');
+        $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
         $I->fillField('version', '3');
@@ -124,12 +124,12 @@ class VersionCreateCest
         $I->seeInSource('http://unity-web-full-version-version-3.com');
         $I->seeInSource('http://other-web-full-version-version-3.com');
 
-        $I->seeInSource('<a href="http://greenlight.com">');
-        $I->seeInSource('<a href="http://website.com">');
-        $I->seeInSource('<a href="http://link-twitter.com">');
-        $I->seeInSource('<a href="http://link-youtube.com">');
-        $I->seeInSource('<a href="http://link-gplus.com">');
-        $I->seeInSource('<a href="http://link-facebook.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://greenlight.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://website.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-twitter.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-youtube.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-gplus.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-facebook.com">');
 
         $I->see('VERSION 3');
         $I->see('BETA');

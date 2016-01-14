@@ -44,7 +44,7 @@
                             <li class="dropdown text-center" style="margin-left: 10px;">
                                 <button href="#" id="profile-dropdown" class="btn btn-light-blue navbar-btn btn-sm btn-block dropdown-toggle" data-toggle="dropdown" role="button">{{ Auth::user()->username }} <span class="caret"></span></button>
                                 <ul class="dropdown-menu" style="margin-top:0px;">
-                                    <li><a href="/profile" id="profile-button"><span class="icon-user">Profile</span></a></li>
+                                    <li><a href="/profile/{{ Auth::user()->username }}" id="profile-button"><span class="icon-user">Profile</span></a></li>
                                     <li><a href="{{ url('/auth/logout') }}" class="category" id="logout-button"><span class="icon-logout"></span>Logout</a></li>
                                 </ul>
                             </li>
