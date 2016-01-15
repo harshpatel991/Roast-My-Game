@@ -204,6 +204,51 @@ class CommentCest
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
     }
 
+    public function testAddCommentOnOwnGame(\AcceptanceTester $I)
+    {
+        //Add a regular comment
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/game/test-game-1');
+
+        $I->selectOption('select[name=positive]', 'Animation');
+        $I->selectOption('select[name=negative]', 'Level Design');
+        $I->fillField('body', 'This is a top level comment. This is a top level comment.');
+        $I->click('Reply');
+        $I->seeInDatabase('comments', array('positive' => 'animation', 'negative' => 'level_design', 'body' => 'This is a top level comment. This is a top level comment.'));
+
+        //Add a reply comment to self
+        $I->amOnPage('/game/test-game-1');
+        $I->click(['link' => 'Reply']);
+        $I->fillField('.reply-form textarea', 'This is a sample reply comment. This is a sample reply comment.');
+        $I->click('.reply-form button');
+
+        $I->see('Comment reply added!');
+        $I->see('This is a sample reply comment. This is a sample reply comment.', '.col-sm-offset-1 .media-body');
+        $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
+    }
+
+    public function testAddCommentReplyToSelf(\AcceptanceTester $I)
+    {
+        //Add a regular comment
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/game/test-game-1');
+
+        $I->selectOption('select[name=positive]', 'Animation');
+        $I->selectOption('select[name=negative]', 'Level Design');
+        $I->fillField('body', 'This is a top level comment. This is a top level comment.');
+        $I->click('Reply');
+
+        //Add a reply comment to self
+        $I->amOnPage('/game/test-game-1');
+        $I->click(['link' => 'Reply']);
+        $I->fillField('.reply-form textarea', 'This is a sample reply comment. This is a sample reply comment.');
+        $I->click('.reply-form button');
+
+        $I->see('Comment reply added!');
+        $I->see('This is a sample reply comment. This is a sample reply comment.', '.col-sm-offset-1 .media-body');
+        $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
+    }
+
     public function testAddCommentInvalidBodyReply(\AcceptanceTester $I)
     {
         //Add a regular comment
