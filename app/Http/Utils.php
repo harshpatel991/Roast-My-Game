@@ -38,14 +38,14 @@ class Utils
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
         }
 
-        $s3 = App::make('aws')->createClient('s3');
-        $s3->putObject(array(
-            'ACL'        => 'public-read',
-            'Bucket'     => 'rmg-upload',
-            'CacheControl' => 'max-age=1814400',
-            'Key'        => $s3containingFolder.'/'.$saveFileName,
-            'SourceFile' => Game::getBackupImageUploadPath().$saveFileName,
-        ));
+//        $s3 = App::make('aws')->createClient('s3');
+//        $s3->putObject(array(
+//            'ACL'        => 'public-read',
+//            'Bucket'     => 'rmg-upload',
+//            'CacheControl' => 'max-age=1814400',
+//            'Key'        => $s3containingFolder.'/'.$saveFileName,
+//            'SourceFile' => Game::getBackupImageUploadPath().$saveFileName,
+//        ));
 
         return $saveFileName;
     }
