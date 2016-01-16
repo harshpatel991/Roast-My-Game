@@ -49,8 +49,9 @@
 
                                         @foreach($images as $image)
                                                 <div class="col-sm-12 col-xs-2" style="margin-bottom: 5px; padding-right:1px;">
-                                                    <div class="embed-responsive embed-responsive-16by9 position-relative">
-                                                        <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$image)}}" />
+                                                    <div class="embed-responsive embed-responsive-16by9 position-relative card-imager-wrapper">
+{{--                                                        <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$image)}}" />--}}
+                                                        <div class="embed-responsive-item card-image-contain" style="background-image: url('{{Utils::get_image_url($game->slug.'/'.$image)}}');"> </div>
                                                         <div class="overlay-thumbnail" onclick="selectImage('{{Utils::get_image_url($game->slug.'/'.$image)}}')"></div>
                                                     </div>
                                                 </div>

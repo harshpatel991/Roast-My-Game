@@ -18,7 +18,11 @@ class HomeController extends Controller
 {
     public function getHome() {
         $gameIds = Version::orderBy('created_at', 'desc')->groupBy('game_id')->select('game_id')->take(11)->get();
-        $games = Game::whereIn('id', $gameIds)->get();
+
+        $games = Game::whereIn('id', $gameIds)->with(['versions' => function ($query) {
+            $query->orderBy('version', 'desc');
+        }])->get();
+
         return view('home', compact('games'));
     }
 

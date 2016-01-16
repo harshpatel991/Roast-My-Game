@@ -47,7 +47,8 @@
                                 <div class="col-sm-3">
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <a href="/game/{{$game->slug}}">
-                                            <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>
+                                            {{--<img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>--}}
+                                            <div class="embed-responsive-item card-image-cover" style="background-image: url('{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}');"> </div>
                                         </a>
                                     </div>
                                 </div>
@@ -100,7 +101,7 @@
                     <h6 class="subheading subheading-color">Liked</h6>
                     @if(count($likes) > 0)
                         @foreach($likes as $like)
-                            <p><a href="/game/{{$like->game()->first()->slug}}">{{ $like->game()->first()->title }}</a></p>
+                            <p><a href="/game/{{$like->game->slug}}">{{ $like->game->title }}</a></p>
                         @endforeach
                     @else
                         <h4 class="text-center"><div class="font-light-gray">No likes here</div></h4>
