@@ -100,11 +100,35 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="game-title">{{$game->title}}</h3>
+                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="/profile/{{$game->user()->first()->username}}">{{$game->user()->first()->username}}</a></p>
+                        </div>
+                        <div class="col-sm-3">
+                            @if(count($platform_Icon_Name_Link) > 0)
+                                <div class="text-content-padding">
+                                    <div class="btn-group btn-block">
+                                        <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" id="download-dropdown">Download <span class="caret"></span></button>
+                                        <ul class="dropdown-menu btn-block">
+                                            @foreach($platform_Icon_Name_Link as $platform)
+                                                <li>
+                                                    <a href="{{$platform[2]}}" target="_blank" rel="nofollow">
+                                                        <span class="{{$platform[0]}}"></span>
+                                                        <span>{{$platform[1]}}</span>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="row"> {{--Main content row--}}
                         <div class="col-sm-9"> {{--Left content--}}
                             <div class="text-content-padding">
-                                <h3 class="game-title">{{$game->title}}</h3>
-                                <p class="small subheading-color text-uppercase"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="/profile/{{$game->user()->first()->username}}">{{$game->user()->first()->username}}</a></p>
 
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -149,25 +173,7 @@
                         </div>
 
                         <div class="col-sm-3"> {{--Right content--}}
-                            <div class="text-content-padding">
-                                @if(count($platform_Icon_Name_Link) > 0)
-                                    <div class="small-grey-box">
-                                        <div class="btn-group btn-block">
-                                            <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" id="download-dropdown">Download <span class="caret"></span></button>
-                                            <ul class="dropdown-menu btn-block">
-                                                @foreach($platform_Icon_Name_Link as $platform)
-                                                    <li>
-                                                        <a href="{{$platform[2]}}" target="_blank" rel="nofollow">
-                                                            <span class="{{$platform[0]}}"></span>
-                                                            <span>{{$platform[1]}}</span>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                @endif
-
+                            <div class="">
                                 @if(count($linkIcons) > 0)
                                     <div class="small-grey-box">
                                         <div class="small subheading-color" style="font-weight: bold;">LINKS</div>
