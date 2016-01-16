@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Redirect;
 use Auth;
 use App\User;
@@ -15,13 +16,16 @@ class UserController extends Controller
 {
 
     public function getProfile($user, Request $request) {
-        $games = $user->games()->get();
-        $comments = Comment::where('user_id', $user->id)->get();
-        $likes = $user->likes()->get();
-        $versionsCount = 0;
+        $games = $user->games()->with(['versions' => function ($query) {
+            $query->orderBy('version', 'desc');
+        }])->get();
 
+        $comments = Comment::where('user_id', $user->id)->get();
+        $likes = $user->likes()->with('game')->get();
+
+        $versionsCount = 0;
         foreach($games as $game){
-            $versionsCount += $game->versions()->count();
+            $versionsCount += $game->versions->count();
         }
 
         $isTheLoggedInUser = false;
