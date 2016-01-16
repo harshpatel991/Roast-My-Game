@@ -23,7 +23,16 @@ class Game extends Model
         'strategy' => 'Strategy'
     ];
 
-    public static $platforms = ['platform_pc', 'platform_mac', 'platform_ios', 'platform_android', 'platform_unity', 'platform_windows_store'];
+    public static $platforms = ['platform_pc', 'platform_mac', 'platform_ios', 'platform_android', 'platform_unity', 'platform_other'];
+    public static $platformDropDown =
+        [
+            'platform_pc' => 'PC',
+            'platform_mac' => 'Mac',
+            'platform_ios' => 'iOS',
+            'platform_android' => 'Android',
+            'platform_unity' => 'Unity Web',
+            'platform_other' => 'Other Web'
+        ];
 
     public static $platformColumnToIcon = [
         'link_platform_pc'       => 'icon-windows',

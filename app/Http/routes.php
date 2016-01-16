@@ -24,6 +24,16 @@ Route::get('/games/not-yet-roasted',
 Route::get('/games/{genre}',
     ['as' => 'gamesByGenre', 'uses' => 'HomeController@getGamesByGenre']);
 
+Route::get('/games/by_platform/{platform}',
+    ['as' => 'gamesByPlatform', 'uses' => 'HomeController@getGamesByPlatform']);
+
+Route::bind('platform', function($value, $route) {
+    if(in_array($value, App\Game::$platforms)) {
+        return $value; //if platform is found
+    }
+    App::abort(404); //platform not found
+});
+
 Route::bind('genre', function($value, $route) {
     if(array_key_exists($value, App\Game::$genres)) {
         return $value; //if genre is found
