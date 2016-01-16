@@ -17,15 +17,31 @@
 
                 @include('partials.display-input-error')
 
-                <h6 class="small" style="padding: 60px 5px 5px 5px;text-transform: uppercase">{{$pageTitle}} Games</h6>
+                <h6 style="padding: 60px 5px 5px 5px;text-transform: uppercase">{{$pageTitle}} Games</h6>
 
-                <div class="row" style="padding: 5px;">
-                    <div class="col-sm-12">
-                        <a href="/games/not-yet-roasted" class="label label-warning">NOT YET ROASTED</a>
-                        <a href="/games" class="label label-default">ALL</a>
-                        @foreach(array_slice(App\Game::$genres, 1) as $genreKey => $genre)
-                            <a href="/games/{{$genreKey}}" class="label label-default">{{strtoupper($genre)}}</a>
-                        @endforeach
+                <div class="white-background-box">
+
+                    <a href="/games/" class="btn btn-sm btn-light-blue">All Games</a>
+                    <a href="/games/not-yet-roasted" class="btn btn-sm btn-primary ">Not Yet Roasted</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light-blue dropdown-toggle" id="genre-dropdown" data-toggle="dropdown">
+                            Select Genre <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            @foreach(array_slice(App\Game::$genres, 1) as $genreKey => $genre)
+                                <li><a href="/games/{{$genreKey}}">{{$genre}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light-blue dropdown-toggle" id="platform-dropdown" data-toggle="dropdown">
+                            Select Platform <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            @foreach(App\Game::$platformDropDown as $platformLink => $platformName)
+                                <li><a href="/games/by_platform/{{$platformLink}}"><span class="{{App\Game::$platformColumnToIcon['link_'.$platformLink]}}"></span> {{$platformName}}</a></li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
 

@@ -113,7 +113,7 @@ class VersionTableSeeder extends Seeder
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
                 'link_platform_ios' => null,
-                'link_platform_android' => null,
+                'link_platform_android' => 'http://android.com',
                 'link_platform_unity' => null,
                 'link_platform_other' => null,
 
@@ -135,7 +135,7 @@ class VersionTableSeeder extends Seeder
                 'link_platform_mac' => null,
                 'link_platform_ios' => null,
                 'link_platform_android' => null,
-                'link_platform_unity' => null,
+                'link_platform_unity' => 'http://unity.com',
                 'link_platform_other' => null,
 
                 'upcoming_features' => "Upcomming feaures 1.1.1",

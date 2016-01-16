@@ -41,6 +41,20 @@ class HomeController extends Controller
         return view('games', compact('games', 'pageTitle'));
     }
 
+    public function getGamesByPlatform($platform, Request $request) {
+        $pageTitle = \App\Game::$platformDropDown[$platform];
+
+        $versions = Version::whereNotNull('link_'.$platform)->orderBy('created_at', 'desc')->take(16)->with('game')->get();
+        $games = array();
+        foreach ($versions as $version) {
+            if(!in_array($version->game, $games, true)) {
+                array_push($games, $version->game);
+            }
+        }
+
+        return view('games', compact('games', 'pageTitle'));
+    }
+
     public function getLeaderboard(Request $request) {
         $mostRoastedGameIds = Comment::select('commentable_id', DB::raw('count(*) as roast_count'))
                                 ->groupBy('commentable_id')
