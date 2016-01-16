@@ -25,7 +25,7 @@
                     <a href="/games/not-yet-roasted" class="btn btn-sm btn-primary ">Not Yet Roasted</a>
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light-blue dropdown-toggle" id="genre-dropdown" data-toggle="dropdown">
-                            Select Genre <span class="caret"></span>
+                            @if(!isset($genre))Select Genre @else {{$pageTitle}} @endif <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             @foreach(array_slice(App\Game::$genres, 1) as $genreKey => $genre)
@@ -35,7 +35,7 @@
                     </div>
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light-blue dropdown-toggle" id="platform-dropdown" data-toggle="dropdown">
-                            Select Platform <span class="caret"></span>
+                            @if(!isset($platform))Select Platform @else {{$pageTitle}} @endif <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             @foreach(App\Game::$platformDropDown as $platformLink => $platformName)
