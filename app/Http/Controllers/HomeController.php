@@ -19,28 +19,47 @@ class HomeController extends Controller
     public function getHome() {
         $gameIds = Version::orderBy('created_at', 'desc')->groupBy('game_id')->select('game_id')->take(11)->get();
 
-        $games = Game::whereIn('id', $gameIds)->with(['versions' => function ($query) {
-            $query->orderBy('version', 'desc');
-        }])->get();
+        $games = Game::whereIn('id', $gameIds)
+            ->with(['versions' => function ($query) {
+                $query->orderBy('version', 'desc');
+            }])
+            ->get();
 
         return view('home', compact('games'));
     }
 
     public function getGames(Request $request) {
         $pageTitle = 'Most Recently Updated';
-        $games = Game::orderBy('created_at', 'desc')->take(16)->get();
+        $games = Game::orderBy('created_at', 'desc')
+            ->take(16)
+            ->with(['versions' => function ($query) {
+                $query->orderBy('version', 'desc');
+            }])
+            ->get();
         return view('games', compact('games', 'pageTitle'));
     }
 
     public function getGamesByGenre($genre, Request $request) {
         $pageTitle = Game::$genres[$genre];
-        $games = Game::where('genre', $genre)->orderBy('created_at', 'desc')->take(16)->get();
-        return view('games', compact('games', 'pageTitle'));
+        $games = Game::where('genre', $genre)
+            ->orderBy('created_at', 'desc')
+            ->take(16)
+            ->with(['versions' => function ($query) {
+                $query->orderBy('version', 'desc');
+            }])
+            ->get();
+        return view('games', compact('games', 'pageTitle', 'genre'));
     }
 
     public function getNonRoasterGames(Request $request) {
         $gamesWithComments = Comment::groupBy('commentable_id')->lists('commentable_id');
-        $games = Game::whereNotIn('id', $gamesWithComments)->orderBy('created_at', 'desc')->take(16)->get();
+        $games = Game::whereNotIn('id', $gamesWithComments)
+            ->orderBy('created_at', 'desc')
+            ->take(16)
+            ->with(['versions' => function ($query) {
+                $query->orderBy('version', 'desc');
+            }])
+            ->get();
         $pageTitle = 'Not Yet Roasted';
         return view('games', compact('games', 'pageTitle'));
     }
@@ -56,7 +75,7 @@ class HomeController extends Controller
             }
         }
 
-        return view('games', compact('games', 'pageTitle'));
+        return view('games', compact('games', 'pageTitle', 'platform'));
     }
 
     public function getLeaderboard(Request $request) {
