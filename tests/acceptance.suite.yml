@@ -7,6 +7,7 @@
 class_name: AcceptanceTester
 modules:
     enabled:
+        - \Helper\MailCatcher #you have to run composer install (?) in this tests dir to get guzzle to install/autoload
         - WebDriver:
 #            url: http://roastmygame.com #PROD
             url: http://clickr.app
@@ -18,3 +19,7 @@ modules:
              populate: true
              cleanup: true
              reconnect: true
+    config:
+        \Helper\MailCatcher:
+            url: http://10.0.2.2 #find this value by running on vagrant box: netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10
+            port: '1080'

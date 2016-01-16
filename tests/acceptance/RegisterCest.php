@@ -18,6 +18,7 @@ class RegisterCest
 
     public function testNormalRegister(\AcceptanceTester $I)
     {
+        $I->resetEmails();
         $I->amOnPage('/auth/register');
         $I->fillField('username', 'new-register');
         $I->fillField('email', 'new-register@gmail.com');
@@ -31,6 +32,13 @@ class RegisterCest
         //verify logged in
         $I->see('new-register');
         $I->see('A verification link has been sent to new-register@gmail.com');
+
+        //verify email
+        $I->seeInLastEmailTo("support@roastmygame.com", "Confirm your email by clicking the link below.");
+        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/verify/".$confirmationCode);
+        $I->seeInLastEmailTo("new-register@gmail.com", "Confirm your email by clicking the link below.");
+        $I->seeInLastEmailTo("new-register@gmail.com", "http://clickr.app/verify/".$confirmationCode);
+        $I->seeEmailCount(2);
 
         //confirm the user
         $I->amOnPage('/verify/'.$confirmationCode);

@@ -60,6 +60,7 @@ class CommentCest
 
     public function testAddFullComment(\AcceptanceTester $I)
     {
+        $I->resetEmails();
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
 
@@ -75,10 +76,18 @@ class CommentCest
         $I->see('Level Design', '.media-body');
         $I->see('This is a sample comment. This is a sample comment.');
         $I->seeInDatabase('comments', array('positive' => 'animation', 'negative' => 'level_design', 'body' => 'This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment.This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sample comment. This is a sampl'));
+
+        //verify email
+        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeEmailCount(2);
     }
 
     public function testAddOnlyPositive(\AcceptanceTester $I)
     {
+        $I->resetEmails();
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
 
@@ -88,10 +97,18 @@ class CommentCest
         $I->see('Comment added!');
         $I->see('Physics', '.media-body');
         $I->seeInDatabase('comments', array('positive' => 'physics', 'negative' => NULL, 'body' => NULL));
+
+        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeEmailCount(2);
     }
 
     public function testAddFullOnlyNegative(\AcceptanceTester $I)
     {
+        $I->resetEmails();
+
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
 
@@ -101,10 +118,17 @@ class CommentCest
         $I->see('Comment added!');
         $I->see('Controls', '.media-body');
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => 'controls', 'body' => NULL));
+
+        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeEmailCount(2);
     }
 
     public function testAddFullOnlyText(\AcceptanceTester $I)
     {
+        $I->resetEmails();
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
 
@@ -114,6 +138,12 @@ class CommentCest
         $I->see('Comment added!');
         $I->see('This is a another sample comment. This is a sample comment.');
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a another sample comment. This is a sample comment.'));
+
+        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
+        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeEmailCount(2);
     }
 
     public function testAddNothing(\AcceptanceTester $I)
@@ -171,6 +201,7 @@ class CommentCest
 
     public function testAddCommentReply(\AcceptanceTester $I)
     {
+        $I->resetEmails();
         //Add a regular comment
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
@@ -202,10 +233,17 @@ class CommentCest
         $I->see('Comment reply added!');
         $I->see('This is a sample reply comment. This is a sample reply comment.', '.col-sm-offset-1 .media-body');
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
+
+        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has replied to your comment. View it by clicking the link below.");
+        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user2@gmail.com", "Someone has replied to your comment. View it by clicking the link below.");
+        $I->seeInLastEmailTo("user2@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeEmailCount(4);
     }
 
     public function testAddCommentOnOwnGame(\AcceptanceTester $I)
     {
+        $I->resetEmails();
         //Add a regular comment
         $this->loginAs($I, 'user1@gmail.com', 'password1');
         $I->amOnPage('/game/test-game-1');
@@ -216,19 +254,13 @@ class CommentCest
         $I->click('Reply');
         $I->seeInDatabase('comments', array('positive' => 'animation', 'negative' => 'level_design', 'body' => 'This is a top level comment. This is a top level comment.'));
 
-        //Add a reply comment to self
-        $I->amOnPage('/game/test-game-1');
-        $I->click(['link' => 'Reply']);
-        $I->fillField('.reply-form textarea', 'This is a sample reply comment. This is a sample reply comment.');
-        $I->click('.reply-form button');
-
-        $I->see('Comment reply added!');
-        $I->see('This is a sample reply comment. This is a sample reply comment.', '.col-sm-offset-1 .media-body');
-        $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
+        $I->seeEmailCount(0); //2 emails from the first comment
     }
 
     public function testAddCommentReplyToSelf(\AcceptanceTester $I)
     {
+        $I->resetEmails();
+
         //Add a regular comment
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
@@ -247,6 +279,8 @@ class CommentCest
         $I->see('Comment reply added!');
         $I->see('This is a sample reply comment. This is a sample reply comment.', '.col-sm-offset-1 .media-body');
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
+
+        $I->seeEmailCount(2); //2 emails from the first comment
     }
 
     public function testAddCommentInvalidBodyReply(\AcceptanceTester $I)
