@@ -31,7 +31,6 @@ class HomeController extends Controller
     public function getGames(Request $request) {
         $pageTitle = 'Most Recently Updated';
         $games = Game::orderBy('created_at', 'desc')
-            ->take(16)
             ->with(['versions' => function ($query) {
                 $query->orderBy('version', 'desc');
             }])
