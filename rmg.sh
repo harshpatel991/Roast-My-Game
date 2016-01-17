@@ -16,7 +16,9 @@ proddeploy() {
   if [ "$continue" == "y" ]; then
       echo "---Minifying CSS"
       gulp --production
-      echo "---Tag version [ex v1.2]"
+
+      lastVersion=$(git tag | tail -n1)
+      echo "---Tag version [last was ${lastVersion}]"
       read tag
       git commit -m "Release $tag" public/css/app.css
       git tag -a "$tag" -m "$tag"
@@ -43,13 +45,14 @@ backupremotedb() {
   dt_now=$(date '+%d_%m_%Y__%H_%M_%S');
   \mysqldump --single-transaction --user=***REMOVED*** -p$RMG_EC2_USER_PASS --host=rmg2.cwqtmomh10su.us-west-2.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
   echo "Completed"
-  echo "Copy remote dump to local test folder? [y/n]"
+  echo "Copy dump to local DB? [y/n]"
   read continue
 
   if [ "$continue" == "y" ]; then
-    cp "./prod-db-backups/backup$dt_now.sql"  "./tests/_data/dump.sql"
+    mysql -u homestead -psecret --host=192.168.55.55 homestead < "./prod-db-backups/backup$dt_now.sql"
+    echo "---DB dump copied!"
   else
-    echo "---Tests copy canceled"
+    echo "---DB dump not copied"
   fi
 
 }
@@ -78,6 +81,9 @@ prodlogs() {
     ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod`].PublicIpAddress' --output text)
     echo "Logging into ${ec2instanceIP}"
     ssh ec2-user@"${ec2instanceIP}" 'cat /var/app/current/storage/logs/laravel.log;'
+
+    dt_now=$(date '+%d_%m_%Y__%H_%M_%S');
+    scp ec2-user@"${ec2instanceIP}":/var/app/current/storage/logs/laravel.log "./prod-logs/log_${dt_now}"
 }
 
 RED='\033[0;31m'
