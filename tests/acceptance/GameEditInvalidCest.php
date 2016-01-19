@@ -3,7 +3,7 @@
 use Page\Version as VersionPage;
 use Page\Game as GamePage;
 
-class GameCreateInvalidCest
+class GameEditInvalidCest
 {
     private function loginAs(AcceptanceTester $I, $email, $password)
     {
@@ -13,56 +13,52 @@ class GameCreateInvalidCest
         $I->click(['id' => 'login']);
     }
 
-    public function testAddWithoutPermissions(\AcceptanceTester $I)
-    {
-        $I->amOnPage('/');
-        $I->click('Add Game');
-
-        $I->see('Login');
-
-        $I->fillField('email', 'user1@gmail.com');
-        $I->fillField('password', 'password1');
-        $I->click(['id' => 'login']);
-
-        $I->see('Add Your Game');//test got redirected
-    }
-
-    public function testAddWithoutMinimumComments(\AcceptanceTester $I)
+    public function testEditWithoutOwning(\AcceptanceTester $I)
     {
         $I->amOnPage('/');
         $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/edit-game/test-game-1/1.2.3');
 
-        $I->click('Add Game');
+        $I->dontSee('Edit Test Game 1');
+    }
 
-        $I->see('Profile');
-        $I->see('To give a chance for all games to get feedback, you must roast one game before adding your own game.');
+    public function testEditWithoutLoggedIn(\AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/edit-game/test-game-1/1.2.3');
+
+        $I->dontSee('Edit Test Game 1');
     }
 
     public function testCreateInvalidTitle(\AcceptanceTester $I)
     {
-        $I->wantTo('Create invalid title game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillFormMissingTitle();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
         $I->see('The title field is required.');
 
         $gamePage->fillFormLongTitle();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
         $I->see('The title may not be greater than 255 characters.');
     }
 
     public function testCreateInvalidGenre(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid genre game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillFormMissingGenre();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
 
         $I->see('The genre field is required.');
     }
@@ -70,17 +66,15 @@ class GameCreateInvalidCest
     public function testCreateInvalidDescription(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid description game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
-
-        $versionPage = new VersionPage($I);
-        $versionPage->fillValidVersionTop();
         $gamePage->fillFormLongDescription();
-
-        $I->click('Add Game!');
+        $I->click('Save Changes');
 
         $I->see('The description may not be greater than 5000 characters.');
     }
@@ -88,13 +82,15 @@ class GameCreateInvalidCest
     public function testCreateInvalidPlayGameLinks(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid description game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
         $gamePage->fillFormInvalidPlatformLinks();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
 
         $I->see('The link platform pc format is invalid.');
         $I->see('The link platform mac format is invalid.');
@@ -104,7 +100,7 @@ class GameCreateInvalidCest
         $I->see('The link platform other format is invalid.');
 
         $gamePage->fillFormLongPlatformLinks();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
 
         $I->see('The link platform pc may not be greater than 255 characters.');
         $I->see('The link platform mac may not be greater than 255 characters.');
@@ -117,13 +113,15 @@ class GameCreateInvalidCest
     public function testCreateInvalidSocialLinks(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid description game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
         $gamePage->fillFormInvalidSocialLinks();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
 
         $I->see('The link social greenlight format is invalid.');
         $I->see('The link social website format is invalid.');
@@ -134,7 +132,7 @@ class GameCreateInvalidCest
 
         //test: too long links
         $gamePage->fillFormLongSocialLinks();
-        $I->click('Add Game!');
+        $I->click('Save Changes');
 
         $I->see('The link social greenlight may not be greater than 255 characters.');
         $I->see('The link social website may not be greater than 255 characters.');
@@ -146,85 +144,76 @@ class GameCreateInvalidCest
 
     public function testCreateInvalidVersion(\AcceptanceTester $I)
     {
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
 
         $versionPage = new VersionPage($I);
-        $versionPage->fillVersionMissingVersion();
-        $I->click('Add Game!');
+        $versionPage->fillVersionMissingVersion(true);
+        $I->click('Save Changes');
         $I->see('The version field is required.');
 
-        $versionPage->fillVersionLongVersion();
-        $I->click('Add Game!');
+        $versionPage->fillVersionLongVersion(true);
+        $I->click('Save Changes');
         $I->see('The version may not be greater than 255 characters.');
-    }
-
-    public function testCreateInvalidImage(\AcceptanceTester $I)
-    {
-        $I->wantTo('Create invalid image game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
-
-        $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
-
-        $versionPage = new VersionPage($I);
-        $versionPage->fillVersionMissingImage();
-        $I->click('Add Game!');
-        $I->see('The image1 field is required.');
-
-        $versionPage->fillVersionLargeImage();
-        $I->click('Add Game!');
-        $I->see('The image1 may not be greater than 2000 kilobytes.');
     }
 
     public function testCreateInvalidVideoLink(\AcceptanceTester $I) {
         $I->wantTo('Create long video link game');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
 
         $versionPage = new VersionPage($I);
-        $versionPage->fillVersionLongVideoLink();
-        $I->click('Add Game!');
+        $versionPage->fillVersionLongVideoLink(true);
+        $I->click('Save Changes');
         $I->see('The video link may not be greater than 255 characters.');
 
         $versionPage = new VersionPage($I);
-        $versionPage->fillVersionInvalidVideoLink();
-        $I->click('Add Game!');
+        $versionPage->fillVersionInvalidVideoLink(true);
+        $I->click('Save Changes');
         $I->see('The video link format is invalid.');
     }
 
     public function testCreateInvalidChanges(\AcceptanceTester $I) {
         $I->wantTo('Create long changes version');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
 
         $versionPage = new VersionPage($I);
-        $versionPage->fillVersionLongChanges();
-        $I->click('Add Game!');
+        $versionPage->fillVersionLongChanges(true);
+        $I->click('Save Changes');
         $I->see('The changes may not be greater than 5000 characters.');
     }
 
-    public function testCreateInvalidUpcomingFeatures(\AcceptanceTester $I) {
+    public function testCreateInvalidUpcomingFeatures(\AcceptanceTester $I)
+    {
         $I->wantTo('Create long upcoming features version');
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->click('Add Game');
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/profile/user2');
+
+        $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
         $gamePage->fillValidGameTop();
 
         $versionPage = new VersionPage($I);
-        $versionPage->fillVersionLongUpcomingFeatures();
-        $I->click('Add Game!');
+        $versionPage->fillVersionLongUpcomingFeatures(true);
+        $I->click('Save Changes');
         $I->see('The upcoming features may not be greater than 5000 characters.');
     }
+
 }

@@ -18,7 +18,7 @@
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('route' => 'add-game', 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('url' => '/edit-game/'.$game->slug.'/'.$version->slug, 'class'=>'form-horizontal', 'files'=>true, 'id' => 'edit-form')) !!}
 
                         @include('partials.game-form')
 
@@ -51,7 +51,7 @@
     @include('partials/version-script-init')
 
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreEditGameRequest', '#edit-form') !!}
 
     <script>
         function readURL(input, previewElem) {

@@ -204,6 +204,27 @@ class VersionTableSeeder extends Seeder
                             <li>number2</li>
                             <li>number3</li>
                             </ol>'
+            ],
+            ['id' => 9, //a minimal version
+                'game_id' => 7,
+                'version' => '1.1.1',
+                'slug' => '1.1.1',
+                'beta' => false,
+                'video_link' => '',
+                'image1' => 'image1.jpg',
+                'image2' => null,
+                'image3' => null,
+                'image4' => null,
+
+                'link_platform_pc' => null,
+                'link_platform_mac' => null,
+                'link_platform_ios' => null,
+                'link_platform_android' => null,
+                'link_platform_unity' => null,
+                'link_platform_other' => null,
+
+                'upcoming_features' => '',
+                'changes' => ''
             ]
         );
 

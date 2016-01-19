@@ -30,14 +30,27 @@ class Version
         $this->tester = $I;
     }
 
-    public function fillVersionMissingVersion() {
+    public function fillValidVersionTop() {
         $I = $this->tester;
+        $I->fillField('version', 'Test Version');
         $I->attachFile('image1', 'image1.jpg');
     }
 
-    public function fillVersionLongVersion() {
+    public function fillVersionMissingVersion($isEdit = false) {
         $I = $this->tester;
-        $I->attachFile('image1', 'image1.jpg');
+
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image1.jpg');
+        } else {
+            $I->fillField('version', '');
+        }
+    }
+
+    public function fillVersionLongVersion($isEdit = false) {
+        $I = $this->tester;
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image1.jpg');
+        }
         $I->fillField('version', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
     }
 
@@ -46,30 +59,38 @@ class Version
         $I->fillField('version', '3.4.5');
     }
 
-    public function fillVersionLargeImage() {
+    public function fillVersionLargeImage($isEdit = false) {
         $I = $this->tester;
         $I->fillField('version', '3.4.5');
-        $I->attachFile('image1', 'image-large.jpg');
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image-large.jpg');
+        }
     }
 
-    public function fillVersionLongVideoLink() {
+    public function fillVersionLongVideoLink($isEdit = false) {
         $I = $this->tester;
         $I->fillField('version', '3.4.5');
         $I->fillField('video_link', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
-        $I->attachFile('image1', 'image1.jpg');
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image1.jpg');
+        }
     }
 
-    public function fillVersionInvalidVideoLink() {
+    public function fillVersionInvalidVideoLink($isEdit = false) {
         $I = $this->tester;
         $I->fillField('version', '3.4.5');
         $I->fillField('video_link', 'invalid-link');
-        $I->attachFile('image1', 'image1.jpg');
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image1.jpg');
+        }
     }
 
-    public function fillVersionLongUpcomingFeatures() {
+    public function fillVersionLongUpcomingFeatures($isEdit = false) {
         $I = $this->tester;
         $I->fillField('version', '3.4.5');
-        $I->attachFile('image1', 'image1.jpg');
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image1.jpg');
+        }
 
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('upcoming_features_ifr');
@@ -79,10 +100,12 @@ class Version
         });
     }
 
-    public function fillVersionLongChanges() {
+    public function fillVersionLongChanges($isEdit = false) {
         $I = $this->tester;
         $I->fillField('version', '3.4.5');
-        $I->attachFile('image1', 'image1.jpg');
+        if(!$isEdit) {
+            $I->attachFile('image1', 'image1.jpg');
+        }
 
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('changes_ifr');

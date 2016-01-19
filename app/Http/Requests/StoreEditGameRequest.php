@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use App\Http\Requests\Request;
 
 class StoreEditGameRequest extends Request
@@ -30,7 +31,7 @@ class StoreEditGameRequest extends Request
     {
         return array_merge(
             StoreGameRequest::storeRulesList(),
-            StoreVersionRequest::$editRulesList
+            StoreVersionRequest::$editableRulesList
         );
     }
 }

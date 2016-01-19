@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function getProfile($user, Request $request) {
         $games = $user->games()->with(['versions' => function ($query) {
-            $query->orderBy('version', 'desc');
+            $query->orderBy('created_at', 'desc');
         }])->get();
 
         $comments = Comment::where('user_id', $user->id)->get();

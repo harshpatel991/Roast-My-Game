@@ -11,7 +11,7 @@ class StoreVersionRequest extends Request
     static $editableRulesList = [
         'version' => 'required|max:255',
         'beta' => 'max:10',
-
+        'video_link' => 'max:255|url',
         'link_platform_pc' => 'max:255|url',
         'link_platform_mac' => 'max:255|url',
         'link_platform_ios' => 'max:255|url',
@@ -24,7 +24,6 @@ class StoreVersionRequest extends Request
         ];
 
     static $notEditableRulesList = [
-        'video_link' => 'max:255|url',
         'image1' => 'required|image|max:2000',
         'image2' => 'image|max:2000',
         'image3' => 'image|max:2000',

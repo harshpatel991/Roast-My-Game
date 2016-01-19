@@ -5,6 +5,7 @@ namespace App\Http;
 use App;
 use Image;
 use App\Game;
+use App\Version;
 use Illuminate\Support\Str;
 
 class Utils
@@ -66,6 +67,23 @@ class Utils
             $i = 1;
             $newslug = $potentialSlug . '-' . $i;
             while(Game::where('slug',$newslug)->count() >= 1){
+                $i++;
+                $newslug = $potentialSlug . '-' . $i;
+            }
+            $potentialSlug = $newslug;
+        }
+        return $potentialSlug;
+    }
+
+    //Empty game id when adding a new version since there won't be a version slug conflict
+    public static function generate_unique_version_slug($version, $game_id='')
+    {
+        //and here you put all your logic that solve the problem
+        $potentialSlug = Str::slug(substr($version, 0, 33));
+        if(Version::where('slug', $potentialSlug)->where('game_id', $game_id)->count() >= 1){
+            $i = 1;
+            $newslug = $potentialSlug . '-' . $i;
+            while(Version::where('slug', $newslug)->where('game_id', $game_id)->count() >= 1){
                 $i++;
                 $newslug = $potentialSlug . '-' . $i;
             }
