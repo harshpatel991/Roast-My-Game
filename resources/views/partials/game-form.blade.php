@@ -14,7 +14,7 @@
 </div>
 
 <div class="form-group">
-    <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <i class="icon-down-dir"></i></a>
+    <a class="btn btn-info col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <i class="icon-down-dir"></i></a>
     <div class="collapse" id="collapseSocialLinks" style="padding-top: 10px;">
         {!! Form::myInput('link_social_greenlight', 'Greenlight', '', old('link_social_greenlight'), $game->link_social_greenlight) !!}
         {!! Form::myInput('link_social_website', 'Website', '', old('link_social_website'), $game->link_social_website) !!}

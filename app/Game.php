@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Slynova\Commentable\Traits\Commentable;
-
+use Illuminate\Http\Request;
+use App\Http\Utils;
 
 class Game extends Model
 {
@@ -103,6 +104,20 @@ class Game extends Model
             }
         }
         return $translated;
+    }
+
+    public function setGameFromRequest($game, Request $request) {
+        $game->title = $request->get('title');
+        $game->user_id = $request->user()->id;
+        $game->genre = $request->genre;
+        $game->description = $request->description;
+
+        $game->link_social_greenlight = $request->has('link_social_greenlight') ? $request->link_social_greenlight : null;
+        $game->link_social_website = $request->has('link_social_website') ? $request->link_social_website : null;
+        $game->link_social_twitter = $request->has('link_social_twitter') ? $request->link_social_twitter : null;
+        $game->link_social_youtube = $request->has('link_social_youtube') ? $request->link_social_youtube : null;
+        $game->link_social_google_plus = $request->has('link_social_google_plus') ? $request->link_social_google_plus : null;
+        $game->link_social_facebook = $request->has('link_social_facebook') ? $request->link_social_facebook : null;
     }
 
     public function latestScreenshot() {

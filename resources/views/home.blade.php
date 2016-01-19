@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
-                        <a href="/games" class="btn btn-sm btn-default btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                        <a href="/games" class="btn btn-sm btn-info btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@
 
                 <div class= "row">
                     <div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4">
-                        <a href="/games" class="btn btn-sm btn-default btn-block visible-xs-block" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                        <a href="/games" class="btn btn-sm btn-info btn-block visible-xs-block" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 

@@ -21,7 +21,7 @@ class HomeController extends Controller
 
         $games = Game::whereIn('id', $gameIds)
             ->with(['versions' => function ($query) {
-                $query->orderBy('version', 'desc');
+                $query->orderBy('created_at', 'desc');
             }])
             ->get();
 
@@ -32,7 +32,7 @@ class HomeController extends Controller
         $pageTitle = 'Most Recently Updated';
         $games = Game::orderBy('created_at', 'desc')
             ->with(['versions' => function ($query) {
-                $query->orderBy('version', 'desc');
+                $query->orderBy('created_at', 'desc');
             }])
             ->get();
         return view('games', compact('games', 'pageTitle'));
@@ -44,7 +44,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->take(16)
             ->with(['versions' => function ($query) {
-                $query->orderBy('version', 'desc');
+                $query->orderBy('created_at', 'desc');
             }])
             ->get();
         return view('games', compact('games', 'pageTitle', 'genre'));
@@ -56,7 +56,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->take(16)
             ->with(['versions' => function ($query) {
-                $query->orderBy('version', 'desc');
+                $query->orderBy('created_at', 'desc');
             }])
             ->get();
         $pageTitle = 'Not Yet Roasted';

@@ -121,6 +121,22 @@ class GameTableSeeder extends Seeder
                 'link_social_youtube' => null,
                 'link_social_google_plus' => null,
                 'link_social_facebook' => null
+            ],
+            [
+                'id' => 7, //a minimal game
+                'user_id' => 2,
+                'title' => 'Test Game 7',
+                'slug' => 'test-game-7',
+                'genre' => 'strategy',
+                'description' => '',
+                'likes' => 0,
+                'views' => 764,
+                'link_social_greenlight' => null,
+                'link_social_website' => null,
+                'link_social_twitter' => null,
+                'link_social_youtube' => null,
+                'link_social_google_plus' => null,
+                'link_social_facebook' => null
             ]
 
         );

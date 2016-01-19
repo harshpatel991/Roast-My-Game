@@ -1,3 +1,4 @@
+{{--TODO: can change all these text form groups to "myInput"s--}}
 <div class="form-group">
     {!! Form::label('version', 'Version*', ['class' => 'col-sm-2 control-label form-label']) !!}
 
@@ -14,8 +15,9 @@
     </div>
 </div>
 
+{!! Form::myInput('video_link', 'Gameplay Video', 'https://www.youtube.com/watch?v=e-ORhEE9VVg', old('video_link'), $version->video_link) !!}
+
 @if(isset($isEdit) ? !$isEdit : true)
-    {!! Form::myInput('video_link', 'Gameplay Video', 'https://www.youtube.com/watch?v=e-ORhEE9VVg') !!}
 
     <div class="form-group">
         {!! Form::label('image1', 'Screenshots*', ['class' => 'col-sm-2 control-label form-label']) !!}
@@ -40,7 +42,7 @@
 @endif
 
 <div class="form-group">
-    <a class="btn btn-primary col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlayGameLinks">Add Download Game Links <i class="icon-down-dir"></i></a>
+    <a class="btn btn-info col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlayGameLinks">Add Download Game Links <i class="icon-down-dir"></i></a>
     <div class="collapse" id="collapsePlayGameLinks" style="padding-top: 10px;">
         <div class="col-sm-offset-2">
             <p>If your game is avaiable to play, add links to download your game</p>
