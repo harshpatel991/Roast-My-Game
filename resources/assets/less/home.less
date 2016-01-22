@@ -90,6 +90,10 @@
   text-overflow: ellipsis;
 }
 
+.card-title:hover{
+  text-decoration: underline;
+}
+
 .card-date {
   color: #e4e4e4;
   margin-bottom: 0;
@@ -98,14 +102,10 @@
 
 .card-description {
   margin-top: 10px;
-  color: #bfbfbf;
+  color: #8b9696;
   line-height: 1.5em;
   height: 3em;       /* height is 2x line-height, so two lines will display */
   overflow: hidden;  /* prevents extra lines from being visible */
-}
-
-.card-imager-wrapper {
-  background-color: #ffffff;
 }
 
 .card-image-contain {
@@ -118,4 +118,12 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.card-wrapper-link {
+  display:block;
+}
+
+.card-wrapper-link:hover {
+  text-decoration: none;
 }

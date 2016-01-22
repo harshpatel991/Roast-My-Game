@@ -62,11 +62,14 @@ class UserController extends Controller
 
         if($user->status = 'unconfirmed')
         {
+            $user->points = $user->points + User::$CONFIRM_EMAIL_POINTS;
             $user->status = 'good';
         }
         $user->save();
 
         return redirect('/')->with(['message' =>'Your email has been verified!']);
     }
+
+
 
 }

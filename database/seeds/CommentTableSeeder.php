@@ -64,6 +64,23 @@ class CommentTableSeeder extends Seeder
 
                 'positive' => NULL,
                 'negative' => NULL
+            ],
+            ['id' => 4,
+                'title' => '',
+                'body' => 'Comment on game 7 by user2',
+
+                'parent_id' => NULL,
+                'lft' => 4,
+                'rgt' => 5,
+                'depth' => 0,
+
+                'commentable_id' => 7,
+                'commentable_type' => 'App\Game',
+                'user_id' => 2,
+                'username' => 'user2',
+
+                'positive' => NULL,
+                'negative' => NULL
             ]
         );
 
