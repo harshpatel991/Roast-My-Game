@@ -30,7 +30,7 @@ class GameCreateInvalidCest
     public function testAddWithoutMinimumComments(\AcceptanceTester $I)
     {
         $I->amOnPage('/');
-        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $this->loginAs($I, 'user4@gmail.com', 'password4');
 
         $I->click('Add Game');
 

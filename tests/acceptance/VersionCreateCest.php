@@ -60,6 +60,10 @@ class VersionCreateCest
         $I->click(['id' => 'version-2']);
         $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-2-1.jpg')");
         $I->seeInCurrentUrl('2');
+
+        $I->amOnPage('/profile/user1');
+        $I->seeInSource('trophy3.png');
+        $I->seeInSource('375 Points');
     }
 
     public function testAddFullVersionValues(\AcceptanceTester $I)
@@ -175,6 +179,10 @@ class VersionCreateCest
         $I->click(['id' => 'version-3']);
         $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/test-game-1-3-1.jpg')");
         $I->seeInCurrentUrl('3');
+
+        $I->amOnPage('/profile/user1');
+        $I->seeInSource('trophy3.png');
+        $I->seeInSource('375 Points');
     }
 
     public function testAddExistingVersionNumberVersion(\AcceptanceTester $I)

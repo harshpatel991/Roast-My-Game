@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Game;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\StoreVersionRequest;
@@ -106,6 +107,9 @@ class GameController extends Controller
         $version->game_id = $game->id;
         $version->save();
 
+        //save the user points
+        $request->user()->addPointsAndSave(User::$ADD_GAME_POINTS);
+
         return redirect('game/'.$game->slug)->with('message', 'Your game has been added! Please consider leaving feedback for other games.');
     }
 
@@ -116,6 +120,9 @@ class GameController extends Controller
         $version->setVersionFromRequest($version, $game, $request);
         $version->game_id = $game->id;
         $version->save();
+
+        //save the user points
+        $request->user()->addPointsAndSave(User::$ADD_VERSION_POINTS);
 
         return redirect('game/'.$game->slug)->with('message', 'Your progress has been added! Please consider leaving feedback for other games.');
     }
@@ -158,6 +165,8 @@ class GameController extends Controller
 
         $game->save();
         $like->save();
+        //save the user points
+        $user->addPointsAndSave(User::$LIKE_POINTS);
 
         return $game->likes;
     }

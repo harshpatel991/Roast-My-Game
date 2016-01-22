@@ -43,6 +43,14 @@ class LikesCest
         $I->see('3', '.btn-favorite-container .btn-success');
         $I->seeInDatabase('likes', ['game_id' => '1', 'user_id' => '1']);
         $I->seeInDatabase('games', ['id' => '1', 'likes' => '3']);
+
+        $I->amOnPage('/profile/user2');
+        $I->seeInSource('trophy2.png');
+        $I->seeInSource('110 Points');
+
+        $I->amOnPage('/profile/user3');
+        $I->seeInSource('trophy1.png');
+        $I->seeInSource('10 Points');
     }
 
     public function testLikeAlreadyLiked(\AcceptanceTester $I)

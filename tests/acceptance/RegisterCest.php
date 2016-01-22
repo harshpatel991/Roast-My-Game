@@ -33,6 +33,10 @@ class RegisterCest
         $I->see('new-register');
         $I->see('A verification link has been sent to new-register@gmail.com');
 
+        $I->amOnPage('/profile/new-register');
+        $I->seeInSource('trophy1.png');
+        $I->seeInSource('0 Points');
+
         //verify email
         $I->seeInLastEmailTo("support@roastmygame.com", "Confirm your email by clicking the link below.");
         $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/verify/".$confirmationCode);
@@ -44,6 +48,10 @@ class RegisterCest
         $I->amOnPage('/verify/'.$confirmationCode);
         $I->see('Your email has been verified!');
         $I->seeInDatabase('users', array('username' => 'new-register', 'email' => 'new-register@gmail.com', 'status' => 'good'));
+
+        $I->amOnPage('/profile/new-register');
+        $I->seeInSource('trophy1.png');
+        $I->seeInSource('50 Points');
     }
 
     public function testRegisterInvalidUsername(\AcceptanceTester $I)

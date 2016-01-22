@@ -18,26 +18,26 @@
                     @include('partials.display-input-error')
 
                     <div class="row">
-                        <div class="col-lg-6 col-md-5">
-                            <h4 class="">{{$user->username}}'s Profile</h4>
+                        <div class="col-lg-2 col-md-3 col-sm-2 col-xs-2">
+                            <img width="100%" height="100%" class="media-object" src="/images/user-profile-icon.jpg">
                         </div>
-                        <div class="col-lg-6 col-md-7">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <h4 class="text-center" style="margin-bottom: 0px">{{$versionsCount}}</h4>
-                                    <p class="small text-center">Progress Updates</p>
-                                </div>
-                                <div class="col-xs-4" style="border-style: solid;border-width: 0px 1px;border-color: #ddd;">
-                                    <h4 class="text-center" style="margin-bottom: 0px">{{$comments->count()}}</h4>
-                                    <p class="small text-center">Comments</p>
-                                </div>
-                                <div class="col-xs-4">
-                                    <h4 class="text-center" style="margin-bottom: 0px">{{$likes->count()}}</h4>
-                                    <p class="small text-center">Likes</p>
-                                </div>
+                        <div class="col-lg-7 col-md-5 col-sm-8 col-xs-10">
+                            <h4 class="">{{$user->username}}'s Profile</h4>
+                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px">
+                                {{$versionsCount}} <b>Progress Updates</b> |
+                                {{$comments->count()}} <b>Roasts</b> |
+                                {{$likes->count()}} <b>Likes</b>
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-2 col-xs-12">
+                            <div class="trophy-box" style="background-image: url('/images/{{$user->getTrophyImage()}}');">
+                                <h5 class="text-center" style="margin-bottom: 0px" id="level">{{$user->getLevel()}}</h5>
                             </div>
+                            <b><p class="text-center" style="margin-bottom: 0px">{{$user->points}} Points<span class="icon-circle {{ $user->getBadge() }}"></span></p></b>
                         </div>
                     </div>
+
+
 
                     <h6 class="subheading subheading-color">Games</h6>
                     @if(count($games) > 0)

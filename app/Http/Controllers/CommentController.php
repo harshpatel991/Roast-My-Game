@@ -33,6 +33,7 @@ class CommentController extends Controller
 
         $user = $request->user();
 
+        //save the comment
         $comment = new Comment;
         $comment->user_id = $user->id;
         $comment->username = $user->username;
@@ -40,6 +41,9 @@ class CommentController extends Controller
         $comment->positive = trim($request->input('positive')) !== '' ? $request->input('positive') : null;
         $comment->negative = trim($request->input('negative')) !== '' ? $request->input('negative') : null;
         $game->comments()->save($comment);
+
+        //save the user points
+        $user->addPointsAndSave(User::$COMMENT_POINTS);
 
         if($game->user_id != $user->id) { //check the roaster is not the game ower
             $emailAddress = $game->user()->first()->email;
@@ -72,6 +76,9 @@ class CommentController extends Controller
         $newComment->body = $request->input('body');
         $newComment->save();
         $newComment->makeChildOf($comment);
+
+        //save the user points
+        $user->addPointsAndSave(User::$COMMENT_POINTS);
 
         //send email to the roaster
         $game = Game::where('id', $comment->commentable_id)->first();
