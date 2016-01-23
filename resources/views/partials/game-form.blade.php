@@ -6,6 +6,28 @@
         {!! Form::select('genre', App\Game::$genres, old('genre')!='' ? old('genre') : $game->genre, ['class' => 'form-control']) !!}
     </div>
 </div>
+
+
+@if(isset($isEdit) ? !$isEdit : true)
+    <div class="form-group">
+        {!! Form::label('thumbnail', 'Thumbnail*', ['class' => 'col-sm-2 control-label form-label']) !!}
+        <div class="col-sm-6">
+            <div class="embed-responsive embed-responsive-16by9">
+                <img class="embed-responsive-item" id="thumbnail-preview" src="/images/placeholder.jpg"/>
+            </div>
+            {!! Form::file('thumbnail', ['class' => 'form-control', 'accept' => 'image/*', 'id' => 'thumbnail']) !!}
+        </div>
+        <div class="col-sm-4">
+            <p class="small add-game-explanation">
+                This image will be used when your game is displayed on the homepage.<br>
+                <b>Required 16x9 Aspect Ratio</b><br>
+                <b>Accepted Types:</b> PNG, JPEG, GIF<br>
+                <b>Max File Size:</b> 2 MB
+            </p>
+        </div>
+    </div>
+@endif
+
 <div class="form-group">
     {!! Form::label('description', 'Description', ['class' => 'col-sm-2 control-label form-label']) !!}
     <div class="col-sm-6">

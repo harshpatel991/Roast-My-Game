@@ -32,7 +32,8 @@ class GameEditCest
         $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-7/image1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Minimal Edit Title',
                                         'slug' => 'test-game-7', //slug doesn't change
-                                        'genre' => 'idle'));
+                                        'genre' => 'idle',
+                                        'thumbnail' => 'test-game-7-thumb.jpg'));
         $I->seeInDatabase('versions', array('game_id' => 7,
             'version' => '5.6.7',
             'slug' => '1.1.1', //slug doesn't change
@@ -140,6 +141,7 @@ class GameEditCest
         $I->see('This is edited upcoming features');
         $I->seeInDatabase('games', array('title' => 'Test Edited Full Title',
                                 'genre' => 'idle',
+                                'thumbnail' => 'test-game-1-thumb.jpg',
                                 'description' => 'This is an edited description.',
                                 'link_social_greenlight' => 'http://greenlight-edited.com',
                                 'link_social_website' => 'http://website-edited.com',
@@ -230,6 +232,7 @@ class GameEditCest
         $I->seeInDatabase('games', array('title' => 'Test Edited Full Title',
             'slug' => 'test-game-7',
             'genre' => 'idle',
+            'thumbnail' => 'test-game-7-thumb.jpg',
             'description' => 'This is an edited description.',
             'link_social_greenlight' => 'http://greenlight-edited.com',
             'link_social_website' => 'http://website-edited.com',
@@ -314,6 +317,7 @@ class GameEditCest
         $I->seeInDatabase('games', array('title' => 'Test Edited Minimal Title',
             'slug' => 'test-game-1',
             'genre' => 'idle',
+            'thumbnail' => 'test-game-1-thumb.jpg',
             'description' => '',
             'link_social_greenlight' => null,
             'link_social_website' => null,
@@ -360,7 +364,8 @@ class GameEditCest
         $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-7/image1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Game 7',
             'slug' => 'test-game-7',
-            'genre' => 'strategy'));
+            'genre' => 'strategy',
+            'thumbnail' => 'test-game-7-thumb.jpg'));
         $I->seeInDatabase('versions', array('version' => '1.1.1',
             'slug' => '1.1.1',
             'beta' => 0,
@@ -379,6 +384,7 @@ class GameEditCest
 
         $I->seeInDatabase('games', array('title' => 'Test Game 1',
             'genre' => 'action',
+            'thumbnail' => 'test-game-1-thumb.jpg',
             'description' => 'This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',
             'link_social_greenlight' => 'http://greenlight.com',
             'link_social_website' => 'http://website.com',

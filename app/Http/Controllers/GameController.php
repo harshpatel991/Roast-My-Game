@@ -8,17 +8,19 @@ use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\StoreVersionRequest;
 use App\Http\Requests\StoreEditGameRequest;
 use App\Http\Utils;
+use App\Http\CustomForm;
 use App\Like;
 use App\Version;
 use Auth;
 use DB;
-use Illuminate\Html\FormBuilder;
 use Illuminate\Http\Request;
 use Log;
 use Slynova\Commentable\Models\Comment;
 
 class GameController extends Controller
 {
+    use CustomForm;
+
     public function getGame(Game $game, Request $request, $selectedVersionSlug='latest') {
         if(!$request->session()->has($game->slug)) //Count a view
         {
@@ -92,13 +94,21 @@ class GameController extends Controller
         return view('addVersion', compact('game', 'version'));
     }
 
+    public function getEditGame(Game $game, $version, Request $request) {
+        $isEdit = true;
+        $this->addCustomFormBuilders();
+
+        $version = $game->versions()->where('slug', $version)->first();
+        return view('editGame', compact('game', 'version', 'isEdit'));
+    }
+
     public function postAddGame(StoreGameRequest $request) {
         Log::info('Request to store a game: ' . print_R($request->all(), TRUE));
         $game = new Game;
         $version = new Version;
 
+        $game->slug = Utils::generate_unique_slug($request->get('title'));
         $game->setGameFromRequest($game, $request);
-        $game->slug = Utils::generate_unique_slug($game->title);
 
         $version->slug = Utils::generate_unique_version_slug($request->version);
         $version->setVersionFromRequest($version, $game, $request);
@@ -127,14 +137,6 @@ class GameController extends Controller
         return redirect('game/'.$game->slug)->with('message', 'Your progress has been added! Please consider leaving feedback for other games.');
     }
 
-    public function getEditGame(Game $game, $version, Request $request) {
-        $isEdit = true;
-        $this->addCustomFormBuilders();
-
-        $version = $game->versions()->where('slug', $version)->first();
-        return view('editGame', compact('game', 'version', 'isEdit'));
-    }
-
     //slugs stay the same when editing games
     public function postEditGame(Game $game, $version, StoreEditGameRequest $request) {
         Log::info('Request to store an edit game: ' . print_R($request->all(), TRUE));
@@ -147,35 +149,5 @@ class GameController extends Controller
         $version->save();
 
         return redirect('game/'.$game->slug)->with('message', 'Game updated!');
-    }
-
-    private function addCustomFormBuilders() {
-        FormBuilder::macro('myInput', function($id, $name, $placeholder='', $primaryValue='', $secondaryValue='')
-        {
-            $value = $primaryValue!='' ? $primaryValue : $secondaryValue;
-            return
-            '<div class="form-group">'.
-                FormBuilder::label($id, $name, ['class' => 'col-sm-2 control-label form-label'])
-                .'<div class="col-sm-6">'.
-                    FormBuilder::text($id, $value, ['class' => 'form-control', 'placeholder' => $placeholder])
-                .'</div>'
-            .'</div>';
-        });
-
-        FormBuilder::macro('myCheckbox', function($id, $name, $checkBoxValue)
-        {
-            return FormBuilder::checkbox($id, $checkBoxValue, old($id, false), ['id' => $checkBoxValue])
-            .FormBuilder::label('', $name, ['class' => 'control-label']);
-        });
-
-        FormBuilder::macro('myImageWithThumbnail', function($id)
-        {
-            return '<div class="col-sm-3">'.
-            '<div class="embed-responsive embed-responsive-16by9">'.
-            '<img class="embed-responsive-item" id="' . $id . '-preview" src="/images/placeholder.jpg"/>'.
-            '</div>'.
-            FormBuilder::file($id, ['class' => 'form-control', 'accept' => 'image/*', 'id' => $id]).
-            '</div>';
-        });
     }
 }

@@ -72,7 +72,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
         $gamePage->fillFormLongDescription();
         $I->click('Save Changes');
 
@@ -88,7 +88,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
         $gamePage->fillFormInvalidPlatformLinks();
         $I->click('Save Changes');
 
@@ -119,7 +119,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
         $gamePage->fillFormInvalidSocialLinks();
         $I->click('Save Changes');
 
@@ -150,7 +150,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionMissingVersion(true);
@@ -170,7 +170,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongVideoLink(true);
@@ -191,7 +191,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongChanges(true);
@@ -208,7 +208,7 @@ class GameEditInvalidCest
         $I->click(['id' => 'edit-test-game-7']);
 
         $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop();
+        $gamePage->fillValidGameTop(true);
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongUpcomingFeatures(true);
