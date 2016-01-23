@@ -82,7 +82,7 @@ class HomeController extends Controller
         $mostRoastedGameIds = Comment::select('commentable_id', DB::raw('count(*) as roast_count'))
                                 ->groupBy('commentable_id')
                                 ->orderBy('roast_count', 'desc')
-                                ->limit(5)
+                                ->limit(10)
                                 ->get();
         $gameIds = array();
         foreach($mostRoastedGameIds as $mostRoastedGameId) {
@@ -93,7 +93,7 @@ class HomeController extends Controller
                                 ->orderByRaw(DB::raw("FIELD(id, $gameIdsString)"))
                                 ->get();
 
-        $mostRoastingUsers = User::orderBy('points', 'desc')->take(5)->get();
+        $mostRoastingUsers = User::orderBy('points', 'desc')->take(10)->get();
 
         return view('leaderboard', compact('mostRoastedGames', 'mostRoastingUsers'));
     }
