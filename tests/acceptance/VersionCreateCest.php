@@ -62,7 +62,7 @@ class VersionCreateCest
         $I->seeInCurrentUrl('2');
 
         $I->amOnPage('/profile/user1');
-        $I->seeInSource('trophy3.png');
+        $I->seeInSource('trophy3.jpg');
         $I->seeInSource('375 Points');
     }
 
@@ -181,7 +181,7 @@ class VersionCreateCest
         $I->seeInCurrentUrl('3');
 
         $I->amOnPage('/profile/user1');
-        $I->seeInSource('trophy3.png');
+        $I->seeInSource('trophy3.jpg');
         $I->seeInSource('375 Points');
     }
 

@@ -98,11 +98,11 @@ class User extends Model implements AuthenticatableContract,
     public function getTrophyImage()
     {
         if ($this->points <= self::LEVEL_2) {
-            return 'trophy1.png';
+            return 'trophy1.jpg';
         } else if ($this->points <= self::LEVEL_4) {
-            return 'trophy2.png';
+            return 'trophy2.jpg';
         } else {
-            return 'trophy3.png';
+            return 'trophy3.jpg';
         }
     }
 

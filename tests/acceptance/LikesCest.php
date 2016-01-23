@@ -45,11 +45,11 @@ class LikesCest
         $I->seeInDatabase('games', ['id' => '1', 'likes' => '3']);
 
         $I->amOnPage('/profile/user2');
-        $I->seeInSource('trophy2.png');
+        $I->seeInSource('trophy2.jpg');
         $I->seeInSource('110 Points');
 
         $I->amOnPage('/profile/user3');
-        $I->seeInSource('trophy1.png');
+        $I->seeInSource('trophy1.jpg');
         $I->seeInSource('10 Points');
     }
 

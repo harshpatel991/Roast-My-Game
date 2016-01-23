@@ -34,7 +34,7 @@ class RegisterCest
         $I->see('A verification link has been sent to new-register@gmail.com');
 
         $I->amOnPage('/profile/new-register');
-        $I->seeInSource('trophy1.png');
+        $I->seeInSource('trophy1.jpg');
         $I->seeInSource('0 Points');
 
         //verify email
@@ -50,7 +50,7 @@ class RegisterCest
         $I->seeInDatabase('users', array('username' => 'new-register', 'email' => 'new-register@gmail.com', 'status' => 'good'));
 
         $I->amOnPage('/profile/new-register');
-        $I->seeInSource('trophy1.png');
+        $I->seeInSource('trophy1.jpg');
         $I->seeInSource('50 Points');
     }
 
