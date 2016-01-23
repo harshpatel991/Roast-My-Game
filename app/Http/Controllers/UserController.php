@@ -23,17 +23,12 @@ class UserController extends Controller
         $comments = Comment::where('user_id', $user->id)->get();
         $likes = $user->likes()->with('game')->get();
 
-        $versionsCount = 0;
-        foreach($games as $game){
-            $versionsCount += $game->versions->count();
-        }
-
         $isTheLoggedInUser = false;
         if(Auth::check() && Auth::user()->id == $user->id) {
             $isTheLoggedInUser = true;
         }
 
-        return view('profile', compact('user', 'games', 'comments', 'versionsCount', 'likes', 'isTheLoggedInUser'));
+        return view('profile', compact('user', 'games', 'comments', 'likes', 'isTheLoggedInUser'));
     }
 
     public function registerSuccess() {

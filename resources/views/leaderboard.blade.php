@@ -21,15 +21,22 @@
                         <div class="col-sm-6">
 
                             <h6 class="subheading-2 subheading-color">Most Roasting Users</h6>
-                            @foreach($mostRoastingUsers as $index=>$commentUser)
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/images/user-profile-icon.jpg"/>
+                            @foreach($mostRoastingUsers as $index=>$user)
+
+                                <a href="/profile/{{$user->username}}" class="link-block">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <img width="100%" src="/images/user-profile-icon.jpg"/>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <h6 class="list-group-item-heading card-title">
+                                                {{($index+1)}}. {{$user->username}} <span class="icon-circle {{ $user->getBadge() }}"></span>
+                                            </h6>
+                                            <p class="bold-uppercase subheading-color small">Points {{$user->points}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <a href="/profile/{{$commentUser->user->username}}"><h6 class="list-group-item-heading card-title">{{($index+1)}}. {{$commentUser->user->username}}</h6></a>
-                                    </div>
-                                </div>
+                                </a>
+
                                 <hr>
                             @endforeach
 
@@ -40,21 +47,20 @@
 
                             @foreach($mostRoastedGames as $index=>$game)
 
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <a href="/game/{{$game->slug}}">
+                                <a href="/game/{{$game->slug}}" class="link-block">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="embed-responsive embed-responsive-16by9">
                                                 <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>
-                                            </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <h6 class="list-group-item-heading card-title">{{($index+1)}}. {{$game->title}}</h6>
+                                            <p class="list-group-item-text card-description">{{clean($game->description, 'noneAllowed')}}</p>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-9">
-                                        <a href="/game/{{$game->slug}}"><h6 class="list-group-item-heading card-title">{{($index+1)}}. {{$game->title}}</h6></a>
-
-                                        <p class="list-group-item-text card-description">{{clean($game->description, 'noneAllowed')}}</p>
-                                    </div>
-                                </div>
+                                </a>
                                 <hr>
 
                             @endforeach

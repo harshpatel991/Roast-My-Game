@@ -152,7 +152,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Slynova\Commentable\ServiceProvider::class
+        Slynova\Commentable\ServiceProvider::class,
 
     ],
 
@@ -208,7 +208,7 @@ return [
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'Purifier'  => Mews\Purifier\Facades\Purifier::class,
-        'AWS'       => Aws\Laravel\AwsFacade::class
+        'AWS'       => Aws\Laravel\AwsFacade::class,
 
     ]
 

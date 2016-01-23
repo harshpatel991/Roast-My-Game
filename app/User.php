@@ -25,11 +25,11 @@ class User extends Model implements AuthenticatableContract,
     //trophy 1: 0 - 75
     //trophy 2: 75 - 150
     //trophy 3: 150 - +
-    const LEVEL_1 = 50;
-    const LEVEL_2 = 75;
-    const LEVEL_3 = 100;
-    const LEVEL_4 = 150;
-    const LEVEL_5 = 250;
+    public static $LEVEL_1 = 50;
+    public static $LEVEL_2 = 75;
+    public static $LEVEL_3 = 100;
+    public static $LEVEL_4 = 150;
+    public static $LEVEL_5 = 300;
 
     /**
      * The database table used by the model.
@@ -62,17 +62,21 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Like');
     }
 
+    public function getRank() {
+        return User::where('points', '>=', $this->points)->count();
+    }
+
     public function getLevel()
     {
-        if ($this->points <= self::LEVEL_1) {
+        if ($this->points <= User::$LEVEL_1) {
             return 1;
-        } else if ($this->points <= self::LEVEL_2) {
+        } else if ($this->points <= User::$LEVEL_2) {
             return 2;
-        } else if ($this->points <= self::LEVEL_3) {
+        } else if ($this->points <= User::$LEVEL_3) {
             return 3;
-        } else if ($this->points <= self::LEVEL_4) {
+        } else if ($this->points <= User::$LEVEL_4) {
             return 4;
-        } else if ($this->points <= self::LEVEL_5) {
+        } else if ($this->points <= User::$LEVEL_5) {
             return 5;
         } else { //LEVEL_6
             return 6;
@@ -86,9 +90,9 @@ class User extends Model implements AuthenticatableContract,
 
     public function getBadge()
     {
-        if ($this->points <= self::LEVEL_2) {
+        if ($this->points <= User::$LEVEL_2) {
             return 'trophy-badge-bronze';
-        } else if ($this->points <= self::LEVEL_4) {
+        } else if ($this->points <= User::$LEVEL_4) {
             return 'trophy-badge-silver';
         } else {
             return 'trophy-badge-gold';
@@ -97,9 +101,9 @@ class User extends Model implements AuthenticatableContract,
 
     public function getTrophyImage()
     {
-        if ($this->points <= self::LEVEL_2) {
+        if ($this->points <= User::$LEVEL_2) {
             return 'trophy1.jpg';
-        } else if ($this->points <= self::LEVEL_4) {
+        } else if ($this->points <= User::$LEVEL_4) {
             return 'trophy2.jpg';
         } else {
             return 'trophy3.jpg';

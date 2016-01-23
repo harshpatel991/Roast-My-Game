@@ -66,32 +66,32 @@
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>0 - 50</td>
+                            <td>0 - {{App\User::$LEVEL_1}}</td>
                             <td><span class="icon-circle trophy-badge-bronze"></span></td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>51 - 75</td>
+                            <td>{{App\User::$LEVEL_1+1}} - {{App\User::$LEVEL_2}}</td>
                             <td><span class="icon-circle trophy-badge-bronze"></span></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>76 - 100</td>
+                            <td>{{App\User::$LEVEL_2+1}} - {{App\User::$LEVEL_3}}</td>
                             <td><span class="icon-circle trophy-badge-silver"></span></td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>101 - 150</td>
+                            <td>{{App\User::$LEVEL_3+1}} - {{App\User::$LEVEL_4}}</td>
                             <td><span class="icon-circle trophy-badge-silver"></span></td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>151 - 250</td>
+                            <td>{{App\User::$LEVEL_4+1}} - {{App\User::$LEVEL_5}}</td>
                             <td><span class="icon-circle trophy-badge-gold"></span></td>
                         </tr>
                         <tr>
                             <td>6</td>
-                            <td>250 +</td>
+                            <td>{{App\User::$LEVEL_5}} +</td>
                             <td><span class="icon-circle trophy-badge-gold"></span></td>
                         </tr>
                     </table>

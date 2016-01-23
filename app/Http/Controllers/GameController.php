@@ -61,7 +61,7 @@ class GameController extends Controller
 
         $isLiked = false;
         if (Auth::check()) {
-            $likes = Like::where('user_id', Auth::user()->id)->where('game_id', $game->id)->count();
+            $likes = Like::where('user_id', Auth::user()->id)->where('game_id', $game->id)->take(1)->count();
             if( $likes >= 1) {
                 $isLiked = true;
             }

@@ -22,12 +22,8 @@
                             <img width="100%" height="100%" class="media-object" src="/images/user-profile-icon.jpg">
                         </div>
                         <div class="col-lg-7 col-md-5 col-sm-8 col-xs-10">
-                            <h4 class="">{{$user->username}}'s Profile</h4>
-                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px">
-                                {{$versionsCount}} <b>Progress Updates</b> |
-                                {{$comments->count()}} <b>Roasts</b> |
-                                {{$likes->count()}} <b>Likes</b>
-                            </p>
+                            <h4>{{$user->username}}'s Profile</h4>
+                            <p class="bold-uppercase subheading-color">Ranked #{{$user->getRank()}}</p>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-2 col-xs-12">
                             <div class="trophy-box" style="background-image: url('/images/{{$user->getTrophyImage()}}');">

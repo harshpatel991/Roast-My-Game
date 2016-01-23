@@ -78,6 +78,7 @@ class HomeController extends Controller
     }
 
     public function getLeaderboard(Request $request) {
+        //TODO: can probably eager load the mostRoastedGames
         $mostRoastedGameIds = Comment::select('commentable_id', DB::raw('count(*) as roast_count'))
                                 ->groupBy('commentable_id')
                                 ->orderBy('roast_count', 'desc')
@@ -92,11 +93,7 @@ class HomeController extends Controller
                                 ->orderByRaw(DB::raw("FIELD(id, $gameIdsString)"))
                                 ->get();
 
-        $mostRoastingUsers = Comment::select('user_id', DB::raw('count(*) as roast_count'))
-                                ->groupBy('user_id')
-                                ->orderBy('roast_count', 'desc')
-                                ->limit(5)
-                                ->get();
+        $mostRoastingUsers = User::orderBy('points', 'desc')->take(5)->get();
 
         return view('leaderboard', compact('mostRoastedGames', 'mostRoastingUsers'));
     }
