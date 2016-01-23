@@ -86,7 +86,7 @@ Route::get('/game/{game_slug}/{version_slug?}',
     ['as' => 'getGame', 'uses' => 'GameController@getGame']);
 
 Route::post('/like/{game_slug}',
-    ['as' => 'like', 'middleware' => 'auth', 'uses' => 'GameController@addLike']);
+    ['as' => 'like', 'middleware' => 'auth', 'uses' => 'LikeController@addLike']);
 
 Route::get('/add-comment/{game_slug}',
     ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@getAddComment']); //so users not logged in get redirected
