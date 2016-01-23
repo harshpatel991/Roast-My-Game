@@ -241,7 +241,7 @@ class CommentCest
         $I->seeEmailCount(4);
 
         $I->amOnPage('/profile/user3');
-        $I->seeInSource('trophy1.png');
+        $I->seeInSource('trophy1.jpg');
         $I->seeInSource('25 Points');
     }
 
@@ -334,7 +334,7 @@ class CommentCest
         $I->click('Reply');
 
         $I->amOnPage('/profile/user3');
-        $I->seeInSource('trophy1.png');
+        $I->seeInSource('trophy1.jpg');
         $I->seeInSource('25 Points');
     }
 
