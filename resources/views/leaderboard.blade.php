@@ -51,7 +51,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="embed-responsive embed-responsive-16by9">
-                                                <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>
+                                                <img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->thumbnail)}}"/>
                                             </div>
                                         </div>
 

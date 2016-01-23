@@ -43,8 +43,7 @@
                                 <div class="col-sm-3">
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <a href="/game/{{$game->slug}}">
-                                            {{--<img class="embed-responsive-item" src="{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}"/>--}}
-                                            <div class="embed-responsive-item card-image-cover" style="background-image: url('{{Utils::get_image_url($game->slug.'/'.$game->latestScreenshot()->image1)}}');"> </div>
+                                            <div class="embed-responsive-item card-image-cover" style="background-image: url('{{Utils::get_image_url($game->slug.'/'.$game->thumbnail)}}');"> </div>
                                         </a>
                                     </div>
                                 </div>

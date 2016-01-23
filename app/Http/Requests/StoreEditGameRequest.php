@@ -30,7 +30,7 @@ class StoreEditGameRequest extends Request
     public function rules()
     {
         return array_merge(
-            StoreGameRequest::storeRulesList(),
+            StoreGameRequest::editableRulesList(),
             StoreVersionRequest::$editableRulesList
         );
     }

@@ -110,6 +110,11 @@ class Game extends Model
         $game->title = $request->get('title');
         $game->user_id = $request->user()->id;
         $game->genre = $request->genre;
+
+        if($request->hasFile('thumbnail')) {
+            $game->thumbnail = Utils::upload_image_thumbnail($request->file('thumbnail'), $game->slug . '-thumb', $game->slug);
+        }
+
         $game->description = $request->description;
 
         $game->link_social_greenlight = $request->has('link_social_greenlight') ? $request->link_social_greenlight : null;
@@ -118,10 +123,6 @@ class Game extends Model
         $game->link_social_youtube = $request->has('link_social_youtube') ? $request->link_social_youtube : null;
         $game->link_social_google_plus = $request->has('link_social_google_plus') ? $request->link_social_google_plus : null;
         $game->link_social_facebook = $request->has('link_social_facebook') ? $request->link_social_facebook : null;
-    }
-
-    public function latestScreenshot() {
-        return $this->versions->first();
     }
 
     public function versions()

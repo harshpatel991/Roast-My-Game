@@ -66,6 +66,10 @@
             }
         }
 
+        $("#thumbnail").change(function(){
+            readURL(this, $('#thumbnail-preview'));
+        });
+
         $("#image1").change(function(){
             readURL(this, $('#image1-preview'));
         });

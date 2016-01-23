@@ -79,6 +79,7 @@ CREATE TABLE `games` (
   `link_social_facebook` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `thumbnail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `games_slug_unique` (`slug`),
   KEY `games_user_id_foreign` (`user_id`),
@@ -92,7 +93,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',1,1020,'http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'Test Game 2','test-game-2','shooter','This my description',2,600000,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,'Test Game 3','test-game-3','strategy','This is a teeny tiny description',1,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,1,'Test Game 4','test-game-4','puzzle','This is a short description.',0,887,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,2,'Test Game 5','test-game-5','strategy','This is a teeny tiny description',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,3,'Test Game 6','test-game-6','strategy','text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href=\"http://google.com\">link</a><br /><br />\n                                <ul>\n                                <li>bullet1</li>\n                                <li>bullet2</li>\n                                <li>bullet3</li>\n                                </ul>\n                                <br />\n                                <ol>\n                                <li>number1</li>\n                                <li>number2</li>\n                                <li>number3</li>\n                                </ol>',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,2,'Test Game 7','test-game-7','strategy','',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `games` VALUES (1,1,'Test Game 1','test-game-1','action','This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',1,1020,'http://greenlight.com','http://website.com','http://link-twitter.com','http://link-youtube.com','http://link-gplus.com','http://link-facebook.com','0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-1-thumb.jpg'),(2,1,'Test Game 2','test-game-2','shooter','This my description',2,600000,'http://greenlight.com','http://website.com','http://link-twitter.com',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-2-thumb.jpg'),(3,1,'Test Game 3','test-game-3','strategy','This is a teeny tiny description',1,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-3-thumb.jpg'),(4,1,'Test Game 4','test-game-4','puzzle','This is a short description.',0,887,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-4-thumb.jpg'),(5,2,'Test Game 5','test-game-5','strategy','This is a teeny tiny description',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-5-thumb.jpg'),(6,3,'Test Game 6','test-game-6','strategy','text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href=\"http://google.com\">link</a><br /><br />\n                                <ul>\n                                <li>bullet1</li>\n                                <li>bullet2</li>\n                                <li>bullet3</li>\n                                </ul>\n                                <br />\n                                <ol>\n                                <li>number1</li>\n                                <li>number2</li>\n                                <li>number3</li>\n                                </ol>',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-6-thumb.jpg'),(7,2,'Test Game 7','test-game-7','strategy','',0,764,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00','test-game-7-thumb.jpg');
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +147,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1),('2016_01_20_031403_add_user_points',1);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1),('2016_01_20_031403_add_user_points',1),('2016_01_23_083634_add_game_thumbnail',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +206,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$shOqX/3heVnPMljywcrCRuY4gSmTpMpNfi7I6d8qcRFsn/yGmlem6',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',300),(2,'user2','user2@gmail.com','$2y$10$zMOGs6wxuYGPBnrMorOu1uvDWUD4AvXebGWz.zJ.GIY.RZclp/dc.',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',100),(3,'user3','user3@gmail.com','$2y$10$ByeqnUHwCHTzDXNZUcXwQOxA.leGqZoeFbi8qM5g7CHvhuwi49WWq',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0),(4,'user4','user4@gmail.com','$2y$10$pw/yFVEpoPxn2b/f0LvnrO0VU302TtNgqSYSEXup/VvO2FxYhbsN2',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0);
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$T3WXbqApgIAVVYOO8n4.luJTBDPZHwwFF4xp451KB0yQ/8NkHsiIq',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',300),(2,'user2','user2@gmail.com','$2y$10$rQimoZy5RLwuL/grPODBe.P000/t6GK9p7qG3GMtOB7aMNRQT3V5.',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',100),(3,'user3','user3@gmail.com','$2y$10$DrP3jDm.Mpq4fmPkb/VWBOmmMVZq9rbLq5zRKPxQjD0kBjSdibmn.',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0),(4,'user4','user4@gmail.com','$2y$10$qJKBw/BpyuPRGzm7dKMwvefUVCPQYlpMfnrp9BnEK8PknLfZXjlM2',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,4 +263,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-23  1:37:48
+-- Dump completed on 2016-01-23 23:04:53

@@ -30,10 +30,14 @@ class Game
     }
 
     //Fills in the top part of the form with valid values
-    public function fillValidGameTop() {
+    public function fillValidGameTop($isEdit = false) {
         $I = $this->tester;
         $I->fillField('title', 'Test Minimal Title');
         $I->selectOption('select[name=genre]', 'Idle');
+
+        if(!$isEdit) {
+            $I->attachFile('thumbnail', 'image1.jpg');
+        }
     }
 
     public function fillFormMissingTitle() {
@@ -56,6 +60,21 @@ class Game
         $I->selectOption('select[name=genre]', '');
         $I->fillField('title', 'Test Minimal Title');
         $I->fillField('version', '3.4.5');
+    }
+
+    public function fillFormMissingThumbnail () {
+        $I = $this->tester;
+        $I->fillField('title', 'Test Minimal Title');
+        $I->selectOption('select[name=genre]', 'Action');
+    }
+
+    public function fillFormLargeThumbnail ($isEdit = false) {
+        $I = $this->tester;
+        $I->fillField('title', 'Test Minimal Title');
+        $I->selectOption('select[name=genre]', 'Action');
+        if(!$isEdit) {
+            $I->attachFile('thumbnail', 'image-large.jpg');
+        }
     }
 
     public function fillFormLongDescription()

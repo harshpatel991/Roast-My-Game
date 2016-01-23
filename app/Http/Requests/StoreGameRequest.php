@@ -8,7 +8,7 @@ use App\Http\Requests\Request;
 class StoreGameRequest extends Request
 {
 
-    public static function storeRulesList() {
+    public static function editableRulesList() {
         return ['title' => 'required|max:255',
             'genre' => 'required|max: 255|in:'. implode(',', array_keys(\App\Game::$genres)),
             'description' => 'max: 5000',
@@ -22,6 +22,11 @@ class StoreGameRequest extends Request
             'link_social_facebook' => 'max:255|url'
         ];
     }
+
+    static $notEditableRulesList = [
+        'thumbnail' => 'required|image|max:2000',
+    ];
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -45,7 +50,8 @@ class StoreGameRequest extends Request
     public function rules()
     {
         return array_merge(
-            StoreGameRequest::storeRulesList(),
+            StoreGameRequest::editableRulesList(),
+            StoreGameRequest::$notEditableRulesList,
             StoreVersionRequest::$editableRulesList,
             StoreVersionRequest::$notEditableRulesList
         );

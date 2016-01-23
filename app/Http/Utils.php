@@ -23,17 +23,24 @@ class Utils
 
     public static function upload_image($requestImage, $uploadName, $s3containingFolder)
     {
+        return Utils::upload_image_file(650, $requestImage, $uploadName, $s3containingFolder);
+    }
 
+    public static function upload_image_thumbnail($requestImage, $uploadName, $s3containingFolder)
+    {
+        return Utils::upload_image_file(256, $requestImage, $uploadName, $s3containingFolder);
+    }
+
+    private static function upload_image_file($height, $requestImage, $uploadName, $s3containingFolder)
+    {
         if($requestImage->getMimeType() == 'image/gif') {
             $saveFileName = Utils::get_valid_upload_name($uploadName, '.gif');
             copy($requestImage->getRealPath(), Game::getBackupImageUploadPath() . $saveFileName);
-        }
-
-        else {
+        } else {
             $saveFileName = Utils::get_valid_upload_name($uploadName, '.jpg');
             Image::make($requestImage)
                 ->encode('jpg')
-                ->heighten(600, function ($constraint) {
+                ->heighten($height, function ($constraint) {
                     $constraint->upsize();
                 })
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
@@ -52,7 +59,6 @@ class Utils
 
         return $saveFileName;
     }
-
 
     private static function get_valid_upload_name($requested_name, $extension)
     {
@@ -91,7 +97,5 @@ class Utils
         }
         return $potentialSlug;
     }
-
-
 
 }

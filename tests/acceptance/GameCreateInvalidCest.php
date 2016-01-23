@@ -67,6 +67,25 @@ class GameCreateInvalidCest
         $I->see('The genre field is required.');
     }
 
+    public function testCreateInvalidThumbnail(\AcceptanceTester $I)
+    {
+        $I->wantTo('Create invalid genre game');
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->click('Add Game');
+
+        $gamePage = new GamePage($I);
+        $gamePage->fillFormMissingThumbnail();
+        $I->click('Add Game!');
+
+        $I->see('The thumbnail field is required.');
+
+        $gamePage = new GamePage($I);
+        $gamePage->fillFormLargeThumbnail();
+        $I->click('Add Game!');
+
+        $I->see('The thumbnail may not be greater than 2000 kilobytes.');
+    }
+
     public function testCreateInvalidDescription(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid description game');
