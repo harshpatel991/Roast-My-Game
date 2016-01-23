@@ -270,6 +270,13 @@
     </script>
 
     <script>
+        //display loader once button has been hit
+        $('#main-reply-button').click(function() {
+            $(this).html('Loading...' );
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-default');
+        });
+
         $(document).ready(function() {
             $('.reply-link').click(createForm);
             function createForm(e)
@@ -284,10 +291,16 @@
                 form[form.length] = '       <textarea class="form-control" name="body" rows=5></textarea>';
                 form[form.length] = '   </div>';
                 form[form.length] = '   <div class="form-group">';
-                form[form.length] = '       <button class="btn btn-primary btn-sm" type="submit">Reply</button>';
+                form[form.length] = '       <button class="btn btn-primary btn-sm" name="child-reply-button" type="submit">Reply</button>';
                 form[form.length] = '   </div>';
                 form[form.length] = '</form>';
                 $(this).replaceWith(form.join(''));
+
+                $("button[name='child-reply-button']").click(function() {
+                    $(this).html('Loading...' );
+                    $(this).removeClass('btn-primary');
+                    $(this).addClass('btn-default');
+                });
             }
         });
     </script>
