@@ -20,7 +20,7 @@ class User extends Model implements AuthenticatableContract,
     public static $ADD_VERSION_POINTS = 75;
     public static $CONFIRM_EMAIL_POINTS = 50;
     public static $COMMENT_POINTS = 25;
-    public static $LIKE_POINTS = 10;
+    public static $LIKE_POINTS = 5;
 
     //trophy 1: 0 - 75
     //trophy 2: 75 - 150
@@ -91,11 +91,11 @@ class User extends Model implements AuthenticatableContract,
     public function getBadge()
     {
         if ($this->points <= User::$LEVEL_2) {
-            return 'trophy-badge-bronze';
+            return '';
         } else if ($this->points <= User::$LEVEL_4) {
-            return 'trophy-badge-silver';
+            return '<span class="icon-circle trophy-badge-silver"></span>';
         } else {
-            return 'trophy-badge-gold';
+            return '<span class="icon-circle trophy-badge-gold"></span>';
         }
     }
 

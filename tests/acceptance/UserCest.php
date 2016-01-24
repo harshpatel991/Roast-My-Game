@@ -96,14 +96,12 @@ class UserCest
     public function testViewBadge(\AcceptanceTester $I)
     {
         $I->amOnPage('/game/test-game-3');
-        $I->seeInSource('<span class="icon-circle trophy-badge-bronze"></span>'); //see bronze badge
 
         $I->amOnPage('/game/test-game-7');
         $I->seeInSource('<span class="icon-circle trophy-badge-silver"></span>'); //see sliver badge
 
         $I->amOnPage('/game/test-game-5');
         $I->seeInSource('<span class="icon-circle trophy-badge-gold"></span>'); //see gold badge
-        $I->seeInSource('<span class="icon-circle trophy-badge-bronze"></span>'); //see bronze badge
     }
 
     public function testViewTrophies(\AcceptanceTester $I)
@@ -118,7 +116,6 @@ class UserCest
 
         $I->amOnPage('/profile/user3');
         $I->seeInSource('trophy1.jpg');
-        $I->seeInSource('<span class="icon-circle trophy-badge-bronze"></span>');
     }
 
     public function testViewPoints(\AcceptanceTester $I)

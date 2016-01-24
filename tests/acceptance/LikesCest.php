@@ -46,11 +46,11 @@ class LikesCest
 
         $I->amOnPage('/profile/user2');
         $I->seeInSource('trophy2.jpg');
-        $I->seeInSource('110 Points');
+        $I->seeInSource('105 Points');
 
         $I->amOnPage('/profile/user3');
         $I->seeInSource('trophy1.jpg');
-        $I->seeInSource('10 Points');
+        $I->seeInSource('5 Points');
     }
 
     public function testLikeAlreadyLiked(\AcceptanceTester $I)
