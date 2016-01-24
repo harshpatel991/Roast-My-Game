@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <h6 class="list-group-item-heading card-title">
-                                                {{($index+1)}}. {{$user->username}} <span class="icon-circle {{ $user->getBadge() }}"></span>
+                                                {{($index+1)}}. {{$user->username}} {!! $user->getBadge() !!}
                                             </h6>
                                             <p class="bold-uppercase subheading-color small">Points {{$user->points}}</p>
                                         </div>

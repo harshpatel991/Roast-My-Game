@@ -29,7 +29,7 @@
                             <div class="trophy-box" style="background-image: url('/images/{{$user->getTrophyImage()}}');">
                                 <h5 class="text-center" style="margin-bottom: 0px" id="level">{{$user->getLevel()}}</h5>
                             </div>
-                            <b><p class="text-center" style="margin-bottom: 0px">{{$user->points}} Points<span class="icon-circle {{ $user->getBadge() }}"></span></p></b>
+                            <b><p class="text-center" style="margin-bottom: 0px">{{$user->points}} Points{!! $user->getBadge() !!}</p></b>
                         </div>
                     </div>
 

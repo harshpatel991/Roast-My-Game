@@ -53,7 +53,7 @@
                         <br><b>Add game progress</b> - 75 points
                         <br><b>Confirm your email</b> - 50 points
                         <br><b>Add a roast</b> - 25 points
-                        <br><b>Like a game</b> - 10 points
+                        <br><b>Like a game</b> - 5 points
                     </p>
 
                     <h3 class="form-title">Points Ranking</h3>
@@ -62,17 +62,17 @@
                         <tr>
                             <th>Level</th>
                             <th>Points</th>
-                            <th>Rank</th>
+                            <th>Badge</th>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>0 - {{App\User::$LEVEL_1}}</td>
-                            <td><span class="icon-circle trophy-badge-bronze"></span></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>{{App\User::$LEVEL_1+1}} - {{App\User::$LEVEL_2}}</td>
-                            <td><span class="icon-circle trophy-badge-bronze"></span></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>3</td>
