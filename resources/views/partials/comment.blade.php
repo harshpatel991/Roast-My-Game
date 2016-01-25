@@ -1,7 +1,7 @@
 <div class="media">
     <div class="media-left">
         <a href="#">
-            <img width="50px" class="media-object" src="/images/user-profile-icon.jpg">
+            <img width="50px" class="media-object" src="{{$comment->user->profile_image}}">
         </a>
     </div>
 

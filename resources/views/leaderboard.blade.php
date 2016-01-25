@@ -26,7 +26,7 @@
                                 <a href="/profile/{{$user->username}}" class="link-block">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <img width="100%" src="/images/user-profile-icon.jpg"/>
+                                            <img width="100%" src="{{$user->profile_image}}"/>
                                         </div>
                                         <div class="col-sm-9">
                                             <h6 class="list-group-item-heading card-title">

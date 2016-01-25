@@ -147,7 +147,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1),('2016_01_20_031403_add_user_points',1),('2016_01_23_083634_add_game_thumbnail',1);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1),('2016_01_20_031403_add_user_points',1),('2016_01_23_083634_add_game_thumbnail',1),('2016_01_24_073708_add_user_profile_image',1),('2016_01_25_010123_add_user_email_preferences',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,6 +194,11 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `points` int(11) NOT NULL,
+  `profile_image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mail_roasts` tinyint(1) NOT NULL DEFAULT '1',
+  `mail_comments` tinyint(1) NOT NULL DEFAULT '1',
+  `mail_progress_reminders` tinyint(1) NOT NULL DEFAULT '1',
+  `mail_site_updates` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_username_unique` (`username`),
   UNIQUE KEY `users_email_unique` (`email`)
@@ -206,7 +211,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$T3WXbqApgIAVVYOO8n4.luJTBDPZHwwFF4xp451KB0yQ/8NkHsiIq',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',300),(2,'user2','user2@gmail.com','$2y$10$rQimoZy5RLwuL/grPODBe.P000/t6GK9p7qG3GMtOB7aMNRQT3V5.',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',100),(3,'user3','user3@gmail.com','$2y$10$DrP3jDm.Mpq4fmPkb/VWBOmmMVZq9rbLq5zRKPxQjD0kBjSdibmn.',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0),(4,'user4','user4@gmail.com','$2y$10$qJKBw/BpyuPRGzm7dKMwvefUVCPQYlpMfnrp9BnEK8PknLfZXjlM2',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0);
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$EBzm7OlIUy/sVYcIdgODXe8kSYHq3z1CgvlbZ3bvLKEtYImuBmmIy',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',300,NULL,1,1,1,1),(2,'user2','user2@gmail.com','$2y$10$PQSgupUB7UHgTozR65JtROLKZ1Dn3epzS8tNH33a5zuLeqp/6xuAO',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',100,NULL,1,1,1,1),(3,'user3','user3@gmail.com','$2y$10$go6fSCdevEXR4R4nJLXQVeZ0tKL9AOlzYRjoevjAtwGabYGK/HrBe',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0,NULL,0,0,0,0),(4,'user4','user4@gmail.com','$2y$10$XkNZd8s4UMiLJbSwyrvvmOuQj45rMueIyiNJdnaPiheU3rCDxAT5O',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0,NULL,1,1,1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,4 +268,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-23 23:04:53
+-- Dump completed on 2016-01-25  3:02:45
