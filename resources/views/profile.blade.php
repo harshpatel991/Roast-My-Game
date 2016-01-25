@@ -19,7 +19,7 @@
 
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-sm-2 col-xs-2">
-                            <img width="100%" height="100%" class="media-object" src="/images/user-profile-icon.jpg">
+                            <img width="100%" height="100%" class="media-object" src="{{$user->profile_image}}">
                         </div>
                         <div class="col-lg-7 col-md-5 col-sm-8 col-xs-10">
                             <h4>{{$user->username}}'s Profile</h4>

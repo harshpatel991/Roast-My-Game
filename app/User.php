@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Utils;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -108,6 +109,13 @@ class User extends Model implements AuthenticatableContract,
         } else {
             return 'trophy3.jpg';
         }
+    }
+
+    public function getProfileImageAttribute($value) {
+        if ($value == null || $value == '') {
+            return '/images/user-profile-icon.jpg';
+        }
+        return Utils::get_image_url('profile-images/'.$value);
     }
 
 }

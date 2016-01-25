@@ -45,14 +45,17 @@ class CommentController extends Controller
         //save the user points
         $user->addPointsAndSave(User::$COMMENT_POINTS);
 
-        if($game->user_id != $user->id) { //check the roaster is not the game ower
-            $emailAddress = $game->user()->first()->email;
+        $gameOwner = $game->user()->first();
+        if($game->user_id != $user->id && $gameOwner->mail_roasts == true) { //check the roaster is not the game owner and game owner wants emails
+            $emailAddress = $gameOwner->email;
             Mail::queue(['emails.comment-added', 'emails.comment-added-plain-text'], ['game' => $game], function ($message) use ($emailAddress) {
                 $message->to($emailAddress)
                     ->bcc('support@roastmygame.com', 'Support')
                     ->subject('Your Game Has Been Roasted!');
             });
             Log::info('Your game has been roasted sent out to ' . $emailAddress);
+        } else if ($gameOwner->mail_roasts != true) {
+            Log::info('User is unsubscribed, no roast email sent out to' . $gameOwner->email);
         }
 
         return redirect()->back()->with('message', 'Comment added!');
@@ -82,14 +85,17 @@ class CommentController extends Controller
 
         //send email to the roaster
         $game = Game::where('id', $comment->commentable_id)->first();
-        if($comment->user_id != $user->id) { //the commenter is not replying to themself
-            $sendTo = User::where('id', $comment->user_id)->first()->email;
+        $sendToUser = User::where('id', $comment->user_id)->first();
+        if($comment->user_id != $user->id  && $sendToUser->mail_comments == true) { //the commenter is not replying to themself && user wants to recieve emails
+            $sendTo = $sendToUser->email;
             Mail::queue(['emails.comment-reply-added', 'emails.comment-reply-added-plain-text'], ['game' => $game], function($message) use ($sendTo) {
                 $message->to($sendTo)
                     ->bcc('support@roastmygame.com', 'Support')
                     ->subject('Someone Replied to Your Comment!');
             });
             Log::info('Someone replied to your comment sent out to '.$sendTo);
+        }  else if ($sendToUser->mail_comments != true) {
+            Log::info('User is unsubscribed, no replied email sent out to' . $sendToUser->email);
         }
 
         return redirect()->back()->with('message', 'Comment reply added!');

@@ -67,6 +67,15 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('profile/{username}',
     ['uses' => 'UserController@getProfile']);
 
+Route::get('settings',
+    ['middleware' => 'auth', 'uses' => 'UserController@getSettings']);
+Route::post('settings/save-profile-image',
+    ['middleware' => 'auth', 'uses' => 'UserController@postProfileImage']);
+Route::post('settings/save-password-change',
+    ['middleware' => 'auth', 'uses' => 'UserController@postPasswordChange']);
+Route::post('settings/save-email-change',
+    ['middleware' => 'auth', 'uses' => 'UserController@postEmailChange']);
+
 Route::get('/add-game',
     ['as' => 'add-game', 'middleware' => 'auth', 'uses' => 'GameController@getAddGame']);
 Route::post('/add-game',

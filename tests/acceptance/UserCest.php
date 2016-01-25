@@ -214,4 +214,121 @@ class UserCest
         $I->see('6', '#level');
     }
 
+    public function testChangeProfileImage(\AcceptanceTester $I)
+    {
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/settings');
+        $I->attachFile('profile_image', 'test-profile.png');
+        $I->click('#save-profile');
+
+        $I->seeInSource('http://s3-us-west-2.amazonaws.com/rmg-upload/profile-images/user1.jpg');
+        $I->seeInDatabase('users', array('username' => 'user1', 'profile_image' => 'user1.jpg'));
+    }
+
+    public function testChangePassword(\AcceptanceTester $I)
+    {
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/settings');
+        $I->fillField('#current-password', 'password1');
+        $I->fillField('#password', 'password1-new');
+        $I->fillField('#password_confirmation', 'password1-new');
+        $I->click('#save-password');
+
+        //log out and make sure it changed
+        $I->click('#profile-dropdown');
+        $I->wait(1);
+        $I->click('#logout-button');
+        $I->wait(1);
+
+        $this->loginAs($I, 'user1@gmail.com', 'password1'); //try to login with old pass
+        $I->see('These credentials do not match our records.');
+
+        $this->loginAs($I, 'user1@gmail.com', 'password1-new');
+        $I->see('user1', '#profile-dropdown');//is logged in
+    }
+
+    public function testInvalidChangePassword(\AcceptanceTester $I)
+    {
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/settings');
+        //wrong old password
+        $I->fillField('#current-password', 'password-wrong');
+        $I->fillField('#password', 'password1-new');
+        $I->fillField('#password_confirmation', 'password1-new');
+        $I->click('#save-password');
+
+        $I->see('Current password is invalid');
+
+        //short new password
+        $I->fillField('#current-password', 'password1');
+        $I->fillField('#password', 'short');
+        $I->fillField('#password_confirmation', 'short');
+        $I->click('#save-password');
+        $I->see('The password must be at least 6 characters.');
+
+        //not matching new password
+        $I->fillField('#current-password', 'password1');
+        $I->fillField('#password', 'password-new');
+        $I->fillField('#password_confirmation', 'password-new-different');
+        $I->click('#save-password');
+        $I->see('The password confirmation does not match.');
+
+        //log out and make sure it didn't change
+        $I->click('#profile-dropdown');
+        $I->wait(1);
+        $I->click('#logout-button');
+        $I->wait(1);
+
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->see('user1', '#profile-dropdown');//is logged in
+    }
+
+    public function testChangeEmailPreferences(\AcceptanceTester $I)
+    {
+        $this->loginAs($I, 'user1@gmail.com', 'password1');
+        $I->amOnPage('/settings');
+
+        //uncheck all values
+        $I->uncheckOption('#mail_roasts');
+        $I->uncheckOption('#mail_comments');
+        $I->uncheckOption('#mail_progress_reminders');
+        $I->uncheckOption('#mail_site_updates');
+        $I->click('#save-email');
+        $I->see("Email preferences saved!");
+
+        $I->dontSeeCheckboxIsChecked('#mail_roasts');
+        $I->dontSeeCheckboxIsChecked('#mail_comments');
+        $I->dontSeeCheckboxIsChecked('#mail_progress_reminders');
+        $I->dontSeeCheckboxIsChecked('#mail_site_updates');
+        $I->seeInDatabase('users', array('username' => 'user1', 'mail_roasts' => 0, 'mail_comments' => 0, 'mail_progress_reminders' => 0, 'mail_site_updates' => 0));
+
+        //check all values
+        $I->checkOption('#mail_roasts');
+        $I->checkOption('#mail_comments');
+        $I->checkOption('#mail_progress_reminders');
+        $I->checkOption('#mail_site_updates');
+        $I->click('#save-email');
+        $I->see("Email preferences saved!");
+
+        $I->seeCheckboxIsChecked('#mail_roasts');
+        $I->seeCheckboxIsChecked('#mail_comments');
+        $I->seeCheckboxIsChecked('#mail_progress_reminders');
+        $I->seeCheckboxIsChecked('#mail_site_updates');
+        $I->seeInDatabase('users', array('username' => 'user1', 'mail_roasts' => 1, 'mail_comments' => 1, 'mail_progress_reminders' => 1, 'mail_site_updates' => 1));
+
+        //uncheck some
+        $I->checkOption('#mail_roasts');
+        $I->uncheckOption('#mail_comments');
+        $I->checkOption('#mail_progress_reminders');
+        $I->uncheckOption('#mail_site_updates');
+        $I->click('#save-email');
+        $I->see("Email preferences saved!");
+
+        $I->seeCheckboxIsChecked('#mail_roasts');
+        $I->dontSeeCheckboxIsChecked('#mail_comments');
+        $I->seeCheckboxIsChecked('#mail_progress_reminders');
+        $I->dontSeeCheckboxIsChecked('#mail_site_updates');
+        $I->seeInDatabase('users', array('username' => 'user1', 'mail_roasts' => 1, 'mail_comments' => 0, 'mail_progress_reminders' => 1, 'mail_site_updates' => 0));
+    }
+
 }

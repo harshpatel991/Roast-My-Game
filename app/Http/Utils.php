@@ -31,6 +31,25 @@ class Utils
         return Utils::upload_image_file(256, $requestImage, $uploadName, $s3containingFolder);
     }
 
+    public static function upload_image_profile($requestImage, $uploadName, $s3containingFolder)
+    {
+        if($requestImage->getMimeType() == 'image/gif') {
+            $saveFileName = Utils::get_valid_upload_name($uploadName, '.gif');
+            copy($requestImage->getRealPath(), Game::getBackupImageUploadPath() . $saveFileName);
+        } else {
+            $saveFileName = Utils::get_valid_upload_name($uploadName, '.jpg');
+            Image::make($requestImage)
+                ->encode('jpg')
+                ->fit(200, 200, function ($constraint) {
+                    $constraint->upsize();
+                })
+                ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
+        }
+
+        Utils::upload_to_s3($saveFileName, $s3containingFolder);
+        return $saveFileName;
+    }
+
     private static function upload_image_file($height, $requestImage, $uploadName, $s3containingFolder)
     {
         if($requestImage->getMimeType() == 'image/gif') {
@@ -46,6 +65,11 @@ class Utils
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
         }
 
+        Utils::upload_to_s3($saveFileName, $s3containingFolder);
+        return $saveFileName;
+    }
+
+    private static function upload_to_s3($saveFileName, $s3containingFolder) {
         if(!env('APP_DEBUG', false)) {
             $s3 = App::make('aws')->createClient('s3');
             $s3->putObject(array(
@@ -56,8 +80,6 @@ class Utils
                 'SourceFile' => Game::getBackupImageUploadPath().$saveFileName,
             ));
         }
-
-        return $saveFileName;
     }
 
     private static function get_valid_upload_name($requested_name, $extension)
