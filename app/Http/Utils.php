@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Request;
 use App;
 use Image;
 use App\Game;
@@ -118,6 +119,12 @@ class Utils
             $potentialSlug = $newslug;
         }
         return $potentialSlug;
+    }
+
+    public static function random_roast_message() {
+        $messages = ["Help roast my game: ", "Come at me! Roast my game: "];
+
+        return $messages[array_rand($messages)] . Request::url() . " #gamedev";
     }
 
 }

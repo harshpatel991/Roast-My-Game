@@ -56,6 +56,10 @@
 //
 // Generate contextual modifier classes for colorizing the alert.
 
+.alert-default {
+  .alert-variant(#fcfcfc; #eee; @text-color);
+}
+
 .alert-success {
   .alert-variant(@emerald; @alert-success-border; #fff);
 }
