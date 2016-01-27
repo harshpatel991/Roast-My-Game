@@ -19,6 +19,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             @include('partials.display-input-error')
+                            
+                            @if(Auth::check() && $game->user_id === Auth::user()->id)
+                            <div class="alert alert-default">
+                                <h6 style="margin-top: 0px;">Ask your followers to help roast your game</h6>
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <input class="form-control placeholder-dark" type="text" placeholder="{{$helpMessage = Utils::random_roast_message()}}" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="https://twitter.com/intent/tweet?text={{urlencode($helpMessage)}}" class="btn btn-info btn-block" target="_blank"><span class="icon-twitter"></span> Tweet</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
 
                             <div class="row"> {{--hero row--}}
                                 <div class="col-sm-10"> {{--Hero left--}}

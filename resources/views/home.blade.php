@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="banner-background-overlay">
-                <h1 class="home-h1">SHARE YOUR <span class="left-bracket">[</span>WIP]</h1>
+                <h1 class="home-h1">HONEST FEEDBACK</h1>
                 <h3 class="home-h3">Get feedback and find inspiration from other game devs</h3>
                 <br>
             </div>
