@@ -34,30 +34,25 @@
 
                 <div class="row">
                     <div class="col-sm-6">
-                        <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
-                    </div>
-
-                    <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
-                        <a href="/games" class="btn btn-sm btn-info btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                        <h6 class="small" style="padding: 5px;">POPULAR GAMES</h6>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-3"> {{--Add your game card--}}
-                        <div class="white-background-box">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <img class="embed-responsive-item" src="/images/placeholder.jpg"/>
-                            </div>
-                            <h6 class="card-title">Your Game Here</h6>
-                            <p class="small"> </p>
+                    @include('partials/card', ['game' => $popularGames->get(0)])
+                    @include('partials/card', ['game' => $popularGames->get(1)])
+                    @include('partials/card', ['game' => $popularGames->get(2)])
+                    @include('partials/card', ['game' => $popularGames->get(3)])
+                </div>
 
-                            <a class="btn btn-primary btn-block" href="/add-game">Add Your Game</a>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
                     </div>
 
-                    @include('partials/card', ['game' => $games->get(10)])
-                    @include('partials/card', ['game' => $games->get(9)])
-                    @include('partials/card', ['game' => $games->get(8)])
+                    <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
+                        <a href="/games" class="btn btn-sm btn-light-blue btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                    </div>
                 </div>
 
                 <div class="row">

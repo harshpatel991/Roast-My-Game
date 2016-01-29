@@ -21,10 +21,10 @@
 
                 <div class="white-background-box">
 
-                    <a href="/games/" class="btn btn-sm btn-light-blue">All Games</a>
-                    <a href="/games/not-yet-roasted" class="btn btn-sm btn-primary ">Not Yet Roasted</a>
+                    <a href="/games/" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$RECENTLY_UPDATED)}}">All Games</a>
+                    <a href="/games/not-yet-roasted" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$NOT_YET_ROASTED)}}"><span class="icon-chat"></span> Not Yet Roasted</a>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light-blue dropdown-toggle" id="genre-dropdown" data-toggle="dropdown">
+                        <button type="button" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$GENRE)}} dropdown-toggle" id="genre-dropdown" data-toggle="dropdown">
                             @if(!isset($genre))Select Genre @else {{$pageTitle}} @endif <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -34,7 +34,7 @@
                         </ul>
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light-blue dropdown-toggle" id="platform-dropdown" data-toggle="dropdown">
+                        <button type="button" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$PLATFORM)}} dropdown-toggle" id="platform-dropdown" data-toggle="dropdown">
                             @if(!isset($platform))Select Platform @else {{$pageTitle}} @endif <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
