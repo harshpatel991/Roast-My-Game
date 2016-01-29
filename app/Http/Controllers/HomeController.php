@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Game;
 use App\User;
 use App\Http\Requests;
@@ -16,20 +17,35 @@ use Slynova\Commentable\Models\Comment;
 
 class HomeController extends Controller
 {
-    public function getHome() {
-        $gameIds = Version::orderBy('created_at', 'desc')->groupBy('game_id')->select('game_id')->take(11)->get();
+    public static $RECENTLY_UPDATED = "recently_updated";
+    public static $NOT_YET_ROASTED = "not_yet_roasted";
+    public static $GENRE = "genre";
+    public static $PLATFORM = "platform";
 
+    public function getHome() {
+        $popularGames = Game::orderBy('views', 'desc')
+            ->where('created_at', '>=', Carbon::now()->subMonth())
+            ->take(4)
+            ->get();
+
+        $gameIds = Version::orderBy('created_at', 'desc')
+            ->groupBy('game_id')
+            ->select('game_id')
+            ->take(8)
+            ->get();
         $games = Game::whereIn('id', $gameIds)
             ->get();
 
-        return view('home', compact('games'));
+        return view('home', compact('games', 'popularGames'));
     }
 
     public function getGames(Request $request) {
         $pageTitle = 'Most Recently Updated';
         $games = Game::orderBy('created_at', 'desc')
             ->get();
-        return view('games', compact('games', 'pageTitle'));
+
+        $selectedButton = $this::$RECENTLY_UPDATED;
+        return view('games', compact('games', 'pageTitle', 'selectedButton'));
     }
 
     public function getGamesByGenre($genre, Request $request) {
@@ -38,7 +54,8 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->take(16)
             ->get();
-        return view('games', compact('games', 'pageTitle', 'genre'));
+        $selectedButton = $this::$GENRE;
+        return view('games', compact('games', 'pageTitle', 'genre', 'selectedButton'));
     }
 
     public function getNonRoasterGames(Request $request) {
@@ -48,7 +65,8 @@ class HomeController extends Controller
             ->take(16)
             ->get();
         $pageTitle = 'Not Yet Roasted';
-        return view('games', compact('games', 'pageTitle'));
+        $selectedButton = $this::$NOT_YET_ROASTED;
+        return view('games', compact('games', 'pageTitle', 'selectedButton'));
     }
 
     public function getGamesByPlatform($platform, Request $request) {
@@ -62,7 +80,8 @@ class HomeController extends Controller
             }
         }
 
-        return view('games', compact('games', 'pageTitle', 'platform'));
+        $selectedButton = $this::$PLATFORM;
+        return view('games', compact('games', 'pageTitle', 'platform', 'selectedButton'));
     }
 
     public function getLeaderboard(Request $request) {
@@ -122,5 +141,12 @@ class HomeController extends Controller
         });
         Log::info('Contact Us: '. Input::get('email') . ' : ' . Input::get('message'));
         return Redirect::route('/contact-us')->with('message', 'You\'re all set! We\'ll get back to you as soon as we can.');
+    }
+
+    public static function buttonSelected($currentSelectedButton, $requiredButton) {
+        if ($currentSelectedButton == $requiredButton) {
+            return 'btn-primary';
+        }
+        return 'btn-light-blue';
     }
 }
