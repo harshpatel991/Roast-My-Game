@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-sm-6">
 
-                            <h6 class="subheading-2 subheading-color">Most Roasting Users</h6>
+                            <h6 class="subheading-2 subheading-color">Most Points</h6>
                             @foreach($mostRoastingUsers as $index=>$user)
 
                                 <a href="/profile/{{$user->username}}" class="link-block">
