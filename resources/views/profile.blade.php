@@ -19,7 +19,11 @@
 
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-sm-2 col-xs-2">
-                            <img width="100%" height="100%" class="media-object" src="{{$user->profile_image}}">
+                            <div class="embed-responsive embed-responsive-1by1">
+                                <div class="embed-responsive-item">
+                                    {!! $user->getProfileImage('100%', 'user-profile-default-font-responsive') !!}
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-7 col-md-5 col-sm-8 col-xs-10">
                             <h4>{{$user->username}}'s Profile</h4>

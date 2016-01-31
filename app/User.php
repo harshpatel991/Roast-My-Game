@@ -111,11 +111,24 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
-    public function getProfileImageAttribute($value) {
-        if ($value == null || $value == '') {
-            return '/images/user-profile-icon.jpg';
-        }
-        return Utils::get_image_url('profile-images/'.$value);
+    public function getProfileColor() {
+        $colors = ["#fe813a", "#369ff4", "#9064bf", "#fa575d", "#1abc9c"];
+        return $colors[crc32($this->username)%count($colors)];
     }
 
+    public function getProfileLetter() {
+        return substr($this->username, 0, 1);
+    }
+
+    //$size needs to be the same as the size specified by the width and line-height in the $addionalClasses
+    public function getProfileImage($size, $additionalClasses) {
+        if ($this->profile_image == null || $this->profile_image == '') {
+            return '<div class="user-default-icon ' . $additionalClasses. '" style="background-color:'.$this->getProfileColor().'; display: table;">'.
+                '<div style="display: table-cell; vertical-align: middle;">'.
+                    $this->getProfileLetter().
+                '</div>'.
+            '</div>';
+        }
+        return '<img width="'. $size .'" class="media-object" src="'. Utils::get_image_url('profile-images/'.$this->profile_image) .'">';
+    }
 }
