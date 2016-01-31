@@ -25,16 +25,25 @@ class HomeController extends Controller
     public function getHome() {
         $popularGames = Game::orderBy('views', 'desc')
             ->where('created_at', '>=', Carbon::now()->subMonth())
-            ->take(4)
-            ->get();
-
-        $gameIds = Version::orderBy('created_at', 'desc')
-            ->groupBy('game_id')
-            ->select('game_id')
+            ->with(['versions' => function($query) {
+                $query->orderBy('created_at', 'desc');
+            }])
             ->take(8)
             ->get();
-        $games = Game::whereIn('id', $gameIds)
+
+        $versions = Version::orderBy('created_at', 'desc')
+            ->select('game_id')
+            ->take(12)
+            ->with(['game.versions' => function($query) {
+                    $query->orderBy('created_at', 'desc');
+            }])
             ->get();
+
+        $games = collect();
+        foreach($versions as $version) {
+            $games->push($version->game);
+        }
+        $games = $games->unique()->values();
 
         return view('home', compact('games', 'popularGames'));
     }
