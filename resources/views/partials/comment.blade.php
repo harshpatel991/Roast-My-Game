@@ -1,7 +1,7 @@
 <div class="media">
     <div class="media-left">
-        <a href="#">
-            <img width="50px" class="media-object" src="{{$comment->user->profile_image}}">
+        <a href="/profile/{{$comment->username}}">
+            {!! $comment->user->getProfileImage('60px', 'user-profile-default-font-large') !!}
         </a>
     </div>
 

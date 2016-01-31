@@ -26,7 +26,11 @@
                                 <a href="/profile/{{$user->username}}" class="link-block">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <img width="100%" src="{{$user->profile_image}}"/>
+                                            <div class="embed-responsive embed-responsive-1by1">
+                                                <div class="embed-responsive-item">
+                                                    {!! $user->getProfileImage('100%', 'user-profile-default-font-responsive') !!}
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-sm-9">
                                             <h6 class="list-group-item-heading card-title">
