@@ -25,8 +25,9 @@ class Game extends Model
     ];
 
     public static $platforms = ['platform_pc', 'platform_mac', 'platform_ios', 'platform_android', 'platform_unity', 'platform_other'];
-    public static $platformDropDown =
+    public static $platformDropDown = //the platforms list used for searching
         [
+            '' => 'Select Platform',
             'platform_pc' => 'PC',
             'platform_mac' => 'Mac',
             'platform_ios' => 'iOS',

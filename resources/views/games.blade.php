@@ -19,42 +19,46 @@
 
                 <h6 style="padding: 60px 5px 5px 5px;text-transform: uppercase">{{$pageTitle}} Games</h6>
 
-                <div class="white-background-box">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="white-background-box">
+                            <a href="/games/" class="btn btn-sm btn-block btn-info">All Games</a>
+                            <hr>
+                            <a href="/games?roasted=false" class="btn btn-sm btn-block btn-info">Not Yet Roasted</a>
+                            <hr>
 
-                    <a href="/games/" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$RECENTLY_UPDATED)}}">All Games</a>
-                    <a href="/games/not-yet-roasted" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$NOT_YET_ROASTED)}}"><span class="icon-chat"></span> Not Yet Roasted</a>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$GENRE)}} dropdown-toggle" id="genre-dropdown" data-toggle="dropdown">
-                            @if(!isset($genre))Select Genre @else {{$pageTitle}} @endif <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            @foreach(array_slice(App\Game::$genres, 1) as $genreKey => $genre)
-                                <li><a href="/games/{{$genreKey}}">{{$genre}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm {{\App\Http\Controllers\HomeController::buttonSelected($selectedButton, \App\Http\Controllers\HomeController::$PLATFORM)}} dropdown-toggle" id="platform-dropdown" data-toggle="dropdown">
-                            @if(!isset($platform))Select Platform @else {{$pageTitle}} @endif <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            @foreach(App\Game::$platformDropDown as $platformLink => $platformName)
-                                <li><a href="/games/by_platform/{{$platformLink}}"><span class="{{App\Game::$platformColumnToIcon['link_'.$platformLink]}}"></span> {{$platformName}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
+                            {!! Form::open(array('url' => '/games', 'class'=>'form-horizontal', 'id' => 'search-game-form', 'method' => 'GET')) !!}
+                                <div class="small subheading-color" style="font-weight: bold;">SEARCH</div>
+                                <div class="form-group">
+                                    {!! Form::text('query', $oldQuery, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
+                                </div>
 
-                @for ($rowIndex = 0; $rowIndex < ceil(count($games)/3); $rowIndex++)
-                    <div class="row">
-                        @for ($columnIndex = 0; $columnIndex < 4; $columnIndex++)
-                            @if(($rowIndex*4) + $columnIndex < count($games))
-                                @include('partials/card', ['game' => $games[($rowIndex*4) + $columnIndex]])
-                            @endif
+                                <div class="form-group">
+                                    {!! Form::select('genre', App\Game::$genres, $oldGenre, ['class' => 'form-control']) !!}
+                                </div>
+
+                                <div class="form-group">
+                                    {!! Form::select('platform', App\Game::$platformDropDown, $oldPlatform, ['class' => 'form-control']) !!}
+                                </div>
+
+                                <button class="btn btn-sm btn-block btn-primary" id="submit-search" type="submit">Search</button>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        @for ($rowIndex = 0; $rowIndex < ceil(count($games)/3); $rowIndex++)
+                            <div class="row">
+                                @for ($columnIndex = 0; $columnIndex < 4; $columnIndex++)
+                                    @if(($rowIndex*4) + $columnIndex < count($games))
+                                        @include('partials/card', ['game' => $games[($rowIndex*4) + $columnIndex]])
+                                    @endif
+                                @endfor
+                            </div>
                         @endfor
                     </div>
-                @endfor
 
+                </div>
             </div>
         </div>
 

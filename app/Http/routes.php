@@ -15,31 +15,33 @@ use Slynova\Commentable\Models\Comment;
 
 Route::get('/',
     ['as' => 'home', 'uses' => 'HomeController@getHome']);
+
 Route::get('/games',
     ['as' => 'games', 'uses' => 'HomeController@getGames']);
 
-Route::get('/games/not-yet-roasted',
-    ['as' => 'gamesNotYetRoasted', 'uses' => 'HomeController@getNonRoasterGames']);
-
-Route::get('/games/{genre}',
-    ['as' => 'gamesByGenre', 'uses' => 'HomeController@getGamesByGenre']);
-
-Route::get('/games/by_platform/{platform}',
-    ['as' => 'gamesByPlatform', 'uses' => 'HomeController@getGamesByPlatform']);
-
+//==========\/ This is now deprecated, can be removed near end of Feb 2016
+Route::get('/games/not-yet-roasted', function() {
+    return Redirect::to('/games?roasted=false', 301);
+});
+Route::get('/games/{genre}', function($genre) {
+    return Redirect::to('/games?genre='.$genre, 301);
+});
+Route::get('/games/by_platform/{platform}', function($platform) {
+    return Redirect::to('/games?platform='.$platform, 301);
+});
 Route::bind('platform', function($value, $route) {
     if(in_array($value, App\Game::$platforms)) {
         return $value; //if platform is found
     }
     App::abort(404); //platform not found
 });
-
 Route::bind('genre', function($value, $route) {
     if(array_key_exists($value, App\Game::$genres)) {
         return $value; //if genre is found
     }
     App::abort(404); //genre not found
 });
+//==========^ This is now deprecated, can be removed near end of Feb 2016
 
 Route::post('/',
     ['as' => '/', 'uses' => 'HomeController@postHome']);

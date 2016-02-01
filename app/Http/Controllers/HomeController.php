@@ -17,11 +17,6 @@ use Slynova\Commentable\Models\Comment;
 
 class HomeController extends Controller
 {
-    public static $RECENTLY_UPDATED = "recently_updated";
-    public static $NOT_YET_ROASTED = "not_yet_roasted";
-    public static $GENRE = "genre";
-    public static $PLATFORM = "platform";
-
     public function getHome() {
         $popularGames = Game::orderBy('views', 'desc')
             ->where('created_at', '>=', Carbon::now()->subMonth())
@@ -49,48 +44,37 @@ class HomeController extends Controller
     }
 
     public function getGames(Request $request) {
-        $pageTitle = 'Most Recently Updated';
-        $games = Game::orderBy('created_at', 'desc')
-            ->get();
+        $pageTitle = '';
+        $oldQuery = '';
+        $oldGenre = '';
+        $oldPlatform = '';
+        $gamesQuery = Game::orderBy('created_at', 'desc');
 
-        $selectedButton = $this::$RECENTLY_UPDATED;
-        return view('games', compact('games', 'pageTitle', 'selectedButton'));
-    }
-
-    public function getGamesByGenre($genre, Request $request) {
-        $pageTitle = Game::$genres[$genre];
-        $games = Game::where('genre', $genre)
-            ->orderBy('created_at', 'desc')
-            ->take(16)
-            ->get();
-        $selectedButton = $this::$GENRE;
-        return view('games', compact('games', 'pageTitle', 'genre', 'selectedButton'));
-    }
-
-    public function getNonRoasterGames(Request $request) {
-        $gamesWithComments = Comment::groupBy('commentable_id')->lists('commentable_id');
-        $games = Game::whereNotIn('id', $gamesWithComments)
-            ->orderBy('created_at', 'desc')
-            ->take(16)
-            ->get();
-        $pageTitle = 'Not Yet Roasted';
-        $selectedButton = $this::$NOT_YET_ROASTED;
-        return view('games', compact('games', 'pageTitle', 'selectedButton'));
-    }
-
-    public function getGamesByPlatform($platform, Request $request) {
-        $pageTitle = \App\Game::$platformDropDown[$platform];
-
-        $versions = Version::whereNotNull('link_'.$platform)->orderBy('created_at', 'desc')->take(16)->with('game')->get();
-        $games = array();
-        foreach ($versions as $version) {
-            if(!in_array($version->game, $games, true)) {
-                array_push($games, $version->game);
+        if($request->has('query')) {
+            $gamesQuery->where('title', 'LIKE', '%'.$request->get('query').'%');
+            $oldQuery = $request->get('query');
+        } if($request->has('genre')) {
+            $genre = $request->get('genre');
+            if(!array_key_exists($genre, Game::$genres)) {
+                \App::abort(404); //genre not found
             }
+            $gamesQuery->where('genre', '=', $genre);
+            $oldGenre = $genre;
+        } if($request->has('platform')) {
+            $platform = $request->get('platform');
+            if(!array_key_exists($platform, Game::$platformDropDown)) {
+                \App::abort(404); //platform not found
+            }
+            $gameIds = Version::whereNotNull('link_'.$platform)->orderBy('created_at', 'desc')->select('game_id')->get();
+            $gamesQuery->whereIn('id', $gameIds);
+            $oldPlatform = $platform;
+        } if($request->has('roasted')) {
+            $gamesWithComments = Comment::groupBy('commentable_id')->lists('commentable_id');
+            $gamesQuery->whereNotIn('id', $gamesWithComments);
         }
+        $games = $gamesQuery->get();
 
-        $selectedButton = $this::$PLATFORM;
-        return view('games', compact('games', 'pageTitle', 'platform', 'selectedButton'));
+        return view('games', compact('games', 'pageTitle', 'oldQuery', 'oldGenre', 'oldPlatform'));
     }
 
     public function getLeaderboard(Request $request) {
@@ -150,12 +134,5 @@ class HomeController extends Controller
         });
         Log::info('Contact Us: '. Input::get('email') . ' : ' . Input::get('message'));
         return Redirect::route('/contact-us')->with('message', 'You\'re all set! We\'ll get back to you as soon as we can.');
-    }
-
-    public static function buttonSelected($currentSelectedButton, $requiredButton) {
-        if ($currentSelectedButton == $requiredButton) {
-            return 'btn-primary';
-        }
-        return 'btn-light-blue';
     }
 }
