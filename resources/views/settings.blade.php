@@ -20,7 +20,11 @@
                     {!! Form::open(array('url' => '/settings/save-profile-image', 'class'=>'form-horizontal', 'files'=> true)) !!}
                         <div class="row">
                             <div class="col-md-offset-3 col-md-2 col-sm-3 col-sm-offset-2 col-xs-3">
-                                <img width="100%" height="100%" class="media-object" src="{{$user->profile_image}}">
+                                <div class="embed-responsive embed-responsive-1by1">
+                                    <div class="embed-responsive-item">
+                                        {!! $user->getProfileImage('100%', 'user-profile-default-font-responsive') !!}
+                                    </div>
+                                </div>
                             </div>
                             <div class=" col-sm-4 col-xs-9">
                                 {!! Form::file('profile_image', ['class' => 'form-control', 'accept' => 'image/*'])!!}
