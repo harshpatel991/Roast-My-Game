@@ -56,10 +56,6 @@
                     <div class="col-sm-6">
                         <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
                     </div>
-
-                    <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
-                        <a href="/games" class="btn btn-sm btn-light-blue btn-block hidden-xs" style="margin-top: 20px;">More Games <span class="icon-right-circled"></span></a>
-                    </div>
                 </div>
 
                 <div class="row">
@@ -77,8 +73,8 @@
                 </div>
 
                 <div class= "row">
-                    <div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4">
-                        <a href="/games" class="btn btn-sm btn-info btn-block visible-xs-block" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                        <a href="/games" class="btn btn-sm btn-info btn-block" style="margin-top: 20px;">See All Games <span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
