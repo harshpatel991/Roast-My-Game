@@ -88,7 +88,19 @@ class RegisterCest
         $I->click(['id' => 'register']);
         $I->dontSeeInDatabase('users', ['email' => 'new-register-invalid@gmail.com']);
         $I->see('The username has already been taken.');
+
+        //username with space
+        $I->amOnPage('/auth/register');
+        $I->fillField('username', 'user space');
+        $I->fillField('email', 'new-register-invalid@gmail.com');
+        $I->fillField('password', 'password-new-register');
+        $I->fillField('password_confirmation', 'password-new-register');
+
+        $I->click(['id' => 'register']);
+        $I->dontSeeInDatabase('users', ['email' => 'new-register-invalid@gmail.com']);
+        $I->see('The username may only contain letters, numbers, and dashes.');
     }
+
 
     public function testRegisterInvalidEmail(\AcceptanceTester $I)
     {
