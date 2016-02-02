@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group">
-                    {!! Form::textarea('body', old('body'), ['class' => 'form-control', 'rows' => '4', 'placeholder'=> 'Additional comments']) !!}
+                    {!! Form::textarea('body', old('body'), ['class' => 'form-control', 'rows' => '4', 'placeholder'=> 'Tell the devs how to improve.']) !!}
                 </div>
             </div>
         </div>
