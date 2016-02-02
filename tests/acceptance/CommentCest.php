@@ -109,15 +109,8 @@ class CommentCest
         $I->selectOption('select[name=positive]', 'Physics');
         $I->click('Reply');
 
-        $I->see('Comment added!');
-        $I->see('Physics', '.media-body');
-        $I->seeInDatabase('comments', array('positive' => 'physics', 'negative' => NULL, 'body' => NULL));
-
-        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
-        $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
-        $I->seeEmailCount(2);
+        $I->see('Please take a minute to add some details to your roast.');
+        $I->seeEmailCount(0);
     }
 
     public function testAddFullOnlyNegative(\AcceptanceTester $I)
@@ -130,15 +123,8 @@ class CommentCest
         $I->selectOption('select[name=negative]', 'Controls');
         $I->click('Reply');
 
-        $I->see('Comment added!');
-        $I->see('Controls', '.media-body');
-        $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => 'controls', 'body' => NULL));
-
-        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
-        $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
-        $I->seeEmailCount(2);
+        $I->see('Please take a minute to add some details to your roast.');
+        $I->seeEmailCount(0);
     }
 
     public function testAddFullOnlyText(\AcceptanceTester $I)
@@ -161,13 +147,27 @@ class CommentCest
         $I->seeEmailCount(2);
     }
 
+    public function testAddShortBody(\AcceptanceTester $I)
+    {
+        $I->resetEmails();
+
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/game/test-game-1');
+
+        $I->fillField('body', 'This is a short comment');
+        $I->click('Reply');
+
+        $I->see('Please take a minute to add a few more details to your roast, the game dev will really appreciate it!');
+        $I->seeEmailCount(0);
+    }
+
     public function testAddNothing(\AcceptanceTester $I)
     {
         $this->loginAs($I, 'user2@gmail.com', 'password2');
         $I->amOnPage('/game/test-game-1');
         $I->click('Reply');
 
-        $I->see('Please specify a comment.');
+        $I->see('Please take a minute to add some details to your roast.');
     }
 
     public function testAddNothingReply(\AcceptanceTester $I)
@@ -199,7 +199,7 @@ class CommentCest
         $I->click(['link' => 'Reply']);
         $I->click('.reply-form button');
 
-        $I->see('Please specify a comment.');
+        $I->see('The comment field is required.');
     }
 
     public function testAddInvalidBody(\AcceptanceTester $I)
@@ -349,6 +349,39 @@ class CommentCest
 
         $I->see('The body may not be greater than 5000 characters.');
         $I->dontSeeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdassdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasfdsfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdassdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasfdsfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdassdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasfdsfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdassdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasfdsfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdassdasdffasdasdfsdfsadfasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasda'));
+    }
+
+    public function testAddCommentShortReply(\AcceptanceTester $I)
+    {
+        //Add a regular comment
+        $this->loginAs($I, 'user2@gmail.com', 'password2');
+        $I->amOnPage('/game/test-game-1');
+
+        $I->selectOption('select[name=positive]', 'Animation');
+        $I->selectOption('select[name=negative]', 'Level Design');
+        $I->fillField('body', 'This is a top level comment. This is a top level comment.');
+        $I->click('Reply');
+
+        //Logout
+        $I->click('#profile-dropdown');
+        $I->wait(1);
+        $I->click('#logout-button');
+        $I->wait(1);
+
+        //log back in (for some reason this->loginAs doesn't work)
+        $I->amOnPage('/auth/login');
+        $I->wait(1);
+        $I->fillField('email', 'user3@gmail.com');
+        $I->fillField('password', 'password3');
+        $I->click(['id' => 'login']);
+
+        //Add a reply comment
+        $I->amOnPage('/game/test-game-1');
+        $I->click(['link' => 'Reply']);
+        $I->fillField('.reply-form textarea', 'tiny');
+        $I->click('.reply-form button');
+
+        $I->see('The comment must be at least 5 characters.');
     }
 
     public function testGetPoints(\AcceptanceTester $I)

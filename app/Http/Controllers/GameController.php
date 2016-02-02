@@ -69,7 +69,7 @@ class GameController extends Controller
             }
         }
 
-        $comments = $game->comments()->get();
+        $comments = $game->comments()->orderBy('created_at', 'asc')->get();
 
         return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments'));
     }

@@ -12,23 +12,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Slynova\Commentable\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\StoreCommentReplyRequest;
 
 class CommentController extends Controller
 {
-    // Check that at least one of the fields is provided
-    public static function shouldStore(StoreCommentRequest $request) {
-        if($request->has('body') || $request->has('positive') || $request->has('negative')) {
-            return true;
-        }
-        return false;
-    }
-
     public function postAddComment($game, StoreCommentRequest $request)
     {
-        if(!CommentController::shouldStore($request)) {
-            return redirect()->back()->withErrors('Please specify a comment.');
-        }
-
         Log::info('Request to store a comment: ' . print_R($request->all(), TRUE));
 
         $user = $request->user();
@@ -61,12 +50,8 @@ class CommentController extends Controller
         return redirect()->back()->with('message', 'Comment added!');
     }
 
-    public function postAddCommentReply($comment, StoreCommentRequest $request)
+    public function postAddCommentReply($comment, StoreCommentReplyRequest $request)
     {
-        if(!CommentController::shouldStore($request)) {
-            return redirect()->back()->withErrors('Please specify a comment.');
-        }
-
         Log::info('Request to store a reply: ' . print_R($request->all(), TRUE));
 
         $user = $request->user();
