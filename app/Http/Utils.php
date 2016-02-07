@@ -122,7 +122,7 @@ class Utils
     }
 
     public static function random_roast_message() {
-        $messages = ["Help roast my game: ", "Come at me! Roast my game: "];
+        $messages = ["Help roast my game: ", "Come at me! Roast my game: ", "Turn up the heat! Roast my game: "];
 
         return $messages[array_rand($messages)] . Request::url() . " #gamedev";
     }

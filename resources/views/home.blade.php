@@ -15,15 +15,8 @@
         <div class="row">
             <div class="banner-background-overlay">
                 <h1 class="home-h1">HONEST FEEDBACK</h1>
-                <h3 class="home-h3">Get feedback and find inspiration from other game devs</h3>
+                <h3 class="home-h3">Get feedback, find inspiration, and promote your game</h3>
                 <br>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-
-                {{--<h3 class="home-h3">Watch the progress </h3>--}}
             </div>
         </div>
 
@@ -35,6 +28,9 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h6 class="small" style="padding: 5px;">POPULAR GAMES</h6>
+                    </div>
+                    <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
+                        <a href="/games" class="btn btn-sm btn-default btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
