@@ -150,4 +150,8 @@ class GameController extends Controller
 
         return redirect('game/'.$game->slug)->with('message', 'Game updated!');
     }
+
+    public function getPromoteGame(Game $game, Request $request) {
+        return view('promote', compact('game'));
+    }
 }

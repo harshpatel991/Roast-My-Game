@@ -25,7 +25,7 @@
                                 <h6 style="margin-top: 0px;">Ask your followers to help roast your game</h6>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                        <input class="form-control placeholder-dark" type="text" placeholder="{{$helpMessage = Utils::random_roast_message()}}" readonly>
+                                        <input class="form-control placeholder-dark" type="text" placeholder="{{$helpMessage = Utils::random_roast_message()}}" readonly="readonly">
                                     </div>
                                     <div class="col-sm-2">
                                         <a href="https://twitter.com/intent/tweet?text={{urlencode($helpMessage)}}" class="btn btn-info btn-block" target="_blank"><span class="icon-twitter"></span> Tweet</a>

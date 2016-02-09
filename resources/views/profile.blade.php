@@ -62,8 +62,9 @@
 
                                 @if($isTheLoggedInUser)
                                     <div class="col-sm-3">
-                                        <a class="btn btn-info pull-right btn-block" href="/add-version/{{$game->slug}}">Add Progress</a>
-                                        <a class="btn btn-info pull-right btn-block" href="/edit-game/{{$game->slug}}/{{$game->versions->first()->slug}}" id="edit-{{$game->slug}}">Edit Game</a>
+                                        <a class="btn btn-info-outline pull-right btn-block" href="/add-version/{{$game->slug}}">Add Progress</a>
+                                        <a class="btn btn-info-outline pull-right btn-block" href="/edit-game/{{$game->slug}}/{{$game->versions->first()->slug}}" id="edit-{{$game->slug}}">Edit Game</a>
+                                        <a class="btn btn-info-outline pull-right btn-block" href="/promote/{{$game->slug}}" id="promote-{{$game->slug}}"><span class="icon-tools"></span> Promote</a>
                                     </div>
                                 @endif
                                 
