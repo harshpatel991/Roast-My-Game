@@ -29,7 +29,7 @@
                             <div class=" col-sm-4 col-xs-9">
                                 {!! Form::file('profile_image', ['class' => 'form-control', 'accept' => 'image/*'])!!}
 
-                                <button id="save-profile" class="btn btn-success btn-block" style="margin-top: 10px;">Save</button>
+                                <button id="save-profile" class="btn btn-info btn-block" style="margin-top: 10px;">Save</button>
                             </div>
                         </div>
                     {!! Form::close() !!}
@@ -59,7 +59,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-4 col-sm-4">
-                                <button id="save-password" class="btn btn-success btn-block">Save</button>
+                                <button id="save-password" class="btn btn-info btn-block">Save</button>
                             </div>
                         </div>
                     {!! Form::close() !!}
@@ -96,7 +96,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-4 col-sm-4">
-                                <button id="save-email" class="btn btn-success btn-block">Save</button>
+                                <button id="save-email" class="btn btn-info btn-block">Save</button>
                             </div>
                         </div>
                     {!! Form::close() !!}

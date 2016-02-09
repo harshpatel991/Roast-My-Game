@@ -1,7 +1,7 @@
 // Button variants
 //
 .button-variant(@color; @background; @hover-background; @active-background; @disabled-background: @gray-light) {
-//  font-weight: bold;
+  //  font-weight: bold;
   color: @color;
   background-color: @background;
 
@@ -38,6 +38,26 @@
   .badge {
     color: @background;
     background-color: @inverse;
+  }
+}
+
+.button-variant-outline(@color; @active-background; @disabled-background: @gray-light) {
+  //  font-weight: bold;
+  color: @color;
+  background-color: #fff;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @color;
+
+  &:hover,
+  &.hover,
+  &:focus,
+  &:active,
+  &.active{
+    color: #fff;
+    background-color: @color;
+
+
   }
 }
 
