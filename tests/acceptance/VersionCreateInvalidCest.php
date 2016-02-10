@@ -32,7 +32,7 @@ class VersionCreateInvalidCest
         $this->loginAs($I, 'user1@gmail.com', 'password1');
         $I->amOnPage('/add-version/test-game-5');
 
-        $I->see('RECENTLY UPDATED GAMES');//test got redirected
+        $I->see('RECENTLY UPDATED');//test got redirected
     }
 
     public function testCreateInvalidVersion(\AcceptanceTester $I)

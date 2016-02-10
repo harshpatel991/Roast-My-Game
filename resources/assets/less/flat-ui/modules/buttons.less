@@ -89,6 +89,10 @@
 .btn-warning {
   .button-variant(@btn-default-color, @brand-warning, @btn-warning-hover-bg, @btn-warning-active-bg);
 }
+.btn-warning-outline {
+  .button-variant-outline(@brand-warning, @brand-warning, @gray-light);
+}
+
 .btn-inverse {
   .button-variant(@btn-default-color, @brand-primary, @btn-inverse-hover-bg, @btn-inverse-active-bg);    
 }
@@ -137,6 +141,10 @@
 .btn-dark-blue {
   .button-variant(#fff, @btn-dark-blue-bg, @btn-dark-blue-hover-bg, @btn-dark-blue-active-bg);
 //  font-weight: bold;
+}
+
+.btn-dark-blue-outline {
+  .button-variant-outline(@btn-dark-blue-bg, @btn-dark-blue-bg, @gray-light);
 }
 
 .btn-light-blue {
