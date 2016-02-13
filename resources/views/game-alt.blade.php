@@ -2,7 +2,7 @@
 
 @section('page-title'){{$game->title}} - {{Config::get('app.name')}}@endsection
 
-@section('page-description'){!! substr(clean($game->description), 0, 150) !!}@endsection
+@section('page-description'){{ substr(clean($game->description), 0, 150) }}@endsection
 
 @section('navbar')
     @include('partials/fixedNav')
