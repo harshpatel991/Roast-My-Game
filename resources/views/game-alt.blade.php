@@ -218,6 +218,15 @@
                         </div>
                     </div>
 
+                    <div class="row"> {{--Related games row--}}
+                        @if($relatedGames->count() > 0))
+                            <h6 class="subheading subheading-color">Related Games</h6>
+                            @foreach($relatedGames as $relatedGame)
+                                @include('partials/card', ['game' => $relatedGame])
+                            @endforeach
+                        @endif
+                    </div>
+
                 </div>
             </div>
         </div>
