@@ -115,3 +115,42 @@ fi
 echo "Bye bye :)"
 
 exit
+
+
+# Setting up apache
+#-------------------------
+#sudo service nginx stop
+#sudo apt-get update
+#sudo apt-get install apache2
+#sudo service apache2 restart
+
+#cd /etc/apache2/sites-available
+#sudo vi myapp.conf
+#    <VirtualHost *:80>
+#        ServerName myapp.localhost.com
+#        DocumentRoot "/home/vagrant/Code/clickr/public"
+#        <Directory "/home/vagrant/Code/clickr/public">
+#                AllowOverride all
+#                Require all granted
+#        </Directory>
+#    </VirtualHost>
+#
+#cd ../sites-enabled
+#sudo ln -s ../sites-available/myapp.conf
+#sudo service apache2 restart
+#cd /etc/apache2
+#sudo vi envvars
+#
+#export APACHE_RUN_USER=vagrant
+#export APACHE_RUN_GROUP=vagrant
+#
+#sudo apt-get install php5-common
+#sudo apt-get install libapache2-mod-php5
+#
+#sudo apt-get install php5-mysql
+#sudo service apache2 restart
+#
+#sudo a2enmod rewrite
+#sudo a2enmod expires
+#sudo a2enmod headers
+#sudo service apache2 restart
