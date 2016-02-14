@@ -70,8 +70,15 @@ class GameController extends Controller
         }
 
         $comments = $game->comments()->orderBy('created_at', 'asc')->get();
+        $relatedGames = Game::where('genre', $game->genre)
+            ->where('slug', '<>', $game->slug)
+            ->with(['versions' => function($query) {
+                $query->orderBy('created_at', 'desc');
+            }])
+            ->take(4)
+            ->get();
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments'));
+        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments', 'relatedGames'));
     }
 
     public function getAddGame() {
