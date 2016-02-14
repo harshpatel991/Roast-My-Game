@@ -135,79 +135,79 @@ class UserCest
 
     public function testViewAllPoints(\AcceptanceTester $I)
     {
-        $I->haveInDatabase('users', array('id' => 14, 'username' => 'viewPointsUser', 'email' => 'viewPointsUser@gmail.com', 'points' => 0));
+        $I->haveInDatabase('users', array('id' => 14, 'username' => 'viewPointsUser', 'password' => '', 'email' => 'viewPointsUser@gmail.com', 'points' => 0, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser');
         $I->seeInSource('trophy1.jpg');
         $I->seeInSource('0 Points');
         $I->see('1', '#level');
 
-        $I->haveInDatabase('users', array('id' => 15, 'username' => 'viewPointsUser1', 'email' => 'viewPointsUser1@gmail.com', 'points' => 5));
+        $I->haveInDatabase('users', array('id' => 15, 'username' => 'viewPointsUser1', 'password' => '', 'email' => 'viewPointsUser1@gmail.com', 'points' => 5, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser1');
         $I->seeInSource('trophy1.jpg');
         $I->seeInSource('5 Points');
         $I->see('1', '#level');
 
-        $I->haveInDatabase('users', array('id' => 16, 'username' => 'viewPointsUser2', 'email' => 'viewPointsUser2@gmail.com', 'points' => 50));
+        $I->haveInDatabase('users', array('id' => 16, 'username' => 'viewPointsUser2', 'password' => '', 'email' => 'viewPointsUser2@gmail.com', 'points' => 50, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser2');
         $I->seeInSource('trophy1.jpg');
         $I->seeInSource('50 Points');
         $I->see('1', '#level');
 
-        $I->haveInDatabase('users', array('id' => 17, 'username' => 'viewPointsUser3', 'email' => 'viewPointsUser3@gmail.com', 'points' => 51));
+        $I->haveInDatabase('users', array('id' => 17, 'username' => 'viewPointsUser3', 'password' => '', 'email' => 'viewPointsUser3@gmail.com', 'points' => 51, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser3');
         $I->seeInSource('trophy1.jpg');
         $I->seeInSource('51 Points');
         $I->see('2', '#level');
 
-        $I->haveInDatabase('users', array('id' => 18, 'username' => 'viewPointsUser4', 'email' => 'viewPointsUser4@gmail.com', 'points' => 75));
+        $I->haveInDatabase('users', array('id' => 18, 'username' => 'viewPointsUser4', 'password' => '', 'email' => 'viewPointsUser4@gmail.com', 'points' => 75, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser4');
         $I->seeInSource('trophy1.jpg');
         $I->seeInSource('75 Points');
         $I->see('2', '#level');
 
-        $I->haveInDatabase('users', array('id' => 19, 'username' => 'viewPointsUser5', 'email' => 'viewPointsUser5@gmail.com', 'points' => 76));
+        $I->haveInDatabase('users', array('id' => 19, 'username' => 'viewPointsUser5', 'password' => '', 'email' => 'viewPointsUser5@gmail.com', 'points' => 76, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser5');
         $I->seeInSource('trophy2.jpg');
         $I->seeInSource('76 Points');
         $I->see('3', '#level');
 
-        $I->haveInDatabase('users', array('id' => 110, 'username' => 'viewPointsUser6', 'email' => 'viewPointsUser6@gmail.com', 'points' => 100));
+        $I->haveInDatabase('users', array('id' => 110, 'username' => 'viewPointsUser6', 'password' => '', 'email' => 'viewPointsUser6@gmail.com', 'points' => 100, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser6');
         $I->seeInSource('trophy2.jpg');
         $I->seeInSource('100 Points');
         $I->see('3', '#level');
 
-        $I->haveInDatabase('users', array('id' => 111, 'username' => 'viewPointsUser7', 'email' => 'viewPointsUser7@gmail.com', 'points' => 101));
+        $I->haveInDatabase('users', array('id' => 111, 'username' => 'viewPointsUser7', 'password' => '', 'email' => 'viewPointsUser7@gmail.com', 'points' => 101, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser7');
         $I->seeInSource('trophy2.jpg');
         $I->seeInSource('101 Points');
         $I->see('4', '#level');
 
-        $I->haveInDatabase('users', array('id' => 112, 'username' => 'viewPointsUser8', 'email' => 'viewPointsUser8@gmail.com', 'points' => 150));
+        $I->haveInDatabase('users', array('id' => 112, 'username' => 'viewPointsUser8', 'password' => '', 'email' => 'viewPointsUser8@gmail.com', 'points' => 150, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser8');
         $I->seeInSource('trophy2.jpg');
         $I->seeInSource('150 Points');
         $I->see('4', '#level');
 
-        $I->haveInDatabase('users', array('id' => 113, 'username' => 'viewPointsUser9', 'email' => 'viewPointsUser9@gmail.com', 'points' => 151));
+        $I->haveInDatabase('users', array('id' => 113, 'username' => 'viewPointsUser9', 'password' => '', 'email' => 'viewPointsUser9@gmail.com', 'points' => 151, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser9');
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('151 Points');
         $I->see('5', '#level');
 
-        $I->haveInDatabase('users', array('id' => 114, 'username' => 'viewPointsUser10', 'email' => 'viewPointsUser10@gmail.com', 'points' => 300));
+        $I->haveInDatabase('users', array('id' => 114, 'username' => 'viewPointsUser10', 'password' => '', 'email' => 'viewPointsUser10@gmail.com', 'points' => 300, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser10');
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('300 Points');
         $I->see('5', '#level');
 
-        $I->haveInDatabase('users', array('id' => 115, 'username' => 'viewPointsUser11', 'email' => 'viewPointsUser11@gmail.com', 'points' => 301));
+        $I->haveInDatabase('users', array('id' => 115, 'username' => 'viewPointsUser11', 'password' => '', 'email' => 'viewPointsUser11@gmail.com', 'points' => 301, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser11');
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('301 Points');
         $I->see('6', '#level');
 
-        $I->haveInDatabase('users', array('id' => 116, 'username' => 'viewPointsUser12', 'email' => 'viewPointsUser12@gmail.com', 'points' => 350));
+        $I->haveInDatabase('users', array('id' => 116, 'username' => 'viewPointsUser12', 'password' => '', 'email' => 'viewPointsUser12@gmail.com', 'points' => 350, 'created_at' => '2016-01-01 01:01:01', 'updated_at' => '2016-01-01 01:01:01'));
         $I->amOnPage('/profile/viewPointsUser12');
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('350 Points');
