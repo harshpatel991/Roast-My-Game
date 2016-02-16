@@ -8,12 +8,12 @@
         <p class="media-heading small" style="line-height: 1; "><b><a href="/profile/{{$comment->username}}">{{ $comment->username }}{!! $comment->user->getBadge() !!}</a></b> {{ $comment->created_at->diffForHumans() }}</p>
         {!! str_replace( "\n", '<br />', clean($comment->body)) !!}
         <br>
-        <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a> {{--Adds the reply box--}}
+        <a class="reply-link" data-url="{{ url($submitReplyPath.'/'.$comment->id) }}" id="comment-child-reply-link-{{$comment->id}}">Reply</a> {{--Adds the reply box--}}
     </div>
 </div>
 
 @if($comment->hasChildren())
     @foreach($comment->getChildren() as $child)
-        @include('partials.comment_child', ['comment' => $child])
+        @include('partials.comment_child_view', ['comment' => $child, 'submitReplyPath' => $submitReplyPath])
     @endforeach
 @endif

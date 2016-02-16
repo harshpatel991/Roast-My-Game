@@ -17,13 +17,13 @@
             <div>{!! str_replace( "\n", '<br />', clean($comment->body)) !!}</div>
         @endif
 
-        <a class="reply-link" data-url="{{ url('add-comment-reply/'.$comment->id) }}">Reply</a>
+        <a class="reply-link" data-url="{{ url($submitReplyPath.'/'.$comment->id) }}" id="comment-reply-link-{{$comment->id}}">Reply</a>
 
     </div>
 </div>
 
 @if($comment->hasChildren())
     @foreach($comment->getChildren() as $child)
-        @include('partials.comment_child', ['comment' => $child])
+        @include('partials.comment_child_view', ['comment' => $child, 'submitReplyPath' => $submitReplyPath])
     @endforeach
 @endif

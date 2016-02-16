@@ -21,6 +21,11 @@
                     {{--@endif--}}
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form action="/forum/general-discussion" style="margin-left: 10px;">
+                                <button class="btn btn-light-blue navbar-btn btn-sm btn-block"><span class="icon-chat-1"></span></button>
+                            </form>
+                        </li>
 
                         <li>
                             <form action="/leaderboards" style="margin-left: 10px;">

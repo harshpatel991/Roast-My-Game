@@ -117,7 +117,7 @@
                     <div class="row">
                         <div class="col-sm-9">
                             <h3 class="game-title">{{$game->title}}</h3>
-                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="/profile/{{$game->user()->first()->username}}">{{$game->user()->first()->username}}</a></p>
+                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="/profile/{{$game->user->username}}">{{$game->user->username}}</a></p>
                         </div>
                         <div class="col-sm-3">
                             @if(count($platform_Icon_Name_Link) > 0)
@@ -174,7 +174,7 @@
                                 <h6 class="subheading subheading-color">Comments</h6>
                                 @if($game->comments()->count() > 0)
                                     @foreach($game->comments as $comment)
-                                        @include('partials.comment', ['comment' => $comment])
+                                        @include('partials.comment_view', ['comment' => $comment, 'submitReplyPath' => '/add-comment-reply'])
                                     @endforeach
                                 @else
                                     <p>Nobody's roasted yet, be the first!</p>
@@ -305,19 +305,7 @@
             function createForm(e)
             {
                 e.preventDefault();
-                var form = [];
-                form[form.length] = '<form class="reply-form" action="' + $(this).data('url')
-                + '" method="post">';
-                form[form.length] = '   {!! csrf_field() !!}';
-                form[form.length] = '   <div class="form-group">';
-                form[form.length] = '       <label for="body">Comment</label>';
-                form[form.length] = '       <textarea class="form-control" name="body" rows=5></textarea>';
-                form[form.length] = '   </div>';
-                form[form.length] = '   <div class="form-group">';
-                form[form.length] = '       <button class="btn btn-primary btn-sm" name="child-reply-button" type="submit">Reply</button>';
-                form[form.length] = '   </div>';
-                form[form.length] = '</form>';
-                $(this).replaceWith(form.join(''));
+                $(this).replaceWith('@include('partials/comment_child_form')');
 
                 $("button[name='child-reply-button']").click(function() {
                     $(this).html('Loading...' );

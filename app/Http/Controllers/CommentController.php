@@ -25,6 +25,7 @@ class CommentController extends Controller
         //save the comment
         $comment = new Comment;
         $comment->user_id = $user->id;
+        $comment->my_commentable_type = 'Game'; //so we know how to link the comment
         $comment->username = $user->username;
         $comment->body = trim($request->input('body')) !== '' ? $request->input('body') : null;
         $comment->positive = trim($request->input('positive')) !== '' ? $request->input('positive') : null;
@@ -58,8 +59,8 @@ class CommentController extends Controller
 
         $newComment = new Comment;
         $newComment->user_id = $user->id;
-        $newComment->commentable_id = $comment->commentable_id;
-//        $newComment->commentable_type = $comment->commentable_type;
+        $newComment->commentable_id = $comment->commentable_id; //child comments don't get commentable ids by default so add them in
+        $newComment->my_commentable_type = 'Game'; //so we know how to link the comment
         $newComment->username = $user->username;
         $newComment->body = $request->input('body');
         $newComment->save();

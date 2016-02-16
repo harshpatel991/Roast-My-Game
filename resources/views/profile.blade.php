@@ -88,7 +88,11 @@
 
                                     <p>{!! str_replace( "\n", '<br />', clean($comment->body)) !!}</p>
                                     <small><span class="icon-clock"></span> {{ $comment->created_at->diffForHumans() }}
-                                        <a href="/game/{{App\Game::where('id', $comment->commentable_id)->first()->slug}}"><span class="icon-link-ext-alt small"></span></a>
+                                        @if($comment->my_commentable_type == 'Game')
+                                            <a href="/game/{{App\Game::where('id', $comment->commentable_id)->first()->slug}}"><span class="icon-link-ext-alt small"></span></a>
+                                        @elseif($comment->my_commentable_type == 'Discussion')
+                                            <a href="/forum/{{App\Discussion::where('id', $comment->commentable_id)->first()->slug}}"><span class="icon-link-ext-alt small"></span></a>
+                                        @endif
                                     </small>
 
                                 </div>

@@ -25,6 +25,7 @@ class CommentTableSeeder extends Seeder
 
                 'commentable_id' => 5,
                 'commentable_type' => 'App\Game',
+                'my_commentable_type' => 'Game',
                 'user_id' => 1,
                 'username' => 'user1',
 
@@ -42,6 +43,7 @@ class CommentTableSeeder extends Seeder
 
                 'commentable_id' => 3,
                 'commentable_type' => 'App\Game',
+                'my_commentable_type' => 'Game',
                 'user_id' => 3,
                 'username' => 'user3',
 
@@ -59,6 +61,7 @@ class CommentTableSeeder extends Seeder
 
                 'commentable_id' => 5,
                 'commentable_type' => NULL,
+                'my_commentable_type' => 'Game',
                 'user_id' => 3,
                 'username' => 'user3',
 
@@ -76,8 +79,26 @@ class CommentTableSeeder extends Seeder
 
                 'commentable_id' => 7,
                 'commentable_type' => 'App\Game',
+                'my_commentable_type' => 'Game',
                 'user_id' => 2,
                 'username' => 'user2',
+
+                'positive' => NULL,
+                'negative' => NULL
+            ],
+            ['id' => 5, //forum comment
+                'title' => '',
+                'body' => 'User 1 on general discussion forum',
+                'parent_id' => NULL,
+                'lft' => 6,
+                'rgt' => 7,
+                'depth' => 0,
+
+                'commentable_id' => 1,
+                'commentable_type' => 'App\Discussion',
+                'my_commentable_type' => 'Discussion',
+                'user_id' => 1,
+                'username' => 'user1',
 
                 'positive' => NULL,
                 'negative' => NULL
