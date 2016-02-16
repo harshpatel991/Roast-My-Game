@@ -104,15 +104,30 @@ Route::post('/like/{game_slug}',
 
 Route::get('/add-comment/{game_slug}',
     ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@getAddComment']); //so users not logged in get redirected
-
 Route::get('/add-comment-reply/{comment_id}',
     ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@getAddCommentReply']); //so users not logged in get redirected
-
 Route::post('/add-comment/{game_slug}',
     ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@postAddComment']);
-
 Route::post('/add-comment-reply/{comment_id}',
     ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@postAddCommentReply']);
+
+Route::get('/forum-add-comment/{discussion_slug}',
+    ['as' => 'forum-add-comment', 'middleware' => 'auth', 'uses' => 'ForumController@getAddComment']); //so users not logged in get redirected
+Route::get('/forum-add-comment-reply/{comment_id}',
+    ['as' => 'forum-add-comment-reply', 'middleware' => 'auth', 'uses' => 'ForumController@getAddCommentReply']); //so users not logged in get redirected
+Route::post('/forum-add-comment/{discussion_slug}',
+    ['as' => 'forum-add-comment', 'middleware' => 'auth', 'uses' => 'ForumController@postAddComment']);
+Route::post('/forum-add-comment-reply/{comment_id}',
+    ['as' => 'forum-add-comment-reply', 'middleware' => 'auth', 'uses' => 'ForumController@postAddCommentReply']);
+
+Route::get('/forum/{discussion_slug}',
+    ['as' => 'forum', 'uses' => 'ForumController@getDiscussion']);
+
+Route::bind('discussion_slug', function($value, $route) {
+    $game = App\Discussion::whereSlug($value)->first();
+    if($game) return $game; //if discussion is found
+    App::abort(404); //discussion not found
+});
 
 Route::get('/leaderboards',
     ['as' => 'leaderboards', 'uses' => 'HomeController@getLeaderboard']);

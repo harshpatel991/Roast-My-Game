@@ -69,7 +69,7 @@ class HomeController extends Controller
             $gamesQuery->whereIn('id', $gameIds);
             $oldPlatform = $platform;
         } if($request->has('roasted')) {
-            $gamesWithComments = Comment::groupBy('commentable_id')->lists('commentable_id');
+            $gamesWithComments = Comment::where('my_commentable_type', 'Game')->groupBy('commentable_id')->lists('commentable_id');
             $gamesQuery->whereNotIn('id', $gamesWithComments);
         }
         $games = $gamesQuery->get();

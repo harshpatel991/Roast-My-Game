@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.27, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.10, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: homestead
 -- ------------------------------------------------------
--- Server version	5.6.27-0ubuntu0.14.04.1
+-- Server version	5.7.10
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,11 +38,12 @@ CREATE TABLE `comments` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `positive` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `negative` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `my_commentable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Game',
   PRIMARY KEY (`id`),
   KEY `comments_user_id_index` (`user_id`),
   KEY `comments_commentable_id_index` (`commentable_id`),
   KEY `comments_commentable_type_index` (`commentable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,8 +52,42 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 1 on game 5',NULL,1,2,0,5,'App\\Game',1,'user1','story','level_design'),(2,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 3 on game 3',NULL,1,2,0,3,'App\\Game',3,'user3','level_design','animation'),(3,'0000-00-00 00:00:00','0000-00-00 00:00:00','','Reply to user1 by user3',1,2,3,1,5,NULL,3,'user3',NULL,NULL),(4,'0000-00-00 00:00:00','0000-00-00 00:00:00','','Comment on game 7 by user2',NULL,4,5,0,7,'App\\Game',2,'user2',NULL,NULL);
+INSERT INTO `comments` VALUES (1,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 1 on game 5',NULL,1,2,0,5,'App\\Game',1,'user1','story','level_design','Game'),(2,'0000-00-00 00:00:00','0000-00-00 00:00:00','','This is a test comment by user 3 on game 3',NULL,1,2,0,3,'App\\Game',3,'user3','level_design','animation','Game'),(3,'0000-00-00 00:00:00','0000-00-00 00:00:00','','Reply to user1 by user3',1,2,3,1,5,NULL,3,'user3',NULL,NULL,'Game'),(4,'0000-00-00 00:00:00','0000-00-00 00:00:00','','Comment on game 7 by user2',NULL,4,5,0,7,'App\\Game',2,'user2',NULL,NULL,'Game'),(5,'0000-00-00 00:00:00','0000-00-00 00:00:00','','User 1 on general discussion forum',NULL,6,7,0,1,'App\\Discussion',1,'user1',NULL,NULL,'Discussion');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `discussions`
+--
+
+DROP TABLE IF EXISTS `discussions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `discussions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `views` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `discussions_title_unique` (`title`),
+  UNIQUE KEY `discussions_slug_unique` (`slug`),
+  KEY `discussions_user_id_foreign` (`user_id`),
+  CONSTRAINT `discussions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discussions`
+--
+
+LOCK TABLES `discussions` WRITE;
+/*!40000 ALTER TABLE `discussions` DISABLE KEYS */;
+INSERT INTO `discussions` VALUES (1,1,'General Discussion','general-discussion','A place for users to discuss the site. Feature requests, bug reports, or anything else on your mind.',32,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `discussions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -147,7 +182,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1),('2016_01_20_031403_add_user_points',1),('2016_01_23_083634_add_game_thumbnail',1),('2016_01_24_073708_add_user_profile_image',1),('2016_01_25_010123_add_user_email_preferences',1);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_09_28_032631_create_games_table',1),('2015_11_06_000000_create_comments_table',1),('2015_11_18_005701_create_versions_table',1),('2015_11_18_041506_create_likes_table',1),('2016_01_06_061534_games_table_description_to_text',1),('2016_01_06_062212_versions_table_changes_and_upcoming_features_to_text',1),('2016_01_20_031403_add_user_points',1),('2016_01_23_083634_add_game_thumbnail',1),('2016_01_24_073708_add_user_profile_image',1),('2016_01_25_010123_add_user_email_preferences',1),('2016_02_15_051535_create_discussions_table',1),('2016_02_16_014312_comments_table_my_commentable_type',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +246,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$EBzm7OlIUy/sVYcIdgODXe8kSYHq3z1CgvlbZ3bvLKEtYImuBmmIy',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',300,NULL,1,1,1,1),(2,'user2','user2@gmail.com','$2y$10$PQSgupUB7UHgTozR65JtROLKZ1Dn3epzS8tNH33a5zuLeqp/6xuAO',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',100,NULL,1,1,1,1),(3,'user3','user3@gmail.com','$2y$10$go6fSCdevEXR4R4nJLXQVeZ0tKL9AOlzYRjoevjAtwGabYGK/HrBe',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0,NULL,0,0,0,0),(4,'user4','user4@gmail.com','$2y$10$XkNZd8s4UMiLJbSwyrvvmOuQj45rMueIyiNJdnaPiheU3rCDxAT5O',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0,NULL,1,1,1,1);
+INSERT INTO `users` VALUES (1,'user1','user1@gmail.com','$2y$10$TSojbdR9QluAyaG9wCA9NeWvgMFPOVgiMywl.KqEW8IBXAHybo/iq',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',300,NULL,1,1,1,1),(2,'user2','user2@gmail.com','$2y$10$LX9dsi58s7GAKDQEkkqtPeaWjMlrmvLI8r1SYSE2IYDCohEegjv72',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',100,NULL,1,1,1,1),(3,'user3','user3@gmail.com','$2y$10$k.Na13DKIOpS3cTfF.2LKeSj7M6IuMs4Gsa2g02UZVhyaVDL0SQeK',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0,NULL,0,0,0,0),(4,'user4','user4@gmail.com','$2y$10$LLEPu9J.p8P78eBhZKaoOeh9RnwNiG7u3pqhwPcN570GNZbhzbdtm',NULL,'unconfirmed','1234567890ABCDE3','0000-00-00 00:00:00','0000-00-00 00:00:00',0,NULL,1,1,1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,4 +303,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-25  3:02:45
+-- Dump completed on 2016-02-16  6:15:43
