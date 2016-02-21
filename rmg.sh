@@ -154,3 +154,9 @@ exit
 #sudo a2enmod expires
 #sudo a2enmod headers
 #sudo service apache2 restart
+
+
+# Setting up a new ec2 instance for storing sessions
+# cd /var/app/current/storage/../../
+# sudo mkdir storage
+# sudo chown -R webapp:webapp sessions/

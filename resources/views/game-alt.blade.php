@@ -42,7 +42,7 @@
 
                                             @if(!empty($video_thumbnail))
                                                 <iframe id="ytplayer" type="text/html"
-                                                        src="http://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
+                                                        src="https://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
                                                         frameborder="0"></iframe>
                                             @endif
                                         </div>
@@ -54,7 +54,7 @@
                                         @if(!empty($video_thumbnail))
                                             <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px; padding-right:1px;">
                                                 <div class="embed-responsive embed-responsive-16by9 position-relative">
-                                                    <img class="embed-responsive-item" src="http://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
+                                                    <img class="embed-responsive-item" src="https://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
                                                     <div class="overlay-thumbnail"></div>
                                                     <div class="overlay-play" onclick="selectVideo()"></div>
                                                 </div>
@@ -209,7 +209,7 @@
                                     <hr>
                                     <div style="margin-bottom: 5px;">
                                         <a href="https://twitter.com/intent/tweet?url={{Request::url()}}&text=Roast my game"><img src="/images/twitter.png" class="social-media-icons"></a>
-                                        <a href="http://www.facebook.com/sharer/sharer.php?u={{Request::url()}}"><img src="/images/facebook.png" class="social-media-icons"></a>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}"><img src="/images/facebook.png" class="social-media-icons"></a>
                                         <a href="https://plus.google.com/share?url={{Request::url()}}"><img src="/images/google-plus.png" class="social-media-icons"></a>
                                     </div>
                                 </div>
