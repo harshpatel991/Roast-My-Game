@@ -39,7 +39,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
 
     <script>
         tinymce.init({
@@ -75,7 +75,7 @@
         });
     </script>
 
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    <script type="text/javascript" src="/vendor/jsvalidation/js/jsvalidation.js"></script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreVersionRequest', '#add-version-form') !!}
 
     <script>
