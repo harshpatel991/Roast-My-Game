@@ -32,7 +32,7 @@
                     <h6 class="subheading subheading-color">Website Embed</h6>
 
                     <p class="small">Copy this code into your websites HTML page to direct your users to roast your game.</p>
-                    <a href="http://clickr.app/game/its-raining-zombies"><img src="https://s3-us-west-2.amazonaws.com/rmg-upload/public/share_button.jpg" class="center-block play-button-text-content"></a>
+                    <a href="{{url('/game/'.$game->slug)}}"><img src="https://s3-us-west-2.amazonaws.com/rmg-upload/public/share_button.jpg" class="center-block play-button-text-content"></a>
                     <div class="row">
                         <div class="col-sm-10">
                             <input id="website-contents" class="form-control placeholder-dark" type="text" value="{{'<a href="'. url('/game/'.$game->slug) .'"><img src="https://s3-us-west-2.amazonaws.com/rmg-upload/public/share_button.jpg"></a>'}}" readonly="readonly">
@@ -45,7 +45,7 @@
                     <h6 class="subheading subheading-color">Forum Embed</h6>
 
                     <p class="small">Copy this code into your forum submission to direct your readers to roast your game.</p>
-                    <a href="http://clickr.app/game/its-raining-zombies"><img src="https://s3-us-west-2.amazonaws.com/rmg-upload/public/share_button.jpg" class="center-block play-button-text-content"></a>
+                    <a href="{{url('/game/'.$game->slug)}}"><img src="https://s3-us-west-2.amazonaws.com/rmg-upload/public/share_button.jpg" class="center-block play-button-text-content"></a>
 
                     <div class="row">
                         <div class="col-sm-10">

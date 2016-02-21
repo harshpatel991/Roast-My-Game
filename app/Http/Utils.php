@@ -14,7 +14,7 @@ class Utils
     public static function get_image_url($fileLocation)
     {
 //        return '/upload/'.$fileName; //local image path
-        return 'http://s3-us-west-2.amazonaws.com/rmg-upload/'.$fileLocation;
+        return 'https://s3-us-west-2.amazonaws.com/rmg-upload/'.$fileLocation;
     }
 
     public static function preg_grep_keys($pattern, $input, $flags = 0)

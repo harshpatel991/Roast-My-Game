@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-xs-12 small">
             <div class="pull-right">
-                <a href="http://roastmygame.blogspot.com">Dev Blog</a> · <a href="https://twitter.com/RoastMyGame">Twitter</a>
+                <a href="https://roastmygame.blogspot.com">Dev Blog</a> · <a href="https://twitter.com/RoastMyGame">Twitter</a>
             </div>
         </div>
     </div>
