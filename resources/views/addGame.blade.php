@@ -46,11 +46,11 @@
 
 
 @section('scripts')
-    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
     @include('partials/game-script-init')
     @include('partials/version-script-init')
 
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    <script type="text/javascript" src="/vendor/jsvalidation/js/jsvalidation.js"></script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest', '#add-game-form') !!}
 
     <script>
