@@ -18,7 +18,7 @@
                     @include('partials.display-input-error')
 
                     <h1 class="form-title">Login</h1>
-                    {!! Form::open(array('url' => '/auth/login', 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('url' => '/auth/login', 'class'=>'form-horizontal', 'files'=>true)) !!}
 
                     <div class="form-group">
                         {!! Form::label('email', 'Email', ['class' => 'col-sm-3 control-label form-label']) !!}
@@ -50,7 +50,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <p class="small"><a href="{{ url('/password/email') }}">Forgot Your Password?</a> Don't have an account? <a href="/auth/register">Register</a></p>
+                            <p class="small"><a href="/password/email">Forgot Your Password?</a> Don't have an account? <a href="/auth/register">Register</a></p>
                         </div>
                     </div>
 

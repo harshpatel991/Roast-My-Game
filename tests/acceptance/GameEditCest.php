@@ -29,7 +29,7 @@ class GameEditCest
         $I->dontSee('BETA');
         $I->dontSee('Download');
         $I->dontSee('Links');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-7/image1.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-7/image1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Minimal Edit Title',
                                         'slug' => 'test-game-7', //slug doesn't change
                                         'genre' => 'idle',
@@ -128,10 +128,10 @@ class GameEditCest
 
         $I->see('VERSION 1-EDITED');
         $I->see('BETA');
-        $I->seeInSource('http://img.youtube.com/vi/JLf9q36UsBk/mqdefault.jpg');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image1.jpg')");
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image2.jpg')");
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image3.jpg')");
+        $I->seeInSource('https://img.youtube.com/vi/JLf9q36UsBk/mqdefault.jpg');
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image1.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image2.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-1/image3.jpg')");
 
         $I->click(['id' => 'link-tab-changes']); //open changes tab
         $I->wait(2);
@@ -361,7 +361,7 @@ class GameEditCest
         $I->dontSee('BETA');
         $I->dontSee('Download');
         $I->dontSee('Links');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-7/image1.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-7/image1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Game 7',
             'slug' => 'test-game-7',
             'genre' => 'strategy',

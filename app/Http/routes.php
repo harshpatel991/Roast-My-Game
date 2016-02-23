@@ -14,10 +14,10 @@ use Slynova\Commentable\Models\Comment;
 */
 
 Route::get('/',
-    ['as' => 'home', 'uses' => 'HomeController@getHome']);
+    ['uses' => 'HomeController@getHome']);
 
 Route::get('/games',
-    ['as' => 'games', 'uses' => 'HomeController@getGames']);
+    ['uses' => 'HomeController@getGames']);
 
 //==========\/ This is now deprecated, can be removed near end of Feb 2016
 Route::get('/games/not-yet-roasted', function() {
@@ -44,7 +44,7 @@ Route::bind('genre', function($value, $route) {
 //==========^ This is now deprecated, can be removed near end of Feb 2016
 
 Route::post('/',
-    ['as' => '/', 'uses' => 'HomeController@postHome']);
+    ['uses' => 'HomeController@postHome']);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -79,49 +79,49 @@ Route::post('settings/save-email-change',
     ['middleware' => 'auth', 'uses' => 'UserController@postEmailChange']);
 
 Route::get('/add-game',
-    ['as' => 'add-game', 'middleware' => 'auth', 'uses' => 'GameController@getAddGame']);
+    ['middleware' => 'auth', 'uses' => 'GameController@getAddGame']);
 Route::post('/add-game',
-    ['as' => 'add-game', 'middleware' => 'auth',  'uses' => 'GameController@postAddGame']);
+    ['middleware' => 'auth',  'uses' => 'GameController@postAddGame']);
 
 Route::get('/add-version/{game_slug}',
-    ['as' => 'add-version', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getAddVersion']);
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getAddVersion']);
 Route::post('/add-version/{game_slug}',
-    ['as' => 'add-version', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postAddVersion']);
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postAddVersion']);
 
 Route::get('/edit-game/{game_slug}/{version_slug}',
-    ['as' => 'edit-game', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getEditGame']);
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getEditGame']);
 Route::post('/edit-game/{game_slug}/{version_slug}',
-    ['as' => 'edit-game', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postEditGame']);
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postEditGame']);
 
 Route::get('/promote/{game_slug}',
-    ['as' => 'promote-game', 'middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getPromoteGame']);
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getPromoteGame']);
 
 Route::get('/game/{game_slug}/{version_slug?}',
-    ['as' => 'getGame', 'uses' => 'GameController@getGame']);
+    ['uses' => 'GameController@getGame']);
 
 Route::post('/like/{game_slug}',
-    ['as' => 'like', 'middleware' => 'auth', 'uses' => 'LikeController@addLike']);
+    ['middleware' => 'auth', 'uses' => 'LikeController@addLike']);
 
 Route::get('/add-comment/{game_slug}',
-    ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@getAddComment']); //so users not logged in get redirected
+    ['middleware' => 'auth', 'uses' => 'CommentController@getAddComment']); //so users not logged in get redirected
 Route::get('/add-comment-reply/{comment_id}',
-    ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@getAddCommentReply']); //so users not logged in get redirected
+    ['middleware' => 'auth', 'uses' => 'CommentController@getAddCommentReply']); //so users not logged in get redirected
 Route::post('/add-comment/{game_slug}',
-    ['as' => 'add-comment', 'middleware' => 'auth', 'uses' => 'CommentController@postAddComment']);
+    ['middleware' => 'auth', 'uses' => 'CommentController@postAddComment']);
 Route::post('/add-comment-reply/{comment_id}',
-    ['as' => 'add-comment-reply', 'middleware' => 'auth', 'uses' => 'CommentController@postAddCommentReply']);
+    ['middleware' => 'auth', 'uses' => 'CommentController@postAddCommentReply']);
 
 Route::get('/forum-add-comment/{discussion_slug}',
-    ['as' => 'forum-add-comment', 'middleware' => 'auth', 'uses' => 'ForumController@getAddComment']); //so users not logged in get redirected
+    ['middleware' => 'auth', 'uses' => 'ForumController@getAddComment']); //so users not logged in get redirected
 Route::get('/forum-add-comment-reply/{comment_id}',
-    ['as' => 'forum-add-comment-reply', 'middleware' => 'auth', 'uses' => 'ForumController@getAddCommentReply']); //so users not logged in get redirected
+    ['middleware' => 'auth', 'uses' => 'ForumController@getAddCommentReply']); //so users not logged in get redirected
 Route::post('/forum-add-comment/{discussion_slug}',
-    ['as' => 'forum-add-comment', 'middleware' => 'auth', 'uses' => 'ForumController@postAddComment']);
+    ['middleware' => 'auth', 'uses' => 'ForumController@postAddComment']);
 Route::post('/forum-add-comment-reply/{comment_id}',
-    ['as' => 'forum-add-comment-reply', 'middleware' => 'auth', 'uses' => 'ForumController@postAddCommentReply']);
+    ['middleware' => 'auth', 'uses' => 'ForumController@postAddCommentReply']);
 
 Route::get('/forum/{discussion_slug}',
-    ['as' => 'forum', 'uses' => 'ForumController@getDiscussion']);
+    ['uses' => 'ForumController@getDiscussion']);
 
 Route::bind('discussion_slug', function($value, $route) {
     $game = App\Discussion::whereSlug($value)->first();
@@ -130,7 +130,7 @@ Route::bind('discussion_slug', function($value, $route) {
 });
 
 Route::get('/leaderboards',
-    ['as' => 'leaderboards', 'uses' => 'HomeController@getLeaderboard']);
+    ['uses' => 'HomeController@getLeaderboard']);
 
 Route::bind('game_slug', function($value, $route) {
     $game = App\Game::whereSlug($value)->first();
@@ -149,7 +149,7 @@ Route::bind('comment_id', function($value, $route) {
 });
 
 Route::get('/contact-us',
-    ['as' => '/contact-us', 'uses' => 'HomeController@getContactUs']);
+    ['uses' => 'HomeController@getContactUs']);
 Route::post('/contact-us',
     ['uses' => 'HomeController@postContactUs']);
 
