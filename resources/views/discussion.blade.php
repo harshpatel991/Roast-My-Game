@@ -28,7 +28,7 @@
                                     @include('partials.comment_view', ['comment' => $comment, 'submitReplyPath' => '/forum-add-comment-reply'])
                                 @endforeach
                                 <hr>
-                                @include('partials.forum_comment_form', ['action' => url('/forum-add-comment/'.$discussion->slug)])
+                                @include('partials.forum_comment_form', ['action' => '/forum-add-comment/'.$discussion->slug])
                             </div>
                         </div>
 

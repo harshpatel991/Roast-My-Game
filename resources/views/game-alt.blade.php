@@ -181,7 +181,7 @@
                                 @endif
 
                                 <h6 class="subheading subheading-color">Roast Em</h6>
-                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
+                                @include('partials.comment_form', ['action' => '/add-comment/'.$game->slug])
 
                             </div>
                         </div>
