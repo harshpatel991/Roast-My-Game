@@ -41,6 +41,10 @@
                                     {!! Form::select('platform', App\Game::$platformDropDown, $oldPlatform, ['class' => 'form-control']) !!}
                                 </div>
 
+                                <div class="form-group">
+                                    {!! Form::select('order', ['' => 'Select Ordering', 'views' => 'Popular', 'created_at' => 'Recent'], $oldOrder, ['class' => 'form-control']) !!}
+                                </div>
+
                                 <button class="btn btn-sm btn-block btn-primary" id="submit-search" type="submit">Search</button>
                             {!! Form::close() !!}
                         </div>
