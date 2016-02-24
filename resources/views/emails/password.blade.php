@@ -122,7 +122,7 @@
                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
                                                                             <div style="color:#333333;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
                                                                                 <div style="font-size: 14px; line-height: 16px;color: #333333;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left;line-height: 17px"><span style="font-size:14px; line-height:16px;font-family:'lucida sans unicode', 'lucida grande', sans-serifpx;">
-                                                                                        Click here to reset your password: {{ url('password/reset/'.$token) }}
+                                                                                        Click here to reset your password: {{ secure_url('password/reset/'.$token) }}
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -137,7 +137,7 @@
                                                                             <div style="color:#333333;line-height:200%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
                                                                                 <div style="font-size: 12px; line-height: 24px;color: #333333;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left;line-height: 24px"><span style="font-size:14px; line-height:16px;font-family:'lucida sans unicode', 'lucida grande', sans-serifpx;">
                                                                                         -The {{Config::get('app.name')}} Team <br>
-                                                                                        {{ URL::to('/') }}
+                                                                                        {{ secure_url('/') }}
                                                                                     </span>&nbsp;<br></div>
                                                                             </div>
                                                                         </td>

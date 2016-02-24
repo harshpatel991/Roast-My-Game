@@ -25,7 +25,7 @@
                                 <h6 style="margin-top: 0px;">Ask your followers to help roast your game</h6>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                        <input class="form-control placeholder-dark" type="text" placeholder="{{$helpMessage = Utils::random_roast_message()}}" readonly="readonly">
+                                        <input class="form-control placeholder-dark" type="text" placeholder="{{$helpMessage = Utils::random_roast_message($game)}}" readonly="readonly">
                                     </div>
                                     <div class="col-sm-2">
                                         <a href="https://twitter.com/intent/tweet?text={{urlencode($helpMessage)}}" class="btn btn-info btn-block" target="_blank"><span class="icon-twitter"></span> Tweet</a>
@@ -42,7 +42,7 @@
 
                                             @if(!empty($video_thumbnail))
                                                 <iframe id="ytplayer" type="text/html"
-                                                        src="http://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
+                                                        src="https://www.youtube.com/embed/{{$video_thumbnail}}?modestbranding=1&rel=0&showinfo=0&color=white"
                                                         frameborder="0"></iframe>
                                             @endif
                                         </div>
@@ -54,7 +54,7 @@
                                         @if(!empty($video_thumbnail))
                                             <div class="col-sm-12 col-xs-2" style="margin-bottom: 6px; padding-right:1px;">
                                                 <div class="embed-responsive embed-responsive-16by9 position-relative">
-                                                    <img class="embed-responsive-item" src="http://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
+                                                    <img class="embed-responsive-item" src="https://img.youtube.com/vi/{{$video_thumbnail}}/mqdefault.jpg"/>
                                                     <div class="overlay-thumbnail"></div>
                                                     <div class="overlay-play" onclick="selectVideo()"></div>
                                                 </div>
@@ -81,7 +81,7 @@
                         <div class="col-sm-6">
                             <div class="text-content-padding">
 
-                                <a href="/games/{{$game->genre}}" class="label label-default">{{strtoupper($game->genre)}}</a>
+                                <a href="{{ secure_url('/games/'.$game->genre) }}" class="label label-default">{{strtoupper($game->genre)}}</a>
                                 @if($currentVersion->beta)
                                     <div class="label label-default">BETA</div>
                                 @endif
@@ -96,7 +96,7 @@
                                     <button type="button" class="btn btn-transparent-silver dropdown-toggle" data-toggle="dropdown" id="version-dropdown">Version {{$currentVersion->version}}<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         @foreach($versions as $version)
-                                            <li><a href="/game/{{$game->slug}}/{{$version->slug}}" id="version-{{$version->slug}}">Version {{$version->version}}</a></li>
+                                            <li><a href="{{ secure_url('/game/'.$game->slug.'/'.$version->slug) }}" id="version-{{$version->slug}}">Version {{$version->version}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -117,7 +117,7 @@
                     <div class="row">
                         <div class="col-sm-9">
                             <h3 class="game-title">{{$game->title}}</h3>
-                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="/profile/{{$game->user->username}}">{{$game->user->username}}</a></p>
+                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="{{ secure_url('/profile/'.$game->user->username) }}">{{$game->user->username}}</a></p>
                         </div>
                         <div class="col-sm-3">
                             @if(count($platform_Icon_Name_Link) > 0)
@@ -181,7 +181,7 @@
                                 @endif
 
                                 <h6 class="subheading subheading-color">Roast Em</h6>
-                                @include('partials.comment_form', ['action' => url('/add-comment/'.$game->slug)])
+                                @include('partials.comment_form', ['action' => secure_url('/add-comment/'.$game->slug)])
 
                             </div>
                         </div>
@@ -209,7 +209,7 @@
                                     <hr>
                                     <div style="margin-bottom: 5px;">
                                         <a href="https://twitter.com/intent/tweet?url={{Request::url()}}&text=Roast my game"><img src="/images/twitter.png" class="social-media-icons"></a>
-                                        <a href="http://www.facebook.com/sharer/sharer.php?u={{Request::url()}}"><img src="/images/facebook.png" class="social-media-icons"></a>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}"><img src="/images/facebook.png" class="social-media-icons"></a>
                                         <a href="https://plus.google.com/share?url={{Request::url()}}"><img src="/images/google-plus.png" class="social-media-icons"></a>
                                     </div>
                                 </div>

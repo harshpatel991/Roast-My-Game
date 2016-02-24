@@ -21,14 +21,14 @@
                         <div class="col-sm-10"> {{--Left content--}}
                             <div class="text-content-padding">
                                 <h4 class="game-title">{{$discussion->title}}</h4>
-                                <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$discussion->created_at->diffForHumans()}} by <a href="/profile/{{$discussion->user->username}}">{{$discussion->user->username}}</a></p>
+                                <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$discussion->created_at->diffForHumans()}} by <a href="{{ secure_url('/profile/'.$discussion->user->username) }}">{{$discussion->user->username}}</a></p>
                                 <p class="small-grey-box">{{$discussion->content}}</p>
                                 <div class="label label-default"><span class="icon-eye"></span>{{$discussion->views}}</div>
                                 @foreach($comments as $comment)
                                     @include('partials.comment_view', ['comment' => $comment, 'submitReplyPath' => '/forum-add-comment-reply'])
                                 @endforeach
                                 <hr>
-                                @include('partials.forum_comment_form', ['action' => url('/forum-add-comment/'.$discussion->slug)])
+                                @include('partials.forum_comment_form', ['action' => secure_url('/forum-add-comment/'.$discussion->slug)])
                             </div>
                         </div>
 

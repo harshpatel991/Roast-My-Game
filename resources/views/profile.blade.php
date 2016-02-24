@@ -46,14 +46,14 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <a href="/game/{{$game->slug}}">
+                                        <a href="{{ secure_url('/game/'.$game->slug) }}">
                                             <div class="embed-responsive-item card-image-cover" style="background-image: url('{{Utils::get_image_url($game->slug.'/'.$game->thumbnail)}}');"> </div>
                                         </a>
                                     </div>
                                 </div>
 
                                 <div class="@if($isTheLoggedInUser) col-sm-6 @else col-sm-9 @endif">
-                                    <a href="/game/{{$game->slug}}"><h6 class="list-group-item-heading card-title">{{$game->title}}</h6></a>
+                                    <a href="{{ secure_url('/game/'.$game->slug) }}"><h6 class="list-group-item-heading card-title">{{$game->title}}</h6></a>
 
                                     <div class="label label-default" style="margin-right: 5px;"><span class="icon-eye"></span> {{$game->views}} </div>
                                     <div class="label label-default"><span class="icon-heart"></span> {{$game->likes}} </div>
@@ -62,9 +62,9 @@
 
                                 @if($isTheLoggedInUser)
                                     <div class="col-sm-3">
-                                        <a class="btn btn-info-outline pull-right btn-block" href="/add-version/{{$game->slug}}"><span class="icon-plus"></span> Add Progress</a>
-                                        <a class="btn btn-info-outline pull-right btn-block" href="/edit-game/{{$game->slug}}/{{$game->versions->first()->slug}}" id="edit-{{$game->slug}}"><span class="icon-pencil"></span> Edit Game</a>
-                                        <a class="btn btn-warning-outline pull-right btn-block" href="/promote/{{$game->slug}}" id="promote-{{$game->slug}}"><span class="icon-star"></span> Promote</a>
+                                        <a class="btn btn-info-outline pull-right btn-block" href="{{ secure_url('/add-version/'.$game->slug) }}"><span class="icon-plus"></span> Add Progress</a>
+                                        <a class="btn btn-info-outline pull-right btn-block" href="{{ secure_url('/edit-game/'.$game->slug.'/'.$game->versions->first()->slug) }}" id="edit-{{$game->slug}}"><span class="icon-pencil"></span> Edit Game</a>
+                                        <a class="btn btn-warning-outline pull-right btn-block" href="{{ secure_url('/promote/'.$game->slug) }}" id="promote-{{$game->slug}}"><span class="icon-star"></span> Promote</a>
                                     </div>
                                 @endif
                                 
@@ -89,9 +89,9 @@
                                     <p>{!! str_replace( "\n", '<br />', clean($comment->body)) !!}</p>
                                     <small><span class="icon-clock"></span> {{ $comment->created_at->diffForHumans() }}
                                         @if($comment->my_commentable_type == 'Game')
-                                            <a href="/game/{{App\Game::where('id', $comment->commentable_id)->first()->slug}}"><span class="icon-link-ext-alt small"></span></a>
+                                            <a href="{{ secure_url('/game/'.App\Game::where('id', $comment->commentable_id)->first()->slug) }}"><span class="icon-link-ext-alt small"></span></a>
                                         @elseif($comment->my_commentable_type == 'Discussion')
-                                            <a href="/forum/{{App\Discussion::where('id', $comment->commentable_id)->first()->slug}}"><span class="icon-link-ext-alt small"></span></a>
+                                            <a href="{{ secure_url('/forum/'. App\Discussion::where('id', $comment->commentable_id)->first()->slug) }}"><span class="icon-link-ext-alt small"></span></a>
                                         @endif
                                     </small>
 
@@ -106,7 +106,7 @@
                     <h6 class="subheading subheading-color">Liked</h6>
                     @if(count($likes) > 0)
                         @foreach($likes as $like)
-                            <p><a href="/game/{{$like->game->slug}}">{{ $like->game->title }}</a></p>
+                            <p><a href="{{ secure_url('/game/'.$like->game->slug) }}">{{ $like->game->title }}</a></p>
                         @endforeach
                     @else
                         <h4 class="text-center"><div class="font-light-gray">No likes here</div></h4>

@@ -22,7 +22,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
 
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact-us') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ secure_url('/contact-us') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">

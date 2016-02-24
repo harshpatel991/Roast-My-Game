@@ -17,7 +17,7 @@
 
                     <h4>Settings</h4>
                     <h6 class="subheading subheading-color">Profile Image</h6>
-                    {!! Form::open(array('url' => '/settings/save-profile-image', 'class'=>'form-horizontal', 'files'=> true)) !!}
+                    {!! Form::open(array('url' => secure_url('/settings/save-profile-image'), 'class'=>'form-horizontal', 'files'=> true)) !!}
                         <div class="row">
                             <div class="col-md-offset-3 col-md-2 col-sm-3 col-sm-offset-2 col-xs-3">
                                 <div class="embed-responsive embed-responsive-1by1">
@@ -35,7 +35,7 @@
                     {!! Form::close() !!}
                     <hr>
                     <h6 class="subheading subheading-color">Change Password</h6>
-                    {!! Form::open(array('url' => '/settings/save-password-change', 'class'=>'form-horizontal')) !!}
+                    {!! Form::open(array('url' => secure_url('/settings/save-password-change'), 'class'=>'form-horizontal')) !!}
                         <div class="form-group">
                             {!! Form::label('current-password', 'Current Password', ['class' => 'col-sm-3 form-label']) !!}
                             <div class="col-sm-6">
@@ -65,7 +65,7 @@
                     {!! Form::close() !!}
                     <hr>
                     <h6 class="subheading subheading-color">Email Settings</h6>
-                    {!! Form::open(array('url' => '/settings/save-email-change', 'class'=>'form-horizontal')) !!}
+                    {!! Form::open(array('url' => secure_url('/settings/save-email-change'), 'class'=>'form-horizontal')) !!}
                         <div class="form-group">
                             {!! Form::label('mail_roasts', 'Roasts to my game', ['class' => 'col-sm-6 form-label']) !!}
                             <div class="col-xs-1">

@@ -23,7 +23,7 @@ proddeploy() {
       git commit -m "Release $tag" public/css/app.css
       git tag -a "$tag" -m "$tag"
       echo "---Deploying"
-      eb deploy rmg-prod
+      eb deploy rmg-env-east
   else
     echo "---Deploy canceled"
   fi
@@ -43,7 +43,7 @@ backupremotedb() {
 #  echo "User: rmg_ec2_user. Enter DB password..."
 #  read dbpassword
   dt_now=$(date '+%d_%m_%Y__%H_%M_%S');
-  \mysqldump --single-transaction --user=rmg_ec2_user -p$RMG_EC2_USER_PASS --host=rmg2.cwqtmomh10su.us-west-2.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
+  \mysqldump --single-transaction --user=rmg_ec2_user -p$RMG_EC2_USER_PASS --host=rmg-east.cdxi2trrcudp.us-east-1.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
   echo "Completed"
   echo "Copy dump to local DB? [y/n]"
   read continue
@@ -78,7 +78,7 @@ runtests() {
 
 prodlogs() {
     printf "${RED}------------Get Latest Production Logs------------${NC}\n"
-    ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod`].PublicIpAddress' --output text)
+    ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod-east`].PublicIpAddress' --output text)
     echo "Logging into ${ec2instanceIP}"
     ssh ec2-user@"${ec2instanceIP}" 'cat /var/app/current/storage/logs/laravel.log;'
 
@@ -126,6 +126,19 @@ exit
 
 #cd /etc/apache2/sites-available
 #sudo vi myapp.conf
+
+#    Listen 443
+#    <VirtualHost *:443>
+#    ServerName myapp.localhost.com
+#    SSLEngine on
+#    SSLCertificateFile "/home/vagrant/Code/clickr/public/myapp.localhost.com.cert"
+#    SSLCertificateKeyFile "/home/vagrant/Code/clickr/public/myapp.localhost.com.key"
+#    DocumentRoot "/home/vagrant/Code/clickr/public"
+#        <Directory "/home/vagrant/Code/clickr/public">
+#            AllowOverride all
+#            Require all granted
+#        </Directory>
+#    </VirtualHost>
 #    <VirtualHost *:80>
 #        ServerName myapp.localhost.com
 #        DocumentRoot "/home/vagrant/Code/clickr/public"
@@ -135,6 +148,7 @@ exit
 #        </Directory>
 #    </VirtualHost>
 #
+
 #cd ../sites-enabled
 #sudo ln -s ../sites-available/myapp.conf
 #sudo service apache2 restart
@@ -153,4 +167,25 @@ exit
 #sudo a2enmod rewrite
 #sudo a2enmod expires
 #sudo a2enmod headers
+#sudo a2enmod ssl
+
+# sudo vim /etc/apache2/ports.conf
+# ------ comment out
+#   #<IfModule ssl_module>
+#       #Listen 443
+#   #</IfModule>
+
 #sudo service apache2 restart
+#openssl req -nodes -new -x509 -keyout /home/vagrant/Code/clickr/public/myapp.localhost.com.key -out /home/vagrant/Code/clickr/public/myapp.localhost.com.cert -subj "/C=US/ST=NY/L=NYC/O=Dis/CN=www.example.com"
+
+#apt-get install php5-curl
+#sudo apt-get install php5-gd
+#sudo service apache2 restart
+
+
+
+# --- Setting up a new ec2 instance for storing sessions ---
+#----------------------------------------------------------
+# cd /var/app/current/storage/../../
+# sudo mkdir storage
+# sudo chown -R webapp:webapp sessions/

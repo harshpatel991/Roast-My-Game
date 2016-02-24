@@ -221,7 +221,7 @@ class UserCest
         $I->attachFile('profile_image', 'test-profile.png');
         $I->click('#save-profile');
 
-        $I->seeInSource('http://s3-us-west-2.amazonaws.com/rmg-upload/profile-images/user1.jpg');
+        $I->seeInSource('https://s3-us-west-2.amazonaws.com/rmg-upload/profile-images/user1.jpg');
         $I->seeInDatabase('users', array('username' => 'user1', 'profile_image' => 'user1.jpg'));
     }
 

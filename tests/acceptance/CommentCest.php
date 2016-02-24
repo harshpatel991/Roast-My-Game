@@ -79,9 +79,9 @@ class CommentCest
 
         //verify email
         $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-game-1");
         $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user1@gmail.com", "https://clickr.app/game/test-game-1");
         $I->seeEmailCount(2);
     }
 
@@ -141,9 +141,9 @@ class CommentCest
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a another sample comment. This is a sample comment.'));
 
         $I->seeInLastEmailTo("support@roastmygame.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-game-1");
         $I->seeInLastEmailTo("user1@gmail.com", "Someone has roasted Test Game 1");
-        $I->seeInLastEmailTo("user1@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user1@gmail.com", "https://clickr.app/game/test-game-1");
         $I->seeEmailCount(2);
     }
 
@@ -250,9 +250,9 @@ class CommentCest
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
 
         $I->seeInLastEmailTo("support@roastmygame.com", "Someone has replied to your comment. View it by clicking the link below.");
-        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-game-1");
         $I->seeInLastEmailTo("user2@gmail.com", "Someone has replied to your comment. View it by clicking the link below.");
-        $I->seeInLastEmailTo("user2@gmail.com", "http://clickr.app/game/test-game-1");
+        $I->seeInLastEmailTo("user2@gmail.com", "https://clickr.app/game/test-game-1");
         $I->seeEmailCount(4);
 
         $I->amOnPage('/profile/user3');

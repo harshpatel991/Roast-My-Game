@@ -20,7 +20,7 @@
 
                     <p>Enter your email below. A link allowing you to reset your password will be emailed to you.</p>
 
-                    {!! Form::open(array('url' => '/password/email', 'class'=>'form-horizontal')) !!}
+                    {!! Form::open(array('url' => secure_url('/password/email'), 'class'=>'form-horizontal')) !!}
                         <div class="form-group">
                             {!! Form::label('email', 'Email', ['class' => 'col-sm-3 control-label form-label']) !!}
                             <div class="col-sm-6">
@@ -45,9 +45,4 @@
     <div class="col-md-8 col-md-offset-2">
         @include('partials.footer')
     </div>
-@endsection
-
-@section('scripts')
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\StoreGameRequest') !!}
 @endsection

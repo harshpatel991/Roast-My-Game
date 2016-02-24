@@ -23,7 +23,7 @@
                             <h6 class="subheading-2 subheading-color">Most Points</h6>
                             @foreach($mostRoastingUsers as $index=>$user)
 
-                                <a href="/profile/{{$user->username}}" class="link-block">
+                                <a href="{{ secure_url('/profile/'.$user->username) }}" class="link-block">
                                     <div class="row">
                                         <div class="col-xs-3">
                                             <div class="embed-responsive embed-responsive-1by1">
@@ -51,7 +51,7 @@
 
                             @foreach($mostRoastedGames as $index=>$game)
 
-                                <a href="/game/{{$game->slug}}" class="link-block">
+                                <a href="{{ secure_url('/game/'.$game->slug) }}" class="link-block">
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="embed-responsive embed-responsive-16by9">

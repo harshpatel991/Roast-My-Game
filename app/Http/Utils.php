@@ -14,7 +14,7 @@ class Utils
     public static function get_image_url($fileLocation)
     {
 //        return '/upload/'.$fileName; //local image path
-        return 'http://s3-us-west-2.amazonaws.com/rmg-upload/'.$fileLocation;
+        return 'https://s3-us-west-2.amazonaws.com/rmg-upload/'.$fileLocation;
     }
 
     public static function preg_grep_keys($pattern, $input, $flags = 0)
@@ -121,10 +121,10 @@ class Utils
         return $potentialSlug;
     }
 
-    public static function random_roast_message() {
+    public static function random_roast_message($game) {
         $messages = ["Help roast my game: ", "Come at me! Roast my game: ", "Turn up the heat! Roast my game: "];
 
-        return $messages[array_rand($messages)] . Request::url() . " #gamedev";
+        return $messages[array_rand($messages)] . secure_url('/game/'.$game->slug) . " #gamedev";
     }
 
 }

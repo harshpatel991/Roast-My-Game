@@ -22,12 +22,12 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="white-background-box">
-                            <a href="/games/" class="btn btn-sm btn-block btn-info">All Games</a>
+                            <a href="{{ secure_url('/games/') }}" class="btn btn-sm btn-block btn-info">All Games</a>
                             <hr>
-                            <a href="/games?roasted=false" class="btn btn-sm btn-block btn-info">Not Yet Roasted</a>
+                            <a href="{{ secure_url('/games?roasted=false') }}" class="btn btn-sm btn-block btn-info">Not Yet Roasted</a>
                             <hr>
 
-                            {!! Form::open(array('url' => '/games', 'class'=>'form-horizontal', 'id' => 'search-game-form', 'method' => 'GET')) !!}
+                            {!! Form::open(array('url' => secure_url('/games'), 'class'=>'form-horizontal', 'id' => 'search-game-form', 'method' => 'GET')) !!}
                                 <div class="small subheading-color" style="font-weight: bold;">SEARCH</div>
                                 <div class="form-group">
                                     {!! Form::text('query', $oldQuery, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
@@ -63,11 +63,28 @@
         </div>
 
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 small" style="margin-top: 30px;"><a href="/privacy-policy">
-                    Privacy Policy</a> · <a href="/terms-conditions">Terms and Conditions</a>
-                <span class="pull-right">2016 · {{Config::get('app.name')}} · <a href="/about">About</a> · <a href="/contact-us">Contact</a></span>
+            <hr>
+            <div class="col-md-10 col-md-offset-1 small">
+                <div class="pull-right">
+                    <a href="{{ secure_url('/about') }}">About</a> · <a href="{{ secure_url('/contact-us') }}">Contact</a>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 small">
+                <div class="pull-right">
+                    <a href="https://roastmygame.blogspot.com">Dev Blog</a> · <a href="https://twitter.com/RoastMyGame">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 small">
+                <div class="pull-right">
+                    <a href="{{ secure_url('/privacy-policy') }}">Privacy Policy</a> · <a href="{{ secure_url('/terms-conditions') }}">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 @endsection

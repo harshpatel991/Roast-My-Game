@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="http://roastmygame.com/images/favicon.png" />
+    <link rel="canonical" href="{{ secure_url(Request::path()) }}" />
+    <link rel="icon" type="image/png" href="https://roastmygame.com/images/favicon.png" />
     <title>@yield('page-title')</title>
     <meta name="description" content="@yield('page-description')">
 
@@ -15,7 +16,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 

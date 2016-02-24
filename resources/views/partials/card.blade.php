@@ -1,6 +1,6 @@
 @if(isset($game))
     <div class="col-sm-3">
-        <a href="/game/{{$game->slug}}" class="card-wrapper-link">
+        <a href="{{ secure_url('/game/'.$game->slug) }}" class="card-wrapper-link">
             <div class="white-background-box">
 
                 <div class="embed-responsive embed-responsive-16by9" >

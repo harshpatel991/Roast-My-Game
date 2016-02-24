@@ -16,7 +16,7 @@
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('url' => '/add-version/'.$game->slug, 'class'=>'form-horizontal', 'files'=>true, 'id'=>'add-version-form')) !!}
+                    {!! Form::open(array('url' => secure_url('/add-version/'.$game->slug), 'class'=>'form-horizontal', 'files'=>true, 'id'=>'add-version-form')) !!}
 
                         @include('partials.version-form')
 
@@ -39,7 +39,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
 
     <script>
         tinymce.init({
@@ -75,7 +75,7 @@
         });
     </script>
 
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    <script type="text/javascript" src="/vendor/jsvalidation/js/jsvalidation.js"></script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreVersionRequest', '#add-version-form') !!}
 
     <script>

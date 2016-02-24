@@ -16,7 +16,7 @@
                     <br>
                     <h3 class="text-center">You're almost there! Check your inbox</h3>
                     <b><p class="text-center">A verification link has been sent to {{$email}}.</p></b>
-                    <img src="/images/email-icon.png" width="130" height="130" class="center-block">
+                    <img src="{{ secure_url('/images/email-icon.png') }}" width="130" height="130" class="center-block">
                     <br>
 
                     <h6 class="text-center">
@@ -24,7 +24,7 @@
                     </h6>
                     <div class="row">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <a href="/games/not-yet-roasted" class="btn btn-info navbar-btn btn-lg btn-block" id="next_game">Not Yet Roasted Games <span class="icon-right-circled"></span></a>
+                            <a href="{{ secure_url('/games/not-yet-roasted') }}" class="btn btn-info navbar-btn btn-lg btn-block" id="next_game">Not Yet Roasted Games <span class="icon-right-circled"></span></a>
                         </div>
                     </div>
                     <br>
