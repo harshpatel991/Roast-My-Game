@@ -29,8 +29,8 @@
                     <div class="col-sm-6">
                         <h6 class="small" style="padding: 5px; margin-bottom: 0px;">POPULAR</h6>
                     </div>
-                    <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
-                        <a href="{{ secure_url('/games') }}" class="btn btn-sm btn-info-outline  btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                    <div class="col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-3">
+                        <a href="{{ secure_url('/games?query=&genre=&platform=&order=views') }}" class="btn btn-sm btn-info  btn-block hidden-xs" style="margin-top: 20px;">More Popular Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
@@ -49,8 +49,18 @@
                 </div>
 
                 <div class="row">
+                    @include('partials/card', ['game' => $popularGames->get(8)])
+                    @include('partials/card', ['game' => $popularGames->get(9)])
+                    @include('partials/card', ['game' => $popularGames->get(10)])
+                    @include('partials/card', ['game' => $popularGames->get(11)])
+                </div>
+
+                <div class="row">
                     <div class="col-sm-6">
                         <h6 class="small" style="padding: 5px; margin-bottom: 0px;">RECENTLY UPDATED</h6>
+                    </div>
+                    <div class="col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-3">
+                        <a href="{{ secure_url('/games?query=&genre=&platform=&order=created_at') }}" class="btn btn-sm btn-info  btn-block hidden-xs" style="margin-top: 20px;">More Recent Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
@@ -66,6 +76,13 @@
                     @include('partials/card', ['game' => $games->get(5)])
                     @include('partials/card', ['game' => $games->get(6)])
                     @include('partials/card', ['game' => $games->get(7)])
+                </div>
+
+                <div class="row">
+                    @include('partials/card', ['game' => $games->get(8)])
+                    @include('partials/card', ['game' => $games->get(9)])
+                    @include('partials/card', ['game' => $games->get(10)])
+                    @include('partials/card', ['game' => $games->get(11)])
                 </div>
 
                 <div class= "row">

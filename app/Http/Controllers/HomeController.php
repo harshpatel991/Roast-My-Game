@@ -23,12 +23,12 @@ class HomeController extends Controller
             ->with(['versions' => function($query) {
                 $query->orderBy('created_at', 'desc');
             }])
-            ->take(8)
+            ->take(12)
             ->get();
 
         $versions = Version::orderBy('created_at', 'desc')
             ->select('game_id')
-            ->take(12)
+            ->take(16)
             ->with(['game.versions' => function($query) {
                     $query->orderBy('created_at', 'desc');
             }])
@@ -48,7 +48,14 @@ class HomeController extends Controller
         $oldQuery = '';
         $oldGenre = '';
         $oldPlatform = '';
-        $gamesQuery = Game::orderBy('created_at', 'desc');
+        $oldOrder = '';
+
+        if($request->has('order')) {
+            $oldOrder = $request->get('order');
+            $gamesQuery = Game::orderBy($oldOrder, 'desc');
+        } else { //default ordering
+            $gamesQuery = Game::orderBy('created_at', 'desc');
+        }
 
         if($request->has('query')) {
             $gamesQuery->where('title', 'LIKE', '%'.$request->get('query').'%');
@@ -74,7 +81,7 @@ class HomeController extends Controller
         }
         $games = $gamesQuery->get();
 
-        return view('games', compact('games', 'pageTitle', 'oldQuery', 'oldGenre', 'oldPlatform'));
+        return view('games', compact('games', 'pageTitle', 'oldQuery', 'oldGenre', 'oldPlatform', 'oldOrder'));
     }
 
     public function getLeaderboard(Request $request) {
