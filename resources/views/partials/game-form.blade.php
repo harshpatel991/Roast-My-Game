@@ -13,7 +13,7 @@
         {!! Form::label('thumbnail', 'Thumbnail*', ['class' => 'col-sm-2 control-label form-label']) !!}
         <div class="col-sm-6">
             <div class="embed-responsive embed-responsive-16by9">
-                <img class="embed-responsive-item" id="thumbnail-preview" src="/images/placeholder.jpg"/>
+                <img class="embed-responsive-item" id="thumbnail-preview" src="{{ secure_url('/images/placeholder.jpg') }}"/>
             </div>
             {!! Form::file('thumbnail', ['class' => 'form-control', 'accept' => 'image/*', 'id' => 'thumbnail']) !!}
         </div>

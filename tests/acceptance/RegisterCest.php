@@ -39,9 +39,9 @@ class RegisterCest
 
         //verify email
         $I->seeInLastEmailTo("support@roastmygame.com", "Confirm your email by clicking the link below.");
-        $I->seeInLastEmailTo("support@roastmygame.com", "http://clickr.app/verify/".$confirmationCode);
+        $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/verify/".$confirmationCode);
         $I->seeInLastEmailTo("new-register@gmail.com", "Confirm your email by clicking the link below.");
-        $I->seeInLastEmailTo("new-register@gmail.com", "http://clickr.app/verify/".$confirmationCode);
+        $I->seeInLastEmailTo("new-register@gmail.com", "https://clickr.app/verify/".$confirmationCode);
         $I->seeEmailCount(2);
 
         //confirm the user

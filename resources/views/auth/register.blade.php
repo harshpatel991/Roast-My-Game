@@ -17,9 +17,9 @@
                     @include('partials.display-input-error')
                     <h1 class="form-title" style="margin-bottom: 0px;">Register</h1>
 
-                    <p class="small">With an account you can add your game, roast games, and like games. <a href="/about">Learn more.</a></p>
+                    <p class="small">With an account you can add your game, roast games, and like games. <a href="{{ secure_url('/about') }}">Learn more.</a></p>
 
-                    {!! Form::open(array('url' => '/auth/register', 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('url' => secure_url('/auth/register'), 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                     <div class="form-group">
                         {!! Form::label('username', 'Username', ['class' => 'col-sm-3 control-label form-label']) !!}
@@ -58,7 +58,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <p class="small">Already have an account? <a href="/auth/login">Login</a></p>
+                            <p class="small">Already have an account? <a href="{{ secure_url('/auth/login') }}">Login</a></p>
                         </div>
                     </div>
 
@@ -77,10 +77,4 @@
     <div class="col-md-8 col-md-offset-2">
         @include('partials.footer')
     </div>
-@endsection
-
-@section('scripts')
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! $validator !!}
-
 @endsection

@@ -30,7 +30,7 @@
                         <h6 class="small" style="padding: 5px; margin-bottom: 0px;">POPULAR</h6>
                     </div>
                     <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3">
-                        <a href="/games" class="btn btn-sm btn-info-outline  btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                        <a href="{{ secure_url('/games') }}" class="btn btn-sm btn-info-outline  btn-block hidden-xs" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
 
                 <div class= "row">
                     <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
-                        <a href="/games" class="btn btn-sm btn-info btn-block" style="margin-top: 20px;">See All Games <span class="icon-right-circled"></span></a>
+                        <a href="{{ secure_url('/games') }}" class="btn btn-sm btn-info btn-block" style="margin-top: 20px;">See All Games <span class="icon-right-circled"></span></a>
                     </div>
                 </div>
 
@@ -81,21 +81,21 @@
             <hr>
             <div class="col-md-10 col-md-offset-1 small">
                 <div class="pull-right">
-                    <a href="/about">About</a> · <a href="/contact-us">Contact</a>
+                    <a href="{{ secure_url('/about') }}">About</a> · <a href="{{ secure_url('/contact-us') }}">Contact</a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1 small">
                 <div class="pull-right">
-                    <a href="http://roastmygame.blogspot.com">Dev Blog</a> · <a href="https://twitter.com/RoastMyGame">Twitter</a>
+                    <a href="https://roastmygame.blogspot.com">Dev Blog</a> · <a href="https://twitter.com/RoastMyGame">Twitter</a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1 small">
                 <div class="pull-right">
-                    <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-conditions">Terms and Conditions</a>
+                    <a href="{{ secure_url('/privacy-policy') }}">Privacy Policy</a> · <a href="{{ secure_url('/terms-conditions') }}">Terms and Conditions</a>
                 </div>
             </div>
         </div>

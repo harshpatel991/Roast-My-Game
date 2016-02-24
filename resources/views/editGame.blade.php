@@ -18,7 +18,7 @@
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('url' => '/edit-game/'.$game->slug.'/'.$version->slug, 'class'=>'form-horizontal', 'files'=>true, 'id' => 'edit-form')) !!}
+                    {!! Form::open(array('url' => secure_url('/edit-game/'.$game->slug.'/'.$version->slug), 'class'=>'form-horizontal', 'files'=>true, 'id' => 'edit-form')) !!}
 
                         @include('partials.game-form')
 
@@ -46,11 +46,11 @@
 
 
 @section('scripts')
-    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
     @include('partials/game-script-init')
     @include('partials/version-script-init')
 
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    <script type="text/javascript" src="/vendor/jsvalidation/js/jsvalidation.js"></script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreEditGameRequest', '#edit-form') !!}
 
     <script>

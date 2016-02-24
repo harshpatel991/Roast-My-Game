@@ -30,7 +30,7 @@ class GameCreateCest
         $I->dontSee('BETA');
         $I->dontSee('Download');
         $I->dontSee('Links');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-minimal-title/test-minimal-title-345-1.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-minimal-title/test-minimal-title-345-1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Minimal Title',
                                         'genre' => 'action',
                                         'thumbnail' => 'test-minimal-title-thumb.jpg'));
@@ -133,11 +133,11 @@ class GameCreateCest
 
         $I->see('VERSION 1');
         $I->see('BETA');
-        $I->seeInSource('http://img.youtube.com/vi/BsjuLsKAEFA/mqdefault.jpg');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-1.jpg')");
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-2.jpg')");
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-3.jpg')");
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-4.jpg')");
+        $I->seeInSource('https://img.youtube.com/vi/BsjuLsKAEFA/mqdefault.jpg');
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-1.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-2.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-3.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-full-title/test-full-title-1-4.jpg')");
 
         $I->click(['id' => 'link-tab-changes']); //open changes tab
         $I->wait(2);
@@ -195,7 +195,7 @@ class GameCreateCest
         $I->dontSee('BETA');
         $I->dontSee('Download');
         $I->dontSee('Links');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-3-1/test-game-3-1-345-1.jpg')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-3-1/test-game-3-1-345-1.jpg')");
         $I->seeInDatabase('games', array('title' => 'Test Game 3',
             'genre' => 'action',
             'slug' => 'test-game-3-1'));
@@ -270,7 +270,7 @@ class GameCreateCest
         $I->dontSee('BETA');
         $I->dontSee('Download');
         $I->dontSee('Links');
-        $I->seeInSource("selectImage('http://s3-us-west-2.amazonaws.com/rmg-upload/test-game-with-gif/test-game-with-gif-1-1.gif')");
+        $I->seeInSource("selectImage('https://s3-us-west-2.amazonaws.com/rmg-upload/test-game-with-gif/test-game-with-gif-1-1.gif')");
         $I->seeInDatabase('games', array('title' => 'Test Game With GIF',
             'genre' => 'action',
             'slug' => 'test-game-with-gif'));
