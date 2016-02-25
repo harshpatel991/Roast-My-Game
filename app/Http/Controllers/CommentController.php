@@ -38,7 +38,7 @@ class CommentController extends Controller
         $gameOwner = $game->user()->first();
         if($game->user_id != $user->id && $gameOwner->mail_roasts == true) { //check the roaster is not the game owner and game owner wants emails
             $emailAddress = $gameOwner->email;
-            Mail::queue(['emails.comment-added', 'emails.comment-added-plain-text'], ['game' => $game], function ($message) use ($emailAddress) {
+            Mail::queue(['emails.comment-added', 'emails.comment-added-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function ($message) use ($emailAddress) {
                 $message->to($emailAddress)
                     ->bcc('support@roastmygame.com', 'Support')
                     ->subject('Your Game Has Been Roasted!');
@@ -74,7 +74,7 @@ class CommentController extends Controller
         $sendToUser = User::where('id', $comment->user_id)->first();
         if($comment->user_id != $user->id  && $sendToUser->mail_comments == true) { //the commenter is not replying to themself && user wants to recieve emails
             $sendTo = $sendToUser->email;
-            Mail::queue(['emails.comment-reply-added', 'emails.comment-reply-added-plain-text'], ['game' => $game], function($message) use ($sendTo) {
+            Mail::queue(['emails.comment-reply-added', 'emails.comment-reply-added-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) use ($sendTo) {
                 $message->to($sendTo)
                     ->bcc('support@roastmygame.com', 'Support')
                     ->subject('Someone Replied to Your Comment!');

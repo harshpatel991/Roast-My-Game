@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Game;
+use Mail;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\StoreVersionRequest;
 use App\Http\Requests\StoreEditGameRequest;
@@ -126,6 +127,15 @@ class GameController extends Controller
 
         //save the user points
         $request->user()->addPointsAndSave(User::$ADD_GAME_POINTS);
+
+        //send email
+        $sendTo = $request->user()->email;
+        Mail::queue(['emails.add-game-success', 'emails.add-game-success-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) use ($sendTo) {
+            $message->to($sendTo)
+                ->bcc('support@roastmygame.com', 'Support')
+                ->subject('Your Game As Been Added');
+        });
+        Log::info('Add game success sent to: '.$sendTo);
 
         return redirect('game/'.$game->slug)->with('message', 'Your game has been added! Please consider leaving feedback for other games.');
     }
