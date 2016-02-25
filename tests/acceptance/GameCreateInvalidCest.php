@@ -29,6 +29,8 @@ class GameCreateInvalidCest
 
     public function testAddWithoutMinimumComments(\AcceptanceTester $I)
     {
+        $I->resetEmails();
+
         $I->amOnPage('/');
         $this->loginAs($I, 'user4@gmail.com', 'password4');
 
@@ -36,6 +38,8 @@ class GameCreateInvalidCest
 
         $I->see('Profile');
         $I->see('To give a chance for all games to get feedback, you must roast one game before adding your own game.');
+
+        $I->seeEmailCount(0); //check no emails sent
     }
 
     public function testCreateInvalidTitle(\AcceptanceTester $I)

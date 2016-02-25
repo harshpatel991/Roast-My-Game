@@ -13,6 +13,7 @@ class GameCreateCest
     {
         $I->wantTo('Create minimal game works');
 
+        $I->resetEmails();
         $this->loginAs($I, 'user1@gmail.com', 'password1');
 
         $I->click('Add Game');
@@ -41,11 +42,20 @@ class GameCreateCest
         $I->amOnPage('/profile/user1');
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('400 Points');
+
+        //verify email
+        $I->seeInLastEmailTo("support@roastmygame.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-minimal-title");
+        $I->seeInLastEmailTo("user1@gmail.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("user1@gmail.com", "https://clickr.app/game/test-minimal-title");
+        $I->seeEmailCount(2);
     }
 
     public function testAddAllGameValues(\AcceptanceTester $I)
     {
         $I->wantTo('Create full game works');
+
+        $I->resetEmails();
         $I->amOnPage('/auth/login');
         $I->fillField('email', 'user1@gmail.com');
         $I->fillField('password', 'password1');
@@ -174,6 +184,12 @@ class GameCreateCest
         $I->amOnPage('/profile/user1');
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('400 Points');
+
+        $I->seeInLastEmailTo("support@roastmygame.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-full-title");
+        $I->seeInLastEmailTo("user1@gmail.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("user1@gmail.com", "https://clickr.app/game/test-full-title");
+        $I->seeEmailCount(2);
     }
 
     public function testAddExistingGameTitleGame(\AcceptanceTester $I)
