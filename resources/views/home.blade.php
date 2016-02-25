@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="container-fluid background">
+    <div class="container-fluid white-background">
 
         <div class="row">
             <div class="banner-background-overlay">
@@ -55,6 +55,7 @@
                     @include('partials/card', ['game' => $popularGames->get(11)])
                 </div>
 
+                <br>
                 <div class="row">
                     <div class="col-sm-6">
                         <h6 class="small" style="padding: 5px; margin-bottom: 0px;">RECENTLY UPDATED</h6>
