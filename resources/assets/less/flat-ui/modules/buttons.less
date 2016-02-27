@@ -71,8 +71,11 @@
 .btn-info    {
   .button-variant(@btn-default-color, @brand-info, @btn-info-hover-bg, @btn-info-active-bg);
 }
+.btn-default-outline {
+  .button-variant-outline(@btn-default-color, rgba(255, 255, 255, .3), @gray-light);
+}
 .btn-info-outline {
-  .button-variant-outline(@brand-info, @btn-info-color, @gray-light);
+  .button-variant-outline(@brand-info, @brand-info, @gray-light);
 }
 .btn-success-outline {
   .button-variant-outline(@brand-success, @brand-success, @gray-light);

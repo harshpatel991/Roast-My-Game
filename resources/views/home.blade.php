@@ -55,7 +55,18 @@
                     @include('partials/card', ['game' => $popularGames->get(11)])
                 </div>
 
-                <br>
+            </div>
+        </div>
+
+        <div class="row blue-green-background-gradient hidden-xs">
+            <div class="col-md-offset-1 col-md-10">
+                <h3 style="color: #fff;">START ROASTING <a href="{{secure_url('/auth/register')}}" class="btn btn-lg btn-default-outline pull-right">SIGN UP</a></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+
                 <div class="row">
                     <div class="col-sm-6">
                         <h6 class="small" style="padding: 5px; margin-bottom: 0px;">RECENTLY UPDATED</h6>
