@@ -29,6 +29,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'owngame' => \App\Http\Middleware\OwnGameMiddleware::class
+        'owngame' => \App\Http\Middleware\OwnGameMiddleware::class,
+        'auth.admin' => \App\Http\Middleware\AuthenticateAdmin::class
     ];
 }

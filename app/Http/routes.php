@@ -153,6 +153,12 @@ Route::get('/contact-us',
 Route::post('/contact-us',
     ['uses' => 'HomeController@postContactUs']);
 
+Route::get('/screenshot-saturday',
+    ['middleware' => 'auth.admin', 'uses' => 'ScheduledEmailController@getScreenshotSaturdayEmails']);
+
+Route::get('/screenshot-saturday-send',
+    ['middleware' => 'auth.admin', 'uses' => 'ScheduledEmailController@postScreenshotSaturdayEmails']);
+
 Route::get('/about', 'HomeController@about');
 Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 Route::get('/terms-conditions', 'HomeController@termsAndConditions');
