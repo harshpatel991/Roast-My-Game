@@ -44,7 +44,7 @@
 .button-variant-outline(@color; @active-background; @disabled-background: @gray-light) {
   //  font-weight: bold;
   color: @color;
-  background-color: #fff;
+  background-color: rgba(0,0,0,0);
   border-width: 2px;
   border-style: solid;
   border-color: @color;
@@ -55,7 +55,7 @@
   &:active,
   &.active{
     color: #fff;
-    background-color: @color;
+    background-color: @active-background;
 
 
   }

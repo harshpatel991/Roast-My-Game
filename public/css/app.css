@@ -7026,9 +7026,24 @@ fieldset[disabled] .btn-info.active {
   color: #1AC3F7;
   background-color: white;
 }
+.btn-default-outline {
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+}
+.btn-default-outline:hover,
+.btn-default-outline.hover,
+.btn-default-outline:focus,
+.btn-default-outline:active,
+.btn-default-outline.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
+}
 .btn-info-outline {
   color: #1AC3F7;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
   border-width: 2px;
   border-style: solid;
   border-color: #1AC3F7;
@@ -7043,7 +7058,7 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-success-outline {
   color: #2ecc71;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
   border-width: 2px;
   border-style: solid;
   border-color: #2ecc71;
@@ -7196,7 +7211,7 @@ fieldset[disabled] .btn-warning.active {
 }
 .btn-warning-outline {
   color: #f1c40f;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
   border-width: 2px;
   border-style: solid;
   border-color: #f1c40f;
@@ -7418,7 +7433,7 @@ fieldset[disabled] .btn-dark-blue.active {
 }
 .btn-dark-blue-outline {
   color: #2E3542;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
   border-width: 2px;
   border-style: solid;
   border-color: #2E3542;
