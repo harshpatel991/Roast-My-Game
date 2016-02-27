@@ -249,9 +249,9 @@ class CommentCest
         $I->see('This is a sample reply comment. This is a sample reply comment.', '.col-sm-offset-1 .media-body');
         $I->seeInDatabase('comments', array('positive' => NULL, 'negative' => NULL, 'body' => 'This is a sample reply comment. This is a sample reply comment.'));
 
-        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has replied to your comment. View it by clicking the link below.");
+        $I->seeInLastEmailTo("support@roastmygame.com", "Someone has replied to your comment. View it by clicking the button below.");
         $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-game-1");
-        $I->seeInLastEmailTo("user2@gmail.com", "Someone has replied to your comment. View it by clicking the link below.");
+        $I->seeInLastEmailTo("user2@gmail.com", "Someone has replied to your comment. View it by clicking the button below.");
         $I->seeInLastEmailTo("user2@gmail.com", "https://clickr.app/game/test-game-1");
         $I->seeEmailCount(4);
 
