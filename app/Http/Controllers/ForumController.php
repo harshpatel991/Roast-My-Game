@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\CustomForm;
 use Log;
+use App\Http\Utils;
 use App\Discussion;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -11,14 +13,12 @@ use Slynova\Commentable\Models\Comment;
 
 class ForumController extends Controller
 {
+    use CustomForm;
+
     private static $validationRules =  ['body' => 'max: 5000|required|min: 5'];
 
-    public function getDiscussion(Request $request)
+    public function getDiscussion(Discussion $discussion, Request $request)
     {
-        $discussion = Discussion::take(1)
-            ->with('user')
-            ->first();
-
         if(!$request->session()->has($discussion->slug)) //Count a view
         {
             $request->session()->put($discussion->slug, true);
@@ -28,6 +28,30 @@ class ForumController extends Controller
 
         $comments = $discussion->comments()->get();
         return view('discussion', compact('discussion', 'comments'));
+    }
+
+    public function getDiscussions() {
+        $discussions = Discussion::all();
+        return view('discussions', compact(['discussions']));
+    }
+
+    public function getAddDiscussion() {
+        $this->addCustomFormBuilders();
+        return view('addDiscussion', compact([]));
+    }
+
+    public function postAddDiscussion(Request $request) {
+        $title = $request->get('title');
+
+        $discussion = new Discussion();
+        $discussion->user_id = $request->user()->id;
+        $discussion->slug = Utils::generate_unique_discussion_slug($title);
+        $discussion->title = $title;
+        $discussion->category = $request->category;
+        $discussion->content = $request->get('content');
+        $discussion->save();
+
+        return redirect('forum/'.$discussion->slug)->with('message', 'Discussion added!');
     }
 
     public function postAddComment(Discussion $discussion, Request $request)

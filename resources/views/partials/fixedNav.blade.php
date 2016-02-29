@@ -22,7 +22,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <form action="{{ secure_url('/forum/general-discussion') }}" style="margin-left: 10px;">
+                            <form action="{{ secure_url('/forum') }}" style="margin-left: 10px;">
                                 <button class="btn btn-light-blue navbar-btn btn-sm btn-block"><span class="icon-chat-1"></span></button>
                             </form>
                         </li>

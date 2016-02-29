@@ -16,7 +16,7 @@ class CreateDiscussionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');;
-            $table->string('title')->unique();
+            $table->string('title');
             $table->string('slug', 35)->unique();
             $table->text('content');
             $table->integer('views')->default(0);
