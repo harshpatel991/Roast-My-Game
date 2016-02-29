@@ -7,6 +7,7 @@ use App;
 use Image;
 use App\Game;
 use App\Version;
+use App\Discussion;
 use Illuminate\Support\Str;
 
 class Utils
@@ -113,6 +114,21 @@ class Utils
             $i = 1;
             $newslug = $potentialSlug . '-' . $i;
             while(Version::where('slug', $newslug)->where('game_id', $game_id)->count() >= 1){
+                $i++;
+                $newslug = $potentialSlug . '-' . $i;
+            }
+            $potentialSlug = $newslug;
+        }
+        return $potentialSlug;
+    }
+
+    public static function generate_unique_discussion_slug($title)
+    {
+        $potentialSlug = Str::slug(substr($title, 0, 33));
+        if(Discussion::where('slug', $potentialSlug)->count() >= 1){
+            $i = 1;
+            $newslug = $potentialSlug . '-' . $i;
+            while(Discussion::where('slug',$newslug)->count() >= 1){
                 $i++;
                 $newslug = $potentialSlug . '-' . $i;
             }

@@ -20,10 +20,12 @@
                     <div class="row"> {{--Main content row--}}
                         <div class="col-sm-10"> {{--Left content--}}
                             <div class="text-content-padding">
+                                <a href="{{secure_url('/forum')}}">← Back</a>
                                 <h4 class="game-title">{{$discussion->title}}</h4>
                                 <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$discussion->created_at->diffForHumans()}} by <a href="{{ secure_url('/profile/'.$discussion->user->username) }}">{{$discussion->user->username}}</a></p>
                                 <p class="small-grey-box">{{$discussion->content}}</p>
                                 <div class="label label-default"><span class="icon-eye"></span>{{$discussion->views}}</div>
+                                <div class="label label-default text-uppercase">{{\App\Discussion::$categories[$discussion->category]}}</div>
                                 @foreach($comments as $comment)
                                     @include('partials.comment_view', ['comment' => $comment, 'submitReplyPath' => '/forum-add-comment-reply'])
                                 @endforeach

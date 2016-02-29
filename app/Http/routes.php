@@ -120,12 +120,18 @@ Route::post('/forum-add-comment/{discussion_slug}',
 Route::post('/forum-add-comment-reply/{comment_id}',
     ['middleware' => 'auth', 'uses' => 'ForumController@postAddCommentReply']);
 
+Route::get('/forum',
+    ['uses' => 'ForumController@getDiscussions']);
+Route::get('/add-discussion',
+    ['middleware' => 'auth', 'uses' => 'ForumController@getAddDiscussion']);
+Route::post('/add-discussion',
+    ['middleware' => 'auth', 'uses' => 'ForumController@postAddDiscussion']);
 Route::get('/forum/{discussion_slug}',
     ['uses' => 'ForumController@getDiscussion']);
 
 Route::bind('discussion_slug', function($value, $route) {
-    $game = App\Discussion::whereSlug($value)->first();
-    if($game) return $game; //if discussion is found
+    $discussion = App\Discussion::whereSlug($value)->first();
+    if($discussion) return $discussion; //if discussion is found
     App::abort(404); //discussion not found
 });
 
