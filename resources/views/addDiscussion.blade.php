@@ -36,7 +36,7 @@
                     <div class="form-group">
                         {!! Form::label('content', 'Content*', ['class' => 'col-sm-2 control-label form-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => 6]) !!}
+                            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => 10]) !!}
                         </div>
                     </div>
 
