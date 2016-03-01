@@ -24,13 +24,13 @@ class User extends Model implements AuthenticatableContract,
     public static $LIKE_POINTS = 5;
 
     //trophy 1: 0 - 75
-    //trophy 2: 75 - 150
-    //trophy 3: 150 - +
+    //trophy 2: 75 - 350
+    //trophy 3: 350 - +
     public static $LEVEL_1 = 50;
     public static $LEVEL_2 = 75;
-    public static $LEVEL_3 = 100;
-    public static $LEVEL_4 = 150;
-    public static $LEVEL_5 = 300;
+    public static $LEVEL_3 = 150;
+    public static $LEVEL_4 = 350;
+    public static $LEVEL_5 = 650;
 
     /**
      * The database table used by the model.
