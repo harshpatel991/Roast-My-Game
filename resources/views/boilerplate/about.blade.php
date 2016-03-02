@@ -17,35 +17,40 @@
                     <h1 class="form-title">About</h1>
 
                     <h3 class="form-title">What is {{Config::get('app.name')}}?</h3>
-                    <p>{{Config::get('app.name')}} is a site created to help game developers gather feedback on games they are working on and to inspire other game developers through the sharing of development progress.</p>
-
-                    <h3 class="form-title">Who is this site for?</h3>
-                    <p>
-                        <ul>
-                            <li>Developers of unfinished games
-                                <ul>
-                                    <li>Keep track of progress</li>
-                                    <li>Get feedback on how to improve your game</li>
-                                    <li>Find inspiration from other games</li>
-                                </ul>
-                            </li>
-                            <li>Developers of finished games
-                                <ul>
-                                    <li>Get feedback on how to improve your game</li>
-                                </ul>
-                            </li>
-                            <li>Indie games enthusiasts
-                                <ul>
-                                    <li>Play games</li>
-                                    <li>See game progress</li>
-                                    <li>Engage with game creators and influence progress</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </p>
+                    <p>One of the biggest problems that a game dev faces as they create a game is gaining a sort of "mothers love" for their game. This prevents them from being able to properly determine its flaws. Friends and family members tend to sugarcoat their feedback to avoid from being discouraging but this actually harms more than it helps.
+                        <b>{{Config::get('app.name')}} is a site created to help game developers gather 'sugarfree' feedback on games they are working on and to inspire other game developers by sharing development progress.</b></p>
 
                     <h3 class="form-title">Who can post a game?</h3>
                     <p>Anyone is allowed to post their game. Current games and games that you have worked on in the past are allowed to be posted as long as you have full permission from all the developers to post the game.</p>
+
+                    <h3 class="form-title">What kind of content is allowed in a roast?</h3>
+                    <p>In popular culture, roasts are usually jokes used to point out someones flaws. Similarly, on Roast My Game, the goal is to find the flaws in games so that it can be improved. You are allowed to be 'rough' with your roast as long as it provides meaningful feedback to the dev on how and what to improve.</p>
+
+                    <h3 class="form-title">Who is this site for?</h3>
+                    <p>
+                    <ul>
+                        <li>Developers of unfinished games
+                            <ul>
+                                <li>Keep track of progress</li>
+                                <li>Get feedback on how to improve your game</li>
+                                <li>Find inspiration from other games</li>
+                            </ul>
+                        </li>
+                        <li>Developers of finished games
+                            <ul>
+                                <li>Get feedback on how to improve your game</li>
+                                <li>Promote your game in the forums</li>
+                            </ul>
+                        </li>
+                        <li>Indie games enthusiasts
+                            <ul>
+                                <li>Play games</li>
+                                <li>See game progress</li>
+                                <li>Engage with game creators and influence progress</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </p>
 
                     <h3 class="form-title">Earning Points</h3>
                     <p>
