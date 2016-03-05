@@ -31,7 +31,7 @@ class ForumController extends Controller
     }
 
     public function getDiscussions() {
-        $discussions = Discussion::all();
+        $discussions = Discussion::orderBy('created_at', 'desc')->get();
         return view('discussions', compact(['discussions']));
     }
 

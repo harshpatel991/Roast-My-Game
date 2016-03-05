@@ -33,7 +33,9 @@
 
                             @foreach($discussions as $discussion)
                                 <tr>
-                                    <td><a href="{{ secure_url('/forum/' . $discussion->slug) }}"><b>{{$discussion->title}}</b></a></td>
+                                    <td>
+                                        <a href="{{ secure_url('/forum/' . $discussion->slug) }}" @if (!session($discussion->slug))style="font-weight: bold;"@endif>{{$discussion->title}}</a>
+                                    </td>
                                     <td>by {{$discussion->user()->first()->username}}</td>
                                     <td>{{$discussion->created_at->diffForHumans()}}</td>
                                     <td><div class="label label-default"><span class="icon-eye"></span>{{$discussion->views}} </div></td>
