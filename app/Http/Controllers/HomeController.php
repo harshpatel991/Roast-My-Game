@@ -140,6 +140,6 @@ class HomeController extends Controller
                 ->subject('Contact Us');
         });
         Log::info('Contact Us: '. Input::get('email') . ' : ' . Input::get('message'));
-        return Redirect::route('/contact-us')->with('message', 'You\'re all set! We\'ll get back to you as soon as we can.');
+        return redirect('/contact-us')->with('message', 'You\'re all set! We\'ll get back to you as soon as we can.');
     }
 }
