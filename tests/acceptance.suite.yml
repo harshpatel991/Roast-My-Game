@@ -4,6 +4,11 @@
 # Perform tests in browser using the WebDriver or PhpBrowser.
 # If you need both WebDriver and PHPBrowser tests - create a separate suite.
 
+#to run chrome: java -jar selenium-server-standalone-2.52.0.jar -Dwebdriver.chrome.driver=/Users/Me/Desktop/chromedriver
+#and change below to chrome
+
+# use selenium 2.46 and FF 37.0.2
+
 class_name: AcceptanceTester
 modules:
     enabled:
