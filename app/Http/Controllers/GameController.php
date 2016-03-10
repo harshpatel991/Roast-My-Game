@@ -23,6 +23,9 @@ class GameController extends Controller
     use CustomForm;
 
     public function getGame(Game $game, Request $request, $selectedVersionSlug='latest') {
+        $isFirstTimeUser = $request->session()->has('first-time-user') ? false : true;
+        $request->session()->put('first-time-user', true);
+
         if(!$request->session()->has($game->slug)) //Count a view
         {
             $request->session()->put($game->slug, true);
@@ -79,7 +82,7 @@ class GameController extends Controller
             ->take(4)
             ->get();
 
-        return view('game-alt', compact('game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments', 'relatedGames'));
+        return view('game-alt', compact('isFirstTimeUser', 'game', 'versions', 'currentVersion', 'images', 'platform_Icon_Name_Link', 'socialLinks', 'linkIcons', 'linkTexts', 'isLiked', 'video_thumbnail', 'comments', 'relatedGames'));
     }
 
     public function getAddGame() {

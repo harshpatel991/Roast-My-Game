@@ -34,6 +34,16 @@
                             </div>
                             @endif
 
+                            @if(!Auth::check() && $isFirstTimeUser)
+                                <div class="alert alert-default alert-dismissible hidden-xs" style="color: #5F697C;">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h3 class="text-center" style="margin-top: 0px;">OH HEY THERE!</h3>
+                                    <div class="text-center" style="font-size: 20px; font-weight: 100;">
+                                        Roast My Game is a site for game devs to give and get feedback. After you're done looking around, create an account and join in!
+                                    </div>
+                                </div>
+                            @endif
+
                             <div class="row"> {{--hero row--}}
                                 <div class="col-sm-10"> {{--Hero left--}}
                                     <div class="embed-responsive embed-responsive-16by9">
@@ -177,7 +187,12 @@
                                         @include('partials.comment_view', ['comment' => $comment, 'submitReplyPath' => '/add-comment-reply'])
                                     @endforeach
                                 @else
-                                    <p>Nobody's roasted yet, be the first!</p>
+                                    @if(Auth::check() && $game->user_id === Auth::user()->id)
+                                        <p>No roasts here!</p>
+                                        <p><b>Roasting other games is a great way to get other devs to roast your game.</b></p>
+                                    @else
+                                        <p>Nobody's roasted yet, be the first!</p>
+                                    @endif
                                 @endif
 
                                 <h6 class="subheading subheading-color">Roast Em</h6>
