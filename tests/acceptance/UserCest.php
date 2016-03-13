@@ -99,9 +99,6 @@ class UserCest
 
         $I->amOnPage('/game/test-game-7');
         $I->seeInSource('<span class="icon-circle trophy-badge-silver"></span>'); //see sliver badge
-
-        $I->amOnPage('/game/test-game-5');
-        $I->seeInSource('<span class="icon-circle trophy-badge-gold"></span>'); //see gold badge
     }
 
     public function testViewTrophies(\AcceptanceTester $I)
