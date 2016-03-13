@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
 
-                                <h6 class="subheading subheading-color">Comments</h6>
+                                <h6 class="subheading subheading-color">Roasts</h6>
                                 @if($game->comments()->count() > 0)
                                     @foreach($game->comments as $comment)
                                         @include('partials.comment_view', ['comment' => $comment, 'submitReplyPath' => '/add-comment-reply'])
