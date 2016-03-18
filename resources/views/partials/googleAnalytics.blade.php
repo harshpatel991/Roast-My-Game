@@ -7,7 +7,7 @@
 
         ga('create', 'UA-71872849-1', 'auto');
         ga('send', 'pageview');
-        @if (Auth::check())ga('set', 'userId', {{Auth::user()->id}}); @endif
+        @if (Auth::check())ga('set', 'userId', '{{Auth::user()->id}}'); @endif
 
     </script>
 @endif
