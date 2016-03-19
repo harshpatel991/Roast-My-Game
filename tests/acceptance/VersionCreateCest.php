@@ -89,6 +89,7 @@ class VersionCreateCest
         $I->wait(1);
         $I->fillField('link_platform_pc', 'http://pc-full-version-version-3.com');
         $I->fillField('link_platform_mac', 'http://mac-full-version-version-3.com');
+        $I->fillField('link_platform_linux', 'http://linux-full-version-version-3.com');
         $I->fillField('link_platform_ios', 'http://ios-full-version-version-3.com');
         $I->fillField('link_platform_android', 'http://android-full-version-version-3.com');
         $I->fillField('link_platform_unity', 'http://unity-web-full-version-version-3.com');
@@ -123,6 +124,7 @@ class VersionCreateCest
         $I->see('Play with Other Web');
         $I->seeInSource('http://pc-full-version-version-3.com');
         $I->seeInSource('http://mac-full-version-version-3.com');
+        $I->seeInSource('http://linux-full-version-version-3.com');
         $I->seeInSource('http://ios-full-version-version-3.com');
         $I->seeInSource('http://android-full-version-version-3.com');
         $I->seeInSource('http://unity-web-full-version-version-3.com');
@@ -159,6 +161,7 @@ class VersionCreateCest
             'image4' => 'test-game-1-3-4.jpg',
             'link_platform_pc' => 'http://pc-full-version-version-3.com',
             'link_platform_mac' => 'http://mac-full-version-version-3.com',
+            'link_platform_linux' => 'http://linux-full-version-version-3.com',
             'link_platform_ios' => 'http://ios-full-version-version-3.com',
             'link_platform_android' => 'http://android-full-version-version-3.com',
             'link_platform_unity' => 'http://unity-web-full-version-version-3.com',

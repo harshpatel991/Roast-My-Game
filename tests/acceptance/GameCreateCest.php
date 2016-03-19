@@ -94,6 +94,7 @@ class GameCreateCest
         $I->wait(1);
         $I->fillField('link_platform_pc', 'http://pc-full-game-version-1.com');
         $I->fillField('link_platform_mac', 'http://mac-full-game-version-1.com');
+        $I->fillField('link_platform_linux', 'http://linux-full-game-version-1.com');
         $I->fillField('link_platform_ios', 'http://ios-full-game-version-1.com');
         $I->fillField('link_platform_android', 'http://android-full-game-version-1.com');
         $I->fillField('link_platform_unity', 'http://unity-web-full-game-version-1.com');
@@ -129,6 +130,7 @@ class GameCreateCest
         $I->see('Play with Other Web');
         $I->seeInSource('http://pc-full-game-version-1.com');
         $I->seeInSource('http://mac-full-game-version-1.com');
+        $I->seeInSource('http://linux-full-game-version-1.com');
         $I->seeInSource('http://ios-full-game-version-1.com');
         $I->seeInSource('http://android-full-game-version-1.com');
         $I->seeInSource('http://unity-web-full-game-version-1.com');
@@ -174,6 +176,7 @@ class GameCreateCest
             'image4' => 'test-full-title-1-4.jpg',
             'link_platform_pc' => 'http://pc-full-game-version-1.com',
             'link_platform_mac' => 'http://mac-full-game-version-1.com',
+            'link_platform_linux' => 'http://linux-full-game-version-1.com',
             'link_platform_ios' => 'http://ios-full-game-version-1.com',
             'link_platform_android' => 'http://android-full-game-version-1.com',
             'link_platform_unity' => 'http://unity-web-full-game-version-1.com',
