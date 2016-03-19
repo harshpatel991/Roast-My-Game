@@ -76,6 +76,28 @@ runtests() {
 
 }
 
+refreshseedanddump() {
+  printf "${RED}------------Refresh Seed & Dump to Test File------------${NC}\n"
+
+  currentdb="$(php artisan env:echo)"
+
+  if [ "$currentdb" != "DB Host: localhost" ]; then
+    echo "Current db is not localhost, it is $currentdb. Cancelling"
+    exit 1;
+  fi
+
+  echo "Will run seed and dump against $currentdb"
+  echo "Continue?[y/n]"
+  read continue
+  if [ "$continue" == "y" ]; then
+    php artisan migrate:refresh --seed
+    mysqldump --single-transaction --user=homestead -psecret --host=192.168.55.55 --protocol=tcp --port=3306 --default-character-set=utf8 "homestead" -r "./tests/_data/dump.sql"
+    echo "---Finished"
+  else
+    echo "---Refresh Seed Caneled"
+  fi
+}
+
 prodlogs() {
     printf "${RED}------------Get Latest Production Logs------------${NC}\n"
     ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod-east`].PublicIpAddress' --output text)
@@ -95,6 +117,7 @@ echo "2. Start Local Dev Enviroment (localdev)"
 echo "3. Backup Remote DB"
 echo "4. Run Automation Tests (runtests)"
 echo "5. Get Production Logs"
+echo "6. Refresh Seed And Dump to Test File"
 
 read command
 
@@ -108,6 +131,8 @@ elif [ $command == "runtests" ]; then
   runtests
 elif [ $command == "5" ]; then
   prodlogs
+elif [ $command == "6" ]; then
+  refreshseedanddump
 else
   echo "Invalid command"
 fi
