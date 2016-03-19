@@ -13,7 +13,8 @@
         "proengsoft/laravel-jsvalidation": "^1.2",
         "slynova/laravel-commentable": "^1.0",
         "mews/purifier": "^2.0",
-        "aws/aws-sdk-php-laravel": "~3.0"
+        "aws/aws-sdk-php-laravel": "~3.0",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
