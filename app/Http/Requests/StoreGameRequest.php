@@ -15,6 +15,7 @@ class StoreGameRequest extends Request
             'platforms' => 'max: 140',
 
             'link_social_greenlight' => 'max:255|url',
+            'link_social_kickstarter' => 'max:255|url',
             'link_social_website' => 'max:255|url',
             'link_social_twitter' => 'max:255|url',
             'link_social_youtube' => 'max:255|url',
