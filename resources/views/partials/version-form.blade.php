@@ -49,6 +49,7 @@
         </div>
         {!! Form::myInput('link_platform_pc', 'PC', '', old('link_platform_pc'), $version->link_platform_pc) !!}
         {!! Form::myInput('link_platform_mac', 'Mac', '', old('link_platform_mac'), $version->link_platform_mac) !!}
+        {!! Form::myInput('link_platform_linux', 'Linux', '', old('link_platform_linux'), $version->link_platform_linux) !!}
         {!! Form::myInput('link_platform_ios', 'iOS', '', old('link_platform_ios'), $version->link_platform_ios) !!}
         {!! Form::myInput('link_platform_android', 'Android', '', old('link_platform_android'), $version->link_platform_android) !!}
         {!! Form::myInput('link_platform_unity', 'Unity Web', '', old('link_platform_unity'), $version->link_platform_unity) !!}

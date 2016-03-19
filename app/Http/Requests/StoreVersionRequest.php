@@ -14,6 +14,7 @@ class StoreVersionRequest extends Request
         'video_link' => 'max:255|url',
         'link_platform_pc' => 'max:255|url',
         'link_platform_mac' => 'max:255|url',
+        'link_platform_linux' => 'max:255|url',
         'link_platform_ios' => 'max:255|url',
         'link_platform_android' => 'max:255|url',
         'link_platform_unity' => 'max:255|url',

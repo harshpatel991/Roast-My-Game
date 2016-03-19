@@ -26,6 +26,7 @@ class Version extends Model
 
         $version->link_platform_pc = $request->has('link_platform_pc') ? $request->link_platform_pc : null;
         $version->link_platform_mac = $request->has('link_platform_mac') ? $request->link_platform_mac : null;
+        $version->link_platform_linux = $request->has('link_platform_linux') ? $request->link_platform_linux : null;
         $version->link_platform_ios = $request->has('link_platform_ios') ? $request->link_platform_ios : null;
         $version->link_platform_android = $request->has('link_platform_android') ? $request->link_platform_android : null;
         $version->link_platform_unity = $request->has('link_platform_unity') ? $request->link_platform_unity : null;

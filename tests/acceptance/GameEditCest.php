@@ -78,6 +78,7 @@ class GameEditCest
         $I->wait(1);
         $I->fillField('link_platform_pc', 'http://pc-full-game-version-1-edited.com');
         $I->fillField('link_platform_mac', 'http://mac-full-game-version-1-edited.com');
+        $I->fillField('link_platform_linux', 'http://linux-full-game-version-1-edited.com');
         $I->fillField('link_platform_ios', 'http://ios-full-game-version-1-edited.com');
         $I->fillField('link_platform_android', 'http://android-full-game-version-1-edited.com');
         $I->fillField('link_platform_unity', 'http://unity-web-full-game-version-1-edited.com');
@@ -114,6 +115,7 @@ class GameEditCest
         $I->see('Play with Other Web');
         $I->seeInSource('http://pc-full-game-version-1-edited.com');
         $I->seeInSource('http://mac-full-game-version-1-edited.com');
+        $I->seeInSource('http://linux-full-game-version-1-edited.com');
         $I->seeInSource('http://ios-full-game-version-1-edited.com');
         $I->seeInSource('http://android-full-game-version-1-edited.com');
         $I->seeInSource('http://unity-web-full-game-version-1-edited.com');
@@ -159,6 +161,7 @@ class GameEditCest
             'image3' => 'image3.jpg',//doesn't change
             'link_platform_pc' => 'http://pc-full-game-version-1-edited.com',
             'link_platform_mac' => 'http://mac-full-game-version-1-edited.com',
+            'link_platform_linux' => 'http://linux-full-game-version-1-edited.com',
             'link_platform_ios' => 'http://ios-full-game-version-1-edited.com',
             'link_platform_android' => 'http://android-full-game-version-1-edited.com',
             'link_platform_unity' => 'http://unity-web-full-game-version-1-edited.com',
@@ -203,6 +206,7 @@ class GameEditCest
         $I->wait(1);
         $I->fillField('link_platform_pc', 'http://pc-full-game-version-1-edited.com');
         $I->fillField('link_platform_mac', 'http://mac-full-game-version-1-edited.com');
+        $I->fillField('link_platform_linux', 'http://linux-full-game-version-1-edited.com');
         $I->fillField('link_platform_ios', 'http://ios-full-game-version-1-edited.com');
         $I->fillField('link_platform_android', 'http://android-full-game-version-1-edited.com');
         $I->fillField('link_platform_unity', 'http://unity-web-full-game-version-1-edited.com');
@@ -248,6 +252,7 @@ class GameEditCest
             'image1' => 'image1.jpg',//doesn't change
             'link_platform_pc' => 'http://pc-full-game-version-1-edited.com',
             'link_platform_mac' => 'http://mac-full-game-version-1-edited.com',
+            'link_platform_linux' => 'http://linux-full-game-version-1-edited.com',
             'link_platform_ios' => 'http://ios-full-game-version-1-edited.com',
             'link_platform_android' => 'http://android-full-game-version-1-edited.com',
             'link_platform_unity' => 'http://unity-web-full-game-version-1-edited.com',
@@ -292,6 +297,7 @@ class GameEditCest
         $I->wait(1);
         $I->fillField('link_platform_pc', '');
         $I->fillField('link_platform_mac', '');
+        $I->fillField('link_platform_linux', '');
         $I->fillField('link_platform_ios', '');
         $I->fillField('link_platform_android', '');
         $I->fillField('link_platform_unity', '');
@@ -336,6 +342,7 @@ class GameEditCest
             'image4' => null,
             'link_platform_pc' => null,
             'link_platform_mac' => null,
+            'link_platform_linux' => null,
             'link_platform_ios' => null,
             'link_platform_android' => null,
             'link_platform_unity' => null,
@@ -403,6 +410,7 @@ class GameEditCest
             'image4' => null,
             'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
             'link_platform_mac' => null,
+            'link_platform_linux' => 'http://linux-game-1-version-1.2.3.com',
             'link_platform_ios' => null,
             'link_platform_android' => 'http://android-game-1-version-1.2.3.com',
             'link_platform_unity' => null,
@@ -436,15 +444,11 @@ class GameEditCest
             'video_link' => 'https://www.youtube.com/watch?v=e-ORhEE9VVg',
             'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
             'link_platform_mac' => '',
+            'link_platform_linux' => 'http://linux-game-1-version-1.2.3.com',
             'link_platform_ios' => '',
             'link_platform_android' => 'http://android-game-1-version-1.2.3.com',
             'link_platform_unity' => '',
             'link_platform_other' => 'http://other-web-game-1-version-1.2.3.com'
         ]);
     }
-
-
-
-
-
 }

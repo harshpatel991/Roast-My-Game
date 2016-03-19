@@ -121,6 +121,7 @@ class GameCreateInvalidCest
 
         $I->see('The link platform pc format is invalid.');
         $I->see('The link platform mac format is invalid.');
+        $I->see('The link platform linux format is invalid.');
         $I->see('The link platform ios format is invalid.');
         $I->see('The link platform android format is invalid.');
         $I->see('The link platform unity format is invalid.');
@@ -131,6 +132,7 @@ class GameCreateInvalidCest
 
         $I->see('The link platform pc may not be greater than 255 characters.');
         $I->see('The link platform mac may not be greater than 255 characters.');
+        $I->see('The link platform linux may not be greater than 255 characters.');
         $I->see('The link platform ios may not be greater than 255 characters.');
         $I->see('The link platform android may not be greater than 255 characters.');
         $I->see('The link platform unity may not be greater than 255 characters.');

@@ -24,12 +24,13 @@ class Game extends Model
         'strategy' => 'Strategy'
     ];
 
-    public static $platforms = ['platform_pc', 'platform_mac', 'platform_ios', 'platform_android', 'platform_unity', 'platform_other'];
+    public static $platforms = ['platform_pc', 'platform_mac', 'platform_linux', 'platform_ios', 'platform_android', 'platform_unity', 'platform_other'];
     public static $platformDropDown = //the platforms list used for searching
         [
             '' => 'Select Platform',
             'platform_pc' => 'PC',
             'platform_mac' => 'Mac',
+            'platform_linux' => 'Linux',
             'platform_ios' => 'iOS',
             'platform_android' => 'Android',
             'platform_unity' => 'Unity Web',
@@ -39,6 +40,7 @@ class Game extends Model
     public static $platformColumnToIcon = [
         'link_platform_pc'       => 'icon-windows',
         'link_platform_mac'      => 'icon-apple',
+        'link_platform_linux'    => 'icon-linux',
         'link_platform_unity'    => 'icon-unity',
         'link_platform_other'    => 'icon-html5',
         'link_platform_ios'      => 'icon-iphone-home',
@@ -48,6 +50,7 @@ class Game extends Model
     public static $platformColumnToDownloadText= [
         'link_platform_pc'       => 'Download for PC',
         'link_platform_mac'      => 'Download for Mac',
+        'link_platform_linux'    => 'Download for Linux',
         'link_platform_unity'    => 'Play with Unity Web',
         'link_platform_other'    => 'Play with Other Web',
         'link_platform_ios'      => 'Download for iOS',

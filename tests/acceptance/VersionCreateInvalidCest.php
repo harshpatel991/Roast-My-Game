@@ -1,6 +1,7 @@
 <?php
 
 use Page\Version as VersionPage;
+use Page\Game as GamePage;
 
 class VersionCreateInvalidCest
 {
@@ -92,38 +93,28 @@ class VersionCreateInvalidCest
         $I->amOnPage('/profile/user1');
         $I->click('Add Progress');
 
-        $I->fillField('version', '3.4.5');
         $I->attachFile('image1', 'image1.jpg');
 
         //test: non valid links
-        $I->click(['link' => 'Add Download Game Links']);
-        $I->wait(1);
-        $I->fillField('link_platform_pc', 'invalid-link');
-        $I->fillField('link_platform_mac', 'invalid-link');
-        $I->fillField('link_platform_ios', 'invalid-link');
-        $I->fillField('link_platform_android', 'invalid-link');
-        $I->fillField('link_platform_unity', 'invalid-link');
-        $I->fillField('link_platform_other', 'invalid-link');
+        $gamePage = new GamePage($I);
+        $gamePage->fillFormInvalidPlatformLinks();
         $I->click('Add Progress');
 
         $I->see('The link platform pc format is invalid.');
         $I->see('The link platform mac format is invalid.');
+        $I->see('The link platform linux format is invalid.');
         $I->see('The link platform ios format is invalid.');
         $I->see('The link platform android format is invalid.');
         $I->see('The link platform unity format is invalid.');
         $I->see('The link platform other format is invalid.');
 
         //test: too long links
-        $I->fillField('link_platform_pc', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
-        $I->fillField('link_platform_mac', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
-        $I->fillField('link_platform_ios', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
-        $I->fillField('link_platform_android', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
-        $I->fillField('link_platform_unity', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
-        $I->fillField('link_platform_other', 'fasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdasdffasdasdfsdfsad');
+        $gamePage->fillFormLongPlatformLinks();
         $I->click('Add Progress');
 
         $I->see('The link platform pc may not be greater than 255 characters.');
         $I->see('The link platform mac may not be greater than 255 characters.');
+        $I->see('The link platform linux may not be greater than 255 characters.');
         $I->see('The link platform ios may not be greater than 255 characters.');
         $I->see('The link platform android may not be greater than 255 characters.');
         $I->see('The link platform unity may not be greater than 255 characters.');

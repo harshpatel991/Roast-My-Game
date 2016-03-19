@@ -27,6 +27,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
                 'link_platform_mac' => null,
+                'link_platform_linux' => 'http://linux-game-1-version-1.2.3.com',
                 'link_platform_ios' => null,
                 'link_platform_android' => 'http://android-game-1-version-1.2.3.com',
                 'link_platform_unity' => null,
@@ -48,6 +49,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => 'http://pc-game-1-version-1.2.5.com',
                 'link_platform_mac' => 'http://mac-game-1-version-1.2.5.com',
+                'link_platform_linux' => 'http://linux-game-1-version-1.2.5.com',
                 'link_platform_ios' => 'http://ios-game-1-version-1.2.5.com',
                 'link_platform_android' => 'http://android-game-1-version-1.2.5.com',
                 'link_platform_unity' => 'http://unity-game-1-version-1.2.5.com',
@@ -69,6 +71,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => 'http://pc-game-1-version-1.1.1.com',
                 'link_platform_mac' => 'http://mac-game-1-version-1.1.1.com',
+                'link_platform_linux' => 'http://linux-game-1-version-1.1.1.com',
                 'link_platform_ios' => 'http://ios-game-1-version-1.1.1.com',
                 'link_platform_android' => 'http://android-game-1-version-1.1.1.com',
                 'link_platform_unity' => 'http://unity-game-1-version-1.1.1.com',
@@ -90,11 +93,11 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => 'http://pc-game-2-version-1.1.1.com',
                 'link_platform_mac' => 'http://mac-game-2-version-1.1.1.com',
+                'link_platform_linux' => 'http://linux-game-1-version-1.1.1.com',
                 'link_platform_ios' => 'http://ios-game-2-version-1.1.1.com',
                 'link_platform_android' => 'http://android-game-2-version-1.1.1.com',
                 'link_platform_unity' => 'http://unity-game-2-version-1.1.1.com',
                 'link_platform_other' => 'http://other-web-game-2-version-1.1.1.com',
-
 
                 'upcoming_features' => "Upcomming feaures 1.1.1",
                 'changes' => ''
@@ -112,6 +115,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
+                'link_platform_linux' => null,
                 'link_platform_ios' => null,
                 'link_platform_android' => 'http://android.com',
                 'link_platform_unity' => null,
@@ -133,6 +137,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
+                'link_platform_linux' => null,
                 'link_platform_ios' => null,
                 'link_platform_android' => null,
                 'link_platform_unity' => 'http://unity.com',
@@ -154,6 +159,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
+                'link_platform_linux' => null,
                 'link_platform_ios' => null,
                 'link_platform_android' => null,
                 'link_platform_unity' => null,
@@ -175,6 +181,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
+                'link_platform_linux' => null,
                 'link_platform_ios' => null,
                 'link_platform_android' => null,
                 'link_platform_unity' => null,
@@ -218,6 +225,7 @@ class VersionTableSeeder extends Seeder
 
                 'link_platform_pc' => null,
                 'link_platform_mac' => null,
+                'link_platform_linux' => null,
                 'link_platform_ios' => null,
                 'link_platform_android' => null,
                 'link_platform_unity' => null,
