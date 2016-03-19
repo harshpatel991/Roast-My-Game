@@ -125,8 +125,8 @@
 
                     <div class="row">
                         <div class="col-sm-9">
-                            <h3 class="game-title">{{$game->title}}</h3>
-                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> {{$game->created_at->diffForHumans()}} by <a href="{{ secure_url('/profile/'.$game->user->username) }}">{{$game->user->username}}</a></p>
+                            <h1 class="game-title">{{$game->title}}</h1>
+                            <p class="small subheading-color text-uppercase" style="margin-bottom: 0px"><span class="fui-time"></span> <time>{{$game->created_at->diffForHumans()}}</time> by <a href="{{ secure_url('/profile/'.$game->user->username) }}" rel="author">{{$game->user->username}}</a></p>
                         </div>
                         <div class="col-sm-3">
                             @if(count($platform_Icon_Name_Link) > 0)

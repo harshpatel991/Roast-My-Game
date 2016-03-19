@@ -1,4 +1,4 @@
-<div class="content-background" style="padding-bottom: 30px;">
+<footer class="content-background" style="padding-bottom: 30px;">
     <div class="row">
         <hr>
         <div class="col-xs-12 small">
@@ -21,4 +21,4 @@
             </div>
         </div>
     </div>
-</div>
+</footer>
