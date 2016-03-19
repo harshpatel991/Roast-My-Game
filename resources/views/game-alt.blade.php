@@ -37,9 +37,8 @@
                             @if(!Auth::check() && $isFirstTimeUser)
                                 <div class="alert alert-default alert-dismissible hidden-xs" style="color: #5F697C;">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h3 class="text-center" style="margin-top: 0px;">OH HEY THERE!</h3>
-                                    <div class="text-center" style="font-size: 20px; font-weight: 100;">
-                                        Roast My Game is a site for game devs to give and get feedback. After you're done looking around, create an account and join in!
+                                    <div class="text-center" style="font-size: 16px; font-weight: 100;">
+                                        <b>OH HEY THERE!</b> Roast My Game is a site for game devs to give and get feedback. After you're done looking around, create an account and join in!
                                     </div>
                                 </div>
                             @endif
