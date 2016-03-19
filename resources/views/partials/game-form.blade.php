@@ -39,6 +39,7 @@
     <a class="btn btn-info col-sm-offset-2" role="button" data-toggle="collapse" href="#collapseSocialLinks">Add Social Links <i class="icon-down-dir"></i></a>
     <div class="collapse" id="collapseSocialLinks" style="padding-top: 10px;">
         {!! Form::myInput('link_social_greenlight', 'Greenlight', '', old('link_social_greenlight'), $game->link_social_greenlight) !!}
+        {!! Form::myInput('link_social_kickstarter', 'Kickstarter', '', old('link_social_kickstarter'), $game->link_social_kickstarter) !!}
         {!! Form::myInput('link_social_website', 'Website', '', old('link_social_website'), $game->link_social_website) !!}
         {!! Form::myInput('link_social_twitter', 'Twitter', '', old('link_social_twitter'), $game->link_social_twitter) !!}
         {!! Form::myInput('link_social_youtube', 'YouTube', '', old('link_social_youtube'), $game->link_social_youtube) !!}

@@ -59,6 +59,7 @@ class Game extends Model
 
     public static $linkEnumToGlyph = [
         'link_social_greenlight'       => 'icon-greenlight',
+        'link_social_kickstarter'      => 'icon-kickstarter',
         'link_social_website'          => 'icon-network',
         'link_social_twitter'          => 'icon-twitter',
         'link_social_youtube'          => 'icon-youtube',
@@ -68,6 +69,7 @@ class Game extends Model
 
     public static $linkEnumToText = [
         'link_social_greenlight'       => 'Steam Greenlight',
+        'link_social_kickstarter'      => 'Kickstarter',
         'link_social_website'          => 'Website',
         'link_social_twitter'          => 'Twitter',
         'link_social_youtube'          => 'YouTube',
@@ -122,6 +124,7 @@ class Game extends Model
         $game->description = $request->description;
 
         $game->link_social_greenlight = $request->has('link_social_greenlight') ? $request->link_social_greenlight : null;
+        $game->link_social_kickstarter = $request->has('link_social_kickstarter') ? $request->link_social_kickstarter : null;
         $game->link_social_website = $request->has('link_social_website') ? $request->link_social_website : null;
         $game->link_social_twitter = $request->has('link_social_twitter') ? $request->link_social_twitter : null;
         $game->link_social_youtube = $request->has('link_social_youtube') ? $request->link_social_youtube : null;

@@ -63,6 +63,7 @@ class GameEditCest
         $I->click(['link' => 'Add Social Links']);
         $I->wait(1);
         $I->fillField('link_social_greenlight', 'http://greenlight-edited.com');
+        $I->fillField('link_social_kickstarter', 'http://kickstarter-edited.com');
         $I->fillField('link_social_website', 'http://website-edited.com');
         $I->fillField('link_social_twitter', 'http://link-twitter-edited.com');
         $I->fillField('link_social_youtube', 'http://link-youtube-edited.com');
@@ -122,6 +123,7 @@ class GameEditCest
         $I->seeInSource('http://other-web-full-game-version-1-edited.com');
 
         $I->seeInSource('<a rel="nofollow" target="_blank" href="http://greenlight-edited.com">');
+        $I->seeInSource('<a rel="nofollow" target="_blank" href="http://kickstarter-edited.com">');
         $I->seeInSource('<a rel="nofollow" target="_blank" href="http://website-edited.com">');
         $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-twitter-edited.com">');
         $I->seeInSource('<a rel="nofollow" target="_blank" href="http://link-youtube-edited.com">');
@@ -146,6 +148,7 @@ class GameEditCest
                                 'thumbnail' => 'test-game-1-thumb.jpg',
                                 'description' => 'This is an edited description.',
                                 'link_social_greenlight' => 'http://greenlight-edited.com',
+                                'link_social_kickstarter' => 'http://kickstarter-edited.com',
                                 'link_social_website' => 'http://website-edited.com',
                                 'link_social_twitter' => 'http://link-twitter-edited.com',
                                 'link_social_youtube' => 'http://link-youtube-edited.com',
@@ -191,6 +194,7 @@ class GameEditCest
         $I->click(['link' => 'Add Social Links']);
         $I->wait(1);
         $I->fillField('link_social_greenlight', 'http://greenlight-edited.com');
+        $I->fillField('link_social_kickstarter', 'http://kickstarter-edited.com');
         $I->fillField('link_social_website', 'http://website-edited.com');
         $I->fillField('link_social_twitter', 'http://link-twitter-edited.com');
         $I->fillField('link_social_youtube', 'http://link-youtube-edited.com');
@@ -239,6 +243,7 @@ class GameEditCest
             'thumbnail' => 'test-game-7-thumb.jpg',
             'description' => 'This is an edited description.',
             'link_social_greenlight' => 'http://greenlight-edited.com',
+            'link_social_kickstarter' => 'http://kickstarter-edited.com',
             'link_social_website' => 'http://website-edited.com',
             'link_social_twitter' => 'http://link-twitter-edited.com',
             'link_social_youtube' => 'http://link-youtube-edited.com',
@@ -282,6 +287,7 @@ class GameEditCest
         $I->click(['link' => 'Add Social Links']);
         $I->wait(1);
         $I->fillField('link_social_greenlight', '');
+        $I->fillField('link_social_kickstarter', '');
         $I->fillField('link_social_website', '');
         $I->fillField('link_social_twitter', '');
         $I->fillField('link_social_youtube', '');
@@ -326,6 +332,7 @@ class GameEditCest
             'thumbnail' => 'test-game-1-thumb.jpg',
             'description' => '',
             'link_social_greenlight' => null,
+            'link_social_kickstarter' => null,
             'link_social_website' => null,
             'link_social_twitter' => null,
             'link_social_youtube' => null,
@@ -394,6 +401,7 @@ class GameEditCest
             'thumbnail' => 'test-game-1-thumb.jpg',
             'description' => 'This is a description. This is a description. This is a description. This is a description. This is a description. This is a description.',
             'link_social_greenlight' => 'http://greenlight.com',
+            'link_social_kickstarter' => 'http://kickstarter.com',
             'link_social_website' => 'http://website.com',
             'link_social_twitter' => 'http://link-twitter.com',
             'link_social_youtube' => 'http://link-youtube.com',
@@ -435,6 +443,7 @@ class GameEditCest
             'title' => 'Test Game 1',
             'genre' => 'action',
             'link_social_greenlight' => 'http://greenlight.com',
+            'link_social_kickstarter' => 'http://kickstarter.com',
             'link_social_website' => 'http://website.com',
             'link_social_twitter' => 'http://link-twitter.com',
             'link_social_youtube' => 'http://link-youtube.com',

@@ -151,6 +151,7 @@ class GameCreateInvalidCest
         $I->click('Add Game!');
 
         $I->see('The link social greenlight format is invalid.');
+        $I->see('The link social kickstarter format is invalid.');
         $I->see('The link social website format is invalid.');
         $I->see('The link social twitter format is invalid.');
         $I->see('The link social youtube format is invalid.');
@@ -162,6 +163,7 @@ class GameCreateInvalidCest
         $I->click('Add Game!');
 
         $I->see('The link social greenlight may not be greater than 255 characters.');
+        $I->see('The link social kickstarter may not be greater than 255 characters.');
         $I->see('The link social website may not be greater than 255 characters.');
         $I->see('The link social twitter may not be greater than 255 characters.');
         $I->see('The link social youtube may not be greater than 255 characters.');
