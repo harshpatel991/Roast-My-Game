@@ -60,6 +60,11 @@
                                 @endfor
                             </div>
                         @endfor
+
+                        <div class="text-center">
+                            {!! $games->appends(['query' => $oldQuery, 'genre' => $oldGenre, 'platform' => $oldPlatform, 'order' => $oldOrder])->render() !!}
+                        </div>
+
                     </div>
 
                 </div>

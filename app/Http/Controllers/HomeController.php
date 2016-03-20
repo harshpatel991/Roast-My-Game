@@ -79,7 +79,7 @@ class HomeController extends Controller
             $gamesWithComments = Comment::where('my_commentable_type', 'Game')->groupBy('commentable_id')->lists('commentable_id');
             $gamesQuery->whereNotIn('id', $gamesWithComments);
         }
-        $games = $gamesQuery->get();
+        $games = $gamesQuery->paginate(16);
 
         return view('games', compact('games', 'pageTitle', 'oldQuery', 'oldGenre', 'oldPlatform', 'oldOrder'));
     }
