@@ -45,7 +45,7 @@
     <a class="btn btn-info col-sm-offset-2" role="button" data-toggle="collapse" href="#collapsePlayGameLinks">Add Download Game Links <i class="icon-down-dir"></i></a>
     <div class="collapse" id="collapsePlayGameLinks" style="padding-top: 10px;">
         <div class="col-sm-offset-2">
-            <p>If your game is avaiable to play, add links to download your game</p>
+            <p>If your game is available to play, add links to download your game</p>
         </div>
         {!! Form::myInput('link_platform_pc', 'PC', '', old('link_platform_pc'), $version->link_platform_pc) !!}
         {!! Form::myInput('link_platform_mac', 'Mac', '', old('link_platform_mac'), $version->link_platform_mac) !!}
