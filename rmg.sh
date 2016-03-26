@@ -141,6 +141,9 @@ echo "Bye bye :)"
 
 exit
 
+# Setting up selenium and firefox
+# Use Firefox 37.0.2 with Selenium 2.46.0
+
 
 # Setting up apache
 #-------------------------
