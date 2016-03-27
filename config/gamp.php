@@ -93,5 +93,5 @@ return [
     | Valid Values: (Boolean) "true" OR "false"
     |
     */
-    'async_requests' => true,
+    'async_requests' => false,
 ];
