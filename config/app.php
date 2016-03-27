@@ -153,7 +153,7 @@ return [
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Slynova\Commentable\ServiceProvider::class,
-        Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider::class,
+//        Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider::class,
 
     ],
 
@@ -210,7 +210,7 @@ return [
         'Image'     => Intervention\Image\Facades\Image::class,
         'Purifier'  => Mews\Purifier\Facades\Purifier::class,
         'AWS'       => Aws\Laravel\AwsFacade::class,
-        'GAMP'  => Irazasyed\LaravelGAMP\Facades\GAMP::class,
+//        'GAMP'  => Irazasyed\LaravelGAMP\Facades\GAMP::class,
 
     ]
 
