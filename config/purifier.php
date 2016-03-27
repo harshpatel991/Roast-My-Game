@@ -30,6 +30,16 @@ return [
             'AutoFormat.RemoveEmpty'   => true, // removes <p></p>
             'AutoFormat.RemoveEmpty.RemoveNbsp' => true
         ],
+        'forumPosts' => [
+            'HTML.Doctype'             => 'XHTML 1.0 Strict',
+            'HTML.Allowed'             => 'b,em,strong,i,a[href|title],ul,ol,li,p[style],br,img[width|height|alt|src]',
+            'CSS.AllowedProperties'    => '',
+            'AutoFormat.AutoParagraph' => false,
+            'AutoFormat.RemoveEmpty'   => true, // removes <p></p>
+            'AutoFormat.RemoveEmpty.RemoveNbsp' => true,
+            'AutoFormat.Linkify'       => true,
+            'HTML.Nofollow'            => true
+        ],
         'noneAllowed' => [
             'HTML.Doctype'             => 'XHTML 1.0 Strict',
             'HTML.Allowed'             => '',

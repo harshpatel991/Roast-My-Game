@@ -6,7 +6,7 @@
     </div>
     <div class="media-body">
         <p class="media-heading small" style="line-height: 1; "><b><a href="{{ secure_url('/profile/'.$comment->username) }}">{{ $comment->username }}{!! $comment->user->getBadge() !!}</a></b> {{ $comment->created_at->diffForHumans() }}</p>
-        {!! str_replace( "\n", '<br />', clean($comment->body)) !!}
+        {!! str_replace( "\n", '<br />', clean($comment->body, 'forumPosts')) !!}
         <br>
         <a class="reply-link" data-url="{{ secure_url($submitReplyPath.'/'.$comment->id) }}" id="comment-child-reply-link-{{$comment->id}}">Reply</a> {{--Adds the reply box--}}
     </div>

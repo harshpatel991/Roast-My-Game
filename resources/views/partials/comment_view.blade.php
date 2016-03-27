@@ -14,7 +14,7 @@
         @if(isset($comment->negative)) <b><i class="icon-thumbs-down-alt font-light-gray"></i></b> {{ App\Feedback::$feedbackCategories[$comment->negative] }}  @endif
 
         @if(isset($comment->body))
-            <div>{!! str_replace( "\n", '<br />', clean($comment->body)) !!}</div>
+            <div>{!! str_replace( "\n", '<br />', clean($comment->body, 'forumPosts')) !!}</div>
         @endif
 
         <a class="reply-link" data-url="{{ secure_url($submitReplyPath.'/'.$comment->id) }}" id="comment-reply-link-{{$comment->id}}">Reply</a>
