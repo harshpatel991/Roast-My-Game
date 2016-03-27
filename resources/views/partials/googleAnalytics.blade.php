@@ -31,5 +31,5 @@
         $gamp->setDocumentReferrer($_SERVER["HTTP_REFERER"]);
     }
 
-    echo $gamp->sendPageview()->getHttpStatusCode();
+    $gamp->sendPageview();
 ?>
