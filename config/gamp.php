@@ -64,7 +64,7 @@ return [
     | Valid Values: (Boolean) "true" OR "false"
     |
     */
-    'is_ssl' => false,
+    'is_ssl' => true,
 
     /*
     |--------------------------------------------------------------------------

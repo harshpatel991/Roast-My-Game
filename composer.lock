@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "512b144da9e42e43b56b9d841d82e148",
-    "content-hash": "d723d77d57057a2d9946c115e62be1bd",
+    "hash": "e28dc0d53bf1c5c930fa8d890194a1f4",
+    "content-hash": "6c2d0e7536ae229a9b20e7fcb16534d7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1195,6 +1195,62 @@
                 "watermark"
             ],
             "time": "2016-02-26 18:18:19"
+        },
+        {
+            "name": "irazasyed/laravel-gamp",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irazasyed/laravel-gamp.git",
+                "reference": "0c51849a3f522bc86f6e820f45bc8cac6e3c4a9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/irazasyed/laravel-gamp/zipball/0c51849a3f522bc86f6e820f45bc8cac6e3c4a9c",
+                "reference": "0c51849a3f522bc86f6e820f45bc8cac6e3c4a9c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0",
+                "theiconic/php-ga-measurement-protocol": "^2.0"
+            },
+            "suggest": {
+                "irazasyed/larasupport": "Adds Package Support in Lumen, Lets you install any Laravel Package."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Irazasyed\\LaravelGAMP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Syed Irfaq R.",
+                    "email": "syed+gh@lukonet.com",
+                    "homepage": "https://github.com/irazasyed"
+                }
+            ],
+            "description": "Send analytics data to Google Analytics from Laravel. A package for GA Measurement Protocol API",
+            "keywords": [
+                "analytics",
+                "ga measurement protocol",
+                "google analytics",
+                "laravel google analytics",
+                "lumen google analytics",
+                "measurement protocol",
+                "tracking"
+            ],
+            "time": "2016-01-11 22:30:52"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3181,6 +3237,48 @@
                 "dump"
             ],
             "time": "2016-02-12 17:39:33"
+        },
+        {
+            "name": "theiconic/php-ga-measurement-protocol",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theiconic/php-ga-measurement-protocol.git",
+                "reference": "5170394f0d917d8dde32a9444d38a8382d446d66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theiconic/php-ga-measurement-protocol/zipball/5170394f0d917d8dde32a9444d38a8382d446d66",
+                "reference": "5170394f0d917d8dde32a9444d38a8382d446d66",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "php": ">=5.5",
+                "symfony/finder": "^2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TheIconic\\Tracking\\GoogleAnalytics\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "THE ICONIC ENGINEERING TEAM",
+                    "email": "engineering@theiconic.com.au"
+                }
+            ],
+            "description": "Send data to Google Analytics from the server using PHP. This library fully implements GA measurement protocol.",
+            "time": "2015-11-25 10:01:27"
         },
         {
             "name": "vlucas/phpdotenv",
