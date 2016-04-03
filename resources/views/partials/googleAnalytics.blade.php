@@ -24,7 +24,9 @@
         $gamp = GAMP::setClientId($my_ga)
             ->setDocumentPath(Request::path());
 
-        if(isset($_SERVER['REMOTE_ADDR'])) {
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR']) {
+            $gamp->setIpOverride($_SERVER['HTTP_X_FORWARDED_FOR']);
+        } else {
             $gamp->setIpOverride($_SERVER['REMOTE_ADDR']);
         }
 
