@@ -37,7 +37,8 @@
                                         <a href="{{ secure_url('/forum/' . $discussion->slug) }}" @if (!session($discussion->slug))style="font-weight: bold;"@endif>{{$discussion->title}}</a>
                                     </td>
                                     <td>by {{$discussion->user()->first()->username}}</td>
-                                    <td>{{$discussion->comments()->orderBy('created_at', 'desc')->take(1)->first()->created_at->diffForHumans()}}</td>
+                                    {{--<td>{{$discussion->comments()->orderBy('created_at', 'desc')->take(1)->first()->created_at->diffForHumans()}}</td>--}}
+                                    <td>{{$discussion->created_at->diffForHumans()}}</td>
                                     <td><div class="label label-default"><span class="icon-eye"></span>{{$discussion->views}} </div></td>
                                     <td><div class="label label-default text-uppercase">{{\App\Discussion::$categories[$discussion->category]}}</div></td>
 
