@@ -28,25 +28,24 @@
                         </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table">
-
-                            @foreach($discussions as $discussion)
-                                <tr>
-                                    <td>
-                                        <a href="{{ secure_url('/forum/' . $discussion->slug) }}" @if (!session($discussion->slug))style="font-weight: bold;"@endif>{{$discussion->title}}</a>
-                                    </td>
-                                    <td>by {{$discussion->user()->first()->username}}</td>
-                                    {{--<td>{{$discussion->comments()->orderBy('created_at', 'desc')->take(1)->first()->created_at->diffForHumans()}}</td>--}}
-                                    <td>{{$discussion->created_at->diffForHumans()}}</td>
-                                    <td><div class="label label-default"><span class="icon-eye"></span>{{$discussion->views}} </div></td>
-                                    <td><div class="label label-default text-uppercase">{{\App\Discussion::$categories[$discussion->category]}}</div></td>
-
-                                </tr>
-                            @endforeach
-
-                        </table>
-                    </div>
+                    @foreach($discussionsByCategory as $discussionCategory=>$discussions)
+                        <h6 class="subheading subheading-color">{{$discussionCategory}}</h6>
+                        <div class="table-responsive">
+                            <table class="table">
+                                @foreach($discussions as $discussion)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ secure_url('/forum/' . $discussion->slug) }}" @if (!session($discussion->slug))style="font-weight: bold;"@endif>{{$discussion->title}}</a>
+                                        </td>
+                                        <td>by {{$discussion->user()->first()->username}}</td>
+                                        {{--<td>{{$discussion->comments()->orderBy('created_at', 'desc')->take(1)->first()->created_at->diffForHumans()}}</td>--}}
+                                        <td>{{$discussion->created_at->diffForHumans()}}</td>
+                                        <td><div class="label label-default"><span class="icon-eye"></span>{{$discussion->views}} </div></td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    @endforeach
 
                 </div>
             </div>
