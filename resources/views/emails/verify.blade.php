@@ -1,6 +1,6 @@
 @extends('emails.base')
 
-@section('heading')Hey there!@endsection
+@section('heading')Hey there {{$username}}!@endsection
 
 @section('body1')Thanks so much for joining Roast My Game! Verify your account by clicking the button below.@endsection
 
