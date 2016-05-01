@@ -93,7 +93,7 @@ class AuthController extends Controller
             'confirmation_code' => $confirmationCode
         ]);
 
-        Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['confirmationCode' => $confirmationCode, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) {
+        Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['username'=> $newUser->username, 'confirmationCode' => $confirmationCode, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) {
             $message->to(Input::get('email'))
                 ->bcc('support@roastmygame.com', 'Support')
                 ->subject('Please confirm your email');
