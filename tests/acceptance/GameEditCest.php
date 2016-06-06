@@ -75,16 +75,6 @@ class GameEditCest
 
         $I->fillField('video_link', 'https://www.youtube.com/watch?v=JLf9q36UsBk');
 
-        $I->click(['link' => 'Add Download Game Links']);
-        $I->wait(1);
-        $I->fillField('link_platform_pc', 'http://pc-full-game-version-1-edited.com');
-        $I->fillField('link_platform_mac', 'http://mac-full-game-version-1-edited.com');
-        $I->fillField('link_platform_linux', 'http://linux-full-game-version-1-edited.com');
-        $I->fillField('link_platform_ios', 'http://ios-full-game-version-1-edited.com');
-        $I->fillField('link_platform_android', 'http://android-full-game-version-1-edited.com');
-        $I->fillField('link_platform_unity', 'http://unity-web-full-game-version-1-edited.com');
-        $I->fillField('link_platform_other', 'http://other-web-full-game-version-1-edited.com');
-
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('changes_ifr');
             $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
@@ -107,20 +97,7 @@ class GameEditCest
         $I->see('Idle');
         $I->see('This is an edited description.');
 
-        $I->click(['id' => 'download-dropdown']); //click download drop down
-        $I->see('Download for PC');
-        $I->see('Download for Mac');
-        $I->see('Download for Android');
-        $I->see('Download for iOS');
-        $I->see('Play with Unity Web');
-        $I->see('Play with Other Web');
-        $I->seeInSource('http://pc-full-game-version-1-edited.com');
-        $I->seeInSource('http://mac-full-game-version-1-edited.com');
-        $I->seeInSource('http://linux-full-game-version-1-edited.com');
-        $I->seeInSource('http://ios-full-game-version-1-edited.com');
-        $I->seeInSource('http://android-full-game-version-1-edited.com');
-        $I->seeInSource('http://unity-web-full-game-version-1-edited.com');
-        $I->seeInSource('http://other-web-full-game-version-1-edited.com');
+        $I->dontSeeInPageSource('#download-dropdown');
 
         $I->seeInSource('<a rel="nofollow" target="_blank" href="http://greenlight-edited.com">');
         $I->seeInSource('<a rel="nofollow" target="_blank" href="http://kickstarter-edited.com">');
@@ -147,6 +124,13 @@ class GameEditCest
                                 'genre' => 'idle',
                                 'thumbnail' => 'test-game-1-thumb.jpg',
                                 'description' => 'This is an edited description.',
+                                'link_platform_pc' => null,//doesn't change
+                                'link_platform_mac' => null,
+                                'link_platform_linux' => null,
+                                'link_platform_ios' => null,
+                                'link_platform_android' => null,
+                                'link_platform_unity' => null,
+                                'link_platform_other' => null,
                                 'link_social_greenlight' => 'http://greenlight-edited.com',
                                 'link_social_kickstarter' => 'http://kickstarter-edited.com',
                                 'link_social_website' => 'http://website-edited.com',
@@ -162,13 +146,6 @@ class GameEditCest
             'image1' => 'image1.jpg',//doesn't change
             'image2' => 'image2.jpg',//doesn't change
             'image3' => 'image3.jpg',//doesn't change
-            'link_platform_pc' => 'http://pc-full-game-version-1-edited.com',
-            'link_platform_mac' => 'http://mac-full-game-version-1-edited.com',
-            'link_platform_linux' => 'http://linux-full-game-version-1-edited.com',
-            'link_platform_ios' => 'http://ios-full-game-version-1-edited.com',
-            'link_platform_android' => 'http://android-full-game-version-1-edited.com',
-            'link_platform_unity' => 'http://unity-web-full-game-version-1-edited.com',
-            'link_platform_other' => 'http://other-web-full-game-version-1-edited.com',
             'changes' => 'This is edited changes.',
             'upcoming_features' => 'This is edited upcoming features'));
     }
@@ -206,16 +183,6 @@ class GameEditCest
 
         $I->fillField('video_link', 'https://www.youtube.com/watch?v=JLf9q36UsBk');
 
-        $I->click(['link' => 'Add Download Game Links']);
-        $I->wait(1);
-        $I->fillField('link_platform_pc', 'http://pc-full-game-version-1-edited.com');
-        $I->fillField('link_platform_mac', 'http://mac-full-game-version-1-edited.com');
-        $I->fillField('link_platform_linux', 'http://linux-full-game-version-1-edited.com');
-        $I->fillField('link_platform_ios', 'http://ios-full-game-version-1-edited.com');
-        $I->fillField('link_platform_android', 'http://android-full-game-version-1-edited.com');
-        $I->fillField('link_platform_unity', 'http://unity-web-full-game-version-1-edited.com');
-        $I->fillField('link_platform_other', 'http://other-web-full-game-version-1-edited.com');
-
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('changes_ifr');
             $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
@@ -242,6 +209,13 @@ class GameEditCest
             'genre' => 'idle',
             'thumbnail' => 'test-game-7-thumb.jpg',
             'description' => 'This is an edited description.',
+            'link_platform_pc' => null,
+            'link_platform_mac' => null,
+            'link_platform_linux' => null,
+            'link_platform_ios' => null,
+            'link_platform_android' => null,
+            'link_platform_unity' => null,
+            'link_platform_other' => null,
             'link_social_greenlight' => 'http://greenlight-edited.com',
             'link_social_kickstarter' => 'http://kickstarter-edited.com',
             'link_social_website' => 'http://website-edited.com',
@@ -255,13 +229,6 @@ class GameEditCest
             'beta' => 1,
             'video_link' => 'https://www.youtube.com/watch?v=JLf9q36UsBk',
             'image1' => 'image1.jpg',//doesn't change
-            'link_platform_pc' => 'http://pc-full-game-version-1-edited.com',
-            'link_platform_mac' => 'http://mac-full-game-version-1-edited.com',
-            'link_platform_linux' => 'http://linux-full-game-version-1-edited.com',
-            'link_platform_ios' => 'http://ios-full-game-version-1-edited.com',
-            'link_platform_android' => 'http://android-full-game-version-1-edited.com',
-            'link_platform_unity' => 'http://unity-web-full-game-version-1-edited.com',
-            'link_platform_other' => 'http://other-web-full-game-version-1-edited.com',
             'changes' => 'This is edited changes.',
             'upcoming_features' => 'This is edited upcoming features'));
     }
@@ -273,7 +240,7 @@ class GameEditCest
         $this->loginAs($I, 'user1@gmail.com', 'password1');
         $I->amOnPage('/profile/user1');
 
-        $I->click(['id' => 'edit-test-game-1']);
+        $I->click(['id' => 'edit-test-game-8']);
 
         $I->fillField('title', 'Test Edited Minimal Title');
         $I->selectOption('select[name=genre]', 'Idle');
@@ -299,16 +266,6 @@ class GameEditCest
 
         $I->fillField('video_link', '');
 
-        $I->click(['link' => 'Add Download Game Links']);
-        $I->wait(1);
-        $I->fillField('link_platform_pc', '');
-        $I->fillField('link_platform_mac', '');
-        $I->fillField('link_platform_linux', '');
-        $I->fillField('link_platform_ios', '');
-        $I->fillField('link_platform_android', '');
-        $I->fillField('link_platform_unity', '');
-        $I->fillField('link_platform_other', '');
-
         $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             $webdriver->switchTo()->frame('changes_ifr');
             $webdriver->findElement(WebDriverBy::id('tinymce'))->click();
@@ -327,10 +284,17 @@ class GameEditCest
         $I->see('Game updated!');
         $I->see('Test Edited Minimal Title');
         $I->seeInDatabase('games', array('title' => 'Test Edited Minimal Title',
-            'slug' => 'test-game-1',
+            'slug' => 'test-game-8',
             'genre' => 'idle',
-            'thumbnail' => 'test-game-1-thumb.jpg',
+            'thumbnail' => 'test-game-8-thumb.jpg',
             'description' => '',
+            'link_platform_pc' => 'https://clickr.app/download/test-game-3/platform_pc/test-game-3-platform_pc.zip', //doesnt change
+            'link_platform_mac' => 'https://clickr.app/download/test-game-3/platform_mac/test-game-3-platform_mac.zip',
+            'link_platform_linux' => 'https://clickr.app/download/test-game-3/platform_linux/test-game-3-platform_linux.zip',
+            'link_platform_ios' => 'http://existing-ios-link.com',
+            'link_platform_android' => 'http://existing-android-link.com',
+            'link_platform_unity' => 'http://existing-unity-link.com',
+            'link_platform_other' => 'http://existing-other-link.com',
             'link_social_greenlight' => null,
             'link_social_kickstarter' => null,
             'link_social_website' => null,
@@ -338,7 +302,7 @@ class GameEditCest
             'link_social_youtube' => null,
             'link_social_google_plus' => null,
             'link_social_facebook' => null));
-        $I->seeInDatabase('versions', array('game_id' => 1,
+        $I->seeInDatabase('versions', array('game_id' => 8,
             'slug' => '1.2.3', //slug doesn't change
             'version' => '1-edited',
             'beta' => 0,
@@ -347,13 +311,6 @@ class GameEditCest
             'image2' => 'image2.jpg',
             'image3' => 'image3.jpg',
             'image4' => null,
-            'link_platform_pc' => null,
-            'link_platform_mac' => null,
-            'link_platform_linux' => null,
-            'link_platform_ios' => null,
-            'link_platform_android' => null,
-            'link_platform_unity' => null,
-            'link_platform_other' => null,
             'changes' => '',
             'upcoming_features' => ''));
     }
@@ -435,7 +392,6 @@ class GameEditCest
         $I->amOnPage('/profile/user1');
         $I->click(['id' => 'edit-test-game-1']);
         $I->click(['link' => 'Add Social Links']);
-        $I->click(['link' => 'Add Download Game Links']);
         $I->wait(1);
 
         //not able to test that description, changes, upcoming features show up here
@@ -451,13 +407,6 @@ class GameEditCest
             'link_social_facebook' => 'http://link-facebook.com',
             'version' => '1.2.3',
             'video_link' => 'https://www.youtube.com/watch?v=e-ORhEE9VVg',
-            'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
-            'link_platform_mac' => '',
-            'link_platform_linux' => 'http://linux-game-1-version-1.2.3.com',
-            'link_platform_ios' => '',
-            'link_platform_android' => 'http://android-game-1-version-1.2.3.com',
-            'link_platform_unity' => '',
-            'link_platform_other' => 'http://other-web-game-1-version-1.2.3.com'
         ]);
     }
 }

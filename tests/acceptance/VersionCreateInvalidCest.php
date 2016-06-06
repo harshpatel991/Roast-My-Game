@@ -24,7 +24,7 @@ class VersionCreateInvalidCest
         $I->fillField('password', 'password1');
         $I->click(['id' => 'login']);
 
-        $I->see('Add Progress');//test got redirected
+        $I->click('#add-version');//test got redirected
     }
 
     public function testAddWithoutOwningGame(\AcceptanceTester $I)
@@ -45,11 +45,11 @@ class VersionCreateInvalidCest
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionMissingVersion();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The version field is required.');
 
         $versionPage->fillVersionLongVersion();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The version may not be greater than 255 characters.');
     }
 
@@ -62,11 +62,11 @@ class VersionCreateInvalidCest
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionMissingImage();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The image1 field is required.');
 
         $versionPage->fillVersionLargeImage();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The image1 may not be greater than 2000 kilobytes.');
     }
 
@@ -78,47 +78,13 @@ class VersionCreateInvalidCest
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongVideoLink();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The video link may not be greater than 255 characters.');
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionInvalidVideoLink();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The video link format is invalid.');
-    }
-
-    public function testCreateInvalidPlayGameLinks(\AcceptanceTester $I)
-    {
-        $this->loginAs($I, 'user1@gmail.com', 'password1');
-        $I->amOnPage('/profile/user1');
-        $I->click('Add Progress');
-
-        $I->attachFile('image1', 'image1.jpg');
-
-        //test: non valid links
-        $gamePage = new GamePage($I);
-        $gamePage->fillFormInvalidPlatformLinks();
-        $I->click('Add Progress');
-
-        $I->see('The link platform pc format is invalid.');
-        $I->see('The link platform mac format is invalid.');
-        $I->see('The link platform linux format is invalid.');
-        $I->see('The link platform ios format is invalid.');
-        $I->see('The link platform android format is invalid.');
-        $I->see('The link platform unity format is invalid.');
-        $I->see('The link platform other format is invalid.');
-
-        //test: too long links
-        $gamePage->fillFormLongPlatformLinks();
-        $I->click('Add Progress');
-
-        $I->see('The link platform pc may not be greater than 255 characters.');
-        $I->see('The link platform mac may not be greater than 255 characters.');
-        $I->see('The link platform linux may not be greater than 255 characters.');
-        $I->see('The link platform ios may not be greater than 255 characters.');
-        $I->see('The link platform android may not be greater than 255 characters.');
-        $I->see('The link platform unity may not be greater than 255 characters.');
-        $I->see('The link platform other may not be greater than 255 characters.');
     }
 
     public function testCreateInvalidChanges(\AcceptanceTester $I) {
@@ -129,7 +95,7 @@ class VersionCreateInvalidCest
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongChanges();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The changes may not be greater than 5000 characters.');
     }
 
@@ -141,7 +107,7 @@ class VersionCreateInvalidCest
 
         $versionPage = new VersionPage($I);
         $versionPage->fillVersionLongUpcomingFeatures();
-        $I->click('Add Progress!');
+        $I->click('#add-version');
         $I->see('The upcoming features may not be greater than 5000 characters.');
     }
 

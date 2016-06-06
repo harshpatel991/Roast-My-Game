@@ -57,7 +57,7 @@ class GameController extends Controller
 
         $images = array_filter(array($currentVersion->image1, $currentVersion->image2, $currentVersion->image3, $currentVersion->image4));
 
-        $platformLinks = array_filter(Utils::preg_grep_keys("/link_platform_.+/", $currentVersion->getAttributes()));
+        $platformLinks = array_filter(Utils::preg_grep_keys("/link_platform_.+/", $game->getAttributes()));
 
         $platform_Icon_Name_Link = Game::translatePlatformLinkTo_Icon_Name_Link($platformLinks);
 
@@ -139,8 +139,8 @@ class GameController extends Controller
                 ->subject('Your Game As Been Added');
         });
         Log::info('Add game success sent to: '.$sendTo);
-
-        return redirect('game/'.$game->slug)->with('message', 'Your game has been added! Please consider leaving feedback for other games.');
+        
+        return redirect('game/'.$game->slug)->with('warning', 'Your game has been added! Visit your profile to add versions and downloads.');
     }
 
     public function postAddVersion(Game $game, StoreVersionRequest $request) {

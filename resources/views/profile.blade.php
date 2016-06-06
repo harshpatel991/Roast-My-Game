@@ -56,15 +56,18 @@
                                     <a href="{{ secure_url('/game/'.$game->slug) }}"><h6 class="list-group-item-heading card-title">{{$game->title}}</h6></a>
 
                                     <div class="label label-default" style="margin-right: 5px;"><span class="icon-eye"></span> {{$game->views}} </div>
-                                    <div class="label label-default"><span class="icon-heart"></span> {{$game->likes}} </div>
+                                    <div class="label label-default" style="margin-right: 5px;"><span class="icon-heart"></span> {{$game->likes}} </div>
+                                    @if($isTheLoggedInUser)
+                                        <a class="label label-warning" href="{{ secure_url('/promote/'.$game->slug) }}" id="promote-{{$game->slug}}"><span class="icon-star"></span> Promote</a>
+                                    @endif
                                     <p class="list-group-item-text card-description">{{clean($game->description, 'noneAllowed')}}</p>
                                 </div>
 
                                 @if($isTheLoggedInUser)
                                     <div class="col-sm-3">
-                                        <a class="btn btn-info-outline pull-right btn-block" href="{{ secure_url('/add-version/'.$game->slug) }}"><span class="icon-plus"></span> Add Progress</a>
+                                        <a class="btn btn-success-outline pull-right btn-block" href="{{ secure_url('/add-version/'.$game->slug) }}"><span class="icon-plus"></span> Add Progress</a>
                                         <a class="btn btn-info-outline pull-right btn-block" href="{{ secure_url('/edit-game/'.$game->slug.'/'.$game->versions->first()->slug) }}" id="edit-{{$game->slug}}"><span class="icon-pencil"></span> Edit Game</a>
-                                        <a class="btn btn-warning-outline pull-right btn-block" href="{{ secure_url('/promote/'.$game->slug) }}" id="promote-{{$game->slug}}"><span class="icon-star"></span> Promote</a>
+                                        <a class="btn btn-info-outline pull-right btn-block" href="{{ secure_url('/add-downloads/'.$game->slug) }}" id="edit-downloads-{{$game->slug}}"><span class="icon-pencil"></span> Edit Downloads</a>
                                     </div>
                                 @endif
                                 

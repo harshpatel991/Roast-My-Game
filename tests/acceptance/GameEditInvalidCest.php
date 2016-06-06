@@ -79,39 +79,6 @@ class GameEditInvalidCest
         $I->see('The description may not be greater than 5000 characters.');
     }
 
-    public function testCreateInvalidPlayGameLinks(\AcceptanceTester $I)
-    {
-        $I->wantTo('Create invalid description game');
-        $this->loginAs($I, 'user2@gmail.com', 'password2');
-        $I->amOnPage('/profile/user2');
-
-        $I->click(['id' => 'edit-test-game-7']);
-
-        $gamePage = new GamePage($I);
-        $gamePage->fillValidGameTop(true);
-        $gamePage->fillFormInvalidPlatformLinks();
-        $I->click('Save Changes');
-
-        $I->see('The link platform pc format is invalid.');
-        $I->see('The link platform mac format is invalid.');
-        $I->see('The link platform linux format is invalid.');
-        $I->see('The link platform ios format is invalid.');
-        $I->see('The link platform android format is invalid.');
-        $I->see('The link platform unity format is invalid.');
-        $I->see('The link platform other format is invalid.');
-
-        $gamePage->fillFormLongPlatformLinks();
-        $I->click('Save Changes');
-
-        $I->see('The link platform pc may not be greater than 255 characters.');
-        $I->see('The link platform mac may not be greater than 255 characters.');
-        $I->see('The link platform linux may not be greater than 255 characters.');
-        $I->see('The link platform ios may not be greater than 255 characters.');
-        $I->see('The link platform android may not be greater than 255 characters.');
-        $I->see('The link platform unity may not be greater than 255 characters.');
-        $I->see('The link platform other may not be greater than 255 characters.');
-    }
-
     public function testCreateInvalidSocialLinks(\AcceptanceTester $I)
     {
         $I->wantTo('Create invalid description game');

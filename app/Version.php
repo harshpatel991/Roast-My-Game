@@ -24,14 +24,6 @@ class Version extends Model
             $version->image4 = Utils::upload_image($request->file('image4'), $game->slug . '-' . $version->slug . '-4', $game->slug);
         }
 
-        $version->link_platform_pc = $request->has('link_platform_pc') ? $request->link_platform_pc : null;
-        $version->link_platform_mac = $request->has('link_platform_mac') ? $request->link_platform_mac : null;
-        $version->link_platform_linux = $request->has('link_platform_linux') ? $request->link_platform_linux : null;
-        $version->link_platform_ios = $request->has('link_platform_ios') ? $request->link_platform_ios : null;
-        $version->link_platform_android = $request->has('link_platform_android') ? $request->link_platform_android : null;
-        $version->link_platform_unity = $request->has('link_platform_unity') ? $request->link_platform_unity : null;
-        $version->link_platform_other = $request->has('link_platform_other') ? $request->link_platform_other : null;
-
         $version->upcoming_features = $request->upcoming_features;
         $version->changes = $request->changes;
         return $version;
