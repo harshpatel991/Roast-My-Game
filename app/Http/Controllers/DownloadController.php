@@ -56,7 +56,7 @@ class DownloadController extends Controller
         }
         $game->save();
 
-        return redirect('game/'.$game->slug)->with('message', 'Your game has been added! Roast other games to get feedback for your own.');
+        return redirect('game/'.$game->slug)->with('message', 'Downloads saved!');
     }
 
     private static function getPlatformLinkValue(Request $request, $platform) {
