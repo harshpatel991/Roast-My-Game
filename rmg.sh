@@ -69,7 +69,7 @@ runtests() {
   read continue
 
   if [ "$continue" == "y" ]; then
-    sudo php codecept.phar run tests/acceptance/
+    php codecept.phar run acceptance
   else
     echo "---Tests canceled"
   fi

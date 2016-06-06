@@ -28,7 +28,8 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button id="add-game" class="btn btn-success">Add Game!</button>
+                                <button id="add-game" class="btn btn-success">Post & Add Downloads</button>
+                                <h5 class="small" style="margin-bottom: 0px; color: #c7c7c7;">After your game is added you'll be able to add downloads for users to play.</h5>
                             </div>
                         </div>
                         {!! Form::close() !!}

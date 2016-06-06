@@ -93,11 +93,20 @@ Route::get('/edit-game/{game_slug}/{version_slug}',
 Route::post('/edit-game/{game_slug}/{version_slug}',
     ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@postEditGame']);
 
+Route::get('/add-downloads/{game_slug}',
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'DownloadController@getAddDownloads']);
+Route::post('/add-downloads/{game_slug}',
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'DownloadController@postAddDownloads']);
+Route::post('/save-file/{game_slug}/{platform_name}',
+    ['middleware' => ['auth', 'owngame'], 'uses' => 'DownloadController@postUploadGameFile']);
+
 Route::get('/promote/{game_slug}',
     ['middleware' => ['auth', 'owngame'], 'uses' => 'GameController@getPromoteGame']);
 
 Route::get('/game/{game_slug}/{version_slug?}',
     ['uses' => 'GameController@getGame']);
+Route::get('/download/{game_slug}/{platform_name}/{file_name}',
+    ['uses' => 'DownloadController@getDownload']);
 
 Route::post('/like/{game_slug}',
     ['middleware' => 'auth', 'uses' => 'LikeController@addLike']);
@@ -128,6 +137,13 @@ Route::post('/add-discussion',
     ['middleware' => 'auth', 'uses' => 'ForumController@postAddDiscussion']);
 Route::get('/forum/{discussion_slug}',
     ['uses' => 'ForumController@getDiscussion']);
+
+Route::bind('platform_name', function($value, $route) {
+    if(!in_array($value, \App\Game::$platforms)) {
+        abort(400);
+    }
+    return $value;
+});
 
 Route::bind('discussion_slug', function($value, $route) {
     $discussion = App\Discussion::whereSlug($value)->first();

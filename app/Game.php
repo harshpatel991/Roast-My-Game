@@ -10,6 +10,8 @@ use App\Http\Utils;
 class Game extends Model
 {
     use Commentable;
+    
+    protected $fillable = ['link_platform_pc', 'link_platform_mac', 'link_platform_linux', 'link_platform_ios', 'link_platform_android', 'link_platform_unity', 'link_platform_other'];
 
     public static $genres = [
         '' => 'Select Genre',
@@ -28,7 +30,7 @@ class Game extends Model
     ];
 
     public static $platforms = ['platform_pc', 'platform_mac', 'platform_linux', 'platform_ios', 'platform_android', 'platform_unity', 'platform_other'];
-    public static $platformDropDown = //the platforms list used for searching
+    public static $platformDropDown = //the platforms list used for searching and the labels on add game downloads form
         [
             '' => 'Select Platform',
             'platform_pc' => 'PC',

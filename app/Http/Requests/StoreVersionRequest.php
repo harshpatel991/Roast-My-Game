@@ -12,14 +12,6 @@ class StoreVersionRequest extends Request
         'version' => 'required|max:255',
         'beta' => 'max:10',
         'video_link' => 'max:255|url',
-        'link_platform_pc' => 'max:255|url',
-        'link_platform_mac' => 'max:255|url',
-        'link_platform_linux' => 'max:255|url',
-        'link_platform_ios' => 'max:255|url',
-        'link_platform_android' => 'max:255|url',
-        'link_platform_unity' => 'max:255|url',
-        'link_platform_other' => 'max:255|url',
-
         'upcoming_features' => 'max:5000',
         'changes' => 'max:5000'
         ];

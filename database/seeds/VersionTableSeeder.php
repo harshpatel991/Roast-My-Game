@@ -233,7 +233,30 @@ class VersionTableSeeder extends Seeder
 
                 'upcoming_features' => '',
                 'changes' => ''
-            ]
+            ],
+            ['id' => 10,
+                'game_id' => 8,
+                'version' => '1.2.3',
+                'slug' => '1.2.3',
+                'beta' => true,
+                'video_link' => 'https://www.youtube.com/watch?v=e-ORhEE9VVg',
+                'image1' => 'image1.jpg',
+                'image2' => 'image2.jpg',
+                'image3' => 'image3.jpg',
+                'image4' => null,
+
+                'link_platform_pc' => 'http://pc-game-1-version-1.2.3.com',
+                'link_platform_mac' => null,
+                'link_platform_linux' => 'http://linux-game-1-version-1.2.3.com',
+                'link_platform_ios' => null,
+                'link_platform_android' => 'http://android-game-1-version-1.2.3.com',
+                'link_platform_unity' => null,
+                'link_platform_other' => 'http://other-web-game-1-version-1.2.3.com',
+
+                'upcoming_features' => "Upcomming feaures 1.2.3",
+                'changes' => "Changes made this version in 1.2.3"
+            ],
+
         );
 
         DB::table('versions')->insert($versions);

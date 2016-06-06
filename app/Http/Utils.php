@@ -18,6 +18,12 @@ class Utils
         return 'https://s3-us-west-2.amazonaws.com/rmg-upload/'.$fileLocation;
     }
 
+    public static function get_download_url($gameSlug, $platform)
+    {
+//        return '/upload/'.$fileName; //local image path
+        return 'https://s3-us-west-2.amazonaws.com/rmg-upload/'.$gameSlug.'/game-files/'.$gameSlug.'-'.$platform.'.zip';
+    }
+
     public static function preg_grep_keys($pattern, $input, $flags = 0)
     {
         return array_intersect_key($input, array_flip(preg_grep($pattern, array_keys($input), $flags)));
@@ -48,6 +54,13 @@ class Utils
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
         }
 
+        Utils::upload_to_s3($saveFileName, $s3containingFolder);
+        return $saveFileName;
+    }
+
+    public static function upload_game_file($requestFile, $saveFileName, $s3containingFolder)
+    {
+        copy($requestFile->getRealPath(), Game::getBackupImageUploadPath() . $saveFileName);
         Utils::upload_to_s3($saveFileName, $s3containingFolder);
         return $saveFileName;
     }
