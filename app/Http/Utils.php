@@ -54,14 +54,18 @@ class Utils
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
         }
 
-        Utils::upload_to_s3($saveFileName, $s3containingFolder);
+        $sourcePathAndFileName = Game::getBackupImageUploadPath().$saveFileName;
+        $s3PathAndFileName = $s3containingFolder.'/'.$saveFileName;
+        Utils::upload_to_s3($sourcePathAndFileName, $s3PathAndFileName);
         return $saveFileName;
     }
 
     public static function upload_game_file($requestFile, $saveFileName, $s3containingFolder)
     {
-        copy($requestFile->getRealPath(), Game::getBackupImageUploadPath() . $saveFileName);
-        Utils::upload_to_s3($saveFileName, $s3containingFolder);
+//        copy($requestFile->getRealPath(), Game::getBackupImageUploadPath() . $saveFileName);
+        $sourcePathAndFileName = $requestFile->getRealPath();
+        $s3PathAndFileName = $s3containingFolder.'/'.$saveFileName;
+        Utils::upload_to_s3($sourcePathAndFileName, $s3PathAndFileName);
         return $saveFileName;
     }
 
@@ -80,19 +84,21 @@ class Utils
                 ->save(Game::getBackupImageUploadPath() . $saveFileName, 85);
         }
 
-        Utils::upload_to_s3($saveFileName, $s3containingFolder);
+        $sourcePathAndFileName = Game::getBackupImageUploadPath().$saveFileName;
+        $s3PathAndFileName = $s3containingFolder.'/'.$saveFileName;
+        Utils::upload_to_s3($sourcePathAndFileName, $s3PathAndFileName);
         return $saveFileName;
     }
 
-    private static function upload_to_s3($saveFileName, $s3containingFolder) {
+    private static function upload_to_s3($sourcePathAndFileName, $s3PathAndFileName) {
         if(!env('APP_DEBUG', false)) {
             $s3 = App::make('aws')->createClient('s3');
             $s3->putObject(array(
                 'ACL'        => 'public-read',
                 'Bucket'     => 'rmg-upload',
                 'CacheControl' => 'max-age=1814400',
-                'Key'        => $s3containingFolder.'/'.$saveFileName,
-                'SourceFile' => Game::getBackupImageUploadPath().$saveFileName,
+                'Key'        => $s3PathAndFileName,
+                'SourceFile' => $sourcePathAndFileName,
             ));
         }
     }
