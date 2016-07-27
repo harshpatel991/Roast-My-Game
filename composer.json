@@ -62,5 +62,11 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/harshpatel991/laravel-commentable"
+        }
+    ]
 }
