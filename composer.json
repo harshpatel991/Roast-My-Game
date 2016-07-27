@@ -11,7 +11,7 @@
         "intervention/image": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.1",
         "proengsoft/laravel-jsvalidation": "^1.2",
-        "slynova/laravel-commentable": "^1.0",
+        "harshpatel991/laravel-commentable": "dev-master",
         "mews/purifier": "^2.0",
         "aws/aws-sdk-php-laravel": "~3.0",
         "doctrine/dbal": "^2.5",
