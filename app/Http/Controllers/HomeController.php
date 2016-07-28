@@ -13,7 +13,7 @@ use Log;
 use DB;
 use Mail;
 use Redirect;
-use Slynova\Commentable\Models\Comment;
+use harshpatel991\Commentable\Models\Comment;
 
 class HomeController extends Controller
 {
