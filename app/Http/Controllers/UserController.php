@@ -12,7 +12,7 @@ use Validator;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Slynova\Commentable\Models\Comment;
+use harshpatel991\Commentable\Models\Comment;
 
 class UserController extends Controller
 {

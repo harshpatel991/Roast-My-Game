@@ -9,7 +9,7 @@ use App\Discussion;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Slynova\Commentable\Models\Comment;
+use harshpatel991\Commentable\Models\Comment;
 
 class ForumController extends Controller
 {

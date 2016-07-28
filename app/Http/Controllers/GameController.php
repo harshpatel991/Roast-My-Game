@@ -16,7 +16,7 @@ use Auth;
 use DB;
 use Illuminate\Http\Request;
 use Log;
-use Slynova\Commentable\Models\Comment;
+use harshpatel991\Commentable\Models\Comment;
 
 class GameController extends Controller
 {

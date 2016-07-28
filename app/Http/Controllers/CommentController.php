@@ -10,7 +10,7 @@ use App\User;
 use App\Game;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Slynova\Commentable\Models\Comment;
+use harshpatel991\Commentable\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\StoreCommentReplyRequest;
 
