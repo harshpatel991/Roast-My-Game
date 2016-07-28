@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Slynova\Commentable\Traits\Commentable;
+use harshpatel991\Commentable\Traits\Commentable;
 
 class Discussion extends Model
 {

@@ -1,6 +1,6 @@
 <?php
 
-use Slynova\Commentable\Models\Comment;
+use harshpatel991\Commentable\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
