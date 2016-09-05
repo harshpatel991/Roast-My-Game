@@ -218,6 +218,13 @@
                                     </div>
                                 @endif
 
+                                    <!-- RMG -->
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-6621729644063575"
+                                     data-ad-slot="2823513599"
+                                     data-ad-format="auto"></ins>
+
                                 <div class="small-grey-box">
                                     <div class="small subheading-color" style="font-weight: bold;">SHARE THIS ROAST</div>
                                     <hr>
@@ -328,5 +335,10 @@
                 });
             }
         });
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 @endsection
