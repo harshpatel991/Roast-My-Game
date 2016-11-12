@@ -27,7 +27,7 @@
 
                 <div class="row">
                     <div class="col-sm-6">
-                        <h6 class="small" style="padding: 5px; margin-bottom: 0px;">POPULAR</h6>
+                        <h6 class="small" style="padding: 5px; margin-bottom: 0px;">TRENDING NOW</h6>
                     </div>
                     <div class="col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-3">
                         <a href="{{ secure_url('/games?query=&genre=&platform=&order=views') }}" class="btn btn-sm btn-info pull-right hidden-xs" style="margin-top: 20px;">More Popular Games<span class="icon-right-circled"></span></a>
@@ -46,13 +46,6 @@
                     @include('partials/card', ['game' => $popularGames->get(5)])
                     @include('partials/card', ['game' => $popularGames->get(6)])
                     @include('partials/card', ['game' => $popularGames->get(7)])
-                </div>
-
-                <div class="row">
-                    @include('partials/card', ['game' => $popularGames->get(8)])
-                    @include('partials/card', ['game' => $popularGames->get(9)])
-                    @include('partials/card', ['game' => $popularGames->get(10)])
-                    @include('partials/card', ['game' => $popularGames->get(11)])
                 </div>
 
             </div>
@@ -81,25 +74,24 @@
 
         <div class="row">
             <div class="col-md-offset-1 col-md-8 col-sm-12">
+                @include('partials/card', ['game' => $games->get(0), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(1), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(2), 'showDate' => true])
 
-                @include('partials/card', ['game' => $games->get(0)])
-                @include('partials/card', ['game' => $games->get(1)])
-                @include('partials/card', ['game' => $games->get(2)])
+                @include('partials/card', ['game' => $games->get(3), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(4), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(5), 'showDate' => true])
 
-                @include('partials/card', ['game' => $games->get(3)])
-                @include('partials/card', ['game' => $games->get(4)])
-                @include('partials/card', ['game' => $games->get(5)])
-
-                @include('partials/card', ['game' => $games->get(6)])
-                @include('partials/card', ['game' => $games->get(7)])
-                @include('partials/card', ['game' => $games->get(8)])
-                @include('partials/card', ['game' => $games->get(9)])
-                @include('partials/card', ['game' => $games->get(10)])
-                @include('partials/card', ['game' => $games->get(11)])
+                @include('partials/card', ['game' => $games->get(6), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(7), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(8), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(9), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(10), 'showDate' => true])
+                @include('partials/card', ['game' => $games->get(11), 'showDate' => true])
             </div>
 
             <div class="col-md-2">
-                <h6>User Activity</h6>
+                <h6>Recent Activity</h6>
                 @foreach($recentList as $recentListItem)
 
                     <div class="media">
