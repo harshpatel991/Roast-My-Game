@@ -7,7 +7,7 @@
                 </div>
 
                 <h6 class="card-title">{{$game->title}}</h6>
-                <p class="small card-date"><span class="icon-clock"></span> {{$game->versions->first()->created_at->diffForHumans()}} </p>
+                @if(isset($showDate) && $showDate)<p class="small card-date"><span class="icon-clock"></span> {{$game->versions->first()->created_at->diffForHumans()}} </p>@endif
                 <p class="small card-description">{{clean($game->description, 'noneAllowed')}}</p>
             </div>
         </a>

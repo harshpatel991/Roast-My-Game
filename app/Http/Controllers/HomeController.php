@@ -21,6 +21,7 @@ class HomeController extends Controller
 {
     public function getHome() {
         $popularGames = Game::orderBy('views', 'desc')
+            ->where('created_at', '>=', Carbon::now()->subMonth(3))
             ->with(['versions' => function($query) {
                 $query->orderBy('created_at', 'desc');
             }])
