@@ -62,7 +62,7 @@
 
                 <div class="row">
                     <div class="col-sm-6">
-                        <h6 class="small" style="padding: 5px; margin-bottom: 0px;">RECENTLY UPDATED</h6>
+                        <h6 class="small" style="padding: 5px; margin-bottom: 0px;">RECENTLY ADDED AND UPDATED</h6>
                     </div>
                     <div class="col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-3">
                         <a href="{{ secure_url('/games?query=&genre=&platform=&order=created_at') }}" class="btn btn-sm btn-info pull-right hidden-xs" style="margin-top: 20px;">More Recent Games<span class="icon-right-circled"></span></a>
