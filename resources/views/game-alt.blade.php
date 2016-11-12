@@ -219,11 +219,7 @@
                                 @endif
 
                                     <!-- RMG -->
-                                <ins class="adsbygoogle"
-                                     style="display:block"
-                                     data-ad-client="ca-pub-6621729644063575"
-                                     data-ad-slot="2823513599"
-                                     data-ad-format="auto"></ins>
+                                @include('partials.ads')
 
                                 <div class="small-grey-box">
                                     <div class="small subheading-color" style="font-weight: bold;">SHARE THIS ROAST</div>
@@ -254,6 +250,20 @@
 
     </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Thanks Mate</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="thank-you-image" class="thank-you-image center-block" src=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('footer')
@@ -263,6 +273,24 @@
 @endsection
 
 @section('scripts')
+    @include('partials.adblock-detector')
+
+    <script>
+        function adBlockDetected() {
+            $('#ad-block-message').show();
+        }
+        fuckAdBlock.onDetected(adBlockDetected);
+    </script>
+
+    <script>
+        var imageBase = "https://s3-us-west-2.amazonaws.com/rmg-upload/thank-you/";
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var randomIndex = Math.floor(Math.random() * (7 - 1)) + 1;
+            var image = imageBase + randomIndex + ".jpg";
+            $('#thank-you-image').attr('src', image);
+        })
+    </script>
+
     <script>
         var mainImage = $('#mainImage');
         var youtubePlayer = $('#ytplayer');
