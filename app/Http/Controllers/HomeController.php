@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
+use App\RecentListItem;
 use Carbon\Carbon;
 use App\Game;
 use App\User;
@@ -19,11 +21,10 @@ class HomeController extends Controller
 {
     public function getHome() {
         $popularGames = Game::orderBy('views', 'desc')
-            ->where('created_at', '>=', Carbon::now()->subMonth())
             ->with(['versions' => function($query) {
                 $query->orderBy('created_at', 'desc');
             }])
-            ->take(12)
+            ->take(8)
             ->get();
 
         $versions = Version::orderBy('created_at', 'desc')
@@ -40,7 +41,40 @@ class HomeController extends Controller
         }
         $games = $games->unique()->values();
 
-        return view('home', compact('games', 'popularGames'));
+        //Find recent actions
+        $recentList = array();
+        $recentLikes = Like::orderBy('created_at', 'desc')
+            ->with('game')
+            ->with('user')
+            ->take(3)
+            ->get();
+
+        $recentRoasts = Comment::where('parent_id', null)
+            ->orderBy('created_at', 'desc')
+            ->with('user')
+            ->with('commentable')
+            ->take(5)
+            ->get();
+
+        foreach ($recentLikes as $recentLike) {
+            $recentListItem = new RecentListItem();
+            $recentListItem->create($recentLike->user, RecentListItem::$FAVORITED, $recentLike->game);
+            array_push($recentList, $recentListItem);
+        }
+
+        foreach ($recentRoasts as $recentRoast) {
+            $recentListItem = new RecentListItem();
+            $recentListItem->create($recentRoast->user, RecentListItem::$ROASTED, $recentRoast->commentable);
+            array_push($recentList, $recentListItem);
+        }
+
+        foreach ($games->slice(0, 5) as $game) {
+            $recentListItem = new RecentListItem();
+            $recentListItem->create($game->user, RecentListItem::$POSTED, $game);
+            array_push($recentList, $recentListItem);
+        }
+
+        return view('home', compact('games', 'popularGames', 'recentList'));
     }
 
     public function getGames(Request $request) {
