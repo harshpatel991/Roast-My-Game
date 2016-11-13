@@ -75,7 +75,7 @@ class HomeController extends Controller
             array_push($recentList, $recentListItem);
         }
 
-        return view('home', compact('games', 'popularGames', 'recentList'));
+        return view('home', compact('games', 'popularGames', 'recentList', 'recentRoasts'));
     }
 
     public function getGames(Request $request) {

@@ -1,5 +1,5 @@
 @if(isset($game))
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-xs-6">
         <a href="{{ secure_url('/game/'.$game->slug) }}" class="card-wrapper-link">
             <div class="card-background-box rounded-border-radius">
                 <div class="embed-responsive embed-responsive-16by9">

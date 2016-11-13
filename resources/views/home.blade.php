@@ -51,11 +51,22 @@
             </div>
         </div>
 
-        {{--<div class="row blue-green-background-gradient hidden-xs">--}}
-            {{--<div class="col-md-offset-1 col-md-10">--}}
-                {{--<h3 style="color: #fff;">START ROASTING <a href="{{secure_url('/auth/register')}}" class="btn btn-lg btn-default-outline pull-right">SIGN UP</a></h3>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+        <div class="row grey-background hidden-xs">
+            <div class="col-md-offset-1 col-md-10">
+                <h6 class="small" style="padding: 5px; margin-bottom: 0px;">RECENT ROASTS</h6>
+                <div class="row">
+                    <div class="col-sm-4">
+                        @include('partials.recent-roast', ['comment' => $recentRoasts->get(0), 'game' => $recentRoasts->get(0)->commentable])
+                    </div>
+                    <div class="col-sm-4">
+                        @include('partials.recent-roast', ['comment' => $recentRoasts->get(1), 'game' => $recentRoasts->get(1)->commentable])
+                    </div>
+                    <div class="col-sm-4">
+                        @include('partials.recent-roast', ['comment' => $recentRoasts->get(2), 'game' => $recentRoasts->get(2)->commentable])
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-offset-1 col-md-10 col-sm-12">
