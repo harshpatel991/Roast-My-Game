@@ -51,6 +51,7 @@ class HomeController extends Controller
             ->get();
 
         $recentRoasts = Comment::where('parent_id', null)
+            ->where('my_commentable_type', 'Game')
             ->orderBy('created_at', 'desc')
             ->with('user')
             ->with('commentable')
