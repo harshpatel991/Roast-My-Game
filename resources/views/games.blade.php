@@ -62,7 +62,7 @@
                         @endfor
 
                         <div class="text-center">
-                            {!! $games->appends(['query' => $oldQuery, 'genre' => $oldGenre, 'platform' => $oldPlatform, 'order' => $oldOrder])->render() !!}
+                            {!! $games->appends(['query' => $oldQuery, 'genre' => $oldGenre, 'platform' => $oldPlatform, 'order' => $oldOrder, 'roasted' => $oldRoasted])->render() !!}
                         </div>
 
                     </div>

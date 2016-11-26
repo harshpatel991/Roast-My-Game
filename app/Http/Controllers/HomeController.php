@@ -85,6 +85,7 @@ class HomeController extends Controller
         $oldGenre = '';
         $oldPlatform = '';
         $oldOrder = '';
+        $oldRoasted = '';
 
         if($request->has('order')) {
             $oldOrder = $request->get('order');
@@ -112,12 +113,16 @@ class HomeController extends Controller
             $gamesQuery->whereIn('id', $gameIds);
             $oldPlatform = $platform;
         } if($request->has('roasted')) {
-            $gamesWithComments = Comment::where('my_commentable_type', 'Game')->groupBy('commentable_id')->lists('commentable_id');
-            $gamesQuery->whereNotIn('id', $gamesWithComments);
+            $roasted = $request->get('roasted');
+            if($roasted == 'false') {
+                $gamesWithComments = Comment::where('my_commentable_type', 'Game')->groupBy('commentable_id')->lists('commentable_id');
+                $gamesQuery->whereNotIn('id', $gamesWithComments);
+            }
+            $oldRoasted = $roasted;
         }
         $games = $gamesQuery->paginate(16);
 
-        return view('games', compact('games', 'pageTitle', 'oldQuery', 'oldGenre', 'oldPlatform', 'oldOrder'));
+        return view('games', compact('games', 'pageTitle', 'oldQuery', 'oldGenre', 'oldPlatform', 'oldOrder', 'oldRoasted'));
     }
 
     public function getLeaderboard(Request $request) {
