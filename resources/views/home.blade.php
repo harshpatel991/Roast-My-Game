@@ -25,12 +25,9 @@
 
                 @include('partials.display-input-error')
 
-                <div class="row">
+                <div class="row" style="margin-top: -150px;">
                     <div class="col-sm-6">
-                        <h6 class="small" style="padding: 5px; margin-bottom: 0px;">TRENDING NOW</h6>
-                    </div>
-                    <div class="col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-3">
-                        <a href="{{ secure_url('/games?query=&genre=&platform=&order=views') }}" class="btn btn-sm btn-info pull-right hidden-xs" style="margin-top: 20px;">More Popular Games<span class="icon-right-circled"></span></a>
+                        <h6 class="small" style="padding: 5px; margin-bottom: 0px; color: #fff;">TRENDING NOW</h6>
                     </div>
                 </div>
 
