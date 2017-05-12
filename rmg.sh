@@ -100,7 +100,7 @@ refreshseedanddump() {
 
 prodlogs() {
     printf "${RED}------------Get Latest Production Logs------------${NC}\n"
-    ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod-east`].PublicIpAddress' --output text)
+    ec2instanceIP=$(aws ec2 describe-instances --query 'Reservations[*].Instances[?KeyName==`rmg-prod-east`].PublicIpAddress' --output text | head -n 1)
     echo "Logging into ${ec2instanceIP}"
     ssh ec2-user@"${ec2instanceIP}" 'cat /var/app/current/storage/logs/laravel.log;'
 
