@@ -14,7 +14,7 @@
     <![endif]-->
     <link rel="canonical" href="{{ secure_url(Request::path()) }}" />
     <link rel="icon" type="image/png" href="https://roastmygame.com/images/favicon.png" />
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/app.css?cachebreaker=103" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <title>@yield('page-title')</title>
