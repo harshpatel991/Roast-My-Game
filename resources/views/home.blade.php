@@ -82,20 +82,24 @@
 
         <div class="row">
             <div class="col-md-offset-1 col-md-8 col-sm-12">
-                @include('partials/card', ['game' => $games->get(0), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(1), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(2), 'showDate' => true])
-
-                @include('partials/card', ['game' => $games->get(3), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(4), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(5), 'showDate' => true])
-
-                @include('partials/card', ['game' => $games->get(6), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(7), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(8), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(9), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(10), 'showDate' => true])
-                @include('partials/card', ['game' => $games->get(11), 'showDate' => true])
+                <div class="row">
+                    @include('partials/card', ['game' => $games->get(0), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(1), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(2), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(3), 'showDate' => true])
+                </div>
+                <div class="row">
+                    @include('partials/card', ['game' => $games->get(4), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(5), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(6), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(7), 'showDate' => true])
+                </div>
+                <div class="row">
+                    @include('partials/card', ['game' => $games->get(8), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(9), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(10), 'showDate' => true])
+                    @include('partials/card', ['game' => $games->get(11), 'showDate' => true])
+                </div>
             </div>
 
             <div class="col-md-2">
