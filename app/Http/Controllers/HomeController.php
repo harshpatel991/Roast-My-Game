@@ -109,7 +109,9 @@ class HomeController extends Controller
             if(!array_key_exists($platform, Game::$platformDropDown)) {
                 \App::abort(404); //platform not found
             }
-            $gameIds = Version::whereNotNull('link_'.$platform)->orderBy('created_at', 'desc')->select('game_id')->get();
+            $gameIdsFromVersion = Version::whereNotNull('link_'.$platform)->orderBy('created_at', 'desc')->select('game_id')->get();
+            $gameIdsFromGame = Game::whereNotNull('link_'.$platform)->orderBy('created_at', 'desc')->select('id')->get(); // links to games used to be per version, now it is per Game so we have to search both
+            $gameIds = array_merge($gameIdsFromVersion->toArray(), $gameIdsFromGame->toArray());
             $gamesQuery->whereIn('id', $gameIds);
             $oldPlatform = $platform;
         } if($request->has('roasted')) {
