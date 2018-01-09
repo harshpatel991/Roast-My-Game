@@ -262,7 +262,7 @@
                                                                                                                                 <div style="color:#333333;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
                                                                                                                                     <div style="font-size: 14px; line-height: 16px; text-align: center;color: #333333;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height: 17px">
                                                                                         <span style="font-size:20px; line-height:43px;"><strong>
-                                                                                                <a href="https://tweetpup.com">
+                                                                                                <a href="https://tweetpup.com/?utm_source=email&utm_medium=banner">
                                                                                                     <img src="<?php echo $message->embed("https://roastmygame.com/images/tweet-pup-banner.png"); ?>" alt="{{strtoupper(Config::get('app.name'))}}">
                                                                                                 </a>
                                                                                                 {{--<span style="line-height: 43px; font-size: 36px;" data-mce-style="line-height: 43px; font-size: 36px;">{{strtoupper(Config::get('app.name'))}}</span>--}}
