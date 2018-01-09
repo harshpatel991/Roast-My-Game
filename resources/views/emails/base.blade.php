@@ -226,12 +226,74 @@
 
                                                                         </td>
                                                                     </tr>
-                                                                    </tbody></table><table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                    </tbody></table>
+                                                                <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
                                                                     <tbody><tr style="vertical-align: top">
                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
                                                                             <div style="color:#333333;line-height:200%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
                                                                                 <div style="font-size: 12px; line-height: 24px;color: #333333;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left;line-height: 24px"><span style="font-size:20px; line-height:40px;font-family:'lucida sans unicode', 'lucida grande', sans-serifpx;">-{{Config::get('app.name')}}</span>&nbsp;<br></div>
                                                                             </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+                                                                <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                    <tbody><tr style="vertical-align: top">
+                                                                        <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                                                            <table class="container" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 500px;margin: 0 auto;text-align: inherit" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                                <tbody><tr style="vertical-align: top">
+                                                                                    <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                                                                        <table class="block-grid two-up" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 500px;color: #333;background-color: transparent" cellpadding="0" cellspacing="0" width="100%" bgcolor="transparent">
+                                                                                            <tbody><tr style="vertical-align: top">
+                                                                                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;text-align: center;font-size: 0">
+                                                                                                    <!--[if (gte mso 9)|(IE)]>
+                                                                                                    <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+                                                                                                        <tr>
+                                                                                                            <td valign="top">
+                                                                                                    <![endif]-->
+                                                                                                    <div class="col num6" style="display: inline-block;vertical-align: top;text-align: center">
+                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                                                            <tbody><tr style="vertical-align: top">
+                                                                                                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 15px;padding-right: 0px;padding-bottom: 10px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                                                                    <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                                                                        <tbody><tr style="vertical-align: top">
+                                                                                                                            <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 0px;padding-bottom: 10px;padding-left: 0px">
+                                                                                                                                <div style="color:#333333;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                                                    <div style="font-size: 14px; line-height: 16px; text-align: center;color: #333333;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height: 17px">
+                                                                                        <span style="font-size:20px; line-height:43px;"><strong>
+                                                                                                <a href="https://tweetpup.com">
+                                                                                                    <img src="<?php echo $message->embed("http://clickr-dev.com/images/tweet-pup-banner.png"); ?>" alt="{{strtoupper(Config::get('app.name'))}}">
+                                                                                                </a>
+                                                                                                {{--<span style="line-height: 43px; font-size: 36px;" data-mce-style="line-height: 43px; font-size: 36px;">{{strtoupper(Config::get('app.name'))}}</span>--}}
+                                                                                            </strong></span>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        </tbody></table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            </tbody></table>
+                                                                                                    </div>
+                                                                                                    <!--[if (gte mso 9)|(IE)]>
+                                                                                                    </td><td>
+                                                                                                    <![endif]-->
+
+                                                                                                    <!--[if (gte mso 9)|(IE)]>
+                                                                                                    </td><td>
+                                                                                                    <![endif]-->
+                                                                                                    <!--[if (gte mso 9)|(IE)]>
+                                                                                                    </td>
+                                                                                                    </tr>
+                                                                                                    </table>
+                                                                                                    <![endif]-->
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            </tbody></table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody></table>
                                                                         </td>
                                                                     </tr>
                                                                     </tbody></table>
