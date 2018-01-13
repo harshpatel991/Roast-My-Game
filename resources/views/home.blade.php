@@ -119,6 +119,7 @@
                     </div>
                 @endforeach
 
+                @include('partials.ads')
             </div>
         </div>
 

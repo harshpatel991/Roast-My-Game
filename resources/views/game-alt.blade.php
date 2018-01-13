@@ -273,15 +273,6 @@
 @endsection
 
 @section('scripts')
-    @include('partials.adblock-detector')
-
-    <script>
-        function adBlockDetected() {
-            $('#ad-block-message').show();
-        }
-        fuckAdBlock.onDetected(adBlockDetected);
-    </script>
-
     <script>
         var imageBase = "https://s3-us-west-2.amazonaws.com/rmg-upload/thank-you/";
         $('#exampleModal').on('show.bs.modal', function (event) {
@@ -363,10 +354,5 @@
                 });
             }
         });
-    </script>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 @endsection
