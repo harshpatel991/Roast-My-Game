@@ -44,9 +44,9 @@ class GameCreateCest
         $I->seeInSource('400 Points');
 
         //verify email
-        $I->seeInLastEmailTo("support@roastmygame.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("support@roastmygame.com", "Your Game Has Been Added");
         $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-minimal-title");
-        $I->seeInLastEmailTo("user1@gmail.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("user1@gmail.com", "Your Game Has Been Added");
         $I->seeInLastEmailTo("user1@gmail.com", "https://clickr.app/game/test-minimal-title");
         $I->seeEmailCount(2);
     }
@@ -168,9 +168,9 @@ class GameCreateCest
         $I->seeInSource('trophy3.jpg');
         $I->seeInSource('400 Points');
 
-        $I->seeInLastEmailTo("support@roastmygame.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("support@roastmygame.com", "Your Game Has Been Added");
         $I->seeInLastEmailTo("support@roastmygame.com", "https://clickr.app/game/test-full-title");
-        $I->seeInLastEmailTo("user1@gmail.com", "Your Game As Been Added");
+        $I->seeInLastEmailTo("user1@gmail.com", "Your Game Has Been Added");
         $I->seeInLastEmailTo("user1@gmail.com", "https://clickr.app/game/test-full-title");
         $I->seeEmailCount(2);
     }
