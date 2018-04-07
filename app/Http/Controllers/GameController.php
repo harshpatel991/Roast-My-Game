@@ -136,7 +136,7 @@ class GameController extends Controller
         Mail::queue(['emails.add-game-success', 'emails.add-game-success-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) use ($sendTo) {
             $message->to($sendTo)
                 ->bcc('support@roastmygame.com', 'Support')
-                ->subject('Your Game As Been Added');
+                ->subject('Your Game Has Been Added');
         });
         Log::info('Add game success sent to: '.$sendTo);
         
