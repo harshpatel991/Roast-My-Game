@@ -20,17 +20,24 @@ use harshpatel991\Commentable\Models\Comment;
 class HomeController extends Controller
 {
     public function getHome() {
-        $popularGames = Game::orderBy('views', 'desc')
-            ->where('created_at', '>=', Carbon::now()->subMonth(3))
+        $recentGamesOrderedByViews = Game::orderBy('views', 'desc')
+            ->where('created_at', '>=', Carbon::now()->subMonth(1))
             ->with(['versions' => function($query) {
                 $query->orderBy('created_at', 'desc');
             }])
+            ->take(4)
+            ->get();
+
+        $recentlyViewedGames = Game::orderBy('updated_at', 'desc')
+            ->where('views', '>', '50')
             ->take(8)
             ->get();
 
+        $popularGames = $recentGamesOrderedByViews->merge($recentlyViewedGames)->unique()->values();
+
         $versions = Version::orderBy('created_at', 'desc')
             ->select('game_id')
-            ->take(16)
+            ->take(18)
             ->with(['game.versions' => function($query) {
                     $query->orderBy('created_at', 'desc');
             }])
