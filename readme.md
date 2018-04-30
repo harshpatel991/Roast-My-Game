@@ -1,4 +1,4 @@
-# Roast My Game (codename Clickr) - [https://roastmygame.com/](https://roastmygame.com/)
+# Roast My Game - [https://roastmygame.com/](https://roastmygame.com/)
  Roast My Game is a site for game developers to add their games to receive feedback on how to improve.
  
 ## Features
