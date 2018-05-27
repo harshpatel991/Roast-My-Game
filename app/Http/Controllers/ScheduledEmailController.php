@@ -48,7 +48,7 @@ class ScheduledEmailController extends Controller
                     echo "sending to: " . $emailAddress . "<br>";
                     Mail::queue(['emails.screenshot-saturday', 'emails.screenshot-saturday-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function ($message) use ($emailAddress) {
                         $message->to($emailAddress)
-                        ->bcc('support@roastmygame.com', 'Support')
+                        ->bcc('roastmygame@gmail.com', 'Support')
                             ->subject('Happy Screenshot Saturday!');
                     });
 

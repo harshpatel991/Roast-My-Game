@@ -40,7 +40,7 @@ class CommentController extends Controller
             $emailAddress = $gameOwner->email;
             Mail::queue(['emails.comment-added', 'emails.comment-added-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function ($message) use ($emailAddress) {
                 $message->to($emailAddress)
-                    ->bcc('support@roastmygame.com', 'Support')
+                    ->bcc('roastmygame@gmail.com', 'Support')
                     ->subject('Your Game Has Been Roasted!');
             });
             Log::info('Your game has been roasted sent out to ' . $emailAddress);
@@ -76,7 +76,7 @@ class CommentController extends Controller
             $sendTo = $sendToUser->email;
             Mail::queue(['emails.comment-reply-added', 'emails.comment-reply-added-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) use ($sendTo) {
                 $message->to($sendTo)
-                    ->bcc('support@roastmygame.com', 'Support')
+                    ->bcc('roastmygame@gmail.com', 'Support')
                     ->subject('Someone Replied to Your Comment!');
             });
             Log::info('Someone replied to your comment sent out to '.$sendTo);
