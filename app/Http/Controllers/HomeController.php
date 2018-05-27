@@ -186,7 +186,7 @@ class HomeController extends Controller
         ]);
 
         Mail::send('emails.contactus', ['email' => Input::get('email'), 'content' => Input::get('message')], function($message) {
-            $message->to('support@roastmygame.com')
+            $message->to('roastmygame@gmail.com')
                 ->subject('Contact Us');
         });
         Log::info('Contact Us: '. Input::get('email') . ' : ' . Input::get('message'));
