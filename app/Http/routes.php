@@ -185,4 +185,6 @@ Route::get('/about', 'HomeController@about');
 Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 Route::get('/terms-conditions', 'HomeController@termsAndConditions');
 
+Route::get('/weather',
+    ['uses' => 'WeatherController@getWeather']);
 
