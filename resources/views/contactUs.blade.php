@@ -39,7 +39,15 @@
                                     </div>
                                 </div>
 
-
+                                @if(env('GOOGLE_RECAPTCHA_KEY'))
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3">
+                                            <div class="g-recaptcha"
+                                                 data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
 
                                 <div class="form-group">
                                     <div class="col-md-7 col-md-offset-3">
@@ -67,3 +75,6 @@
 @endsection
 
 
+@section('scripts')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection
