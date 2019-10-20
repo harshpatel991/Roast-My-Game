@@ -182,7 +182,8 @@ class HomeController extends Controller
 
         $this->validate($request, [
             'email' => 'required|max:254|email',
-            'message' => 'required|max:2500'
+            'message' => 'required|max:2500',
+            'g-recaptcha-response'=>'required|recaptcha'
         ]);
 
         Mail::send('emails.contactus', ['email' => Input::get('email'), 'content' => Input::get('message')], function($message) {
