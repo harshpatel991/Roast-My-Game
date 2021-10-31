@@ -4,8 +4,8 @@ proddeploy() {
   printf "${RED}------------Production Deploy------------${NC}\n"
 
 #  echo "---Backing Up Production DB"
-  backupremotedb
-  prodlogs
+#  backupremotedb
+#  prodlogs
   #TODO if backup fails, this should not go through
 
 #  echo "Verify DB backup was made."
