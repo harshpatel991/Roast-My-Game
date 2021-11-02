@@ -23,7 +23,7 @@ proddeploy() {
       git commit -m "Release $tag" public/css/app.css
       git tag -a "$tag" -m "$tag"
       echo "---Deploying"
-      eb deploy rmg-env-east
+      eb deploy rmg-staging
   else
     echo "---Deploy canceled"
   fi
