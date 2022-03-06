@@ -101,22 +101,18 @@ class GameTableSeeder extends Seeder
                 'title' => 'Test Game 6',
                 'slug' => 'test-game-6',
                 'genre' => 'strategy',
-                'description' => '<p><strong>Bold Text</strong></p>
-                                    <p><em>Italic Text</em></p>
-                                    <p><a href="http://google.com">Link</a></p>
-                                    <p style="text-align: left;">Left Justified</p>
-                                    <p style="text-align: center;">Centered</p>
-                                    <p style="text-align: right;">Right Justified</p>
-                                    <ul>
-                                    <li>Bulleted1</li>
-                                    <li>Bulleted2</li>
-                                    <li>Bulleted 3</li>
-                                    </ul>
-                                    <ol>
-                                    <li>Number1</li>
-                                    <li>Number2</li>
-                                    <li>Number3</li>
-                                    </ol>',
+                'description' => 'text<br /><br />pharagraph text<br /><br /><strong>bold text</strong><br /><br /><em>italics text</em><br /><br /><a href="http://google.com">link</a><br /><br />
+                                <ul>
+                                <li>bullet1</li>
+                                <li>bullet2</li>
+                                <li>bullet3</li>
+                                </ul>
+                                <br />
+                                <ol>
+                                <li>number1</li>
+                                <li>number2</li>
+                                <li>number3</li>
+                                </ol>',
                 'likes' => 0,
                 'views' => 764,
                 'link_social_greenlight' => null,

@@ -39,11 +39,18 @@
                 @include('partials.display-input-error')
 
                 <div class="row">
-                    <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
+                    <div class="col-sm-6">
+                        <h6 class="small" style="padding: 5px;">RECENTLY UPDATED GAMES</h6>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="/games" class="btn btn-sm btn-info pull-right" style="margin-top: 20px;">More Games<span class="icon-right-circled"></span></a>
+                    </div>
+                </div>
 
-                    @include('partials/card', ['game' => $games[0]])
-                    @include('partials/card', ['game' => $games[1]])
+                <div class="row">
                     @include('partials/card', ['game' => $games[2]])
+                    @include('partials/card', ['game' => $games[1]])
+                    @include('partials/card', ['game' => $games[0]])
 
                     <div class="col-sm-3"> {{--Add your game card--}}
                         <div class="white-background-box">
@@ -51,7 +58,8 @@
                                 <img class="embed-responsive-item" src="/images/placeholder.jpg"/>
                             </div>
                             <h6>Your Game Here</h6>
-                            <p class="small" style="color:#bfbfbf;"> </p>
+                            <p class="small card-date"> </p>
+                            <p class="small"> </p>
                             <a class="btn btn-primary btn-block" href="/add-game">Add Your Game</a>
                         </div>
                     </div>

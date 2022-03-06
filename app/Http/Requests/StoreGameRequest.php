@@ -34,7 +34,7 @@ class StoreGameRequest extends Request
         return array_merge(
             ['title' => 'required|max:255',
             'genre' => 'required|max: 255|in:'. implode(',', array_keys(\App\Game::$genres)),
-            'description' => 'max: 1000',
+            'description' => 'max: 5000',
             'platforms' => 'max: 140',
 
             'link_social_greenlight' => $linkRules,
