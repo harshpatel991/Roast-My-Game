@@ -15,7 +15,7 @@ proddeploy() {
 
   if [ "$continue" == "y" ]; then
       echo "---Minifying CSS"
-      gulp --production
+#      gulp --production
 
       lastVersion=$(git tag | tail -n1)
       echo "---Tag version [last was ${lastVersion}]"
@@ -23,7 +23,7 @@ proddeploy() {
       git commit -m "Release $tag" public/css/app.css
       git tag -a "$tag" -m "$tag"
       echo "---Deploying"
-      eb deploy rmg-env-east-cloned
+      eb deploy rmg-env-cloned-2
   else
     echo "---Deploy canceled"
   fi
@@ -43,13 +43,13 @@ backupremotedb() {
 #  echo "User: rmg_ec2_user. Enter DB password..."
 #  read dbpassword
   dt_now=$(date '+%d_%m_%Y__%H_%M_%S');
-  \mysqldump --single-transaction --user=rmg_ec2_user -p$RMG_EC2_USER_PASS --host=rmg-east.cdxi2trrcudp.us-east-1.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql"
+  \mysqldump --single-transaction --user=rmg -p$RMG_EC2_USER_PASS --host=tweetpup-prod.cdxi2trrcudp.us-east-1.rds.amazonaws.com --protocol=tcp --port=3306 --default-character-set=utf8 "rmg" -r "./prod-db-backups/backup$dt_now.sql" --set-gtid-purged=OFF
   echo "Completed"
   echo "Copy dump to local DB? [y/n]"
   read continue
 
   if [ "$continue" == "y" ]; then
-    mysql -u homestead -psecret --host=192.168.55.55 homestead < "./prod-db-backups/backup$dt_now.sql"
+    mysql -u rmg -p$RMG_EC2_USER_PASS --host=database-1.cdxi2trrcudp.us-east-1.rds.amazonaws.com rmg < "./prod-db-backups/backup$dt_now.sql"
     echo "---DB dump copied!"
   else
     echo "---DB dump not copied"

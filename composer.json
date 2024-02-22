@@ -12,7 +12,7 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "proengsoft/laravel-jsvalidation": "^1.2",
         "harshpatel991/laravel-commentable": "dev-master",
-        "mews/purifier": "^2.0",
+        "mews/purifier": "3.2.3",
         "aws/aws-sdk-php-laravel": "~3.0",
         "doctrine/dbal": "^2.5",
         "irazasyed/laravel-gamp": "^1.1",
@@ -62,7 +62,10 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
     },
     "repositories": [
         {
