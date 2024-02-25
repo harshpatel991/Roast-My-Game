@@ -186,11 +186,11 @@ class HomeController extends Controller
             'g-recaptcha-response'=>'required|recaptcha'
         ]);
 
-        Mail::send('emails.contactus', ['email' => Input::get('email'), 'content' => Input::get('message')], function($message) {
+        Mail::send('emails.contactus', ['email' => Request::input('email'), 'content' => Request::input('message')], function($message) {
             $message->to('roastmygame@gmail.com')
                 ->subject('Contact Us');
         });
-        Log::info('Contact Us: '. Input::get('email') . ' : ' . Input::get('message'));
+        Log::info('Contact Us: '. Request::input('email') . ' : ' . Request::input('message'));
         return redirect('/contact-us')->with('message', 'You\'re all set! We\'ll get back to you as soon as we can.');
     }
 }
