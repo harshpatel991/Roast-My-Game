@@ -29,10 +29,15 @@ RUN apt-get update && apt-get install -y \
     build-essential
 
 RUN apt-get clean && apt-get update
-RUN apt-get install -y nodejs npm python3 python3-pip
 
-# RUN pip install virtualenv
+# Setup python
+RUN apt-get install -y nodejs npm python3 python3-pip
 RUN apt install -y python3-virtualenv
+
+#setup elasticbeanstalk
+RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+RUN python3 ./aws-elastic-beanstalk-cli-setup/scripts/ebcli_installer.py
+RUN apt-get update && apt-get install python-is-python3
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -42,13 +47,6 @@ RUN docker-php-ext-install pdo_mysql exif pcntl
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
-RUN python3 ./aws-elastic-beanstalk-cli-setup/scripts/ebcli_installer.py
-
-
-RUN apt-get update && apt-get install python-is-python3
-
 
 # Add user for laravel application
 RUN groupadd -g 1000 www
