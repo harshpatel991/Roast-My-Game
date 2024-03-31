@@ -23,7 +23,7 @@ proddeploy() {
       git commit -m "Release $tag" public/css/app.css
       git tag -a "$tag" -m "$tag"
       echo "---Deploying"
-      eb deploy rmg-env-cloned-2
+      /root/.ebcli-virtual-env/executables/eb deploy rmg-env-cloned-2
   else
     echo "---Deploy canceled"
   fi
