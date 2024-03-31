@@ -10,7 +10,7 @@ echo "============ START SETUP SSL ============";
 
 if $SHOULD_GENERATE_CERT; then
   echo "Generating new cert"
-  certbot --nginx -d rmg-env-cloned-2.famar38uup.us-east-1.elasticbeanstalk.com -d www.rmg-env-cloned-2.famar38uup.us-east-1.elasticbeanstalk.com --non-interactive --agree-tos -m ${CERT_EMAIL}
+  certbot --nginx -d ${SERVER_DOMAIN} -d ${SERVER_ALIAS} --non-interactive --agree-tos -m ${CERT_EMAIL}
   cat /etc/nginx/nginx.conf
 else
   echo "Generating new cert disabled";
