@@ -36,7 +36,7 @@ class VerifyCsrfToken extends BaseVerifier
             return false;
         }
 
-        $tokenMatches = Str::equals($sessionToken, $token);
+        $tokenMatches = $sessionToken == $token;
         if(!$tokenMatches) {
             Log::warning('Token mismatch at path: '. $request->path());
             return false;

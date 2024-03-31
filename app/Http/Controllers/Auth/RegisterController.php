@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\VerifyEmail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
@@ -75,11 +76,10 @@ class RegisterController extends Controller
             'confirmation_code' => $confirmationCode
         ]);
 
-        Mail::queue(['emails.verify', 'emails.verify-plain-text'], ['username'=> $newUser->username, 'confirmationCode' => $confirmationCode, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) {
-            $message->to(Request::input('email'))
-                ->bcc('roastmygame@gmail.com', 'Support')
-                ->subject('Please confirm your email');
-        });
+        Mail::to(Request::input('email'))
+            ->bcc('roastmygame@gmail.com')
+            ->queue(new VerifyEmail($newUser->username, $confirmationCode, 'https://roastmygame.com/images/logo-dark.png'));
+
         Log::info('Confirm account email sent out to '.Request::input('email').' with confirmation code '.$confirmationCode);
 
         return $newUser;

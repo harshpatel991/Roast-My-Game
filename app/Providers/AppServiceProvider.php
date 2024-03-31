@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('recaptcha', 'App\\Providers\\ReCaptcha@validate');
 
         Paginator::useBootstrapThree();
+
+        if(env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 
     /**

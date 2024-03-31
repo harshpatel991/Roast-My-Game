@@ -18,7 +18,7 @@
                     @include('partials.display-input-error')
 
                     <h1 class="form-title">Login</h1>
-                    {!! Form::open(array('url' => secure_url('/auth/login'), 'class'=>'form-horizontal', 'files'=>true)) !!}
+                    {!! Form::open(array('url' => url('/auth/login'), 'class'=>'form-horizontal', 'files'=>true)) !!}
 
                     <div class="form-group">
                         {!! Form::label('email', 'Email', ['class' => 'col-sm-3 control-label form-label']) !!}

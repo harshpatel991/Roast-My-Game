@@ -17,9 +17,9 @@
                     @include('partials.display-input-error')
                     <h1 class="form-title" style="margin-bottom: 0px;">Register</h1>
 
-                    <p class="small">With an account you can add your game, roast games, and like games. <a href="{{ secure_url('/about') }}">Learn more.</a></p>
+                    <p class="small">With an account you can add your game, roast games, and like games. <a href="{{ url('/about') }}">Learn more.</a></p>
 
-                    {!! Form::open(array('url' => secure_url('/auth/register'), 'class'=>'form-horizontal', 'files'=>true,)) !!}
+                    {!! Form::open(array('url' => url('/auth/register'), 'class'=>'form-horizontal', 'files'=>true,)) !!}
 
                     <div class="form-group">
                         {!! Form::label('username', 'Username', ['class' => 'col-sm-3 control-label form-label']) !!}

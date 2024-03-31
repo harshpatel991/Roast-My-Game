@@ -50,14 +50,16 @@ Route::post('/',
 
 
 Auth::routes();
+Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('auth/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/register-success', 'UserController@registerSuccess');
 Route::get('/verify/{confirmation_code}', 'UserController@verifySuccess');
 
 // Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('auth/register', 'Auth\RegisterController@register');
 
 Route::get('profile/{username}',
     ['uses' => 'UserController@getProfile']);
