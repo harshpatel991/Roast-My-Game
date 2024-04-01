@@ -4,7 +4,7 @@ namespace App\Http;
 
 use App;
 use Image;
-use Illuminate\Html\FormBuilder;
+use Collective\Html\FormBuilder;
 
 trait CustomForm
 {

@@ -16,7 +16,7 @@
 
                     @include('partials.display-input-error')
 
-                    {!! Form::open(array('url' => secure_url('/add-game'), 'class'=>'form-horizontal', 'files'=>true, 'id' => 'add-game-form')) !!}
+                    {!! Form::open(array('url' => url('/add-game'), 'class'=>'form-horizontal', 'files'=>true, 'id' => 'add-game-form')) !!}
 
                         @include('partials.game-form')
 

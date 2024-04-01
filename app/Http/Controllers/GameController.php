@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AddGameSuccess;
 use App\User;
 use App\Game;
 use Mail;
@@ -133,11 +134,9 @@ class GameController extends Controller
 
         //send email
         $sendTo = $request->user()->email;
-        Mail::queue(['emails.add-game-success', 'emails.add-game-success-plain-text'], ['game' => $game, 'logoPath' => 'https://roastmygame.com/images/logo-dark.png'], function($message) use ($sendTo) {
-            $message->to($sendTo)
-                ->bcc('roastmygame@gmail.com', 'Support')
-                ->subject('Your Game Has Been Added');
-        });
+        \Illuminate\Support\Facades\Mail::to($sendTo)
+            ->bcc('roastmygame@gmail.com')
+            ->queue(new AddGameSuccess($game, 'https://roastmygame.com/images/logo-dark.png'));
         Log::info('Add game success sent to: '.$sendTo);
         
         return redirect('game/'.$game->slug)->with('warning', 'Your game has been added! Visit your profile to add versions and downloads.');
