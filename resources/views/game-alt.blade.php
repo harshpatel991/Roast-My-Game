@@ -95,7 +95,7 @@
                                     <div class="label label-default">BETA</div>
                                 @endif
 
-                                <div class="label label-default"><span class="icon-eye"></span>{{$game->views}} </div>
+                                <div class="label label-default"><span class="icon-eye"></span>{{$game->views}} <a href="https://statspro.io?utm_source=powered-by&utm_medium=game-page" style="color: #888">  (Powered by StatsPro.IO)</a> </div>
                             </div>
                         </div>
 

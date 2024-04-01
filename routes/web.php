@@ -52,7 +52,7 @@ Route::post('/',
 Auth::routes();
 Route::get('auth/login', 'Auth\LoginController@showLoginForm');
 Route::post('auth/login', 'Auth\LoginController@login');
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('auth/logout', 'Auth\LoginController@logout');
 
 Route::get('/register-success', 'UserController@registerSuccess');
 Route::get('/verify/{confirmation_code}', 'UserController@verifySuccess');
